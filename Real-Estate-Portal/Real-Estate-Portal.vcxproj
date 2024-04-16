@@ -135,7 +135,6 @@
   <ItemGroup>
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />
-    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
