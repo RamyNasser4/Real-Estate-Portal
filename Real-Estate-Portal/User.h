@@ -4,7 +4,7 @@ using namespace std;
 //Change nationality name to National ID make it int
 //Pascale case to be added in functions GetLastName
 //Add Password field make it private
-//Add setters and getters for passwrod 
+//Add setters and getters for passwrod user to be passed as parameter
 class User
 {
 protected:
