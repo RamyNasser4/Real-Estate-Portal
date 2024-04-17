@@ -1,18 +1,15 @@
 #include "Property.h"
-
-
-                                                                                         //constructors
-
-
+#include <string>
+using namespace std;
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified)
 {
-	this->Location = Location;
-	this->PropertyType = PropertyType;
-	this->BuildingNumber = BuildingNumber;
-	this->ApartmentNumber = ApartmentNumber;
-	this->SquareFootage = SquareFootage;
-	this->NumberOfBedrooms = NumberOfBedrooms;
-	this->Verified = Verified;
+	this->location = Location;
+	this->propertyType = PropertyType;
+	this->buildingNumber = BuildingNumber;
+	this->apartmentNumber = ApartmentNumber;
+	this->squareFootage = SquareFootage;
+	this->numberOfBedrooms = NumberOfBedrooms;
+	this->verified = verified;
 
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms)
@@ -29,7 +26,7 @@ Property::Property(string Location, string PropertyType, string BuildingNumber, 
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber)
 {
-	Property(Location, PropertyType, BuildingNumber, 0);
+	Property(Location, PropertyType, BuildingNumber,0 );
 }
 Property::Property(string Location, string PropertyType)
 {
@@ -45,79 +42,72 @@ Property::Property()
 }
 Property::Property(const Property& Other)
 {
-	this->Location = Other.Location;
-	this->PropertyType = Other.PropertyType;
-	this->BuildingNumber = Other.BuildingNumber;
-	this->ApartmentNumber = Other.ApartmentNumber;
-	this->SquareFootage = Other.SquareFootage;
-	this->NumberOfBedrooms = Other.NumberOfBedrooms;
-	this->Verified = Other.Verified;
+	this->location = Other.location;
+	this->propertyType = Other.propertyType;
+	this->buildingNumber = Other.buildingNumber;
+	this->apartmentNumber = Other.apartmentNumber;
+	this->squareFootage = Other.squareFootage;
+	this->numberOfBedrooms = Other.numberOfBedrooms;
+	this->verified = Other.verified;
 }
-
-
-                                                                                             //setters
-
 
 void Property::SetLocation(string Location)
 {
-	this->Location = Location;
+	this->location = Location;
 }
 void Property::SetPropertyType(string PropertyType)
 {
-	this->PropertyType = PropertyType;
+	this->propertyType = PropertyType;
 }
 void Property::SetBuildingNumber(string BuildingNumber)
 {
-	this->BuildingNumber = BuildingNumber;
+	this->buildingNumber = BuildingNumber;
 }
 void Property::SetApartmentNumber(int ApartmentNumber)
 {
-	this->ApartmentNumber = ApartmentNumber;
+	this->apartmentNumber = ApartmentNumber;
 }
 void Property::SetSquareFootage(int SquareFootage)
 {
-	this->SquareFootage = SquareFootage;
+	this->squareFootage = SquareFootage;
 }
 void Property::SetNumberOfBedrooms(int NumberOfBedrooms)
 {
-	this->NumberOfBedrooms = NumberOfBedrooms;
+	this->numberOfBedrooms = NumberOfBedrooms;
 }
 void Property::SetVerified(bool Verified)
 {
-	this->Verified = Verified;
+	this->verified = Verified;
 }
-
-
-                                                                                           //getters
 
 
 string Property::GetLocation()
 {
-	return Location;
+	return location;
 }
 string Property::GetPropertyType()
 {
-	return PropertyType;
+	return propertyType;
 }
 string Property::GetBuildingNumber()
 {
-	return BuildingNumber;
+	return buildingNumber;
 }
 int Property::GetApartmentNumber()
 {
-	return ApartmentNumber;
+	return apartmentNumber;
 }
-int Property::GetsquareFootage()
+int Property::GetSquareFootage()
 {
-	return SquareFootage;
+	return squareFootage;
 }
 int Property::GetNumberOfBedrooms()
 {
-	return NumberOfBedrooms;
+	return numberOfBedrooms;
 }
 bool Property::GetVerfied()
 {
-	return Verified;
+	return verified;
 }
 
 

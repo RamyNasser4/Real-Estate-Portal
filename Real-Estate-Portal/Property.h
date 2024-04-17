@@ -4,9 +4,13 @@
 using namespace std;
 class Property
 {
-	string Location, PropertyType, BuildingNumber;
-	int ApartmentNumber, SquareFootage, NumberOfBedrooms;
-	bool Verified;
+	string location;
+	string propertyType;
+	string buildingNumber;
+	int apartmentNumber;
+	int squareFootage;
+    int numberOfBedrooms;
+	bool verified;
 
 public:
 
@@ -20,21 +24,21 @@ public:
 	Property(const Property& Other);
 	Property();
 
-	void SetLocation(string location);
 	string GetLocation();
-	void SetPropertyType(string PropertyType);
-	string GetPropertyType();
-	void SetBuildingNumber(string BuildingNumber);
-	string GetBuildingNumber();
-	void SetApartmentNumber(int ApartmentNumber);
-	int GetApartmentNumber();
-	void SetSquareFootage(int SquareFootage);
-	int GetsquareFootage();
-	void SetNumberOfBedrooms(int NumberOfBedrooms);
+	int GetSquareFootage();
 	int GetNumberOfBedrooms();
-	int GetsquareFootage();
-	void SetVerified(bool Verified);
 	bool GetVerfied();
+	string GetPropertyType();
+	string GetBuildingNumber();
+	int GetApartmentNumber();
+
+	void SetPropertyType(string PropertyType);
+	void SetBuildingNumber(string BuildingNumber);
+	void SetApartmentNumber(int ApartmentNumber);
+	void SetSquareFootage(int SquareFootage);
+	void SetLocation(string location);
+	void SetNumberOfBedrooms(int NumberOfBedrooms);
+	void SetVerified(bool Verified);
 
 
 };

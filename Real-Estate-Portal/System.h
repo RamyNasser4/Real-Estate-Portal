@@ -1,12 +1,12 @@
 #pragma once
 #include <map>
-#include <cstring>
+#include <string>
 #include "User.h"
 using namespace std;
-cla
-	map<int, User> users;
+class System{
+	map<int, User*> users;
 public:
-	void SignUp(User user);
+	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
 	
 };
