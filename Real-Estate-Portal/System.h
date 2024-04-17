@@ -1,6 +1,6 @@
 #pragma once
 #include <map>
-#include "User.cpp"
+#include "User.h"
 using namespace std;
 class System
 {
