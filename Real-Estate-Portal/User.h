@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 using namespace std;
+//Change nationality name to National ID make it int
+//Pascale case to be added in functions GetLastName
 class User
 {
 protected:
