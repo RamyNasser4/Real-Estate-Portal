@@ -1,30 +1,31 @@
 #pragma once
 #include <string>
 using namespace std;
-//Change nationality name to National ID make it int
-//Pascale case to be added in functions GetLastName
-//Add Password field make it private
 //Add setters and getters for passwrod user to be passed as parameter
 class User
 {
+private:
+	string password;
+
 protected:
 	string firstName;
 	string lastName;
-	string nationality;
+	int nationalId;
 
 public:
 	User();
-	User(string firstName , string lastName, string nationality);
-	User(const User& other);
+	User(string firstName, string lastName, int nationalId, string password);
+	User(string firstName, string lastName, int nationalId);
 	User(string firstName, string lastName);
+	User(int nationalId, string password);
 	User(string firstName);
+	User(const User& other);
 
-	string getFirstName();
-	void SetFirstName(string firstname);	
-	string getLastName();
+	string GetFirstName();
+	void SetFirstName(string firstname);
+	string GetLastName();
 	void SetLastName(string lastname);
-	string getNationality();
-	void SetNationality(string Nationality);
-	
-};
+	string GetNationalId();
+	void SetNationalId(int nationalId);
 
+};
