@@ -1,8 +1,8 @@
 #include "Admin.h"
 #include "Property.h"
 #include "User.h"
+#include "System.h"
 using namespace std;
-//#include "System.h"
 Admin::Admin(string firstName, string lastName, int nationalId, string password) : User(firstName, lastName, nationalId, password) {
 
 }
@@ -21,8 +21,8 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true);
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId) {
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms,true,price,currentUserName,currentUserId);
 };
 void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
 	if (users.find(ID) == users.end()) {

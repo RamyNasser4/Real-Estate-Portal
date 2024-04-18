@@ -13,7 +13,7 @@ public:
 	Admin(string firstName, string lastName);
 	Admin(string firstName);
 	Admin(const Admin& other);
-	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms);
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId);
 	void RemoveUser(int ID, unordered_map<int, User*>& Admins);
 };
 
