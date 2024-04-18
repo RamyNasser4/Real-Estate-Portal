@@ -66,3 +66,6 @@ unordered_map<string, unordered_map<string, Property*>> FilterByLocation(unorder
 		return {};
 	}
 }
+map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
+	return propertyFilterPrice.getInRange(minPrice, maxPrice);
+}

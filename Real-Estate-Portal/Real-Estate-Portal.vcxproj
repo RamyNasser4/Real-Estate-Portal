@@ -130,6 +130,7 @@
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Property.cpp" />
+    <ClCompile Include="RBT.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="RBT.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
