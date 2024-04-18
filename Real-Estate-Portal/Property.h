@@ -1,3 +1,5 @@
+#ifndef PROPERTY_H
+#define PROPERTY_H
 #include <iostream>
 #include <string>
 #include <string.h>
@@ -54,3 +56,4 @@ public:
 
 };
 
+#endif
