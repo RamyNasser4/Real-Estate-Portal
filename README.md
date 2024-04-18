@@ -6,5 +6,5 @@ This project focuses on creating a real estate portal that facilitates users in 
 <div align="center">
  
 <img width=200px src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg">&nbsp; &nbsp;
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/qt/qt-original.svg" alt="swagger" width="200" />  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/qt/qt-original.svg" alt="qt" width="200" />  
 </div>
