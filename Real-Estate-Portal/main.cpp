@@ -33,6 +33,8 @@ int main() {
 	cout << "---------------------------------------------------------" << endl;
 	/*User* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
-	system->RemoveUser(1,23);*/
+	system->RemoveUser(1,23);
+	system->Login(23, "Ghazaly123");
+	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");*/
 
 }
