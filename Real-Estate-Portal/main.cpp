@@ -30,10 +30,9 @@ int main() {
 	cout << user->GetName() << endl;
 	cout << user->GetNationalId() << endl;
 	cout << user->GetPassword() << endl;
-	cout << "---------------------------------------------------------";
-	
-	system->SignUp("test", "test2", 123, "test22");
-	system->Login(123, "test22");
-	system->RemoveUser(123);
+	cout << "---------------------------------------------------------" << endl;
+	/*User* admin = new Admin("Ramy", "Ramy", 1, "123");
+	system->users[1] = admin;
+	system->RemoveUser(1,23);*/
 
 }

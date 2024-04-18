@@ -8,6 +8,6 @@ class System{
 public:
 	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
-	void RemoveUser(int ID);
+	void RemoveUser(int adminID,int ID);
 };
 
