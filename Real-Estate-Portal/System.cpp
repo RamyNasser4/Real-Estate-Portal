@@ -34,3 +34,18 @@ void System::Login(int ID,string password) {
         }
     }
 }
+void System::RemoveUser(int ID) {
+    if (users.find(ID) == users.end()) {
+        cout << "this ID is not registered on the system." << endl;
+    }
+    else {
+       // Admin* admin = dynamic_cast<Admin*>(users[ID]);
+       // if (users[ID]->GetNationalId() == ID) {
+           // if (admin) {
+
+                users.erase(ID);
+                cout << "User Successfully Deleted." << endl;
+            //}
+       // }
+    }
+};
