@@ -6,11 +6,11 @@
 using namespace std;
 class System{
 	unordered_map<int, User*> users;
+	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
+	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
+	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
+	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 public:
-	static unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
-	static unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
-	static unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
-	static unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
 	void RemoveUser(int adminID,int ID);
