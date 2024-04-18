@@ -14,5 +14,7 @@ public:
 	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
 	void RemoveUser(int adminID,int ID);
+	unordered_map<int, unordered_map<string, Property*>> FilterBySquareFootage(unordered_map<int, unordered_map<string, Property*>> FilterSquareFootage, int squareFootage);
+	unordered_map<string, unordered_map<string, Property*>> FilterByLocation(unordered_map<string, unordered_map<string, Property*>> FilterLocations,string locations);
 };
 

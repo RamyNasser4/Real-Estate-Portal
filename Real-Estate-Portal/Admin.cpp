@@ -25,10 +25,10 @@ Admin::Admin(const Admin& admin) : User((User)admin) {
 void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms,true,price,currentUserName,currentUserId);
 	string propertyId = ApartmentNumber + " " + BuildingNumber + " " + Location;
-	System::propertyFilterSquareFootage[SquareFootage][propertyId] = NewProperty;
+	/*System::propertyFilterSquareFootage[SquareFootage][propertyId] = NewProperty;
 	System::propertyFilterLocations[Location][propertyId] = NewProperty;
 	System::propertyFilterType[PropertyType][propertyId] = NewProperty;
-	System::propertyFilterBedRooms[NumberOfBedrooms][propertyId] = NewProperty;
+	System::propertyFilterBedRooms[NumberOfBedrooms][propertyId] = NewProperty;*/
 };
 void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
 	if (users.find(ID) == users.end()) {
