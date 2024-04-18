@@ -1,5 +1,6 @@
 #include <iostream>
 #include "System.h"
+#include "Admin.h"
 #include "User.h"
 using namespace std;
 int main() {
@@ -12,6 +13,7 @@ int main() {
 	system->Login(23, "Ghazaly123");
 	system->Login(23, "abdo");
 	system->Login(15, "Ghazaly123");
+	
 	//test user
 	User* user= new User("Sebaay","Ashraf",65,"koty");
 	cout << user->GetFirstName()<<endl;
@@ -28,5 +30,10 @@ int main() {
 	cout << user->GetName() << endl;
 	cout << user->GetNationalId() << endl;
 	cout << user->GetPassword() << endl;
+	cout << "---------------------------------------------------------";
+	
+	system->SignUp("test", "test2", 123, "test22");
+	system->Login(123, "test22");
+	system->RemoveUser(123);
 
 }
