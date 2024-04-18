@@ -4,16 +4,20 @@
 using namespace std;
 class Property
 {
+	string propertyId;
 	string location;
 	string propertyType;
 	string buildingNumber;
+	string userName;
+	int userId;
 	int apartmentNumber;
 	int squareFootage;
     int numberOfBedrooms;
+	int price;
 	bool verified;
 
 public:
-
+	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool Verified,int price);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool Verified);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage);
@@ -30,7 +34,10 @@ public:
 	bool GetVerfied();
 	string GetPropertyType();
 	string GetBuildingNumber();
+	string GetUserName();
 	int GetApartmentNumber();
+	int GetPrice();
+	int GetUserId();
 
 	void SetPropertyType(string PropertyType);
 	void SetBuildingNumber(string BuildingNumber);
@@ -39,6 +46,7 @@ public:
 	void SetLocation(string location);
 	void SetNumberOfBedrooms(int NumberOfBedrooms);
 	void SetVerified(bool Verified);
+	void SetPrice(int price);
 
 
 };
