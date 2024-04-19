@@ -63,6 +63,9 @@ unordered_map<string, Property*> System::FilterByLocation(string locations) {
 map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	return propertyFilterPrice.getInRange(minPrice, maxPrice);
 }
+unordered_map<string, Property*> System::FilterByType(string types) {
+	return propertyFilterType[types];
+}
 void System::Request(Property property) {
 	if (!property.GetVerfied) {
 		unVerified.push(property);

@@ -24,6 +24,8 @@ public:
 	void RemoveUser(int adminID,int ID);
 	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*>  FilterByLocation(string locations);
+	unordered_map<string, Property*>  FilterByType(string types);
+
 	map<int, Property*> FilterByPrice(int minPrice, int maxPrice);
 };
 
