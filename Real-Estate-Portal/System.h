@@ -4,6 +4,7 @@
 #include "User.h"
 #include "Property.h"
 #include "RBT.h"
+#include <vector>
 using namespace std;
 class System{
 	unordered_map<int, User*> users;
@@ -16,7 +17,7 @@ public:
 	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
 	void RemoveUser(int adminID,int ID);
-	unordered_map<string, Property*>  FilterBySquareFootage(int squareFootage);
+	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	map<int, Property*> FilterByPrice(int minPrice, int maxPrice);
 };

@@ -3,6 +3,7 @@
 #include "Admin.h"
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 void System::SignUp(string fName, string lName, int natId, string password) {
 	if (users.find(natId) == users.end()) {
@@ -47,12 +48,12 @@ void System::RemoveUser(int adminID, int ID) {
 	else {
 		cout << "Invalid ID" << endl;
 	}
-};
-unordered_map<int,Property*> System::FilterBySquareFootage(int squareFootage) {
-	return propertyFilterSquareFootage.find(squareFootage);
+}
+unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
+	return propertyFilterSquareFootage[squareFootage];
 }
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
-	return propertyFilterLocations.find(locations);
+	return propertyFilterLocations[locations];
 }
 map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	return propertyFilterPrice.getInRange(minPrice, maxPrice);
