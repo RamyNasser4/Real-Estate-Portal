@@ -117,6 +117,9 @@ string Property::GetBuildingNumber()
 string Property::GetUserName() {
 	return userName;
 }
+string Property::GetpropertyId() {
+	return propertyId;
+}
 int Property::GetApartmentNumber()
 {
 	return apartmentNumber;

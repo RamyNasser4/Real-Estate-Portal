@@ -33,10 +33,12 @@ public:
 	Property(const Property& Other);
 	Property();
 
-	string GetLocation();
+	
 	int GetSquareFootage();
 	int GetNumberOfBedrooms();
 	bool GetVerfied();
+	string GetpropertyId();
+	string GetLocation();
 	string GetPropertyType();
 	string GetBuildingNumber();
 	string GetUserName();
