@@ -5,6 +5,11 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
+
+queue<Property> unVerified;
+
+
 void System::SignUp(string fName, string lName, int natId, string password) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password);
@@ -57,4 +62,9 @@ unordered_map<string, Property*> System::FilterByLocation(string locations) {
 }
 map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	return propertyFilterPrice.getInRange(minPrice, maxPrice);
+}
+void System::Request(Property property) {
+	if (!property.GetVerfied) {
+		unVerified.push(property);
+	}
 }
