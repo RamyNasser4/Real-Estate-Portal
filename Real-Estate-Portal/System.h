@@ -7,8 +7,8 @@
 #include "Property.h"
 using namespace std;
 class System{
-	unordered_map<int, User*> users;
 public:
+	unordered_map<int, User*> users;
 	queue<Property> unVerified;
 	unordered_map<int, User*> GetUsers();
 	void Request(Property property);
