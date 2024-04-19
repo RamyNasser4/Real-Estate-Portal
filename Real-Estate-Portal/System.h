@@ -8,6 +8,8 @@ using namespace std;
 class System{
 	unordered_map<int, User*> users;
 public:
+	queue<Property> unVerified;
+	void Request(Property property);
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
