@@ -2,11 +2,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-User::User() {
-	firstName = "";
-	lastName = "";
-	nationalId = 0;
-}
 User::User(string fName, string lName, int natId, string password,string mobileNumber) {
 	firstName = fName;
 	lastName = lName;
@@ -15,31 +10,26 @@ User::User(string fName, string lName, int natId, string password,string mobileN
 	this->mobileNumber = mobileNumber;
 }
 User::User(string fName, string lName, int natId, string password) {
-	firstName = fName;
-	lastName = lName;
-	nationalId = natId;
-	this->password = password;
+	User(string fName, string lName, int natId, string password,"");
 }
 User::User(string fName, string lName, int natId) {
-	firstName = fName;
-	lastName = lName;
-	nationalId = natId;
+	User(string fName, string lName, int natId, "");
 }
 User::User(string fName, string lName) {
-	firstName = fName;
-	lastName = lName;
-	nationalId = 0;
+	User(string fName, string lName, 0);
 }
 User::User(string fName) {
-	firstName = fName;
-	lastName = "";
-	nationalId = 0;
+	User(string fName, "");
+}
+User::User() {
+	User("");
 }
 User::User(const User& other) {
 	this->firstName = other.firstName;
 	this->lastName = other.lastName;
 	this->nationalId = other.nationalId;
 	this->password = other.password;
+	this->mobileNumber = other.mobileNumber;
 }
 string User::GetFirstName() {
 	return this->firstName;
