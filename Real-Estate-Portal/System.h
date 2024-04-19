@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <map>
 #include <string>
+#include <queue>
 #include "User.h"
 #include "Property.h"
 using namespace std;
@@ -9,6 +10,7 @@ class System{
 	unordered_map<int, User*> users;
 public:
 	queue<Property> unVerified;
+	unordered_map<int, User*> GetUsers();
 	void Request(Property property);
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;

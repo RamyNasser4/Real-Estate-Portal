@@ -5,10 +5,9 @@
 #include <iostream>
 using namespace std;
 
-
-queue<Property> unVerified;
-
-
+unordered_map<int, User*> System::GetUsers() {
+	return users;
+}
 void System::SignUp(string fName, string lName, int natId, string password) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password);
@@ -71,7 +70,7 @@ unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPric
 	return filtered;
 }
 void System::Request(Property property) {
-	if (!property.GetVerfied) {
+	if (!property.GetVerfied()) {
 		unVerified.push(property);
 	}
 }
