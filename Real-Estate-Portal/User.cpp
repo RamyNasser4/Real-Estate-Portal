@@ -7,6 +7,13 @@ User::User() {
 	lastName = "";
 	nationalId = 0;
 }
+User::User(string fName, string lName, int natId, string password,string mobileNumber) {
+	firstName = fName;
+	lastName = lName;
+	nationalId = natId;
+	this->password = password;
+	this->mobileNumber = mobileNumber;
+}
 User::User(string fName, string lName, int natId, string password) {
 	firstName = fName;
 	lastName = lName;
@@ -49,6 +56,9 @@ int User::GetNationalId() {
 string User::GetPassword() {
 	return password;
 }
+string User::GetMobileNumber() {
+	return mobileNumber;
+}
 void User::SetFirstName(string firstname) {
 	this->firstName = firstname;
 }
@@ -61,7 +71,9 @@ void User::SetNationalId(int nationalId) {
 void User::SetPassword(string password) {
 	this->password = password;
 }
-
+void User::SetMobileNumber(string mobileNumber) {
+	this->mobileNumber = mobileNumber;
+}
 User::~User() {
-
+	
 }
