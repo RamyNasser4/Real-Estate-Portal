@@ -28,45 +28,50 @@ void readFile(System* system) {
 	}
 	readFile.close();
 }
-void writeFile(System *system) {
-	fstream writefile ("../users.txt", ios::out | ios::in | ios::app);
+void writeFile(System* system) {
+	fstream writefile("../users.txt", ios::out );
 	if (!writefile.is_open()) {
-		cout << "Failed to open the file"<<endl;
+		cout << "Failed to open the file" << endl;
 		return;
 	}
-	for (auto it = system->GetUsers().begin(); it != system->GetUsers().end(); ++it) {
-		writefile << it->second->GetFirstName() << "*" << it->second->GetLastName() << "*" << it->second->GetNationalId() << "*" << it->second->GetPassword() << endl;
+	const auto& users = system->GetUsers();  // Store reference to the map
+	auto begin = users.begin();              // Use the same map instance for both iterators
+	auto end = users.end();
+	for (; begin != end; ++begin) {
+		
+		writefile <<begin->second->GetFirstName() << "*" << begin->second->GetLastName() << "*" << begin->second->GetNationalId() << "*" << begin->second->GetPassword() << endl;
 	}
 	writefile.close();
 }
 int main() {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
-	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
-	system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
-	system->Login(12, "Koty");
-	system->Login(23, "Ghazaly123");
-	system->Login(23, "abdo");
-	system->Login(15, "Ghazaly123");
+	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
+	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
+	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
+	//system->Login(12, "Koty");
+	//system->Login(23, "Ghazaly123");
+	//system->Login(23, "abdo");
+	//system->Login(15, "Ghazaly123");
 
 	//test user
-	User* user = new User("Sebaay", "Ashraf", 65, "koty");
-	cout << user->GetFirstName() << endl;
-	cout << user->GetLastName() << endl;
-	cout << user->GetName() << endl;
-	cout << user->GetNationalId() << endl;
-	cout << user->GetPassword() << endl;
-	user->SetFirstName("sebaayNew");
-	user->SetLastName("AshrafNew");
-	user->SetNationalId(0);
-	user->SetPassword("kotyNew");
-	cout << user->GetFirstName() << endl;
-	cout << user->GetLastName() << endl;
-	cout << user->GetName() << endl;
-	cout << user->GetNationalId() << endl;
-	cout << user->GetPassword() << endl;
-	cout << "---------------------------------------------------------" << endl;
+	//User* user = new User("Sebaay", "Ashraf", 65, "koty");
+	//system->SignUp("Sebaay", "Ashraf", 65, "koty");
+	//cout << user->GetFirstName() << endl;
+	//cout << user->GetLastName() << endl;
+	//cout << user->GetName() << endl;
+	//cout << user->GetNationalId() << endl;
+	//cout << user->GetPassword() << endl;
+	//user->SetFirstName("sebaayNew");
+	//user->SetLastName("AshrafNew");
+	//user->SetNationalId(0);
+	//user->SetPassword("kotyNew");
+	//cout << user->GetFirstName() << endl;
+	//cout << user->GetLastName() << endl;
+	//cout << user->GetName() << endl;
+	//cout << user->GetNationalId() << endl;
+	//cout << user->GetPassword() << endl;
+	//cout << "---------------------------------------------------------" << endl;
 	/*User* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
 	system->RemoveUser(1,23);
