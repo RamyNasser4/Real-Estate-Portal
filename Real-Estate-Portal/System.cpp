@@ -3,13 +3,11 @@
 #include "Admin.h"
 #include <string>
 #include <iostream>
-#include <vector>
 using namespace std;
 
-
-queue<Property> unVerified;
-
-
+unordered_map<int, User*> System::GetUsers() {
+	return users;
+}
 void System::SignUp(string fName, string lName, int natId, string password) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password);
@@ -60,14 +58,22 @@ unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
 	return propertyFilterLocations[locations];
 }
-map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
-	return propertyFilterPrice.getInRange(minPrice, maxPrice);
+unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
+	auto lower = propertyFilterPrice.lower_bound(minPrice);
+	auto upper = propertyFilterPrice.upper_bound(maxPrice);
+	unordered_map<string, Property*> filtered;
+	for (auto umap = lower; umap != upper; ++umap) {
+		for (auto property = umap->second.begin(); property != umap->second.end(); property++) {
+			filtered[property->second->GetpropertyId()] = property->second;
+		}
+	}
+	return filtered;
 }
 unordered_map<string, Property*> System::FilterByType(string types) {
 	return propertyFilterType[types];
 }
 void System::Request(Property property) {
-	if (!property.GetVerfied) {
+	if (!property.GetVerfied()) {
 		unVerified.push(property);
 	}
 }
