@@ -150,7 +150,7 @@ void RBT::getInRange(Node* root, int minPrice, int maxPrice,map<int, Property*> 
 
 	// Traverse left subtree if the current node's key is greater than minPrice
 	if (root->key.GetPrice() > minPrice) {
-		getInRange(root->left, minPrice, maxPrice,);
+		getInRange(root->left, minPrice, maxPrice);
 	}
 
 	// Display the node if its key falls within the price range

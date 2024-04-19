@@ -48,23 +48,11 @@ void System::RemoveUser(int adminID, int ID) {
 		cout << "Invalid ID" << endl;
 	}
 };
-unordered_map<int, unordered_map<string, Property*>> FilterBySquareFootage(unordered_map<int, unordered_map<string, Property*>> FilterSquareFootage, int squareFootage) {
-	auto it = FilterSquareFootage.find(squareFootage);
-	if (it != FilterSquareFootage.end()) {
-		return { {squareFootage, it->second} };
-	}
-	else {
-		return{};
-	}
+unordered_map<int,Property*> System::FilterBySquareFootage(int squareFootage) {
+	return propertyFilterSquareFootage.find(squareFootage);
 }
-unordered_map<string, unordered_map<string, Property*>> FilterByLocation(unordered_map<string, unordered_map<string, Property*>> FilterLocations, string locations) {
-	auto it = FilterLocations.find(locations);
-	if (it != FilterLocations.end()) {
-		return { {locations, it->second} };
-	}
-	else {
-		return {};
-	}
+unordered_map<string, Property*> System::FilterByLocation(string locations) {
+	return propertyFilterLocations.find(locations);
 }
 map<int, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	return propertyFilterPrice.getInRange(minPrice, maxPrice);
