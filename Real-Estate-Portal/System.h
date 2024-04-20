@@ -20,14 +20,13 @@ public:
 	unordered_map<string, Property*> properties;
 	unordered_map<int, User*> GetUsers();
 	void Request(Property property);
-	void SignUp(string fName, string lName, int natId, string password);
+	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);
 	void RemoveUser(int adminID,int ID);
 	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
-
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
-	unordered_map<string, Property*>  FilterByType(string types);
+	unordered_map<string, Property*>  FilterByType(string type);
 };
 

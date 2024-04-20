@@ -24,9 +24,13 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System system) {
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId);
-	string propertyId = ApartmentNumber + " " + BuildingNumber + " " + Location;
+	string propertyId = GeneratePropertyId();
+	while (system.properties.find(propertyId) != system.properties.end()) {
+		propertyId = GeneratePropertyId();
+	}
+	NewProperty->SetPropertyId(propertyId);
 	system.properties[propertyId] = NewProperty;
 	system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = NewProperty;
 	system.propertyFilterSquareFootage[SquareFootage][propertyId] = NewProperty;
@@ -34,19 +38,18 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
 }
-void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System &system)
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System &system,string propertyId)
 {
 	//cout << "Enter id to edit";
-	string propertyId = ApartmentNumber + " " + BuildingNumber + " " + Location;
 	Property* property = system.properties[propertyId];
-	/*
+	
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 		system.propertyFilterLocations[Location][propertyId] = property;
 		property->SetLocation(Location);	
 	}
-	*/
+	
 	if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
 	{
 		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
@@ -74,13 +77,13 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 }
 
 
-void Admin::RemoveProperty(string property_id, System system) {
-	Property* property = system.properties[property_id];
-	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(property_id);
-	system.propertyFilterLocations[property->GetLocation()].erase(property_id);
-	system.propertyFilterType[property->GetPropertyType()].erase(property_id);
-	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(property_id);
-	system.properties.erase(property_id);
+void Admin::RemoveProperty(string propertyId, System &system) {
+	Property* property = system.properties[propertyId];
+	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
+	system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
+	system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
+	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+	system.properties.erase(propertyId);
 	delete property;
 }
 
@@ -93,4 +96,18 @@ void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
 		users.erase(ID);
 		cout << "User Successfully Deleted." << endl;
 	}
+}
+string Admin::GeneratePropertyId() {
+
+	char alphabet[36] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+						  'h', 'i', 'j', 'k', 'l', 'm', 'n',
+						  'o', 'p', 'q', 'r', 's', 't', 'u',
+						  'v', 'w', 'x', 'y', 'z','0','1','2','3','4','5','6','7','8','9' };
+
+	string propertyId = "";
+	for (int i = 0; i < 8; i++)
+		propertyId = propertyId + alphabet[rand() % 26];
+
+	return propertyId;
+
 }

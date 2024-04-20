@@ -54,7 +54,7 @@ public:
 	void SetNumberOfBedrooms(int NumberOfBedrooms);
 	void SetVerified(bool Verified);
 	void SetPrice(int price);
-
+	void SetPropertyId(string propertyId);
 
 };
 

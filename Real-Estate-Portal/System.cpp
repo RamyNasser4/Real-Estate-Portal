@@ -8,9 +8,9 @@ using namespace std;
 unordered_map<int, User*> System::GetUsers() {
 	return users;
 }
-void System::SignUp(string fName, string lName, int natId, string password) {
+void System::SignUp(string fName, string lName, int natId, string password,string mobileNumber) {
 	if (users.find(natId) == users.end()) {
-		users[natId] = new User(fName, lName, natId, password);
+		users[natId] = new User(fName, lName, natId, password,mobileNumber);
 		cout << "Registered Successfully " << endl;
 	}
 	else {
@@ -58,6 +58,12 @@ unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
 	return propertyFilterLocations[locations];
 }
+unordered_map<string, Property*> System::FilterByType(string type) {
+	return propertyFilterType[type];
+}
+unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) {
+	return propertyFilterBedRooms[bedrooms];
+}
 unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	auto lower = propertyFilterPrice.lower_bound(minPrice);
 	auto upper = propertyFilterPrice.upper_bound(maxPrice);
@@ -68,12 +74,6 @@ unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPric
 		}
 	}
 	return filtered;
-}
-unordered_map<string, Property*> System::FilterByType(string types) {
-	return propertyFilterType[types];
-}
-unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) {
-	return propertyFilterBedRooms[bedrooms];
 }
 void System::Request(Property property) {
 	if (!property.GetVerfied()) {

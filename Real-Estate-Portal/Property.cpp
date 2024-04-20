@@ -11,7 +11,6 @@ Property::Property(string Location, string PropertyType, string BuildingNumber, 
 	this->numberOfBedrooms = NumberOfBedrooms;
 	this->verified = verified;
 	this->price = price;
-	this->propertyId = ApartmentNumber +" " + BuildingNumber + " " + Location;
 	this->userName = currentUserName;
 	this->userId = currentUserId;
 
@@ -101,7 +100,9 @@ void Property::SetVerified(bool Verified)
 void Property::SetPrice(int price) {
 	this->price = price;
 }
-
+void Property::SetPropertyId(string propertyId) {
+	this->propertyId = propertyId;
+}
 string Property::GetLocation()
 {
 	return location;
@@ -142,6 +143,7 @@ bool Property::GetVerfied()
 {
 	return verified;
 }
+
 
 
 

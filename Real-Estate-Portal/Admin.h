@@ -14,9 +14,10 @@ public:
 	Admin(string firstName, string lastName);
 	Admin(string firstName);
 	Admin(const Admin& other);
-	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System system);
-	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System &system);
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system);
+	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system,string propertyId);
 	void RemoveUser(int ID, unordered_map<int, User*>& Admins);
-	void RemoveProperty(string property_id,System system);
+	void RemoveProperty(string propertyId,System &system);
+	string GeneratePropertyId();
 };
 
