@@ -35,15 +35,16 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 
 
 void Admin::RemoveProperty(string property_id, System system) {
-	system.propertyFilterBedRooms[system.properties[property_id]->GetNumberOfBedrooms()].erase(property_id);
-	system.FilterByLocation[system.properties[property_id]->GetLocation()].erase(property_id);
-	system.FilterByType[system.properties[property_id]->GetPropertyType()].erase(property_id);
-	system.FilterBySquareFootage[system.properties[property_id]->GetSquareFootage()].erase(property_id);
+	Property* property = system.properties[property_id];
+	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(property_id);
+	system.propertyFilterLocations[property->GetLocation()].erase(property_id);
+	system.propertyFilterType[property->GetPropertyType()].erase(property_id);
+	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(property_id);
 	system.properties.erase(property_id);
-
-
-
+	delete property;
 }
+
+
 void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
 	if (users.find(ID) == users.end()) {
 		cout << "this ID is not registered on the system." << endl;

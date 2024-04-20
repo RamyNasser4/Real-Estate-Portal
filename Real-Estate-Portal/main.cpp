@@ -16,7 +16,7 @@ void readFile(System* system) {
 			string firstName, lastName, stringId, password;
 			// Split the line using '*' as the delimiter
 			getline(ss, firstName, '*');
-			getline(ss, lastName, '*'
+			getline(ss, lastName, '*');
 			getline(ss, stringId, '*');
 			getline(ss, password, '*');
 			int ID = stoi(stringId);

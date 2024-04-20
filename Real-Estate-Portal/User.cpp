@@ -10,16 +10,16 @@ User::User(string fName, string lName, int natId, string password,string mobileN
 	this->mobileNumber = mobileNumber;
 }
 User::User(string fName, string lName, int natId, string password) {
-	User(string fName, string lName, int natId, string password,"");
+	User( fName,  lName,  natId,  password,"");
 }
 User::User(string fName, string lName, int natId) {
-	User(string fName, string lName, int natId, "");
+	User( fName,  lName,  natId, "");
 }
 User::User(string fName, string lName) {
-	User(string fName, string lName, 0);
+	User( fName,  lName, 0);
 }
 User::User(string fName) {
-	User(string fName, "");
+	User( fName, "");
 }
 User::User() {
 	User("");
