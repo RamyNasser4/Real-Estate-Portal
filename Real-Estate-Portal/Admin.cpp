@@ -3,6 +3,8 @@
 #include "User.h"
 #include "System.h"
 #include <string>
+#include <iostream>
+#include <unordered_map>
 using namespace std;
 Admin::Admin(string firstName, string lastName, int nationalId, string password) : User(firstName, lastName, nationalId, password) {
 
@@ -31,6 +33,44 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterType[PropertyType][propertyId] = NewProperty;
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
+}
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System &system)
+{
+	//cout << "Enter id to edit";
+	string propertyId = ApartmentNumber + " " + BuildingNumber + " " + Location;
+	Property* property = system.properties[propertyId];
+	/*
+	if (property->GetLocation() != Location)
+	{
+		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
+		system.propertyFilterLocations[Location][propertyId] = property;
+		property->SetLocation(Location);	
+	}
+	*/
+	if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
+	{
+		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
+		system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = property;
+		property->SetNumberOfBedrooms(NumberOfBedrooms);
+	}
+	if (property->GetPrice() != price)
+	{
+		system.propertyFilterPrice[property->GetPrice()].erase(propertyId);
+		system.propertyFilterPrice[price][propertyId] = property;
+		property->SetPrice(price);
+	}
+	if (property->GetPropertyType() != PropertyType)
+	{
+		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
+		system.propertyFilterType[PropertyType][propertyId] = property;
+		property->SetPropertyType(PropertyType);
+	}
+	if (property->GetSquareFootage() != SquareFootage)
+	{
+		system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+		system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
+		property->SetSquareFootage(SquareFootage);
+	}
 }
 
 

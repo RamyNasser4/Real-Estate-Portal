@@ -10,8 +10,7 @@ class System{
 public:
 	unordered_map<int, User*> users;
 	queue<Property> unVerified;
-	unordered_map<int, User*> GetUsers();
-	void Request(Property property);
+	
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
@@ -19,6 +18,8 @@ public:
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
 
 	unordered_map<string, Property*> properties;
+	unordered_map<int, User*> GetUsers();
+	void Request(Property property);
 	void SignUp(string fName, string lName, int natId, string password);
 	void Login(int ID, string password);
 	void RemoveUser(int adminID,int ID);
