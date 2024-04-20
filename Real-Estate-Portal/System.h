@@ -27,6 +27,6 @@ public:
 
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
-	unordered_map<string, Property*>  FilterByType(string types);
+	unordered_map<string, Property*>  FilterByType(string types,System system);
 };
 

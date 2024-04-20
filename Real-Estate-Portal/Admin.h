@@ -16,5 +16,6 @@ public:
 	Admin(const Admin& other);
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System system);
 	void RemoveUser(int ID, unordered_map<int, User*>& Admins);
+	void RemoveProperty(string property_id);
 };
 
