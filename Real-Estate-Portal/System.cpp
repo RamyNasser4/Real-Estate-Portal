@@ -8,9 +8,9 @@ using namespace std;
 unordered_map<int, User*> System::GetUsers() {
 	return users;
 }
-void System::SignUp(string fName, string lName, int natId, string password,string mobileNumber) {
+void System::SignUp(string fName, string lName, int natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
-		users[natId] = new User(fName, lName, natId, password,mobileNumber);
+		users[natId] = new User(fName, lName, natId, password, mobileNumber);
 		cout << "Registered Successfully " << endl;
 	}
 	else {
@@ -94,10 +94,26 @@ void System::UserChangePassword(string currentPassword, string newPassword, int 
 	else {
 		cout << "User not found\n";
 	}
-	
+
 }
 int System::UserCounter()
 {
 	int counter = users.size();
 	return counter;
+}
+void System::AddToCompare(string propertyId) {
+	if (propertyComparison.size() <= 3) {
+		if (propertyComparison.find(propertyId) == propertyComparison.end()) {
+			propertyComparison[propertyId] = properties[propertyId];
+		}
+		else {
+			throw new exception("Property already in comparison list");
+		}
+	}
+	else {
+		throw new exception("Cannot compare more than 4 properties");
+	}
+}
+void System::RemoveFromCompare(string propertyId) {
+	propertyComparison.erase(propertyId);
 }

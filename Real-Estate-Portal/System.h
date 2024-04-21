@@ -16,6 +16,7 @@ public:
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
+	unordered_map<string, Property*> propertyComparison;
 
 	unordered_map<string, Property*> properties;
 	unordered_map<int, User*> GetUsers();
@@ -24,6 +25,8 @@ public:
 	void Login(int ID, string password);
 	void UserChangePassword(string currentPassword,string newPassword,int nationalId);
 	void RemoveUser(int adminID,int ID);
+	void AddToCompare(string propertyId);
+	void RemoveFromCompare(string propertyId);
 	int UserCounter();
 	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
