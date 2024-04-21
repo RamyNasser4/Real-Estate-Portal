@@ -32,6 +32,6 @@ public:
 	void SetNationalId(int nationalId);
 	void SetPassword(string password);
 	void SetMobileNumber(string mobileNumber);
-
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system);
 	virtual ~User();
 };
