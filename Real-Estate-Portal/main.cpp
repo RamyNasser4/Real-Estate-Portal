@@ -4,7 +4,184 @@
 #include "User.h"
 #include <fstream>
 #include <sstream>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QWidget>
 using namespace std;
+
+/********************************************************************************
+** Form generated from reading UI file 'WidgetjvXlYo.ui'
+**
+** Created by: Qt User Interface Compiler version 6.8.0
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef WIDGETJVXLYO_H
+#define WIDGETJVXLYO_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_Form
+{
+public:
+    QFrame* frame;
+    QFrame* frame_2;
+    QPushButton* pushButton;
+    QLabel* label;
+    QLineEdit* lineEdit;
+    QLineEdit* lineEdit_2;
+    QLabel* label_2;
+    QLabel* label_3;
+
+    void setupUi(QWidget* Form)
+    {
+        if (Form->objectName().isEmpty())
+            Form->setObjectName("Form");
+        Form->resize(1024, 720);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Form->sizePolicy().hasHeightForWidth());
+        Form->setSizePolicy(sizePolicy);
+        Form->setMaximumSize(QSize(1024, 720));
+        Form->setStyleSheet(QString::fromUtf8(""));
+        frame = new QFrame(Form);
+        frame->setObjectName("frame");
+        frame->setGeometry(QRect(-2, -1, 1421, 1321));
+        sizePolicy.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy);
+        frame->setMinimumSize(QSize(1400, 720));
+        frame->setStyleSheet(QString::fromUtf8("@font-face{\n"
+            "font-family: CenturyGothic;\n"
+            "src: url(C:/Users/ramy_/source/repos/Real-Estate-Portal/Real-Estate-Portal/Century Gothic.ttf);\n"
+            "}\n"
+            "*{\n"
+            "font-family:CenturyGothic;\n"
+            "}\n"
+            "QWidget{\n"
+            "background-image: url(C:/Users/ramy_/source/repos/Real-Estate-Portal/Real-Estate-Portal/Login.png);\n"
+            "background: rgba(255, 255, 255, 0.1) url(C:/Users/ramy_/source/repos/Real-Estate-Portal/Real-Estate-Portal/Login.png);\n"
+            "}\n"
+            "QPushButton{\n"
+            "border-radius: 5px;\n"
+            "font-size:20px;\n"
+            "color: black ;\n"
+            "background: #CCD0CD ;\n"
+            "}\n"
+            "QPushButton:hover {\n"
+            "        background:#5287FE;\n"
+            "        color: white;\n"
+            "}\n"
+            "QLabel{\n"
+            "border-style:solid;\n"
+            "border-color:black;\n"
+            "border-bottom:2px;\n"
+            "}"));
+        frame->setFrameShape(QFrame::Shape::StyledPanel);
+        frame->setFrameShadow(QFrame::Shadow::Raised);
+        frame_2 = new QFrame(frame);
+        frame_2->setObjectName("frame_2");
+        frame_2->setGeometry(QRect(590, 170, 381, 431));
+        frame_2->setStyleSheet(QString::fromUtf8("QFrame{\n"
+            "background : white;\n"
+            "border-radius:20px;\n"
+            "}\n"
+            "QLineEdit{\n"
+            "padding-left: 15px;\n"
+            "background: #FAFAFA;\n"
+            "border: none;\n"
+            "border-radius:15px;\n"
+            "font-size:15px;\n"
+            "}"));
+        frame_2->setFrameShape(QFrame::Shape::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Shadow::Raised);
+        pushButton = new QPushButton(frame_2);
+        pushButton->setObjectName("pushButton");
+        pushButton->setEnabled(true);
+        pushButton->setGeometry(QRect(120, 340, 151, 50));
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
+        pushButton->setMinimumSize(QSize(150, 50));
+        pushButton->setMaximumSize(QSize(601, 16777215));
+        QFont font;
+        font.setFamilies({ QString::fromUtf8("CenturyGothic") });
+        font.setBold(true);
+        pushButton->setFont(font);
+        label = new QLabel(frame_2);
+        label->setObjectName("label");
+        label->setGeometry(QRect(50, 60, 81, 41));
+        label->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "border-radius:0px;\n"
+            "border-bottom:2px solid black;\n"
+            "font-weight:bold;\n"
+            "}"));
+        lineEdit = new QLineEdit(frame_2);
+        lineEdit->setObjectName("lineEdit");
+        lineEdit->setGeometry(QRect(50, 160, 231, 41));
+        lineEdit->setStyleSheet(QString::fromUtf8(""));
+        lineEdit_2 = new QLineEdit(frame_2);
+        lineEdit_2->setObjectName("lineEdit_2");
+        lineEdit_2->setGeometry(QRect(50, 250, 231, 41));
+        lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+        label_2 = new QLabel(frame_2);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(50, 130, 121, 16));
+        label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-size:18px;\n"
+            "font-weight:700px;\n"
+            "}"));
+        label_3 = new QLabel(frame_2);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(50, 220, 91, 16));
+        label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-size:18px;\n"
+            "font-weight:700px;\n"
+            "}"));
+
+        retranslateUi(Form);
+
+        QMetaObject::connectSlotsByName(Form);
+    } // setupUi
+
+    void retranslateUi(QWidget* Form)
+    {
+        Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
+#if QT_CONFIG(tooltip)
+        pushButton->setToolTip(QString());
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        pushButton->setWhatsThis(QString());
+#endif // QT_CONFIG(whatsthis)
+        pushButton->setText(QCoreApplication::translate("Form", "Login", nullptr));
+        label->setText(QCoreApplication::translate("Form", "<html><head/><body><p><span style=\" font-size:18pt;\" border=1>Login</span></p></body></html>", nullptr));
+        lineEdit->setPlaceholderText(QCoreApplication::translate("Form", "Enter National ID", nullptr));
+        lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "Enter Password", nullptr));
+        label_2->setText(QCoreApplication::translate("Form", "National ID", nullptr));
+        label_3->setText(QCoreApplication::translate("Form", "Password", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class Form : public Ui_Form {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // WIDGETJVXLYO_H
+
+
 void readFile(System* system) {
 	fstream readFile;
 	readFile.open("../users.txt", ios::out | ios::in);
@@ -20,7 +197,7 @@ void readFile(System* system) {
 			getline(ss, stringId, '*');
 			getline(ss, password, '*');
 			int ID = stoi(stringId);
-			system->SignUp(firstName, lastName, ID, password);
+			//system->SignUp(firstName, lastName, ID, password);
 		}
 	}
 	else {
@@ -43,9 +220,9 @@ void writeFile(System* system) {
 	}
 	writefile.close();
 }
-int main() {
+int main(int argc, char* argv[]) {
 	//test sign up and login
-	System* system = new System();
+	//System* system = new System();
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
@@ -77,6 +254,13 @@ int main() {
 	system->RemoveUser(1,23);
 	system->Login(23, "Ghazaly123");
 	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");*/
-	readFile(system);
-	writeFile(system);
+	//readFile(system);
+	//writeFile(system);
+	QApplication a(argc, argv);
+	QWidget* widget = new QWidget();
+    Ui_Form login;
+    login.setupUi(widget);
+	widget->show();
+	return a.exec();
 }
+

@@ -1,0 +1,429 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI" FontSize="12">
+  <FlowDocument.Tag><![CDATA[{
+  "timestamp": "2024-04-21 00:31:16",
+  "files": {
+    "C:\\Users\\ramy_\\source\\repos\\Real-Estate-Portal\\Real-Estate-Portal\\Real-Estate-Portal.vcxproj": {
+      "before": "7VndT9tIEO/rVepfcC+WxSnwQMxHWsrhuKIJjaKGjyN8vJxUbewJcbG91u6ahmvvf7+x98NxSICIO+gheEDK7szu7G9nfjOzHv/66pX7YRxH1hUwHtKkaa/X12wLEp8GYXLRtDMxXH1vf/DevHaPGP0KvrDaMCRZJE4IuwDBm/bHLIwC28JVEvw1EiL93XG4P4KY8Hoc+oxyOhR1n8ZOAFcQ0RSYE/NBruZsrK1t2ri6ZbldAXGH0Sy1emQAUdNWG7ZoMgwvMkYEGsilMIrPmrW6iR9lATTtNgyyix/nYbK5oTVQp7KUV8i4TnUwNyX/c48iIoaUxV6xiOuY31ICByQes9TvMO4YIiAc7jBPST2FgRK98bvGQ7HDJf4T5G4z7d64LWic6xgPlQ6LDoCuLK4rTtuJ6IBEpZuetZSfnMkI89a36muuc2NYedVnuP5GWSCdLtd0HT2kJNRynSwMvO/rwcbW1sbw3WpjG4LVRtDYWn3fGG6uku3G28Zwe72x/Xbwt3HVQkctc0ypOCAx8JT44B0Difa4IAKOKBMkcp3qvFLCUAjoNy5DXweEOdhafrBbRd68/sW9VCf8QzTO+ldIN66jh/JdCmNLWBU1xCmaZamjN+2l5bOW4p8jIkYrf+4bmmmlaV0xVD3FC+K25cy6LgzbIMwZpWnXlpYrQbzyY2lZH26l1mzWJsikZmt2qqjoOKkyzMl1Ct5umkahX5DXVCgX0wrZUw7FLr1wwAgLgXuCZeA6N8eVgjbwhNKIg/Cu1hubZajpUSXcGhFGfAGsj5KnSYjsjmtXRudij6CX12EtAluF5h4PuCGG37+G3PmIRoAQXDASH6YijMO/iqtU1zN3+kmBN/T9eKA/H2/FrPB4sD0XX+0uRtBVYpbKlSy6NxaQ5AUpEpbAQlTlU0zBxUaF7GRqqCj3ke0gkJR8Pw3Ncf0RYElrL8RyleRQ2IRJ7CYeSOQsz6ntkE2nq4lsU89QTOetCa6FccgFX8ZMtfA6tRWTsnrUJxHmozYRROcPkx7vBe1DgJpKBy9QmaZmTsFRMNELTPNh0h71/IDScVbhtTz090neT5ugzTsSrHbDpChlpfQEbSxW2WpXa0UtGqdhBGoA+eycsARpuJf3717xH4vNyqAseFC03+61RuBfqgrJ/DQCRwyQ/33gnLLSdu6ddw82N3a+tPc+nnZ2vrQOD/qHvb2d35bnyK/kncLslcxWeY2OLTxJfNjHkleZND2qajVn+txuL0wuSwz62aB/zRFwDxfgWBa6TjlktuxAAvhUIav5rtw+bzPU3nOntRFmT9lulgBN5rwH3rqOm+Jlo1b2Lg+6909Z4ucHLbwjPwX6izr0zCmDWDcRLMRk72sx3fvMmDBKxq1k4Wl+GoF5viG97OB/7mV7CRlE0Drcb++efKJR/lansJ41Y0BRHQwcwxAYPvKZNnPGhFGa67IS+rnTcgHXeQyPnuh4npjFXvhLceYj8Fcl70+z92JZS3PPT85eL7z18/FWmZjR5YwXlp8idoM4TOp+muqqbbZYTO4jpQvDu9fLq8VJKRmPpbHl95aSMdXnk9J2s93oduNlYfTg7SRU1b1u2KT2ukOqOL6RuXn4xR4shPzYpUFQ/b2st9XXKvNkoR6mZ78/mLd47x8=",
+      "after": "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"
+    }
+  }
+}]]></FlowDocument.Tag>
+  <Section Margin="0,24" TextAlignment="Center">
+    <Paragraph FontSize="24" FontWeight="Bold" Margin="12,0">
+      <LineBreak />
+      <Span Foreground="Gray">Qt Visual Studio Tools</Span>
+    </Paragraph>
+    <Paragraph FontSize="42" Margin="12,0" FontWeight="Bold">
+      <Span TextDecorations="Underline">Project Format Conversion</Span>
+    </Paragraph>
+    <Paragraph Margin="12,8" FontSize="18">
+      <Span>Report generated on 2024-04-21 00:31:16</Span>
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Files</Span>
+    </Paragraph>
+    <Paragraph Margin="24,12,0,0">
+      <Span FontFamily="Consolas" FontSize="14" Background="WhiteSmoke"><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+      <LineBreak />
+      <Hyperlink NavigateUri="file://C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj?before">[Before]</Hyperlink>
+      <Hyperlink NavigateUri="file://C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj?after">[After]</Hyperlink>
+      <Hyperlink NavigateUri="file://C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj?diff&amp;before&amp;after">
+                        [Diff before/after]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj?diff&amp;before&amp;current">
+                        [Diff before/current]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj?diff&amp;after&amp;current">
+                        [Diff after/current]
+                    </Hyperlink>
+      <LineBreak />
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Changes</Span>
+    </Paragraph>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Enabling multi-processor compilation]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Project format version]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Keyword>QtVS_v304</Keyword>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Fallback for QTMSBUILD environment variable]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Default Qt properties]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt build settings]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Warn if Qt/MSBuild is not found]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  </Target>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt property sheet]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt targets]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[C:\Users\ramy_\source\repos\Real-Estate-Portal\Real-Estate-Portal\Real-Estate-Portal.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+  </Section>
+  <Section>
+    <Paragraph />
+  </Section>
+</FlowDocument>
+<!--AZP9P5sgJVFQOZ71sMkHSkd+ib3kYmrfGLiybZBK/VE=-->
