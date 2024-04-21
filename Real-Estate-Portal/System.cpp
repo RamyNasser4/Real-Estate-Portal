@@ -80,3 +80,19 @@ void System::Request(Property property) {
 		unVerified.push(property);
 	}
 }
+void System::UserChangePassword(string currentPassword, string newPassword, int nationalId) {
+	User* user = users[nationalId];
+	if (users.find(nationalId) != users.end()) {
+		if (user->GetPassword() == currentPassword) {
+			user->SetPassword(newPassword);
+			cout << "Password changed successfuly\n";
+		}
+		else {
+			cout << "Incorrect password, Please try again.\n";
+		}
+	}
+	else {
+		cout << "User not found\n";
+	}
+	
+}
