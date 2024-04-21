@@ -24,10 +24,13 @@ public:
 	void Login(int ID, string password);
 	void UserChangePassword(string currentPassword,string newPassword,int nationalId);
 	void RemoveUser(int adminID,int ID);
+	void UserCounter();
 	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
 	unordered_map<string, Property*>  FilterByType(string type);
+	
+	
 };
 

@@ -96,3 +96,15 @@ void System::UserChangePassword(string currentPassword, string newPassword, int 
 	}
 	
 }
+void System::UserCounter()
+{
+	int counter = users.size();
+	if (counter != 0)
+	{
+		cout << "Number of users in the system = " << counter<<"\n";
+	}
+	else
+	{
+		cout << "There are no users in the system at the moment \n";
+	}
+}
