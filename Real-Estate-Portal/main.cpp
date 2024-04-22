@@ -73,7 +73,7 @@ void readFile(System* system) {
 void writeFile(System* system) {
 	fstream writefile("../users.txt", ios::out );
 	if (!writefile.is_open()) {
-		cout << "Failed to open the file" << endl;
+		cout << "Failed to open file" << endl;
 		return;
 	}
 	const auto& users = system->GetUsers();  // Store reference to the map
@@ -82,6 +82,20 @@ void writeFile(System* system) {
 	for (; begin != end; ++begin) {
 		
 		writefile <<begin->second->GetFirstName() << "*" << begin->second->GetLastName() << "*" << begin->second->GetNationalId() << "*" << begin->second->GetPassword() << endl;
+	}
+	writefile.close();
+
+	//writefile.open("../properties.txt", ios::out);
+	fstream writefile("../properties.txt", ios::out);
+	if (!writefile.is_open()) {
+		cout << "Failed to open file" << endl;
+		return;
+	}
+	const auto& properties = system->GetProperties();
+	auto beginp = properties.begin();
+	auto endp = properties.end();
+	for (; beginp != endp; beginp++) {
+		//writefile << beginp->second->GetpropertyId() << "*" << beginp->second->GetLocation() << "*" << beginp->second->GetPropertyType() << "*" << beginp->second->GetBuildingNumber() << "*" << beginp->second->GetUserName() << "*" << beginp->second->GetUserId() << "*" << beginp->second->GetApartmentNumber() << "*" << beginp->second->GetSquareFootage() << "*" << beginp->second->GetNumberOfBedrooms() << "*" << beginp->second->GetPrice() << "*" << beginp->second->GetVerfied() << "*"<<beginp->second->GetHighlighted()<<endl;
 	}
 	writefile.close();
 }

@@ -143,6 +143,12 @@ bool Property::GetVerfied()
 {
 	return verified;
 }
+void Property::SetHighlight(bool value) {
+	highlighted = value;
+}
+bool Property::GetHighlighted() {
+	return highlighted;
+}
 
 
 

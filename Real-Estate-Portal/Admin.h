@@ -19,5 +19,8 @@ public:
 	void RemoveUser(int ID, unordered_map<int, User*>& Admins);
 	void RemoveProperty(string propertyId,System &system);
 	string GeneratePropertyId();
+	void AdminApproveorDeclineProperty(System &system, bool approve);
+	void HighlightProperty(string propretyId, System& system);
+	void RemoveHighlight(string propretyId, System& system);
 };
 

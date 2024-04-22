@@ -111,3 +111,55 @@ string Admin::GeneratePropertyId() {
 	return propertyId;
 
 }
+void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
+	if (!system.unVerified.empty()) {
+		Property AcceptedProperty =system.unVerified.front();
+		system.unVerified.pop();
+		if (approved) {
+			Property* AcceptedPropertyPtr = new Property(AcceptedProperty);
+			system.properties[AcceptedProperty.GetpropertyId()] = AcceptedPropertyPtr;
+			cout << "Property Approved!";
+		}
+		else {
+			cout << "Property Declined";
+		}
+	}
+	else {
+		cout << "There are no Properties to approve or decline";
+	}
+	
+}
+void Admin::HighlightProperty(string propertyId, System& system) {
+	if (system.properties.find(propertyId) != system.properties.end()) {
+		Property* property = system.properties[propertyId];
+		if (!property->GetHighlighted()) {
+			property->SetHighlight(true);
+			cout << "Property highlighted successfully\n";
+		}
+		else {
+			cout << "Property already highlighted\n";
+		}
+	}
+	else {
+		cout << "Property doesn't exists\n";
+	}
+
+}
+void Admin::RemoveHighlight(string propertyId, System& system) {
+	if (system.properties.find(propertyId) != system.properties.end()) {
+		Property* property = system.properties[propertyId];
+		if (property->GetHighlighted()) {
+			property->SetHighlight(false);
+			cout << "Highlighted removed successfully\n";
+		}
+		else {
+			cout << "Property already not highlighted\n";
+		}
+
+	}
+	else {
+		cout << "Property doesn't exists\n";
+	}
+
+
+}
