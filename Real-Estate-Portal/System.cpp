@@ -94,8 +94,10 @@ void System::UserChangePassword(string currentPassword, string newPassword, User
 }
 int System::UserCounter()
 {
-	int counter = users.size();
-	return counter;
+	return users.size();
+}
+int System::PropertiesCounter() {
+	return properties.size();
 }
 void System::AddToCompare(string propertyId) {
 	if (propertyComparison.size() <= 3) {
