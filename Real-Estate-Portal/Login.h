@@ -27,6 +27,8 @@ public:
     QLineEdit* lineEdit_2;
     QLabel* label_2;
     QLabel* label_3;
+    QLabel* label_4;
+    QPushButton* pushButton_2;
 
     void setupUi(QWidget* Form);
     void retranslateUi(QWidget* Form);

@@ -127,8 +127,8 @@ int main(int argc, char* argv[]) {
 	QWidget* widget = new QWidget();
     Login login;
     login.setupUi(widget);
-	Propertycard propertycard;
-	propertycard.setupUi(widget);
+	/*Propertycard propertycard;
+	propertycard.setupUi(widget);*/
 	widget->show();
     QMainWindow* window = new QMainWindow();
     Sidebar sidebar;

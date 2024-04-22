@@ -183,6 +183,11 @@
     <QtUic Include="Sidebar.ui" />
     <QtUic Include="Widget.ui" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Login.png" />
+    <Image Include="Assets\PropertyCardbg.png" />
+    <Image Include="Assets\SideBarBg.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />
   <ImportGroup Label="ExtensionTargets">
