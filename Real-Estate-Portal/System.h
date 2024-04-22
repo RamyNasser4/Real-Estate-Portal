@@ -17,9 +17,10 @@ public:
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
 	unordered_map<string, Property*> propertyComparison;
-
 	unordered_map<string, Property*> properties;
+
 	unordered_map<int, User*> GetUsers();
+	unordered_map<string, Property*> GetProperties();
 	void Request(Property property);
 	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);

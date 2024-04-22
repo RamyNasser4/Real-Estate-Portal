@@ -8,6 +8,9 @@ using namespace std;
 unordered_map<int, User*> System::GetUsers() {
 	return users;
 }
+unordered_map <string, Property*> System::GetProperties() {
+	return properties;
+}
 void System::SignUp(string fName, string lName, int natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password, mobileNumber);
