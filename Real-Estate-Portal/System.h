@@ -23,7 +23,7 @@ public:
 	void Request(Property property);
 	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);
-	void UserChangePassword(string currentPassword,string newPassword,int nationalId);
+	void UserChangePassword(string currentPassword,string newPassword,User& user);
 	void RemoveUser(int adminID,int ID);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
