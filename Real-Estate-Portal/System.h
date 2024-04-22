@@ -39,7 +39,8 @@ public:
 	void AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId);
 	int UserCounter();
 	int PropertiesCounter();
-	
+	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId);
+	void RemoveProperty(string propertyId, System& system, int currentUserId);
 	
 	
 	

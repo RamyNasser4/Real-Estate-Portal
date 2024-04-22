@@ -124,3 +124,21 @@ void System::AddProperty( string Location, string PropertyType, string BuildingN
 		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
 	}
 }
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, *this, propertyId);
+	}
+	else {
+		//Call Edit property fn from User Class
+	}
+}
+void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->RemoveProperty(propertyId, *this);
+	}
+	else {
+		//Call Remove Property fn from User Class
+	}
+}
