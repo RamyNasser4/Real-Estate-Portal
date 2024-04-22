@@ -115,12 +115,12 @@ void System::AddToCompare(string propertyId) {
 void System::RemoveFromCompare(string propertyId) {
 	propertyComparison.erase(propertyId);
 }
-void System::AddProperty(User &user, string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price) {
-	Admin* admin = dynamic_cast<Admin*>(users[user.GetNationalId()]);
+void System::AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId) {
+	Admin* admin = dynamic_cast<Admin*>(users[NationalId]);
 	if (admin) {
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, user.GetName(), user.GetNationalId(),*this);
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
 	}
 	else {
-		user.AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, user.GetName(), user.GetNationalId(), *this);
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
 	}
 }

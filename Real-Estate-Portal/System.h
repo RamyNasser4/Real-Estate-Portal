@@ -36,7 +36,7 @@ public:
 	void RemoveUser(int adminID,int ID);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
-	void AddProperty(User& user, string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price);
+	void AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId);
 	int UserCounter();
 	int PropertiesCounter();
 	
