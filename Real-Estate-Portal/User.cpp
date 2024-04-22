@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include "System.h"
+#include "Admin.h"
+
 using namespace std;
 User::User(string fName, string lName, int natId, string password,string mobileNumber) {
 	firstName = fName;

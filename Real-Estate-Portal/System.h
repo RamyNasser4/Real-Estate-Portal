@@ -10,7 +10,8 @@ class System{
 public:
 	unordered_map<int, User*> users;
 	queue<Property> unVerified;
-	
+
+	//Filter Hashtables
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
@@ -18,9 +19,16 @@ public:
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
 	unordered_map<string, Property*> propertyComparison;
 	unordered_map<string, Property*> properties;
-
 	unordered_map<int, User*> GetUsers();
 	unordered_map<string, Property*> GetProperties();
+
+	//Filter functions 
+	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
+	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
+	unordered_map<string, Property*>  FilterByLocation(string locations);
+	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
+	unordered_map<string, Property*>  FilterByType(string type);
+
 	void Request(Property property);
 	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);
@@ -29,11 +37,8 @@ public:
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
 	int UserCounter();
-	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
-	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
-	unordered_map<string, Property*>  FilterByLocation(string locations);
-	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
-	unordered_map<string, Property*>  FilterByType(string type);
+	void AddProperty(User& user, string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price);
+	
 	
 	
 };

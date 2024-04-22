@@ -111,11 +111,11 @@ string Admin::GeneratePropertyId() {
 	return propertyId;
 
 }
-void Admin::AdminApproveorDeclineProperty(System &system,bool approve) {
+void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	if (!system.unVerified.empty()) {
 		Property AcceptedProperty =system.unVerified.front();
 		system.unVerified.pop();
-		if (approve) {
+		if (approved) {
 			Property* AcceptedPropertyPtr = new Property(AcceptedProperty);
 			system.properties[AcceptedProperty.GetpropertyId()] = AcceptedPropertyPtr;
 			cout << "Property Approved!";

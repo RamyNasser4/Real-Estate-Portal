@@ -48,7 +48,7 @@ void System::RemoveUser(int adminID, int ID) {
 			admin->RemoveUser(ID, users);
 		}
 		else {
-			cout << "Not an admin" << endl;
+			cout << "No Permission to remove user" << endl;
 		}
 	}
 	else {
@@ -112,4 +112,13 @@ void System::AddToCompare(string propertyId) {
 }
 void System::RemoveFromCompare(string propertyId) {
 	propertyComparison.erase(propertyId);
+}
+void System::AddProperty(User &user, string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price) {
+	Admin* admin = dynamic_cast<Admin*>(users[user.GetNationalId()]);
+	if (admin) {
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, user.GetName(), user.GetNationalId(),*this);
+	}
+	else {
+		user.AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, user.GetName(), user.GetNationalId(), this);
+	}
 }
