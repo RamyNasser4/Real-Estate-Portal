@@ -13,11 +13,14 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include <QFontDatabase>
+#include "System.h"
 QT_BEGIN_NAMESPACE
 
 class Login : public QWidget
 {
 	Q_OBJECT
+private slots:
+    void onPushButton1Click(System* system);
 public:
     QFrame* frame;
     QFrame* frame_2;
@@ -27,8 +30,11 @@ public:
     QLineEdit* lineEdit_2;
     QLabel* label_2;
     QLabel* label_3;
+    QLabel* label_4;
+    QPushButton* pushButton_2;
 
-    void setupUi(QWidget* Form);
+    void setupUi(QWidget* Form,System* system);
+    //void onPushButton1Click(System* system);
     void retranslateUi(QWidget* Form);
 	Login(QWidget *parent = nullptr);
 	~Login();

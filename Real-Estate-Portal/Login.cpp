@@ -5,7 +5,7 @@ Login::Login(QWidget* parent)
 {
 	ui.setupUi(this);
 }
-void Login::setupUi(QWidget* Form) {
+void Login::setupUi(QWidget* Form, System* system) {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
 	Form->resize(1024, 720);
@@ -74,7 +74,7 @@ void Login::setupUi(QWidget* Form) {
 	pushButton = new QPushButton(frame_2);
 	pushButton->setObjectName("pushButton");
 	pushButton->setEnabled(true);
-	pushButton->setGeometry(QRect(120, 340, 151, 50));
+	pushButton->setGeometry(QRect(120, 320, 151, 50));
 	QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
 	sizePolicy1.setHorizontalStretch(0);
 	sizePolicy1.setVerticalStretch(0);
@@ -119,10 +119,50 @@ void Login::setupUi(QWidget* Form) {
 		"font-weight:700px;\n"
 		"color:black;\n"
 		"}"));
+	label_4 = new QLabel(frame_2);
+	label_4->setObjectName("label_4");
+	label_4->setGeometry(QRect(70, 389, 201, 20));
+	label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
+		"		font-weight:700;\n"
+		"		color:black;\n"
+		"font-size:15px\n"
+		"		}"));
+	pushButton_2 = new QPushButton(frame_2);
+	pushButton_2->setObjectName("pushButton_2");
+	pushButton_2->setGeometry(QRect(253, 386, 41, 24));
+	pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+		"text-decoration:underline;\n"
+		"background:white;\n"
+		"font-size:15px;\n"
+		"color:#3F6793;\n"
+		"font-weight:700;\n"
+		"}"));
 
 	retranslateUi(Form);
-
+	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
+		onPushButton1Click(system);
+		});
 	QMetaObject::connectSlotsByName(Form);
+}
+void Login::onPushButton1Click(System* system) {
+	QString nationalId = lineEdit->text();
+	QString password = lineEdit_2->text();
+	try {
+		if (nationalId.isEmpty()) {
+			throw new exception("Enter National ID");
+		}
+		else if (password.isEmpty()) {
+			throw new exception("Enter Password");
+		}
+		else {
+			cout << nationalId.toInt() << " " << password.toLocal8Bit().constData() << endl;
+			system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+		}
+		cout << "done" << endl;
+	}
+	catch (exception exp) {
+		//cout << exp.what() << endl;
+	}
 }
 void Login::retranslateUi(QWidget* Form) {
 	Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
@@ -138,6 +178,8 @@ void Login::retranslateUi(QWidget* Form) {
 	lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "Enter Password", nullptr));
 	label_2->setText(QCoreApplication::translate("Form", "National ID", nullptr));
 	label_3->setText(QCoreApplication::translate("Form", "Password", nullptr));
+	label_4->setText(QCoreApplication::translate("Form", "<p>Already have an account? ", nullptr));
+	pushButton_2->setText(QCoreApplication::translate("Form", "Login", nullptr));
 } // retranslateUi
 
 Login::~Login()
