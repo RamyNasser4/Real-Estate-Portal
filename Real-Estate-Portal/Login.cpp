@@ -5,7 +5,7 @@ Login::Login(QWidget* parent)
 {
 	ui.setupUi(this);
 }
-void Login::setupUi(QWidget* Form) {
+void Login::setupUi(QWidget* Form, System* system) {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
 	Form->resize(1024, 720);
@@ -139,8 +139,30 @@ void Login::setupUi(QWidget* Form) {
 		"}"));
 
 	retranslateUi(Form);
-
+	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
+		onPushButton1Click(system);
+		});
 	QMetaObject::connectSlotsByName(Form);
+}
+void Login::onPushButton1Click(System* system) {
+	QString nationalId = lineEdit->text();
+	QString password = lineEdit_2->text();
+	try {
+		if (nationalId.isEmpty()) {
+			throw new exception("Enter National ID");
+		}
+		else if (password.isEmpty()) {
+			throw new exception("Enter Password");
+		}
+		else {
+			cout << nationalId.toInt() << " " << password.toLocal8Bit().constData() << endl;
+			system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+		}
+		cout << "done" << endl;
+	}
+	catch (exception exp) {
+		//cout << exp.what() << endl;
+	}
 }
 void Login::retranslateUi(QWidget* Form) {
 	Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
