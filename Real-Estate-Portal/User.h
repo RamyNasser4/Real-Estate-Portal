@@ -12,6 +12,7 @@ protected:
 	string mobileNumber;
 	int nationalId;
 
+
 public:
 	User();
 	User(string firstName, string lastName, int nationalId, string password,string mobileNumber);
@@ -26,14 +27,15 @@ public:
 	string GetName();
 	string GetPassword();
 	string GetMobileNumber();
-	int GetNationalId();
+	string GeneratePropertyId();
 
+	int GetNationalId();
 	void SetFirstName(string firstname);
 	void SetLastName(string lastname);
 	void SetNationalId(int nationalId);
 	void SetPassword(string password);
 	void SetMobileNumber(string mobileNumber);
-	string GeneratePropertyId();
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId,System &system);
+	
 	virtual ~User();
 };

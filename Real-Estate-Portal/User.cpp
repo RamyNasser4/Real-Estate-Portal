@@ -43,14 +43,28 @@ string User::GetLastName() {
 string User::GetName() {
 	return firstName + " " +lastName;
 }
-int User::GetNationalId() {
-	return this->nationalId;
-}
 string User::GetPassword() {
 	return password;
 }
 string User::GetMobileNumber() {
 	return mobileNumber;
+}
+string User::GeneratePropertyId() {
+
+	char alphabet[36] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+						  'h', 'i', 'j', 'k', 'l', 'm', 'n',
+						  'o', 'p', 'q', 'r', 's', 't', 'u',
+						  'v', 'w', 'x', 'y', 'z','0','1','2','3','4','5','6','7','8','9' };
+
+	string propertyId = "";
+	for (int i = 0; i < 8; i++)
+		propertyId = propertyId + alphabet[rand() % 26];
+
+	return propertyId;
+
+}
+int User::GetNationalId() {
+	return this->nationalId;
 }
 void User::SetFirstName(string firstname) {
 	this->firstName = firstname;
@@ -67,9 +81,7 @@ void User::SetPassword(string password) {
 void User::SetMobileNumber(string mobileNumber) {
 	this->mobileNumber = mobileNumber;
 }
-User::~User() {
-	
-}
+
 void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId,System &system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId);
 	string propertyId = GeneratePropertyId();
@@ -80,17 +92,7 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	NewProperty->SetPropertyId(propertyId);
 	//system.Request(NewProperty);
 }
-string User::GeneratePropertyId() {
 
-	char alphabet[36] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
-						  'h', 'i', 'j', 'k', 'l', 'm', 'n',
-						  'o', 'p', 'q', 'r', 's', 't', 'u',
-						  'v', 'w', 'x', 'y', 'z','0','1','2','3','4','5','6','7','8','9' };
-
-	string propertyId = "";
-	for (int i = 0; i < 8; i++)
-		propertyId = propertyId + alphabet[rand() % 26];
-
-	return propertyId;
+User::~User() {
 
 }

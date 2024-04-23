@@ -55,6 +55,64 @@ void System::RemoveUser(int adminID, int ID) {
 		cout << "Invalid ID" << endl;
 	}
 }
+void System::Request(Property* property) {
+	if (!property->GetVerfied()) {
+		unVerified.push(property);
+	}
+}
+void System::UserChangePassword(string currentPassword, string newPassword, User& user) {
+	if (user.GetPassword() == currentPassword) {
+		user.SetPassword(newPassword);
+		cout << "Password changed successfuly\n";
+	}
+	else {
+		cout << "Incorrect password, Please try again.\n";
+	}
+}
+void System::AddToCompare(string propertyId) {
+	if (propertyComparison.size() <= 3) {
+		if (propertyComparison.find(propertyId) == propertyComparison.end()) {
+			propertyComparison[propertyId] = properties[propertyId];
+		}
+		else {
+			throw new exception("Property already in comparison list");
+		}
+	}
+	else {
+		throw new exception("Cannot compare more than 4 properties");
+	}
+}
+void System::RemoveFromCompare(string propertyId) {
+	propertyComparison.erase(propertyId);
+}
+void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId) {
+	Admin* admin = dynamic_cast<Admin*>(users[NationalId]);
+	if (admin) {
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
+	}
+	else {
+		//in case of not an admin
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
+	}
+}
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, *this, propertyId);
+	}
+	else {
+		//Call Edit property fn from User Class
+	}
+}
+void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->RemoveProperty(propertyId, *this);
+	}
+	else {
+		//Call Remove Property fn from User Class
+	}
+}
 unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
 	return propertyFilterSquareFootage[squareFootage];
 }
@@ -78,67 +136,10 @@ unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPric
 	}
 	return filtered;
 }
-void System::Request(Property* property) {
-	if (!property->GetVerfied()) {
-		unVerified.push(property);
-	}
-}
-void System::UserChangePassword(string currentPassword, string newPassword, User& user) {
-		if (user.GetPassword() == currentPassword) {
-			user.SetPassword(newPassword);
-			cout << "Password changed successfuly\n";
-		}
-		else {
-			cout << "Incorrect password, Please try again.\n";
-		}
-}
 int System::UserCounter()
 {
 	return users.size();
 }
 int System::PropertiesCounter() {
 	return properties.size();
-}
-void System::AddToCompare(string propertyId) {
-	if (propertyComparison.size() <= 3) {
-		if (propertyComparison.find(propertyId) == propertyComparison.end()) {
-			propertyComparison[propertyId] = properties[propertyId];
-		}
-		else {
-			throw new exception("Property already in comparison list");
-		}
-	}
-	else {
-		throw new exception("Cannot compare more than 4 properties");
-	}
-}
-void System::RemoveFromCompare(string propertyId) {
-	propertyComparison.erase(propertyId);
-}
-void System::AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId) {
-	Admin* admin = dynamic_cast<Admin*>(users[NationalId]);
-	if (admin) {
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
-	}
-	else {
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
-	}
-}
-void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId) {
-	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
-	if (admin) {
-		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, *this, propertyId);
-	}
-	else {
-		//Call Edit property fn from User Class
-	}
-}
-void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
-	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
-	if (admin) {
-		admin->RemoveProperty(propertyId, *this);
-	}
-	else {
-		//Call Remove Property fn from User Class
-	}
 }

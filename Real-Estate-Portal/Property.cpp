@@ -139,17 +139,14 @@ int Property::GetPrice() {
 int Property::GetUserId() {
 	return userId;
 }
-bool Property::GetVerfied()
-{
-	return verified;
-}
 void Property::SetHighlight(bool value) {
 	highlighted = value;
 }
 bool Property::GetHighlighted() {
 	return highlighted;
 }
-
-
-
+bool Property::GetVerfied()
+{
+	return verified;
+}
 
