@@ -1,4 +1,5 @@
 #include "Login.h"
+#include "Propertycard.h"
 
 Login::Login(QWidget* parent)
 	: QWidget(parent)
@@ -121,7 +122,7 @@ void Login::setupUi(QWidget* Form, System* system) {
 		"}"));
 	label_4 = new QLabel(frame_2);
 	label_4->setObjectName("label_4");
-	label_4->setGeometry(QRect(70, 389, 201, 20));
+	label_4->setGeometry(QRect(80, 389, 201, 20));
 	label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
 		"		font-weight:700;\n"
 		"		color:black;\n"
@@ -129,7 +130,7 @@ void Login::setupUi(QWidget* Form, System* system) {
 		"		}"));
 	pushButton_2 = new QPushButton(frame_2);
 	pushButton_2->setObjectName("pushButton_2");
-	pushButton_2->setGeometry(QRect(253, 386, 41, 24));
+	pushButton_2->setGeometry(QRect(245, 387, 61, 24));
 	pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 		"text-decoration:underline;\n"
 		"background:white;\n"
@@ -141,6 +142,9 @@ void Login::setupUi(QWidget* Form, System* system) {
 	retranslateUi(Form);
 	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
 		onPushButton1Click(system);
+		Propertycard propertycard;
+		propertycard.setupUi(Form);
+		//Form->show();
 		});
 	QMetaObject::connectSlotsByName(Form);
 }
@@ -158,10 +162,9 @@ void Login::onPushButton1Click(System* system) {
 			cout << nationalId.toInt() << " " << password.toLocal8Bit().constData() << endl;
 			system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
 		}
-		cout << "done" << endl;
 	}
 	catch (exception exp) {
-		//cout << exp.what() << endl;
+		cout << exp.what() << endl;
 	}
 }
 void Login::retranslateUi(QWidget* Form) {
@@ -178,8 +181,8 @@ void Login::retranslateUi(QWidget* Form) {
 	lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "Enter Password", nullptr));
 	label_2->setText(QCoreApplication::translate("Form", "National ID", nullptr));
 	label_3->setText(QCoreApplication::translate("Form", "Password", nullptr));
-	label_4->setText(QCoreApplication::translate("Form", "<p>Already have an account? ", nullptr));
-	pushButton_2->setText(QCoreApplication::translate("Form", "Login", nullptr));
+	label_4->setText(QCoreApplication::translate("Form", "<p>Don't have an account? ", nullptr));
+	pushButton_2->setText(QCoreApplication::translate("Form", "Sign up", nullptr));
 } // retranslateUi
 
 Login::~Login()
