@@ -78,8 +78,8 @@ unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPric
 	}
 	return filtered;
 }
-void System::Request(Property property) {
-	if (!property.GetVerfied()) {
+void System::Request(Property* property) {
+	if (!property->GetVerfied()) {
 		unVerified.push(property);
 	}
 }

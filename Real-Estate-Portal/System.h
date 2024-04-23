@@ -9,7 +9,7 @@ using namespace std;
 class System{
 public:
 	unordered_map<int, User*> users;
-	queue<Property> unVerified;
+	queue<Property*> unVerified;
 
 	//Filter Hashtables
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
@@ -29,7 +29,7 @@ public:
 	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
 	unordered_map<string, Property*>  FilterByType(string type);
 
-	void Request(Property property);
+	void Request(Property *property);
 	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);
 	void UserChangePassword(string currentPassword,string newPassword,User& user);
