@@ -26,9 +26,9 @@ Admin::Admin(const Admin& admin) : User((User)admin) {
 }
 void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System &system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId,highlighted,propertyDescription);
-	string propertyId = GeneratePropertyId();
+	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
-		propertyId = GeneratePropertyId();
+		propertyId = NewProperty->GeneratePropertyId();
 	}
 	NewProperty->SetPropertyId(propertyId);
 	system.properties[propertyId] = NewProperty;
