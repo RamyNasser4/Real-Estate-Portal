@@ -40,7 +40,7 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 }
 void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system,string propertyId)
 {
-	//cout << "Enter id to edit";
+	
 	Property* property = system.properties[propertyId];
 	
 	if (property->GetLocation() != Location)
@@ -95,6 +95,7 @@ void Admin::RemoveUser(int ID, System &system) {
 	}
 	if (system.users.find(ID) == system.users.end()) {
 		cout << "this ID is not registered on the system." << endl;
+		throw new exception("User Not Found");
 	}
 	else {
 		system.users.erase(ID);
@@ -116,6 +117,7 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	}
 	else {
 		cout << "There are no Properties to approve or decline";
+		throw new exception("Property Not Found");
 	}
 	
 }

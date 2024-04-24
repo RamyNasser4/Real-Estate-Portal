@@ -18,6 +18,7 @@ void System::SignUp(string fName, string lName, int natId, string password, stri
 	}
 	else {
 		cout << "User already exists" << endl;
+		throw new exception("User already exists");
 		//Call login
 	}
 }
@@ -25,6 +26,7 @@ void System::Login(int ID, string password) {
 	if (users.find(ID) == users.end()) {
 		//Call Sign Up
 		cout << "User is not Registered to system" << " " << "Sign Up " << endl;
+		throw new exception("User Not Found");
 	}
 	else {
 		Admin* admin = dynamic_cast<Admin*>(users[ID]);
@@ -38,6 +40,7 @@ void System::Login(int ID, string password) {
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
+			throw new exception("Invalid National ID or Password");
 		}
 	}
 }
@@ -49,10 +52,12 @@ void System::RemoveUser(int adminID,int userID, System &system) {
 		}
 		else {
 			cout << "No Permission to remove user" << endl;
+			throw new exception("No Permission to remove user");
 		}
 	}
 	else {
 		cout << "Invalid ID" << endl;
+		throw new exception("Invalid ID");
 	}
 }
 void System::Request(Property* property) {
@@ -67,6 +72,7 @@ void System::UserChangePassword(string currentPassword, string newPassword, User
 	}
 	else {
 		cout << "Incorrect password, Please try again.\n";
+		throw new exception("Incorrect password");
 	}
 }
 void System::AddToCompare(string propertyId) {
