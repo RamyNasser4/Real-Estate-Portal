@@ -92,15 +92,14 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	}
 	//may cause problems
 	NewProperty->SetPropertyId(propertyId);
-	//system.Request(NewProperty);
-	propertyIds[currentUserId] = propertyId;
-	UserAddedProperty(currentUserId, propertyId)
+	system.properties[propertyId] = NewProperty;
+	system.Request(NewProperty);
 }
-unordered_map<string, Property*>User::GetUserProperties(int userId) {
-		return userProperties[userId];
+unordered_map<string, Property*> User::GetUserProperties() {
+		return properties;
 }
-void User::UserAddedProperty(int userId, string propertyId) {
-	userProperties [userId][propertyId] = system.properties[propertyId];
+void User::UserAddedProperty(string propertyId,Property* property) {
+	properties[propertyId] = property;
 }
 User::~User() {
 

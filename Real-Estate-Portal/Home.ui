@@ -59,7 +59,7 @@ font-weight:700;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../../OneDrive/Desktop/New folder/Screenshot_2024-04-24_021204-removebg-preview.png</normaloff>../../../../OneDrive/Desktop/New folder/Screenshot_2024-04-24_021204-removebg-preview.png</iconset>
+      <normaloff>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</normaloff>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -82,7 +82,7 @@ font-weight:700;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../../OneDrive/Desktop/New folder/dashboard.png</normaloff>../../../../OneDrive/Desktop/New folder/dashboard.png</iconset>
+      <normaloff>Assets/dashboard.png</normaloff>Assets/dashboard.png</iconset>
     </property>
     <property name="iconSize">
      <size>

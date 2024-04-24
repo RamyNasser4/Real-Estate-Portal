@@ -34,7 +34,7 @@ public:
 	void SignUp(string fName, string lName, int natId, string password,string mobileNumber);
 	void Login(int ID, string password);
 	void UserChangePassword(string currentPassword,string newPassword,User& user);
-	void RemoveUser(int adminID,int ID);
+	void RemoveUser(int adminID,int userID,System &system);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
 	void AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId);

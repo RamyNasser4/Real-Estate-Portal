@@ -41,11 +41,11 @@ void System::Login(int ID, string password) {
 		}
 	}
 }
-void System::RemoveUser(int adminID, int ID) {
+void System::RemoveUser(int adminID,int userID, System &system) {
 	if (users.find(adminID) != users.end()) {
 		Admin* admin = dynamic_cast<Admin*>(users[adminID]);
 		if (admin) {
-			admin->RemoveUser(ID, users);
+			admin->RemoveUser(userID, *this);
 		}
 		else {
 			cout << "No Permission to remove user" << endl;

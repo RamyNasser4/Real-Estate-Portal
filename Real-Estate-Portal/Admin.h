@@ -15,7 +15,7 @@ public:
 
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system);
 	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system,string propertyId);
-	void RemoveUser(int ID, unordered_map<int, User*>& Admins);
+	void RemoveUser(int ID, System& system);
 	void RemoveProperty(string propertyId,System &system);
 	void AdminApproveorDeclineProperty(System &system, bool approve);
 	void HighlightProperty(string propertyId, System& system);

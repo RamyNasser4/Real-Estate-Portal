@@ -88,17 +88,16 @@ void Admin::RemoveProperty(string propertyId, System &system) {
 }
 
 
-void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
-	unordered_map<int, string>propertiesToRemove = propertyIds[Id];
+void Admin::RemoveUser(int ID, System &system) {
+	unordered_map<string, Property*>propertiesToRemove = system.users[ID]->GetUserProperties();
 	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
-		RemoveProperty(it->second, *this);
+		RemoveProperty(it->second->GetpropertyId(), system);
 	}
-
-	if (users.find(ID) == users.end()) {
+	if (system.users.find(ID) == system.users.end()) {
 		cout << "this ID is not registered on the system." << endl;
 	}
 	else {
-		users.erase(ID);
+		system.users.erase(ID);
 		cout << "User Successfully Deleted." << endl;
 	}
 }

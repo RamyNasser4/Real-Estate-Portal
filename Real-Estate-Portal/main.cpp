@@ -131,7 +131,7 @@ int main(int argc, char* argv[]) {
 	User* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
 	cout << system->UserCounter() << endl;
-	system->RemoveUser(1,23);
+	//system->RemoveUser(1,23);
 	cout << system->UserCounter() << endl;
 	/*system->Login(23, "Ghazaly123");
 	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");*/
