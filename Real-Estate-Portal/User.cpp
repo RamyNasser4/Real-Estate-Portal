@@ -3,6 +3,8 @@
 #include <string>
 #include "System.h"
 #include "Admin.h"
+#include <unordered_map>
+#include "Property.h"
 
 using namespace std;
 User::User(string fName, string lName, int natId, string password,string mobileNumber) {
@@ -92,13 +94,14 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	NewProperty->SetPropertyId(propertyId);
 	//system.Request(NewProperty);
 }
-unordered_map<string, Property*>User::GetUserProperties(int userId) {
+unordered_map<int, Property*>User::GetUserProperties(int userId) {
 	if (userProperties.find(userId) != userProperties.end()) {
 		return userProperties[userId];
 	}
-	return unordered_map<string, Property*>();
 }
-
+void User::UserAddedProperty(int userId, string propertyId,System system) {
+	userProperties [userId] = system.properties[propertyId];
+}
 User::~User() {
 
 }
