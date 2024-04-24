@@ -31,7 +31,44 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterType[PropertyType][propertyId] = NewProperty;
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
+
+
+
+}void Admin::DeleteProperty(string propertyId, Property property, System system) {
+	system.properties[propertyId]->GetBuildingNumber().erase(propertyId);
+
 }
+
+
+	/*if (system.properties.erase(propertyId)) {
+		cout << "Property with ID " << propertyId << " has been deleted.\n";
+	}
+
+
+	else {
+		cout << "Property with ID " << propertyId << " not found.\n";
+	}*/
+
+
+
+
+//void Admin::DeleteProperty(string propertyId, string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, System system) {
+//	system.propertyFilterBedRooms[NumberOfBedrooms].erase(propertyId);
+//	system.propertyFilterSquareFootage[SquareFootage].erase(propertyId);
+//	system.propertyFilterType[PropertyType].erase(propertyId);
+//	system.propertyFilterLocations[Location].erase(propertyId);
+//	system.propertyFilterPrice[price].erase(propertyId);
+//
+//	if (system.properties.erase(propertyId)) {
+//		cout << "Property with ID " << propertyId << " has been deleted.\n";
+//	}
+//
+//
+//	else {
+//		cout << "Property with ID " << propertyId << " not found.\n";
+//	}
+
+
 void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
 	if (users.find(ID) == users.end()) {
 		cout << "this ID is not registered on the system." << endl;
