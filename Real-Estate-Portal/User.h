@@ -15,9 +15,9 @@ protected:
 
 public:
 	unordered_map<int, unordered_map<string, Property*>>userProperties;
-	
+
 	User();
-	User(string firstName, string lastName, int nationalId, string password,string mobileNumber);
+	User(string firstName, string lastName, int nationalId, string password, string mobileNumber);
 	User(string firstName, string lastName, int nationalId, string password);
 	User(string firstName, string lastName, int nationalId);
 	User(string firstName, string lastName);
@@ -38,7 +38,7 @@ public:
 	void SetNationalId(int nationalId);
 	void SetPassword(string password);
 	void SetMobileNumber(string mobileNumber);
-	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId,System &system);
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system);
 	void UserProperties(int UserId);
 	virtual ~User();
 
