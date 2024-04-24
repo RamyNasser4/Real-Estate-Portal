@@ -1,7 +1,7 @@
 #include "Property.h"
 #include <string>
 using namespace std;
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified,int price,string currentUserName,int currentUserId)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription)
 {
 	this->location = Location;
 	this->propertyType = PropertyType;
@@ -13,43 +13,50 @@ Property::Property(string Location, string PropertyType, string BuildingNumber, 
 	this->price = price;
 	this->userName = currentUserName;
 	this->userId = currentUserId;
-
+	this->highlighted = highlighted;
+	this->propertyDescription = propertyDescription;
 }
 
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified,int price,string currentUserName) {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price,currentUserName,0);
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted) {
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, highlighted, "");
 }
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price) {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified,price,"");
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId) {
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, false);
 }
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms,verified,0);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, 0);
+}
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price)
+{
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, "");
+}
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int  SquareFootage, int NumberOfBedrooms, bool verified)
+{
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, 0);
+
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage,NumberOfBedrooms, false);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false);
 }
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber,int  SquareFootage)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber,SquareFootage,0);
-
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, 0);
 }
-Property::Property(string Location, string PropertyType, string BuildingNumber,int ApartmentNumber)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber)
 {
-	Property(Location, PropertyType, BuildingNumber,ApartmentNumber,0 );
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, 0);
 }
-Property::Property(string Location, string PropertyType,string BuildingNumber)
+Property::Property(string Location, string PropertyType, string BuildingNumber)
 {
-	Property(Location, PropertyType, BuildingNumber,0);
+	Property(Location, PropertyType, BuildingNumber, 0);
 }
-Property::Property(string Location,string PropertyType)
-{
-	Property(Location,PropertyType,"");
+Property::Property(string Location, string PropertyType) {
+	Property(Location, PropertyType, "");
 }
-Property::Property(string Location)
-{
-	Property(Location,"");
+Property::Property(string Location) {
+	Property(Location, "");
 }
 Property::Property()
 {
@@ -65,8 +72,10 @@ Property::Property(const Property& Other)
 	this->numberOfBedrooms = Other.numberOfBedrooms;
 	this->verified = Other.verified;
 	this->price = Other.price;
-	this->userId = Other.userId;
 	this->userName = Other.userName;
+	this->userId = Other.userId;
+	this->highlighted = Other.highlighted;
+	this->propertyDescription = Other.propertyDescription;
 }
 
 void Property::SetLocation(string Location)
@@ -102,6 +111,12 @@ void Property::SetPrice(int price) {
 }
 void Property::SetPropertyId(string propertyId) {
 	this->propertyId = propertyId;
+}
+void Property::SetHighlight(bool value) {
+	highlighted = value;
+}
+void Property::SetPropertyDescription(string propertyDescription) {
+	this->propertyDescription = propertyDescription;
 }
 string Property::GetLocation()
 {
@@ -143,13 +158,12 @@ bool Property::GetVerfied()
 {
 	return verified;
 }
-void Property::SetHighlight(bool value) {
-	highlighted = value;
-}
 bool Property::GetHighlighted() {
 	return highlighted;
 }
-
+string Property::GetPropertyDescription() {
+	return propertyDescription;
+}
 
 
 

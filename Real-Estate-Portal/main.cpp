@@ -70,6 +70,7 @@ void readFile(System* system) {
 	}
 	readFile.close();
 }
+
 void writeFile(System* system) {
 	fstream writefile("../users.txt", ios::out );
 	if (!writefile.is_open()) {
