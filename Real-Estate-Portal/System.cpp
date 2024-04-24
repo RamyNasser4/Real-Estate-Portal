@@ -91,17 +91,18 @@ void System::AddToCompare(string propertyId) {
 void System::RemoveFromCompare(string propertyId) {
 	propertyComparison.erase(propertyId);
 }
-void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription) {
+void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
 		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
 	}
 	else {
 		//in case of not an admin
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
+		 
+		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
 	}
 }
-void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId) {
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,  int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
 		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, highlighted,propertyDescription, *this, propertyId);

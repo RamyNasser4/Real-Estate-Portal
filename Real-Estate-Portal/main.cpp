@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include "System.h"
 #include "Admin.h"
@@ -69,7 +67,7 @@ void readFile(System* system) {
 			int price = stoi(stringPrice);
 			bool verified = stoi(stringVerified);
 			bool highlighted = stoi(stringHighlighted);
-			system->AddProperty(location, propertyType, buildingNumber, apartmentNumber, squareFootage, numberOfBedrooms, verified, price,userName,userId, highlighted, propertyDescription);
+			//system->AddProperty(location, propertyType, buildingNumber, apartmentNumber, squareFootage, numberOfBedrooms, verified, price,userName,userId, highlighted, propertyDescription);
 		}
 	}
 	readFile.close();
@@ -109,13 +107,13 @@ int main(int argc, char* argv[]) {
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
-	//system->Login(23, "Ghazaly123");
+	system->Login(23, "Ghazaly123");
 	//system->Login(23, "abdo");
 	//system->Login(15, "Ghazaly123");
 
 	//test user
 	//User* user = new User("Sebaay", "Ashraf", 65, "koty");
-	system->SignUp("Sebaay", "Ashraf", 65, "koty", "23123");
+	//system->SignUp("Sebaay", "Ashraf", 65, "koty", "23123");
 	//cout << user->GetFirstName() << endl;
 	//cout << user->GetLastName() << endl;
 	//cout << user->GetName() << endl;
@@ -131,11 +129,15 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
+	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,false,"this is property");
+	
 	User* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
-	cout << system->UserCounter() << endl;
+	system->AddProperty("egypt", "villa", "14", 4, 7, 4, 7000, "Ramy Khalifa", 1, false, "this is property");
+
+	//cout << system->UserCounter() << endl;
 	//system->RemoveUser(1,23);
-	cout << system->UserCounter() << endl;
+	//cout << system->UserCounter() << endl;
 	/*system->Login(23, "Ghazaly123");
 	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");*/
 	//readFile(system);
