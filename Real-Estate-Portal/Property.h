@@ -17,7 +17,8 @@ class Property
     int numberOfBedrooms;
 	int price;
 	bool verified;
-
+protected:
+	bool highlighted;
 
 public:
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId);
@@ -32,19 +33,21 @@ public:
 	Property(string Location);
 	Property(const Property& Other);
 	Property();
-
+	
 	
 	int GetSquareFootage();
 	int GetNumberOfBedrooms();
+	int GetPrice();
+	int GetUserId();
+	int GetApartmentNumber();
 	bool GetVerfied();
+	bool GetHighlighted();
+
 	string GetpropertyId();
 	string GetLocation();
 	string GetPropertyType();
 	string GetBuildingNumber();
 	string GetUserName();
-	int GetApartmentNumber();
-	int GetPrice();
-	int GetUserId();
 
 	void SetPropertyType(string PropertyType);
 	void SetBuildingNumber(string BuildingNumber);
@@ -54,7 +57,8 @@ public:
 	void SetNumberOfBedrooms(int NumberOfBedrooms);
 	void SetVerified(bool Verified);
 	void SetPrice(int price);
-
+	void SetPropertyId(string propertyId);
+	void SetHighlight(bool value);
 
 };
 

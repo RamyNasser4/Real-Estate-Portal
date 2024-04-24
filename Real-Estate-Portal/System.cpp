@@ -8,9 +8,12 @@ using namespace std;
 unordered_map<int, User*> System::GetUsers() {
 	return users;
 }
-void System::SignUp(string fName, string lName, int natId, string password) {
+unordered_map <string, Property*> System::GetProperties() {
+	return properties;
+}
+void System::SignUp(string fName, string lName, int natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
-		users[natId] = new User(fName, lName, natId, password);
+		users[natId] = new User(fName, lName, natId, password, mobileNumber);
 		cout << "Registered Successfully " << endl;
 	}
 	else {
@@ -45,11 +48,69 @@ void System::RemoveUser(int adminID, int ID) {
 			admin->RemoveUser(ID, users);
 		}
 		else {
-			cout << "Not an admin" << endl;
+			cout << "No Permission to remove user" << endl;
 		}
 	}
 	else {
 		cout << "Invalid ID" << endl;
+	}
+}
+void System::Request(Property* property) {
+	if (!property->GetVerfied()) {
+		unVerified.push(property);
+	}
+}
+void System::UserChangePassword(string currentPassword, string newPassword, User& user) {
+	if (user.GetPassword() == currentPassword) {
+		user.SetPassword(newPassword);
+		cout << "Password changed successfuly\n";
+	}
+	else {
+		cout << "Incorrect password, Please try again.\n";
+	}
+}
+void System::AddToCompare(string propertyId) {
+	if (propertyComparison.size() <= 3) {
+		if (propertyComparison.find(propertyId) == propertyComparison.end()) {
+			propertyComparison[propertyId] = properties[propertyId];
+		}
+		else {
+			throw new exception("Property already in comparison list");
+		}
+	}
+	else {
+		throw new exception("Cannot compare more than 4 properties");
+	}
+}
+void System::RemoveFromCompare(string propertyId) {
+	propertyComparison.erase(propertyId);
+}
+void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId) {
+	Admin* admin = dynamic_cast<Admin*>(users[NationalId]);
+	if (admin) {
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
+	}
+	else {
+		//in case of not an admin
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), NationalId, *this);
+	}
+}
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, *this, propertyId);
+	}
+	else {
+		//Call Edit property fn from User Class
+	}
+}
+void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
+	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
+	if (admin) {
+		admin->RemoveProperty(propertyId, *this);
+	}
+	else {
+		//Call Remove Property fn from User Class
 	}
 }
 unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
@@ -57,6 +118,12 @@ unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage
 }
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
 	return propertyFilterLocations[locations];
+}
+unordered_map<string, Property*> System::FilterByType(string type) {
+	return propertyFilterType[type];
+}
+unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) {
+	return propertyFilterBedRooms[bedrooms];
 }
 unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
 	auto lower = propertyFilterPrice.lower_bound(minPrice);
@@ -69,11 +136,10 @@ unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPric
 	}
 	return filtered;
 }
-unordered_map<string, Property*> System::FilterByType(string types) {
-	return propertyFilterType[types];
+int System::UserCounter()
+{
+	return users.size();
 }
-void System::Request(Property property) {
-	if (!property.GetVerfied()) {
-		unVerified.push(property);
-	}
+int System::PropertiesCounter() {
+	return properties.size();
 }
