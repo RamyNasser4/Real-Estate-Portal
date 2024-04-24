@@ -158,6 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Home.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Property.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h" />
+    <QtMoc Include="Home.h" />
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
@@ -178,6 +180,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Home.ui" />
     <QtUic Include="Login.ui" />
     <QtUic Include="Propertycard.ui" />
     <QtUic Include="Sidebar.ui" />
@@ -187,6 +190,9 @@
     <Image Include="Assets\Login.png" />
     <Image Include="Assets\PropertyCardbg.png" />
     <Image Include="Assets\SideBarBg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />

@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <unordered_map>
+#include "Property.h"
 using namespace std;
 class System;
 class User
@@ -12,28 +14,35 @@ protected:
 	string mobileNumber;
 	int nationalId;
 
+
 public:
+	unordered_map<int, unordered_map<string, Property*>> userProperties;
+	unordered_map<int, string>propertyIds;
 	User();
-	User(string firstName, string lastName, int nationalId, string password,string mobileNumber);
+	User(string firstName, string lastName, int nationalId, string password, string mobileNumber);
 	User(string firstName, string lastName, int nationalId, string password);
 	User(string firstName, string lastName, int nationalId);
 	User(string firstName, string lastName);
 	User(string firstName);
 	User(const User& other);
 
+	int GetNationalId();
 	string GetFirstName();
 	string GetLastName();
 	string GetName();
 	string GetPassword();
 	string GetMobileNumber();
-	int GetNationalId();
-
+	string GeneratePropertyId();
+	unordered_map<string, Property*>GetUserProperties(int UserID);
+	
 	void SetFirstName(string firstname);
 	void SetLastName(string lastname);
 	void SetNationalId(int nationalId);
 	void SetPassword(string password);
 	void SetMobileNumber(string mobileNumber);
-	string GeneratePropertyId();
-	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId,System &system);
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system);
+	void UserAddedProperty(int userId,string propertyId);
 	virtual ~User();
+
+
 };

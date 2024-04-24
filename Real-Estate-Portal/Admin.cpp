@@ -89,6 +89,11 @@ void Admin::RemoveProperty(string propertyId, System &system) {
 
 
 void Admin::RemoveUser(int ID, unordered_map<int, User*>& users) {
+	unordered_map<int, string>propertiesToRemove = propertyIds[Id];
+	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
+		RemoveProperty(it->second, *this);
+	}
+
 	if (users.find(ID) == users.end()) {
 		cout << "this ID is not registered on the system." << endl;
 	}

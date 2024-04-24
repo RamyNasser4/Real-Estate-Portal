@@ -33,6 +33,9 @@
     <ClCompile Include="Sidebar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Home.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Property.h">
@@ -72,6 +75,9 @@
     <QtUic Include="Sidebar.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Home.ui">
+      <Filter>Source Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -81,6 +87,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Propertycard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Home.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -94,5 +103,10 @@
     <Image Include="Assets\SideBarBg.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

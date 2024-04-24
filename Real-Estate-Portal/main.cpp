@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include "System.h"
 #include "Admin.h"
@@ -143,9 +145,5 @@ int main(int argc, char* argv[]) {
 	/*Propertycard propertycard;
 	propertycard.setupUi(widget);*/
 	widget->show();
-    QMainWindow* window = new QMainWindow();
-    Sidebar sidebar;
-    sidebar.setupUi(window);
-    window->show();
 	return a.exec();
 }

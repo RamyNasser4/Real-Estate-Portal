@@ -40,8 +40,12 @@ public:
 
 	int GetSquareFootage();
 	int GetNumberOfBedrooms();
+	int GetPrice();
+	int GetUserId();
+	int GetApartmentNumber();
 	bool GetVerfied();
 	bool GetHighlighted();
+
 	string GetpropertyId();
 	string GetLocation();
 	string GetPropertyType();
