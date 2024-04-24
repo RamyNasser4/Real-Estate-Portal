@@ -152,3 +152,14 @@ int System::UserCounter()
 int System::PropertiesCounter() {
 	return properties.size();
 }
+void System::EditMobileNumber(int currentUserId, string mobileNumber)
+{
+	if (users.find(currentUserId) != users.end())
+	{
+		users[currentUserId]->SetMobileNumber(mobileNumber);
+	}
+	else
+	{
+		cout << "Unavailable User ID \n";
+	}
+}
