@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HomeClass</class>
+ <widget class="QWidget" name="HomeClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Home</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>0</y>
+     <width>231</width>
+     <height>721</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+background:#F5F6FA;
+
+}
+QPushButton{
+font-family : sans-serif;
+font-weight:700;
+font-size:18px;
+border:none;
+color : #636363;
+}
+QPushButton:hover
+{
+background-color: #407BFF;
+}</string>
+   </property>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>30</y>
+      <width>291</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+font-family : sans-serif;
+font-weight:700;
+}</string>
+    </property>
+    <property name="text">
+     <string>     Listings</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../OneDrive/Desktop/New folder/Screenshot_2024-04-24_021204-removebg-preview.png</normaloff>../../../../OneDrive/Desktop/New folder/Screenshot_2024-04-24_021204-removebg-preview.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>36</width>
+      <height>36</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>90</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>     Dashboard</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../OneDrive/Desktop/New folder/dashboard.png</normaloff>../../../../OneDrive/Desktop/New folder/dashboard.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>27</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>-20</y>
+     <width>811</width>
+     <height>721</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+background-color:#CCD0CD;
+
+}
+QComboBox {
+    color: #546E7A;
+    background-color: transparent;
+    selection-background-color: transparent;
+    outline: 0;
+}
+
+QComboBox QAbstractItemView
+{
+    selection-background-color: transparent;
+    outline: 0;
+}
+QComboBox:on {
+  background-color:#3f3f46;
+}
+
+QComboBox:down-arrow {
+  border-style:none;
+  border-left: 1px solid #007acc;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border-left-width: 0px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}QComboBox:drop-down {
+  border-style:none;
+}
+QComboBox:hover{
+border: 1px solid #3daee9;
+    color: #eff0f1;
+}
+QComboBox:item {
+    padding-left: 20px; 
+}
+QComboBox:item:selected {
+    padding-left: 20px;  
+    border: 2px solid black;
+}
+QComboBox:item:checked {
+    padding-left: 20px;  
+    font-weight: bold;
+}</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>-20</x>
+       <y>40</y>
+       <width>251</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+font-size:34px;
+}</string>
+     </property>
+     <property name="text">
+      <string>        Listings</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>60</y>
+       <width>75</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Filter</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>60</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Select location</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Aswan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Assiut</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Asyout</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Alex</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Beheira</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Beni Suef</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cairo</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dahab</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Menya</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2"/>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
