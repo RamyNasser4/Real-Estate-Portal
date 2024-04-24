@@ -101,6 +101,7 @@ void Admin::RemoveUser(int ID, System &system) {
 		cout << "User Successfully Deleted." << endl;
 	}
 }
+
 void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	if (!system.unVerified.empty()) {
 		Property* AcceptedProperty = system.unVerified.front();
