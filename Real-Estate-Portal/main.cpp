@@ -46,7 +46,8 @@ void readFile(System* system) {
 			// Declare variables for fields
 			string propertyId,location,propertyType,buildingNumber,userName,stringUserId;
 			string stringApartmentNumber,stringSquareFootage,stringNumberOfBedrooms,stringPrice,stringVerified;
-			string stringHighlighted;
+			string stringHighlighted,propertyDescription,propertyUser;
+			string propertyUserId;
 			// Split the line using '*' as the delimiter
 			getline(ss, propertyId, '*');
 			getline(ss, location, '*');
@@ -60,6 +61,7 @@ void readFile(System* system) {
 			getline(ss, stringPrice, '*');
 			getline(ss, stringVerified, '*');
 			getline(ss, stringHighlighted, '*');
+			getline(ss, propertyDescription, '*');
 			int userId = stoi(stringUserId);
 			int apartmentNumber = stoi(stringApartmentNumber);
 			int squareFootage = stoi(stringSquareFootage);
@@ -67,7 +69,7 @@ void readFile(System* system) {
 			int price = stoi(stringPrice);
 			bool verified = stoi(stringVerified);
 			bool highlighted = stoi(stringHighlighted);
-			//system.addProperty
+			system->AddProperty(location, propertyType, buildingNumber, apartmentNumber, squareFootage, numberOfBedrooms, verified, price,userName,userId, highlighted, propertyDescription);
 		}
 	}
 	readFile.close();
@@ -96,7 +98,7 @@ void writeFile(System* system) {
 	auto beginp = properties.begin();
 	auto endp = properties.end();
 	for (; beginp != endp; beginp++) {
-		//writefile << beginp->second->GetpropertyId() << "*" << beginp->second->GetLocation() << "*" << beginp->second->GetPropertyType() << "*" << beginp->second->GetBuildingNumber() << "*" << beginp->second->GetUserName() << "*" << beginp->second->GetUserId() << "*" << beginp->second->GetApartmentNumber() << "*" << beginp->second->GetSquareFootage() << "*" << beginp->second->GetNumberOfBedrooms() << "*" << beginp->second->GetPrice() << "*" << beginp->second->GetVerfied() << "*"<<beginp->second->GetHighlighted()<<endl;
+		writefile << beginp->second->GetpropertyId() << "*" << beginp->second->GetLocation() << "*" << beginp->second->GetPropertyType() << "*" << beginp->second->GetBuildingNumber() << "*" << beginp->second->GetUserName() << "*" << beginp->second->GetUserId() << "*" << beginp->second->GetApartmentNumber() << "*" << beginp->second->GetSquareFootage() << "*" << beginp->second->GetNumberOfBedrooms() << "*" << beginp->second->GetPrice() << "*" << beginp->second->GetVerfied() << "*"<<beginp->second->GetHighlighted()<< "*" << beginp->second->GetPropertyDescription() << endl;
 	}
 	writefile.close();
 }

@@ -24,8 +24,8 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,int price, string currentUserName, int currentUserId, System &system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId);
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System &system) {
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId,highlighted,propertyDescription);
 	string propertyId = GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = GeneratePropertyId();
@@ -38,7 +38,7 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
 }
-void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System &system,string propertyId)
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system,string propertyId)
 {
 	//cout << "Enter id to edit";
 	Property* property = system.properties[propertyId];
@@ -107,7 +107,7 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 		Property* AcceptedProperty = system.unVerified.front();
 		system.unVerified.pop();
 		if (approved) {
-			system.properties[AcceptedProperty->GetpropertyId()] = AcceptedProperty;
+			system.properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
 			cout << "Property Approved!";
 		}
 		else {

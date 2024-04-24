@@ -52,9 +52,6 @@ public:
 	string GetBuildingNumber();
 	string GetUserName();
 	string GetPropertyDescription();
-	int GetApartmentNumber();
-	int GetPrice();
-	int GetUserId();
 
 	void SetPropertyType(string PropertyType);
 	void SetBuildingNumber(string BuildingNumber);

@@ -37,8 +37,8 @@ public:
 	void RemoveUser(int adminID,int userID,System &system);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
-	void AddProperty( string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, int NationalId);
-	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system, string propertyId);
+	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription);
+	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId);
 	void RemoveProperty(string propertyId, System& system, int currentUserId);
 	
 	int UserCounter();
