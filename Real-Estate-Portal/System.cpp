@@ -133,6 +133,8 @@ unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) 
 	return propertyFilterBedRooms[bedrooms];
 }
 unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
+	if (minPrice > maxPrice)
+		swap(minPrice, maxPrice);
 	auto lower = propertyFilterPrice.lower_bound(minPrice);
 	auto upper = propertyFilterPrice.upper_bound(maxPrice);
 	unordered_map<string, Property*> filtered;

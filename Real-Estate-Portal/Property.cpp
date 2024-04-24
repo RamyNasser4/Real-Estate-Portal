@@ -85,7 +85,7 @@ string Property::GeneratePropertyId() {
 
 	string propertyId = "";
 	for (int i = 0; i < 8; i++)
-		propertyId = propertyId + alphabet[rand() % 26];
+		propertyId = propertyId + alphabet[rand() % 36];
 
 	return propertyId;
 }
