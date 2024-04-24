@@ -92,6 +92,12 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	NewProperty->SetPropertyId(propertyId);
 	//system.Request(NewProperty);
 }
+unordered_map<string, Property*>User::GetUserProperties(int userId) {
+	if (userProperties.find(userId) != userProperties.end()) {
+		return userProperties[userId];
+	}
+	return unordered_map<string, Property*>();
+}
 
 User::~User() {
 
