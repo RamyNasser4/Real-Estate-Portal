@@ -16,8 +16,8 @@ protected:
 
 
 public:
-	unordered_map<int,Property*> userProperties;
-
+	unordered_map<int, unordered_map<string, Property*>> userProperties;
+	unordered_map<int, string>propertyIds;
 	User();
 	User(string firstName, string lastName, int nationalId, string password, string mobileNumber);
 	User(string firstName, string lastName, int nationalId, string password);
@@ -33,7 +33,7 @@ public:
 	string GetPassword();
 	string GetMobileNumber();
 	string GeneratePropertyId();
-	unordered_map<int, Property*>GetUserProperties(int UserID);
+	unordered_map<string, Property*>GetUserProperties(int UserID);
 	
 	void SetFirstName(string firstname);
 	void SetLastName(string lastname);

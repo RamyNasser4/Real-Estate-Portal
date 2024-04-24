@@ -84,7 +84,7 @@ void User::SetMobileNumber(string mobileNumber) {
 	this->mobileNumber = mobileNumber;
 }
 
-void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId,System &system) {
+void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, System& system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId);
 	string propertyId = GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
@@ -93,14 +93,14 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	//may cause problems
 	NewProperty->SetPropertyId(propertyId);
 	//system.Request(NewProperty);
+	propertyIds[currentUserId] = propertyId;
+	UserAddedProperty(currentUserId, propertyId)
 }
-unordered_map<int, Property*>User::GetUserProperties(int userId) {
-	if (userProperties.find(userId) != userProperties.end()) {
+unordered_map<string, Property*>User::GetUserProperties(int userId) {
 		return userProperties[userId];
-	}
 }
-void User::UserAddedProperty(int userId, string propertyId,System system) {
-	userProperties [userId] = system.properties[propertyId];
+void User::UserAddedProperty(int userId, string propertyId) {
+	userProperties [userId][propertyId] = system.properties[propertyId];
 }
 User::~User() {
 
