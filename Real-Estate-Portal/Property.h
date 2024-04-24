@@ -67,6 +67,8 @@ public:
 	void SetPropertyId(string propertyId);
 	void SetHighlight(bool value);
 	void SetPropertyDescription(string propertyDescription);
+
+	string GeneratePropertyId();
 };
 
 #endif

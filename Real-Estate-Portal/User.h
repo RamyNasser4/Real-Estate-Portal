@@ -32,7 +32,6 @@ public:
 	string GetName();
 	string GetPassword();
 	string GetMobileNumber();
-	string GeneratePropertyId();
 	unordered_map<string, Property*>GetUserProperties(int UserID);
 	
 	void SetFirstName(string firstname);
