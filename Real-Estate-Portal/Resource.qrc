@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>Assets/Login.png</file>
         <file>Assets/SideBarBg.png</file>
+        <file>Century Gothic.ttf</file>
+        <file>Assets/error-icon-25243.png</file>
+        <file>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</file>
     </qresource>
 </RCC>

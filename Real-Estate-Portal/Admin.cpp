@@ -31,6 +31,7 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 		propertyId = NewProperty->GeneratePropertyId();
 	}
 	NewProperty->SetPropertyId(propertyId);
+	UserAddedProperty(propertyId, NewProperty);
 	system.properties[propertyId] = NewProperty;
 	system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = NewProperty;
 	system.propertyFilterSquareFootage[SquareFootage][propertyId] = NewProperty;
@@ -134,6 +135,7 @@ void Admin::HighlightProperty(string propertyId, System& system) {
 	}
 	else {
 		cout << "Property doesn't exists\n";
+		throw new exception("Property Not Found");
 	}
 
 }

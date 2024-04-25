@@ -18,7 +18,7 @@ void System::SignUp(string fName, string lName, int natId, string password, stri
 	}
 	else {
 		cout << "User already exists" << endl;
-		throw new exception("User already exists");
+		throw std::exception("User already exists");
 		//Call login
 	}
 }
@@ -26,7 +26,7 @@ void System::Login(int ID, string password) {
 	if (users.find(ID) == users.end()) {
 		//Call Sign Up
 		cout << "User is not Registered to system" << " " << "Sign Up " << endl;
-		throw new exception("User Not Found");
+		throw exception("User Not Found");
 	}
 	else {
 		Admin* admin = dynamic_cast<Admin*>(users[ID]);
@@ -40,7 +40,7 @@ void System::Login(int ID, string password) {
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
-			throw new exception("Invalid National ID or Password");
+			throw std::exception("Invalid National ID or Password");
 		}
 	}
 }

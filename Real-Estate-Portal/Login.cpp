@@ -1,6 +1,6 @@
 #include "Login.h"
 #include "Propertycard.h"
-
+#include "Dialog.h"
 Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
@@ -137,13 +137,37 @@ void Login::setupUi(QWidget* Form, System* system) {
 		"font-size:15px;\n"
 		"color:#3F6793;\n"
 		"font-weight:700;\n"
+		"}\n"
+		"QPushButton:hover{\n"
+		"color: #1B425E;\n"
 		"}"));
 
 	retranslateUi(Form);
+	QObject::connect(pushButton_2, &QPushButton::clicked, pushButton_2, [=]() {
+		try {
+			Propertycard propertycard;
+			propertycard.setupUi(Form);
+		}
+		catch (const std::exception& e) {
+			QDialog* qdialog = new QDialog();
+			Dialog dialog;
+			dialog.setupUi(qdialog, e.what());
+			qdialog->exec();
+		}
+		//Form->show();
+		});
 	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
-		onPushButton1Click(system);
-		Propertycard propertycard;
-		propertycard.setupUi(Form);
+		try {
+			onPushButton1Click(system);
+			Propertycard propertycard;
+			propertycard.setupUi(Form);
+		}
+		catch (const std::exception& e) {
+			QDialog* qdialog = new QDialog();
+			Dialog dialog;
+			dialog.setupUi(qdialog, e.what());
+			qdialog->exec();
+		}
 		//Form->show();
 		});
 	QMetaObject::connectSlotsByName(Form);
@@ -151,20 +175,14 @@ void Login::setupUi(QWidget* Form, System* system) {
 void Login::onPushButton1Click(System* system) {
 	QString nationalId = lineEdit->text();
 	QString password = lineEdit_2->text();
-	try {
-		if (nationalId.isEmpty()) {
-			throw new exception("Enter National ID");
-		}
-		else if (password.isEmpty()) {
-			throw new exception("Enter Password");
-		}
-		else {
-			cout << nationalId.toInt() << " " << password.toLocal8Bit().constData() << endl;
-			system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
-		}
+	if (nationalId.isEmpty()) {
+		throw std::exception("Enter National ID");
 	}
-	catch (exception exp) {
-		cout << exp.what() << endl;
+	else if (password.isEmpty()) {
+		throw std::exception("Enter Password");
+	}
+	else {
+		system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
 	}
 }
 void Login::retranslateUi(QWidget* Form) {
