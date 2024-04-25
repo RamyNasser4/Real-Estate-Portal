@@ -117,8 +117,11 @@ void System::RemoveProperty(string propertyId, System& system, int currentUserId
 		admin->RemoveProperty(propertyId, *this);
 	}
 	else {
+		users[currentUserId]->RemoveProperty(propertyId, *this);
 		//Call Remove Property fn from User Class
 	}
+
+
 }
 unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
 	return propertyFilterSquareFootage[squareFootage];
@@ -151,4 +154,15 @@ int System::UserCounter()
 }
 int System::PropertiesCounter() {
 	return properties.size();
+}
+void System::EditMobileNumber(int currentUserId, string newmobileNumber)
+{
+	if (users.find(currentUserId) != users.end())
+	{
+		users[currentUserId]->SetMobileNumber(newmobileNumber);
+	}
+	else
+	{
+		cout << "Unavailable User ID \n";
+	}
 }
