@@ -82,12 +82,30 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	UserAddedProperty(propertyId, NewProperty);
 	system.Request(NewProperty);
 }
+void User::RemoveProperty(string propertyId, System& system) {
+	Property* property = system.properties[propertyId];
+	if (properties.find(propertyId) != properties.end()) {
+		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
+		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
+		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
+		system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+		system.properties.erase(propertyId);
+		properties.erase(propertyId);
+		delete property;
+	}
+	else {
+		throw exception("Property doesn't belong to User");
+	}
+
+
+}
 unordered_map<string, Property*> User::GetUserProperties() {
 		return properties;
 }
 void User::UserAddedProperty(string propertyId,Property* property) {
 	properties[propertyId] = property;
 }
+
 User::~User() {
 
 }
