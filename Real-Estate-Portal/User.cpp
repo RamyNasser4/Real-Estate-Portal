@@ -7,7 +7,7 @@
 #include "Property.h"
 
 using namespace std;
-User::User(string fName, string lName, int natId, string password,string mobileNumber) {
+User::User(string fName, string lName, int natId, string password, string mobileNumber) {
 	firstName = fName;
 	lastName = lName;
 	nationalId = natId;
@@ -15,16 +15,16 @@ User::User(string fName, string lName, int natId, string password,string mobileN
 	this->mobileNumber = mobileNumber;
 }
 User::User(string fName, string lName, int natId, string password) {
-	User( fName,  lName,  natId,  password,"");
+	User(fName, lName, natId, password, "");
 }
 User::User(string fName, string lName, int natId) {
-	User( fName,  lName,  natId, "");
+	User(fName, lName, natId, "");
 }
 User::User(string fName, string lName) {
-	User( fName,  lName, 0);
+	User(fName, lName, 0);
 }
 User::User(string fName) {
-	User( fName, "");
+	User(fName, "");
 }
 User::User() {
 	User("");
@@ -71,7 +71,7 @@ void User::SetMobileNumber(string mobileNumber) {
 }
 
 void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId,highlighted,propertyDescription);
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, highlighted, propertyDescription);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -100,10 +100,47 @@ void User::RemoveProperty(string propertyId, System& system) {
 
 }
 unordered_map<string, Property*> User::GetUserProperties() {
-		return properties;
+	return properties;
 }
-void User::UserAddedProperty(string propertyId,Property* property) {
+void User::UserAddedProperty(string propertyId, Property* property) {
 	properties[propertyId] = property;
+}
+void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string editPropertyId) {
+	if (properties[editPropertyId] == system.properties[editPropertyId]) {
+		Property property = system.properties[propertyId];
+		if (property->GetLocation() != Location)
+		{
+			system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
+			system.propertyFilterLocations[Location][propertyId] = property;
+			property->SetLocation(Location);
+		}
+
+		if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
+		{
+			system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
+			system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = property;
+			property->SetNumberOfBedrooms(NumberOfBedrooms);
+		}
+		if (property->GetPrice() != price)
+		{
+			system.propertyFilterPrice[property->GetPrice()].erase(propertyId);
+			system.propertyFilterPrice[price][propertyId] = property;
+			property->SetPrice(price);
+		}
+		if (property->GetPropertyType() != PropertyType)
+		{
+			system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
+			system.propertyFilterType[PropertyType][propertyId] = property;
+			property->SetPropertyType(PropertyType);
+		}
+		if (property->GetSquareFootage() != SquareFootage)
+		{
+			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+			system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
+			property->SetSquareFootage(SquareFootage);
+		}
+
+	}
 }
 
 User::~User() {
