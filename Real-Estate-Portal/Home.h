@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 #include "ui_Home.h"
-#include "Propertycard.h"
+#include "Listings.h"
 #include <QEvent>
 #include <string>
 using namespace std;
@@ -40,7 +40,7 @@ public:
     QPushButton* pushButton_8;
     QStackedWidget* stackedWidget;
     //QWidget* page;
-    Propertycard* page;
+    Listings* page;
     QLabel* label;
     QPushButton* pushButton_3;
     QComboBox* comboBox;
@@ -50,7 +50,7 @@ public:
 	Home(QWidget *parent=nullptr);
 
 private:
-	Ui::HomeClass ui;
+	//Ui::HomeClass ui;
 };
 
 

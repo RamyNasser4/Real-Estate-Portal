@@ -172,7 +172,7 @@
     <QtMoc Include="Login.h" />
     <QtMoc Include="Home.h" />
     <ClInclude Include="Dialog.h" />
-    <QtMoc Include="Listings.h" />
+    <ClInclude Include="Listings.h" />
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>

@@ -282,10 +282,10 @@ QComboBox:item:checked {
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="Listings" name="page"/>
+   <widget class="QWidget" name="page"/>
    <widget class="QWidget" name="page_2"/>
   </widget>
-  <widget class="Listings" name="widget_5" native="true">
+  <widget class="QWidget" name="widget_5" native="true">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -819,14 +819,6 @@ border-radius:15px;
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>Listings</class>
-   <extends>QWidget</extends>
-   <header location="global">listings.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="Resource.qrc"/>
  </resources>

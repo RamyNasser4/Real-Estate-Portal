@@ -59,6 +59,9 @@
     <ClInclude Include="Dialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Listings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -105,9 +108,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Home.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Listings.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

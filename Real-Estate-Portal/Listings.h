@@ -1,16 +1,75 @@
-#pragma once
+/********************************************************************************
+** Form generated from reading UI file 'ListingsplqCrI.ui'
+**
+** Created by: Qt User Interface Compiler version 6.8.0
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
 
-#include <QWidget>
-#include "ui_Listings.h"
+#ifndef LISTINGSPLQCRI_H
+#define LISTINGSPLQCRI_H
+
+#include <QtCore/QVariant>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
+#include <QStackedWidget>
+
+QT_BEGIN_NAMESPACE
 
 class Listings : public QWidget
 {
-	Q_OBJECT
-
 public:
-	Listings(QWidget *parent = nullptr);
-	~Listings();
+    QWidget* widget;
+    QLabel* label;
+    QPushButton* pushButton_3;
+    QWidget* widget_2;
+    QLabel* label_2;
+    QComboBox* comboBox;
+    QLabel* label_3;
+    QComboBox* comboBox_2;
+    QLabel* label_4;
+    QComboBox* comboBox_3;
+    QLabel* label_5;
+    QLineEdit* lineEdit;
+    QFrame* line;
+    QLineEdit* lineEdit_2;
+    QLabel* label_6;
+    QLineEdit* lineEdit_3;
+    QFrame* line_2;
+    QLineEdit* lineEdit_4;
+    QPushButton* pushButton;
+    QFrame* line_5;
+    QWidget* widget_3;
+    QWidget* horizontalWidget;
+    QHBoxLayout* horizontalLayout;
+    QLabel* label_13;
+    QFrame* line_6;
+    QLabel* label_14;
+    QLabel* label_15;
+    QFrame* line_7;
+    QLabel* label_16;
+    QLabel* label_17;
+    QLabel* label_18;
 
-private:
-	Ui::ListingsClass ui;
+    void setupUi(QStackedWidget* ListingsClass);
+    
+
+    void retranslateUi(QStackedWidget* ListingsClass);
+    
+
 };
+
+namespace Ui {
+    class ListingsClass : public Listings {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // LISTINGSPLQCRI_H

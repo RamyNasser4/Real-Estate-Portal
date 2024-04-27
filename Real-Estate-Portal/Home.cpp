@@ -3,7 +3,7 @@
 Home::Home(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
+	//ui.setupUi(this);
 }
 void Home::setupUi(QStackedWidget* HomeClass)
 {
@@ -168,7 +168,7 @@ void Home::setupUi(QStackedWidget* HomeClass)
         "    padding-left: 20px;  \n"
         "    font-weight: bold;\n"
         "}"));
-    page = new Propertycard();
+    page = new Listings();
     page->setObjectName("page");
     label = new QLabel(page);
     label->setObjectName("label");
