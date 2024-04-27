@@ -219,6 +219,9 @@ background:white;
 font-size:15px;
 color:#3F6793;
 font-weight:700;
+}
+QPushButton:hover{
+color: #1B425E;
 }</string>
      </property>
      <property name="text">

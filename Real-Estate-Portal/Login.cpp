@@ -1,12 +1,12 @@
 #include "Login.h"
-#include "Propertycard.h"
 #include "Dialog.h"
+#include "Propertycard.h"
 Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 }
-void Login::setupUi(QWidget* Form, System* system) {
+void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
 	Form->resize(1024, 720);
@@ -145,8 +145,7 @@ void Login::setupUi(QWidget* Form, System* system) {
 	retranslateUi(Form);
 	QObject::connect(pushButton_2, &QPushButton::clicked, pushButton_2, [=]() {
 		try {
-			Propertycard propertycard;
-			propertycard.setupUi(Form);
+			
 		}
 		catch (const std::exception& e) {
 			QDialog* qdialog = new QDialog();
@@ -159,8 +158,13 @@ void Login::setupUi(QWidget* Form, System* system) {
 	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
 		try {
 			onPushButton1Click(system);
-			Propertycard propertycard;
-			propertycard.setupUi(Form);
+			Form->hide();
+			Form->setCurrentWidget(home);
+			home->setupUi(Form);
+			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
+			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+			Form->show();
 		}
 		catch (const std::exception& e) {
 			QDialog* qdialog = new QDialog();
@@ -185,7 +189,7 @@ void Login::onPushButton1Click(System* system) {
 		system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
 	}
 }
-void Login::retranslateUi(QWidget* Form) {
+void Login::retranslateUi(QStackedWidget* Form) {
 	Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
 #if QT_CONFIG(tooltip)
 	pushButton->setToolTip(QString());
