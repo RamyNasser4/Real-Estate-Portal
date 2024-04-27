@@ -107,36 +107,35 @@ void User::UserAddedProperty(string propertyId, Property* property) {
 }
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string editPropertyId) {
 	if (properties[editPropertyId] == system.properties[editPropertyId]) {
-		Property property = system.properties[propertyId];
+		Property* property = system.properties[editPropertyId];
 		if (property->GetLocation() != Location)
 		{
-			system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
-			system.propertyFilterLocations[Location][propertyId] = property;
+			system.propertyFilterLocations[property->GetLocation()].erase(editPropertyId);
+			system.propertyFilterLocations[Location][editPropertyId] = property;
 			property->SetLocation(Location);
 		}
-
 		if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
 		{
-			system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
-			system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = property;
+			system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(editPropertyId);
+			system.propertyFilterBedRooms[NumberOfBedrooms][editPropertyId] = property;
 			property->SetNumberOfBedrooms(NumberOfBedrooms);
 		}
 		if (property->GetPrice() != price)
 		{
-			system.propertyFilterPrice[property->GetPrice()].erase(propertyId);
-			system.propertyFilterPrice[price][propertyId] = property;
+			system.propertyFilterPrice[property->GetPrice()].erase(editPropertyId);
+			system.propertyFilterPrice[price][editPropertyId] = property;
 			property->SetPrice(price);
 		}
 		if (property->GetPropertyType() != PropertyType)
 		{
-			system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
-			system.propertyFilterType[PropertyType][propertyId] = property;
+			system.propertyFilterType[property->GetPropertyType()].erase(editPropertyId);
+			system.propertyFilterType[PropertyType][editPropertyId] = property;
 			property->SetPropertyType(PropertyType);
 		}
 		if (property->GetSquareFootage() != SquareFootage)
 		{
-			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
-			system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
+			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(editPropertyId);
+			system.propertyFilterSquareFootage[SquareFootage][editPropertyId] = property;
 			property->SetSquareFootage(SquareFootage);
 		}
 
