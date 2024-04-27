@@ -7,12 +7,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 #include "Login.h"
-#include "Sidebar.h"
-#include "Propertycard.h"
+#include "Home.h"
+#include "Dialog.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
+#include <QDialog>
 void readFile(System* system) {
 	fstream readFile;
 	readFile.open("../users.txt", ios::out | ios::in);
@@ -103,7 +104,7 @@ void writeFile(System* system) {
 int main(int argc, char* argv[]) {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123","2123");
+	system->SignUp("Ramy", "Khalifa", 23, "123","2123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
@@ -160,11 +161,14 @@ int main(int argc, char* argv[]) {
 	//readFile(system);
 	//writeFile(system);
 	QApplication a(argc, argv);
-	QWidget* widget = new QWidget();
-    Login login;
-    login.setupUi(widget,system);
-	/*Propertycard propertycard;
-	propertycard.setupUi(widget);*/
+	QStackedWidget* widget = new QStackedWidget();
+    Login* login = new Login();
+	Home* home = new Home();
+	//Home* home = new Home();
+	widget->addWidget(login);
+	widget->addWidget(home);
+	widget->setCurrentWidget(login);
+    login->setupUi(widget,system,home);
 	widget->show();
 	return a.exec();
 }
