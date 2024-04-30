@@ -166,3 +166,16 @@ void System::EditMobileNumber(int currentUserId, string newmobileNumber)
 		cout << "Unavailable User ID \n";
 	}
 }
+void System::AddAdmin(string firstName, string lastName, int nationalId, string password)
+{
+	if (users.find(nationalId) == users.end()) {
+		users[nationalId] = new Admin(firstName, lastName, nationalId, password);
+		cout << "Registered Successfully " << endl;
+	}
+	else 
+	{
+		cout << "ID already exists" << endl;
+		throw std::exception("User already exists");
+		//Call login
+	}
+}
