@@ -106,7 +106,7 @@ void User::UserAddedProperty(string propertyId, Property* property) {
 	properties[propertyId] = property;
 }
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string editPropertyId) {
-	if (properties[editPropertyId] == system.properties[editPropertyId]) {
+	if (properties.find(editPropertyId) != properties.end()) {
 		Property* property = system.properties[editPropertyId];
 		if (property->GetLocation() != Location)
 		{

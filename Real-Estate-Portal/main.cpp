@@ -9,6 +9,7 @@
 #include "Login.h"
 #include "Home.h"
 #include "Dialog.h"
+#include "Signup.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -108,7 +109,7 @@ int main(int argc, char* argv[]) {
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
-	system->Login(23, "Ghazaly123");
+	//system->Login(23, "Ghazaly123");
 	//system->Login(23, "abdo");
 	//system->Login(15, "Ghazaly123");
 
@@ -164,11 +165,13 @@ int main(int argc, char* argv[]) {
 	QStackedWidget* widget = new QStackedWidget();
     Login* login = new Login();
 	Home* home = new Home();
+	Signup* signup = new Signup();
 	//Home* home = new Home();
 	widget->addWidget(login);
 	widget->addWidget(home);
+	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home);
+    login->setupUi(widget,system,home,signup);
 	widget->show();
 	return a.exec();
 }

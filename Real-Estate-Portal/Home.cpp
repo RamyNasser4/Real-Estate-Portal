@@ -5,7 +5,7 @@ Home::Home(QWidget *parent)
 {
 	//ui.setupUi(this);
 }
-void Home::setupUi(QStackedWidget* HomeClass)
+void Home::setupUi(QStackedWidget* HomeClass,System* system)
 {
     if (HomeClass->objectName().isEmpty())
         HomeClass->setObjectName("HomeClass");
@@ -194,7 +194,7 @@ void Home::setupUi(QStackedWidget* HomeClass)
     comboBox->setObjectName("comboBox");
     comboBox->setGeometry(QRect(530, 60, 171, 21));
     stackedWidget->addWidget(page);
-    page->setupUi(stackedWidget);
+    page->setupUi(stackedWidget,system);
     page_2 = new QWidget();
     page_2->setObjectName("page_2");
     stackedWidget->addWidget(page_2);

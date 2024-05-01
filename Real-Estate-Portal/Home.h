@@ -45,7 +45,7 @@ public:
     QPushButton* pushButton_3;
     QComboBox* comboBox;
     QWidget* page_2;
-    void setupUi(QStackedWidget* HomeClass);
+    void setupUi(QStackedWidget* HomeClass, System* system);
     void retranslateUi(QStackedWidget* HomeClass);
 	Home(QWidget *parent=nullptr);
 

@@ -96,7 +96,7 @@ void Admin::RemoveUser(int ID, System &system) {
 	}
 	if (system.users.find(ID) == system.users.end()) {
 		cout << "this ID is not registered on the system." << endl;
-		throw new exception("User Not Found");
+		throw exception("User Not Found");
 	}
 	else {
 		system.users.erase(ID);
@@ -118,7 +118,7 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	}
 	else {
 		cout << "There are no Properties to approve or decline";
-		throw new exception("Property Not Found");
+		throw exception("Property Not Found");
 	}
 	
 }
@@ -135,7 +135,7 @@ void Admin::HighlightProperty(string propertyId, System& system) {
 	}
 	else {
 		cout << "Property doesn't exists\n";
-		throw new exception("Property Not Found");
+		throw exception("Property Not Found");
 	}
 
 }

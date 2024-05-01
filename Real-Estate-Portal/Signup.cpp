@@ -37,7 +37,7 @@ Signup::Signup(QWidget* parent)
 
 
 
-void Signup::setupUi(QWidget* Signup, System* system)
+void Signup::setupUi(QStackedWidget* Signup, System* system)
 {
     if (Signup->objectName().isEmpty())
         Signup->setObjectName("Signup");
@@ -192,7 +192,7 @@ void Signup::setupUi(QWidget* Signup, System* system)
     QMetaObject::connectSlotsByName(Signup);
 } // setupUi
 
-void Signup::retranslateUi(QWidget* Signup)
+void Signup::retranslateUi(QStackedWidget* Signup)
 {
     Signup->setWindowTitle(QCoreApplication::translate("Signup", "Form", nullptr));
     label->setText(QCoreApplication::translate("Signup", "Sign up", nullptr));

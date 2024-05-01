@@ -18,7 +18,7 @@ void System::SignUp(string fName, string lName, int natId, string password, stri
 	}
 	else {
 		cout << "User already exists" << endl;
-		throw std::exception("User already exists");
+		throw exception("User already exists");
 		//Call login
 	}
 }
@@ -40,7 +40,7 @@ void System::Login(int ID, string password) {
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
-			throw std::exception("Invalid National ID or Password");
+			throw exception("Invalid National ID or Password");
 		}
 	}
 }
@@ -52,12 +52,12 @@ void System::RemoveUser(int adminID,int userID, System &system) {
 		}
 		else {
 			cout << "No Permission to remove user" << endl;
-			throw new exception("No Permission to remove user");
+			throw exception("No Permission to remove user");
 		}
 	}
 	else {
 		cout << "Invalid ID" << endl;
-		throw new exception("Invalid ID");
+		throw exception("Invalid ID");
 	}
 }
 void System::Request(Property* property) {
@@ -72,7 +72,7 @@ void System::UserChangePassword(string currentPassword, string newPassword, User
 	}
 	else {
 		cout << "Incorrect password, Please try again.\n";
-		throw new exception("Incorrect password");
+		throw exception("Incorrect password");
 	}
 }
 void System::AddToCompare(string propertyId) {
@@ -81,11 +81,11 @@ void System::AddToCompare(string propertyId) {
 			propertyComparison[propertyId] = properties[propertyId];
 		}
 		else {
-			throw new exception("Property already in comparison list");
+			throw exception("Property already in comparison list");
 		}
 	}
 	else {
-		throw new exception("Cannot compare more than 4 properties");
+		throw exception("Cannot compare more than 4 properties");
 	}
 }
 void System::RemoveFromCompare(string propertyId) {
@@ -102,7 +102,7 @@ void System::AddProperty(string Location, string PropertyType, string BuildingNu
 		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
 	}
 }
-void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,  int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId) {
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,  int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, string propertyId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
 		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, highlighted,propertyDescription, *this, propertyId);
@@ -111,7 +111,7 @@ void System::EditProperty(string Location, string PropertyType, string BuildingN
 		//Call Edit property fn from User Class
 	}
 }
-void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
+void System::RemoveProperty(string propertyId, int currentUserId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
 		admin->RemoveProperty(propertyId, *this);
@@ -163,6 +163,6 @@ void System::EditMobileNumber(int currentUserId, string newmobileNumber)
 	}
 	else
 	{
-		cout << "Unavailable User ID \n";
+		throw exception("User not found");
 	}
 }

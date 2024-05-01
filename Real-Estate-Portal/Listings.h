@@ -20,7 +20,8 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include <QStackedWidget>
-
+#include <QScrollArea>
+#include "System.h"
 QT_BEGIN_NAMESPACE
 
 class Listings : public QWidget
@@ -46,6 +47,8 @@ public:
     QLineEdit* lineEdit_4;
     QPushButton* pushButton;
     QFrame* line_5;
+    QScrollArea* scrollArea;
+    QWidget* scrollAreaWidgetContents;
     QWidget* widget_3;
     QWidget* horizontalWidget;
     QHBoxLayout* horizontalLayout;
@@ -57,8 +60,19 @@ public:
     QLabel* label_16;
     QLabel* label_17;
     QLabel* label_18;
+    QFrame* line_8;
+    QPushButton* pushButton_2;
+    QLabel* label_19;
+    QWidget* widget_4;
+    QLabel* label_20;
+    QLabel* label_21;
+    QWidget* horizontalWidget_2;
+    QHBoxLayout* horizontalLayout_3;
+    QLabel* label_24;
+    QFrame* line_10;
+    QLabel* label_25;
 
-    void setupUi(QStackedWidget* ListingsClass);
+    void setupUi(QStackedWidget* ListingsClass,System* system);
     
 
     void retranslateUi(QStackedWidget* ListingsClass);

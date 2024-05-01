@@ -6,7 +6,7 @@ Login::Login(QWidget* parent)
 {
 	ui.setupUi(this);
 }
-void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
+void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* signup) {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
 	Form->resize(1024, 720);
@@ -145,28 +145,27 @@ void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
 	retranslateUi(Form);
 	QObject::connect(pushButton_2, &QPushButton::clicked, pushButton_2, [=]() {
 		try {
-			
+			Form->hide();
+			Form->setCurrentWidget(signup);
+			signup->setupUi(Form, system);
+			Form->show();
 		}
-		catch (const std::exception& e) {
-			QDialog* qdialog = new QDialog();
-			Dialog dialog;
-			dialog.setupUi(qdialog, e.what());
-			qdialog->exec();
+		catch (const exception& e) {
+			qDebug() << e.what();
 		}
-		//Form->show();
 		});
 	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
 		try {
 			onPushButton1Click(system);
 			Form->hide();
 			Form->setCurrentWidget(home);
-			home->setupUi(Form);
+			home->setupUi(Form,system);
 			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
 			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
 			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
 			Form->show();
 		}
-		catch (const std::exception& e) {
+		catch (const exception& e) {
 			QDialog* qdialog = new QDialog();
 			Dialog dialog;
 			dialog.setupUi(qdialog, e.what());
@@ -180,10 +179,10 @@ void Login::onPushButton1Click(System* system) {
 	QString nationalId = lineEdit->text();
 	QString password = lineEdit_2->text();
 	if (nationalId.isEmpty()) {
-		throw std::exception("Enter National ID");
+		throw exception("Enter National ID");
 	}
 	else if (password.isEmpty()) {
-		throw std::exception("Enter Password");
+		throw exception("Enter Password");
 	}
 	else {
 		system->Login(nationalId.toInt(), password.toLocal8Bit().constData());

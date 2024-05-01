@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QStackedWidget>
 #include "System.h"
 
 
@@ -22,8 +23,8 @@ public:
     Signup(QWidget* parent = nullptr);
     ~Signup();
 
-    void setupUi(QWidget* Signup, System* system);
-    void retranslateUi(QWidget* Signup);
+    void setupUi(QStackedWidget* Signup, System* system);
+    void retranslateUi(QStackedWidget* Signup);
 
 private:
     Ui::Signup *ui;
