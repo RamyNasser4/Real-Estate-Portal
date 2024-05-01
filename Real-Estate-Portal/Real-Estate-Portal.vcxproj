@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="Listings.cpp" />
     <ClCompile Include="Login.cpp" />
@@ -176,6 +177,7 @@
     <QtMoc Include="Login.h" />
     <QtMoc Include="Home.h" />
     <ClInclude Include="Dialog.h" />
+    <QtMoc Include="EditProperty.h" />
     <ClInclude Include="Listings.h" />
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />
@@ -190,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="DialogButtonBottom.ui" />
+    <QtUic Include="EditProperty.ui" />
     <QtUic Include="Home.ui" />
     <QtUic Include="Listings.ui" />
     <QtUic Include="Login.ui" />
