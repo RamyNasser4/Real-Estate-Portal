@@ -6,7 +6,7 @@ class Admin : public User
 {
 protected:
 public:
-	Admin(
+	Admin();
 	Admin(string firstName, string lastName, int nationalId, string password);
 	Admin(string firstName, string lastName, int nationalId);
 	Admin(string firstName, string lastName);
