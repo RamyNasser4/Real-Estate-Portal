@@ -41,6 +41,7 @@ public:
 	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, int currentUserId);
 	void EditMobileNumber(int currentUserId, string mobileNumber);
+	void AddAdmin(string firstName, string lastName, int nationalId, string password);
 	int UserCounter();
 	int PropertiesCounter();
 	
