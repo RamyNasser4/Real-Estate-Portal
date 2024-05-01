@@ -108,7 +108,7 @@ void System::EditProperty(string Location, string PropertyType, string BuildingN
 		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, highlighted,propertyDescription, *this, propertyId);
 	}
 	else {
-		users[currentUserId]->UserEditProperty(Location,PropertyType,BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName,currentUserId, highlighted, propertyDescription, *this, propertyId);
+		users[currentUserId]->UserEditProperty(Location,PropertyType,BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, *this, propertyId);
 	}
 }
 void System::RemoveProperty(string propertyId, int currentUserId) {
