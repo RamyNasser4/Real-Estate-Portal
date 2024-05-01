@@ -108,7 +108,7 @@ void System::EditProperty(string Location, string PropertyType, string BuildingN
 		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, highlighted,propertyDescription, *this, propertyId);
 	}
 	else {
-		//Call Edit property fn from User Class
+		users[currentUserId]->UserEditProperty(Location,PropertyType,BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName,currentUserId, highlighted, propertyDescription, *this, propertyId);
 	}
 }
 void System::RemoveProperty(string propertyId, int currentUserId) {
@@ -118,7 +118,6 @@ void System::RemoveProperty(string propertyId, int currentUserId) {
 	}
 	else {
 		users[currentUserId]->RemoveProperty(propertyId, *this);
-		//Call Remove Property fn from User Class
 	}
 
 
@@ -175,7 +174,7 @@ void System::AddAdmin(string firstName, string lastName, int nationalId, string 
 	else 
 	{
 		cout << "ID already exists" << endl;
-		throw std::exception("User already exists");
+		throw exception("User already exists");
 		//Call login
 	}
 }
