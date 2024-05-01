@@ -147,7 +147,7 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 		try {
 			Form->hide();
 			Form->setCurrentWidget(signup);
-			signup->setupUi(Form, system);
+			signup->setupUi(Form, system,home);
 			Form->show();
 		}
 		catch (const exception& e) {
