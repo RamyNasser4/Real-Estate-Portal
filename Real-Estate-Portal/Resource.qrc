@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
+    <qresource prefix="/">
         <file>Assets/home128.png</file>
         <file>Assets/down-arrow.png</file>
         <file>Assets/number-of-rooms.png</file>
