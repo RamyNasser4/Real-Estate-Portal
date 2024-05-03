@@ -16,5 +16,8 @@
         <file>Assets/down-arrow.png</file>
         <file>Assets/home128.png</file>
         <file>Assets/9318694-removebg-preview.png</file>
+        <file>Assets/plus16.png</file>
+        <file>Assets/remove16.png</file>
+        <file>Assets/more32.png</file>
     </qresource>
 </RCC>

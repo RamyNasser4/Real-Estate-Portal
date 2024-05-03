@@ -240,10 +240,8 @@ HoverEventFilter::HoverEventFilter(QWidget* parentWidget, QPushButton* buttonToS
     parentWidget->installEventFilter(this);
 }
 bool HoverEventFilter::eventFilter(QObject* obj, QEvent* event){
-    qDebug() << "loop";
     if (obj == m_parentWidget) {
         if (event->type() == QEvent::Enter) {
-            qDebug() << "works";
             // Hover started, update style of buttonToStyle
             m_buttonToStyle->setStyleSheet(QString::fromUtf8("QPushButton{\n"
                 "	background-image: url(" + Hover + "); \n"

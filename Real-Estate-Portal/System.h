@@ -4,13 +4,14 @@
 #include <string>
 #include <queue>
 #include "User.h"
+#include "Admin.h"
 #include "Property.h"
 using namespace std;
 class System{
 public:
 	unordered_map<int, User*> users;
 	queue<Property*> unVerified;
-
+	int currentUserId;
 	//Hashtables for filter
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
@@ -26,7 +27,7 @@ public:
 	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
 	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
 	unordered_map<string, Property*>  FilterByLocation(string locations);
-	unordered_map<string, Property*> FilterByPrice(int minPrice, int maxPrice);
+	map<int, unordered_map<string,Property*>> FilterByPrice(int minPrice, int maxPrice);
 	unordered_map<string, Property*>  FilterByType(string type);
 
 
