@@ -12,5 +12,5 @@ public:
 	~UserAddProperty();
 
 private:
-	Ui::UserAddPropertyClass ui;
+	//Ui::UserAddPropertyClass ui;
 };

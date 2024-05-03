@@ -3,7 +3,7 @@
 UserAddProperty::UserAddProperty(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
+	//ui.setupUi(this);
 }
 
 UserAddProperty::~UserAddProperty()
