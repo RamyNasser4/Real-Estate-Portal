@@ -172,8 +172,10 @@
     <ClCompile Include="Sidebar.cpp" />
     <ClCompile Include="Signup.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserAddProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="UserAddProperty.h" />
     <QtMoc Include="Login.h" />
     <QtMoc Include="Home.h" />
     <ClInclude Include="Dialog.h" />
@@ -199,6 +201,7 @@
     <QtUic Include="Propertycard.ui" />
     <QtUic Include="Sidebar.ui" />
     <QtUic Include="Signup.ui" />
+    <QtUic Include="UserAddProperty.ui" />
     <QtUic Include="Widget.ui" />
   </ItemGroup>
   <ItemGroup>
