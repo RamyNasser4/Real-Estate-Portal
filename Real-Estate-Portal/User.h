@@ -40,7 +40,7 @@ public:
 	void SetMobileNumber(string mobileNumber);
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system);
 	void UserAddedProperty(string propertyId, Property* property);
-	void UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId);
+	void UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId);
 	void RemoveProperty(string propertyid, System& system);
 	virtual ~User();
 

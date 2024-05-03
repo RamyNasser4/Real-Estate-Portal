@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include "System.h"
+#include "Home.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,8 +23,9 @@ class Signup : public QWidget
 public:
     Signup(QWidget* parent = nullptr);
     ~Signup();
-
-    void setupUi(QStackedWidget* Signup, System* system);
+    void onPushButton1Click(System* system);
+      
+    void setupUi(QStackedWidget* Signup, System* system,Home* home);
     void retranslateUi(QStackedWidget* Signup);
 
 private:

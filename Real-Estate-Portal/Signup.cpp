@@ -13,6 +13,8 @@
 #include "Signup.h"
 #include "signup.h"
 #include "ui_Signup.h"
+#include <qstring.h>
+#include <Home.h>
 
 QT_BEGIN_NAMESPACE
 QT_BEGIN_NAMESPACE
@@ -37,7 +39,7 @@ Signup::Signup(QWidget* parent)
 
 
 
-void Signup::setupUi(QStackedWidget* Signup, System* system)
+void Signup::setupUi(QStackedWidget* Signup, System* system,Home* home )
 {
     if (Signup->objectName().isEmpty())
         Signup->setObjectName("Signup");
@@ -190,6 +192,25 @@ void Signup::setupUi(QStackedWidget* Signup, System* system)
     retranslateUi(Signup);
 
     QMetaObject::connectSlotsByName(Signup);
+    	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
+		try {
+			onPushButton1Click(system);
+            Signup->hide();
+            Signup->setCurrentWidget(home);
+			home->setupUi(Signup,system);
+			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
+			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+            Signup->show();
+		}
+		catch (const exception& e) {
+			QDialog* qdialog = new QDialog();
+			Dialog dialog;
+			dialog.setupUi(qdialog, e.what());
+			qdialog->exec();
+		}
+		//Form->show();
+		});
 } // setupUi
 
 void Signup::retranslateUi(QStackedWidget* Signup)
@@ -211,7 +232,64 @@ void Signup::retranslateUi(QStackedWidget* Signup)
     label_11->setText(QCoreApplication::translate("Signup", "<html><head/><body><p>You already have account?</p></body></html>", nullptr));
     pushButton_2->setText(QCoreApplication::translate("Signup", "Log in", nullptr));
 } // retranslateUi
+void Signup::onPushButton1Click(System* system) {
+    QString firstName = lineEdit->text();
+    QString lastName = lineEdit_3->text();
+    QString nationalId = lineEdit_4->text();
+    QString password = lineEdit_5->text();
+    QString phoneNumber = lineEdit_6->text();
+    bool isNationalIdNumm = true;
+    bool isPhoneNumm = true;
 
+    for (int i = 0; i < nationalId.size(); i++) {
+
+
+        if (nationalId[i].isSymbol()|| nationalId[i].isSpace()|| nationalId[i].isLetter()|| nationalId[i].isMark()) {
+            isPhoneNumm = false;
+        }
+    }
+    for (int i = 0; i < phoneNumber.size(); i++) {
+
+
+        if (phoneNumber[i].isSymbol() || phoneNumber[i].isSpace() || phoneNumber[i].isLetter() || phoneNumber[i].isMark()) {
+            isPhoneNumm = false;
+        }
+    }
+    if (firstName.isEmpty()) {
+        throw exception("Enter Your First Name");
+    }
+    else if (lastName.isEmpty()) {
+        throw exception("Enter Your Last Name");
+    }
+    else if (nationalId.isEmpty()) {
+        throw exception("Enter Your National id");
+    }
+    else if (nationalId.length()!=14  ) {
+        throw exception("Enter Valid National id");
+    }
+    else if (isNationalIdNumm==false) {
+        throw exception("Enter Valid National id");
+    }
+    else if (password.isEmpty()) {
+        throw exception("Enter A Password");
+    }
+    else if (password.length() < 8) {
+        throw exception("The Password Must Be More Than 8 Characters");
+    }
+    else if (phoneNumber.isEmpty()) {
+        throw exception("Enter Your Phone Number");
+    }
+    else if (phoneNumber.length()!=11) {
+        throw exception("Enter Valid Phone Number");
+    }
+    else if (isPhoneNumm==false) {
+        throw exception("Enter Valid Phone Number");
+    }
+    else {
+        system->SignUp(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), nationalId.toInt(), password.toLocal8Bit().constData(), phoneNumber.toLocal8Bit().constData());
+        system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+    }
+}
 
 
 // namespace Ui

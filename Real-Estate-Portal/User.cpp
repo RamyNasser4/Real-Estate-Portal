@@ -105,7 +105,7 @@ unordered_map<string, Property*> User::GetUserProperties() {
 void User::UserAddedProperty(string propertyId, Property* property) {
 	properties[propertyId] = property;
 }
-void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string editPropertyId) {
+void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {
 		Property* property = system.properties[editPropertyId];
 		if (property->GetLocation() != Location)
@@ -113,6 +113,25 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterLocations[property->GetLocation()].erase(editPropertyId);
 			system.propertyFilterLocations[Location][editPropertyId] = property;
 			property->SetLocation(Location);
+		}
+		if (property->GetPropertyType() != PropertyType)
+		{
+			system.propertyFilterType[property->GetPropertyType()].erase(editPropertyId);
+			system.propertyFilterType[PropertyType][editPropertyId] = property;
+			property->SetPropertyType(PropertyType);
+		}
+		if (property->GetBuildingNumber() != BuildingNumber) {
+			property->SetBuildingNumber(BuildingNumber);
+		}
+		if (property->GetApartmentNumber() != ApartmentNumber) {
+
+			property->SetApartmentNumber(ApartmentNumber);
+		}
+		if (property->GetSquareFootage() != SquareFootage)
+		{
+			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(editPropertyId);
+			system.propertyFilterSquareFootage[SquareFootage][editPropertyId] = property;
+			property->SetSquareFootage(SquareFootage);
 		}
 		if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
 		{
@@ -126,17 +145,8 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterPrice[price][editPropertyId] = property;
 			property->SetPrice(price);
 		}
-		if (property->GetPropertyType() != PropertyType)
-		{
-			system.propertyFilterType[property->GetPropertyType()].erase(editPropertyId);
-			system.propertyFilterType[PropertyType][editPropertyId] = property;
-			property->SetPropertyType(PropertyType);
-		}
-		if (property->GetSquareFootage() != SquareFootage)
-		{
-			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(editPropertyId);
-			system.propertyFilterSquareFootage[SquareFootage][editPropertyId] = property;
-			property->SetSquareFootage(SquareFootage);
+		if (property->GetPropertyDescription() != propertyDescription) {
+			property->SetPropertyDescription(propertyDescription);
 		}
 
 	}
