@@ -10,6 +10,25 @@ unordered_map<string, User*> System::GetUsers() {
 unordered_map <string, Property*> System::GetProperties() {
 	return properties;
 }
+unordered_map<string, Property*>  System::GetPropertyComparison() {
+	return propertyComparison;
+}
+unordered_map<int, unordered_map<string, Property*>>System:: GetPropertyFilterSquareFootage() {
+	return propertyFilterSquareFootage;
+}
+unordered_map<int, unordered_map<string, Property*>> System:: GetpropertyFilterBedRooms() {
+	return propertyFilterBedRooms;
+
+}
+unordered_map<string, unordered_map<string, Property*>> System::GetPropertyFilterType() {
+	return propertyFilterType;
+}
+unordered_map<string, unordered_map<string, Property*>> System:: GetPropertyFilterLocations() {
+	return propertyFilterLocations;
+}
+map<int, unordered_map<string, Property*>>System::GetPropertyFilterPrice() {
+	return propertyFilterPrice;
+}
 void System::SignUp(string fName, string lName, string natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password, mobileNumber);
