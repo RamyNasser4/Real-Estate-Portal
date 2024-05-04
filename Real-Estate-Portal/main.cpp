@@ -31,7 +31,7 @@ void readFile(System* system) {
 			getline(ss, password, '*');
 			getline(ss, mobileNumber, '*');
 			int ID = stoi(stringId);
-			system->SignUp(firstName, lastName, ID, password,mobileNumber);
+			system->SignUp(firstName, lastName, stringId, password,mobileNumber);
 		}
 	}
 	else {
@@ -105,7 +105,7 @@ void writeFile(System* system) {
 int main(int argc, char* argv[]) {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "123","2123");
+	system->SignUp("Ramy", "Khalifa", "23", "123", "2123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
@@ -132,15 +132,15 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
 	
-	User* admin = new Admin("Ramy", "Ramy", 1, "123");
-	system->users[1] = admin;
-	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,"this is property");
-	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egypt","villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", 1, "this is property");
+	User* admin = new Admin("Ramy", "Ramy", "1", "123");
+	system->users["1"] = admin;
+	system->AddProperty("egypt", "villa", "14", 4, 7, 4, 7000, "Ramy Khalifa", "23", "this is property");
+	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egypt", "villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", "1", "this is property");
 	system->FilterByLocation("eg");
 	system->FilterByLocation("ep");
 	system->FilterByNumberOfBedrooms(4);
@@ -171,7 +171,9 @@ int main(int argc, char* argv[]) {
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home,signup);
+ login->setupUi(widget,system,home,signup);
+
+ 
 	widget->show();
 	return a.exec();
 }
