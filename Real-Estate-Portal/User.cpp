@@ -121,13 +121,6 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterType[PropertyType][editPropertyId] = property;
 			property->SetPropertyType(PropertyType);
 		}
-		if (property->GetBuildingNumber() != BuildingNumber) {
-			property->SetBuildingNumber(BuildingNumber);
-		}
-		if (property->GetApartmentNumber() != ApartmentNumber) {
-
-			property->SetApartmentNumber(ApartmentNumber);
-		}
 		if (property->GetSquareFootage() != SquareFootage)
 		{
 			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(editPropertyId);
@@ -146,10 +139,9 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterPrice[price][editPropertyId] = property;
 			property->SetPrice(price);
 		}
-		if (property->GetPropertyDescription() != propertyDescription) {
-			property->SetPropertyDescription(propertyDescription);
-		}
-
+		property->SetBuildingNumber(BuildingNumber);
+		property->SetApartmentNumber(ApartmentNumber);
+		property->SetPropertyDescription(propertyDescription);
 	}
 }
 
