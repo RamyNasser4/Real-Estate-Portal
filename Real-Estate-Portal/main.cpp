@@ -10,6 +10,8 @@
 #include "Home.h"
 #include "Dialog.h"
 #include "Signup.h"
+#include "UserAddProperty.h"
+#include "EditProperty.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -131,8 +133,8 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
-	
-	User* admin = new Admin("Ramy", "Ramy", 1, "123");
+	system->AddAdmin("Ramy", "Ramy",12345, "123");
+	Admin* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
 	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,"this is property");
 	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, "this is property");
@@ -154,6 +156,7 @@ int main(int argc, char* argv[]) {
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
+	admin->AdminApproveorDeclineProperty(*system,true);
 	//cout << system->UserCounter() << endl;
 	//system->RemoveUser(1,23);
 	//cout << system->UserCounter() << endl;
@@ -166,11 +169,17 @@ int main(int argc, char* argv[]) {
     Login* login = new Login();
 	Home* home = new Home();
 	Signup* signup = new Signup();
+	UserAddProperty* useraddproperty = new UserAddProperty(widget);
+	EditProperty* editproperty = new EditProperty(widget);
 	//Home* home = new Home();
 	widget->addWidget(login);
 	widget->addWidget(home);
 	widget->addWidget(signup);
-	widget->setCurrentWidget(login);
+	widget->addWidget(editproperty);
+	widget->addWidget(useraddproperty);
+	widget->setCurrentWidget(login);	
+	//widget->setCurrentWidget(useraddproperty);
+	//useraddproperty->setupUi(widget, system);
     login->setupUi(widget,system,home,signup);
 	widget->show();
 	return a.exec();

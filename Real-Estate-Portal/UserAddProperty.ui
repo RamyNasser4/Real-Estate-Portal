@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>801</width>
-    <height>741</height>
+    <height>740</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -118,7 +118,7 @@ border:none;
      <rect>
       <x>270</x>
       <y>20</y>
-      <width>301</width>
+      <width>311</width>
       <height>51</height>
      </rect>
     </property>
@@ -420,6 +420,12 @@ border:none;
        <height>161</height>
       </rect>
      </property>
+     <property name="maximumSize">
+      <size>
+       <width>641</width>
+       <height>161</height>
+      </size>
+     </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
@@ -434,7 +440,7 @@ border:none;
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Submit</string>
      </property>
     </widget>
     <widget class="QPushButton" name="locationImage">
@@ -573,6 +579,24 @@ border:none;
        <width>40</width>
        <height>40</height>
       </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>490</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+font-size:10px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Word Count:</string>
      </property>
     </widget>
    </widget>

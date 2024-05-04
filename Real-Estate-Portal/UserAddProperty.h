@@ -47,7 +47,7 @@ public:
     QPushButton* type;
     QPushButton* description;
     QPushButton* homeImage;
-
+    QLabel* label_6;
     void setupUi(QWidget* Form, System* system);
     void retranslateUi(QWidget* Form);
     

@@ -1,4 +1,5 @@
 #include "Listings.h"
+#include "EditProperty.h"
 void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 {
 	if (ListingsClass->objectName().isEmpty())
@@ -174,7 +175,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
 
 	unordered_map<string, Property*> properties = system->GetProperties();
-	drawBoxes(scrollAreaWidgetContents, properties, system, scrollArea);
+	drawBoxes(scrollAreaWidgetContents, properties, system, scrollArea,ListingsClass);
 
 	widget_2->hide();
 	retranslateUi(ListingsClass);
@@ -212,10 +213,10 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		comboBox->setCurrentIndex(index);
 		if (comboBox->currentText() != "None") {
 			unordered_map<string, Property*> filtered = system->FilterByLocation(location.toLocal8Bit().constData());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	QObject::connect(comboBox_2, &QComboBox::currentTextChanged, [=]() {
@@ -240,10 +241,10 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		comboBox_2->setCurrentIndex(index);
 		if (comboBox_2->currentText() != "None") {
 			unordered_map<string, Property*> filtered = system->FilterByType(type.toLocal8Bit().constData());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	QObject::connect(comboBox_3, &QComboBox::currentTextChanged, [=]() {
@@ -268,10 +269,10 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		comboBox_3->setCurrentIndex(index);
 		if (comboBox_3->currentText() != "None") {
 			unordered_map<string, Property*> filtered = system->FilterByNumberOfBedrooms(noOfBedrooms.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	QObject::connect(lineEdit, &QLineEdit::editingFinished, [=]() {
@@ -296,7 +297,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
 		}
 		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	QObject::connect(lineEdit_2, &QLineEdit::editingFinished, [=]() {
@@ -324,14 +325,14 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
 		}
 		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 
 	QMetaObject::connectSlotsByName(ListingsClass);
 } // setupUi
 //by unordered map
-void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system, QScrollArea* scrollArea) {
+void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system, QScrollArea* scrollArea,QStackedWidget* ListComponents) {
 	scrollAreaWidgetContents = new QWidget();
 	if ((filtered == system->GetProperties() && ((filtered.size() - system->unVerified.size()) > 0)) || (filtered.size() != 0 && filtered != system->GetProperties())) {
 		int totalHeight;
@@ -571,6 +572,21 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 				}
 				catch (const exception& e) {
 
+				}
+				});
+			QObject::connect(edit, &QAction::triggered, [=]() {
+				try
+				{
+					EditProperty* editProperty = new EditProperty();
+					ListComponents->hide();
+					ListComponents->addWidget(editProperty);
+					ListComponents->setCurrentWidget(editProperty);
+					editProperty->setupUi(ListComponents,system,propertyId);
+					ListComponents->show();
+				}
+				catch (const exception& e)
+				{
+					qDebug() << e.what();
 				}
 				});
 			i++;
