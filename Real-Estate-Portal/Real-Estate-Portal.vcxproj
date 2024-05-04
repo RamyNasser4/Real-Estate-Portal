@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="AdminAddProperty.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="Home.cpp" />
@@ -180,6 +181,7 @@
     <QtMoc Include="UserAddProperty.h" />
     <QtMoc Include="Login.h" />
     <QtMoc Include="Home.h" />
+    <QtMoc Include="AdminAddProperty.h" />
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProperty.h" />
     <ClInclude Include="Listings.h" />
@@ -195,6 +197,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="AdminAddProperty.ui" />
     <QtUic Include="DialogButtonBottom.ui" />
     <QtUic Include="EditProperty.ui" />
     <QtUic Include="Home.ui" />

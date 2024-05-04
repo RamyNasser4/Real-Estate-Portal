@@ -10,6 +10,7 @@
 #include "Home.h"
 #include "Dialog.h"
 #include "Signup.h"
+#include "UserAddProperty.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -154,6 +155,8 @@ int main(int argc, char* argv[]) {
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
+	//test for userAddProperty
+	system->Login("23", "123");
 	//cout << system->UserCounter() << endl;
 	//system->RemoveUser(1,23);
 	//cout << system->UserCounter() << endl;
@@ -166,12 +169,15 @@ int main(int argc, char* argv[]) {
     Login* login = new Login();
 	Home* home = new Home();
 	Signup* signup = new Signup();
+	UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
-	widget->addWidget(login);
+	/*widget->addWidget(login);
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
- login->setupUi(widget,system,home,signup);
+    login->setupUi(widget,system,home,signup);*/
+	widget->setCurrentWidget(req);
+	req->setupUi(widget, system);
 
  
 	widget->show();

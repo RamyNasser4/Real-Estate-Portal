@@ -78,7 +78,7 @@ public:
     QLabel* label_25;
 
     void setupUi(QStackedWidget* ListingsClass,System* system);
-    void drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system,QScrollArea* scrollArea);
+    void drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system,QScrollArea* scrollArea,QStackedWidget* ListedComponents);
     void drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea);
 
     void retranslateUi(QStackedWidget* ListingsClass);
