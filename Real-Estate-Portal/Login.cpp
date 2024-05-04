@@ -148,6 +148,18 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 			Form->hide();
 			Form->setCurrentWidget(signup);
 			signup->setupUi(Form, system,home);
+			QObject::connect(signup->pushButton_2, &QPushButton::clicked, signup->pushButton_2, [=]() {
+				try {
+					qDebug() << "yyyyy";
+					Form->hide();
+					Form->setCurrentWidget(this);
+					this->setupUi(Form, system, home, signup);
+					Form->show();
+				}
+				catch (const exception& e) {
+					qDebug() << e.what();
+				}
+				});
 			Form->show();
 		}
 		catch (const exception& e) {

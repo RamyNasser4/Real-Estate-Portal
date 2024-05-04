@@ -105,7 +105,7 @@ void writeFile(System* system) {
 int main(int argc, char* argv[]) {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "123","2123");
+	system->SignUp("Ramy", "Khalifa", 12345678901234, "123","2123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
@@ -171,7 +171,9 @@ int main(int argc, char* argv[]) {
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home,signup);
+ login->setupUi(widget,system,home,signup);
+
+ 
 	widget->show();
 	return a.exec();
 }

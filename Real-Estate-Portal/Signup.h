@@ -21,6 +21,7 @@ class Signup : public QWidget
     Q_OBJECT
 
 public:
+    QPushButton* pushButton_2;
     Signup(QWidget* parent = nullptr);
     ~Signup();
     void onPushButton1Click(System* system);
@@ -46,5 +47,5 @@ private:
     QLineEdit* lineEdit_6;
     QPushButton* pushButton;
     QLabel* label_11;
-    QPushButton* pushButton_2;
+   
 };

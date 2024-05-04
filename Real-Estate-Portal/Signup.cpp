@@ -155,6 +155,7 @@ void Signup::setupUi(QStackedWidget* Signup, System* system,Home* home )
     lineEdit_5 = new QLineEdit(frame_2);
     lineEdit_5->setObjectName("lineEdit_5");
     lineEdit_5->setGeometry(QRect(40, 420, 231, 41));
+    lineEdit_5->setEchoMode(QLineEdit::EchoMode::Password);
     label_10 = new QLabel(frame_2);
     label_10->setObjectName("label_10");
     label_10->setGeometry(QRect(50, 480, 131, 16));
@@ -273,7 +274,7 @@ void Signup::onPushButton1Click(System* system) {
         throw exception("Enter A Password");
     }
     else if (password.length() < 8) {
-        throw exception("The Password Must Be More Than 8 Characters");
+        throw exception("Password Must Exceed 8 Characters");
     }
     else if (phoneNumber.isEmpty()) {
         throw exception("Enter Your Phone Number");
@@ -284,9 +285,14 @@ void Signup::onPushButton1Click(System* system) {
     else if (isPhoneNumm==false) {
         throw exception("Enter Valid Phone Number");
     }
+    else if (system->FindUser(nationalId)) {
+
+        throw exception("National Id already Exists");
+
+    }
     else {
-        system->SignUp(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), nationalId.toInt(), password.toLocal8Bit().constData(), phoneNumber.toLocal8Bit().constData());
-        system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+        system->SignUp(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData(), phoneNumber.toLocal8Bit().constData());
+        system->Login(nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData());
     }
 }
 
