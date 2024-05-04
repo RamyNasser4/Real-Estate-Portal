@@ -1,4 +1,6 @@
 #include "UserAddProperty.h"
+#include <QMessageBox>
+#include "Dialog.h"
 
 UserAddProperty::UserAddProperty(QWidget* parent)
     : QWidget(parent)
@@ -234,10 +236,14 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
     QObject::connect(pushButton, &QPushButton::clicked, [=]() {
         try {
             onPushButtonClick(system);
-            // QMessageBox::information(this, "Success", "Request submitted correctly.");
+            
+       
         }
         catch (const exception& e) {
-            //QMessageBox::warning(this, "Error", e.what());
+            QDialog* qdialog = new QDialog();
+            Dialog dialog;
+            dialog.setupUi(qdialog, e.what());
+            qdialog->exec();
         }
         });
     QMetaObject::connectSlotsByName(Form);
@@ -252,32 +258,14 @@ void UserAddProperty::onPushButtonClick(System* system) {
     int space = spinBox->value();
     int room = spinBox_2->value();
 
-    if (apartmentNumber.isEmpty()) {
-        throw exception("Enter Apartment Number");
-    }
-    else if (buildingNumber.isEmpty()) {
-        throw exception("Enter Building Number");
-    }
-    else if (price.isEmpty()) {
-        throw exception("Enter Price");
-    }
-    else if (location.isEmpty()) {
-        throw exception("Choose Location");
-    }
-    else if (propertyType.isEmpty()) {
-        throw exception("Choose Proprety Type");
-    }
-    else if (space==0) {
-        throw exception("Choose Location");
-    }
-    else if (room==0) {
-        throw exception("Choose Location");
-    }
-    else if (description.isEmpty()) {
-        throw exception("Enter Property Description");
+    if (apartmentNumber.isEmpty() || buildingNumber.isEmpty() || price.isEmpty() || location.isEmpty() ||
+        propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
+        throw exception("Fill all fields!");
     }
     else {
+        QMessageBox::information(this, "Success", "Request submitted successfully");
         system->AddProperty(location.toLocal8Bit().constData(),propertyType.toLocal8Bit().constData(),buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+    
     }
 }
 void UserAddProperty::retranslateUi(QWidget* Form)
