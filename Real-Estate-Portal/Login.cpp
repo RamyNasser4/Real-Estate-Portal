@@ -185,7 +185,7 @@ void Login::onPushButton1Click(System* system) {
 		throw exception("Enter Password");
 	}
 	else {
-		system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+		system->Login(nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData());
 	}
 }
 void Login::retranslateUi(QStackedWidget* Form) {
