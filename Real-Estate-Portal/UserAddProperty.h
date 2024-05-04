@@ -1,4 +1,3 @@
-#include <QWidget>
 #ifndef USERADDPROPERTYPNMARP_H
 #define USERADDPROPERTYPNMARP_H
 #include <QtCore/QVariant>
