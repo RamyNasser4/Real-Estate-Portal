@@ -285,8 +285,8 @@ void Signup::onPushButton1Click(System* system) {
         throw exception("Enter Valid Phone Number");
     }
     else {
-        system->SignUp(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), nationalId.toInt(), password.toLocal8Bit().constData(), phoneNumber.toLocal8Bit().constData());
-        system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+        system->SignUp(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData(), phoneNumber.toLocal8Bit().constData());
+        system->Login(nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData());
     }
 }
 
