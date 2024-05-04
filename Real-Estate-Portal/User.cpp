@@ -7,17 +7,17 @@
 #include "Property.h"
 
 using namespace std;
-User::User(string fName, string lName, int natId, string password, string mobileNumber) {
+User::User(string fName, string lName, string natId, string password, string mobileNumber) {
 	firstName = fName;
 	lastName = lName;
 	nationalId = natId;
 	this->password = password;
 	this->mobileNumber = mobileNumber;
 }
-User::User(string fName, string lName, int natId, string password) {
+User::User(string fName, string lName, string natId, string password) {
 	User(fName, lName, natId, password, "");
 }
-User::User(string fName, string lName, int natId) {
+User::User(string fName, string lName, string natId) {
 	User(fName, lName, natId, "");
 }
 User::User(string fName, string lName) {
@@ -51,7 +51,7 @@ string User::GetPassword() {
 string User::GetMobileNumber() {
 	return mobileNumber;
 }
-int User::GetNationalId() {
+string User::GetNationalId() {
 	return this->nationalId;
 }
 void User::SetFirstName(string firstname) {
@@ -60,7 +60,7 @@ void User::SetFirstName(string firstname) {
 void User::SetLastName(string lastname) {
 	this->lastName = lastname;
 }
-void User::SetNationalId(int nationalId) {
+void User::SetNationalId(string nationalId) {
 	this->nationalId = nationalId;
 }
 void User::SetPassword(string password) {
@@ -70,7 +70,7 @@ void User::SetMobileNumber(string mobileNumber) {
 	this->mobileNumber = mobileNumber;
 }
 
-void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, string propertyDescription, System& system) {
+void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {

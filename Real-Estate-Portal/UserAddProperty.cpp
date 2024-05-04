@@ -5,7 +5,7 @@ UserAddProperty::UserAddProperty(QWidget* parent)
 {
 	//ui.setupUi(this);
 }
-void UserAddProperty::setupUi(QWidget* Form,System* system)
+void UserAddProperty::setupUi(QWidget* Form, System* system)
 {
     if (Form->objectName().isEmpty())
         Form->setObjectName("Form");
@@ -231,19 +231,15 @@ void UserAddProperty::setupUi(QWidget* Form,System* system)
     homeImage->setIconSize(QSize(50, 50));
 
     retranslateUi(Form);
-    QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
+    QObject::connect(pushButton, &QPushButton::clicked, [=]() {
         try {
             onPushButtonClick(system);
+            // QMessageBox::information(this, "Success", "Request submitted correctly.");
         }
         catch (const exception& e) {
-           /* QDialog* qdialog = new QDialog();
-            Dialog dialog;
-            dialog.setupUi(qdialog, e.what());
-            qdialog->exec();*/
+            //QMessageBox::warning(this, "Error", e.what());
         }
-        
         });
-
     QMetaObject::connectSlotsByName(Form);
 } 
 void UserAddProperty::onPushButtonClick(System* system) {
