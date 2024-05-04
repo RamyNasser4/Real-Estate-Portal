@@ -566,10 +566,10 @@ color:#808080;
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>30</y>
-        <width>581</width>
-        <height>461</height>
+        <x>130</x>
+        <y>10</y>
+        <width>501</width>
+        <height>441</height>
        </rect>
       </property>
       <property name="text">
@@ -788,22 +788,64 @@ border:none;
        </size>
       </property>
      </widget>
-     <zorder>label_18</zorder>
-     <zorder>pushButton</zorder>
-     <zorder>widget_3</zorder>
-     <zorder>label_15</zorder>
-     <zorder>label_16</zorder>
-     <zorder>pushButton_2</zorder>
-     <zorder>horizontalWidget</zorder>
-     <zorder>horizontalWidget_2</zorder>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>460</y>
+        <width>261</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+font-size:30px;
+font-family:sans-serif;
+font-weight:600;
+}</string>
+      </property>
+      <property name="text">
+       <string>No Results Found</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>500</y>
+        <width>301</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+font-family:sans-serif;
+color:#808080;
+font-weight:600;
+}</string>
+      </property>
+      <property name="text">
+       <string>We couldn't find any properties that match your search</string>
+      </property>
+     </widget>
      <zorder>label_17</zorder>
-     <zorder>label_19</zorder>
+     <zorder>horizontalWidget</zorder>
+     <zorder>line_7</zorder>
+     <zorder>pushButton</zorder>
+     <zorder>label_15</zorder>
+     <zorder>widget_3</zorder>
+     <zorder>label_16</zorder>
+     <zorder>line_8</zorder>
+     <zorder>pushButton_2</zorder>
      <zorder>label_20</zorder>
      <zorder>label_21</zorder>
-     <zorder>line_7</zorder>
-     <zorder>line_8</zorder>
-     <zorder>widget_4</zorder>
+     <zorder>horizontalWidget_2</zorder>
+     <zorder>label_19</zorder>
      <zorder>toolButton</zorder>
+     <zorder>widget_4</zorder>
+     <zorder>label_18</zorder>
+     <zorder>label_7</zorder>
+     <zorder>label_8</zorder>
     </widget>
    </widget>
    <zorder>scrollArea</zorder>
