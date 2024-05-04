@@ -187,6 +187,9 @@ void Signup::setupUi(QStackedWidget* Signup, System* system,Home* home )
         "font-size:15px;\n"
         "color:#3F6793;\n"
         "font-weight:700;\n"
+        "}\n"
+        "QPushButton:hover{\n"
+        "color: #1B425E;\n"
         "}"));
 
     retranslateUi(Signup);
@@ -285,7 +288,7 @@ void Signup::onPushButton1Click(System* system) {
     else if (isPhoneNumm==false) {
         throw exception("Enter Valid Phone Number");
     }
-    else if (system->FindUser(nationalId)) {
+    else if (system->GetUsers().find(nationalId.toLocal8Bit().constData())!=system->GetUsers().end()) {
 
         throw exception("National Id already Exists");
 
