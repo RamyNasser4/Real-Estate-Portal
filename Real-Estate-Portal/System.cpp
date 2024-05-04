@@ -178,3 +178,12 @@ void System::AddAdmin(string firstName, string lastName, string nationalId, stri
 		//Call login
 	}
 }
+bool System::FindUser(string nationalid) {
+	if (users.find(nationalid) != users.end()) {
+
+		return true;
+
+	}
+	return false;
+
+}

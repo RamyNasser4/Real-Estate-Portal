@@ -288,7 +288,7 @@ void Signup::onPushButton1Click(System* system) {
     else if (isPhoneNumm==false) {
         throw exception("Enter Valid Phone Number");
     }
-    else if (system->GetUsers().find(nationalId.toLocal8Bit().constData())!=system->GetUsers().end()) {
+   else if (system->FindUser(nationalId.toLocal8Bit().constData())) {
 
         throw exception("National Id already Exists");
 

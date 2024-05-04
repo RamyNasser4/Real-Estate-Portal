@@ -46,7 +46,7 @@ public:
 	void AddAdmin(string firstName, string lastName, string nationalId, string password);
 	int UserCounter();
 	int PropertiesCounter();
-	
+	bool FindUser(string nationalid);
 	
 };
 
