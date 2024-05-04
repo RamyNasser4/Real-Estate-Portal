@@ -131,16 +131,16 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
-	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,false,"this is property");
 	
 	User* admin = new Admin("Ramy", "Ramy", 1, "123");
 	system->users[1] = admin;
-	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egypt","villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", 1, false, "this is property");
+	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,"this is property");
+	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, "this is property");
+	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", 1, "this is property");
+	system->AddProperty("egypt","villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", 1, "this is property");
+	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", 1, "this is property");
+	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", 1, "this is property");
+	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", 1, "this is property");
 	system->FilterByLocation("eg");
 	system->FilterByLocation("ep");
 	system->FilterByNumberOfBedrooms(4);

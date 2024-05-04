@@ -210,8 +210,13 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			lineEdit_2->setText("");
 		}
 		comboBox->setCurrentIndex(index);
-		unordered_map<string, Property*> filtered = system->FilterByLocation(location.toLocal8Bit().constData());
-		drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		if (comboBox->currentText() != "None") {
+			unordered_map<string, Property*> filtered = system->FilterByLocation(location.toLocal8Bit().constData());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
 		});
 	QObject::connect(comboBox_2, &QComboBox::currentTextChanged, [=]() {
 		QString location = comboBox->currentText();
@@ -233,8 +238,13 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			lineEdit_2->setText("");
 		}
 		comboBox_2->setCurrentIndex(index);
-		unordered_map<string, Property*> filtered = system->FilterByType(type.toLocal8Bit().constData());
-		drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		if (comboBox_2->currentText() != "None") {
+			unordered_map<string, Property*> filtered = system->FilterByType(type.toLocal8Bit().constData());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
 		});
 	QObject::connect(comboBox_3, &QComboBox::currentTextChanged, [=]() {
 		QString location = comboBox->currentText();
@@ -256,8 +266,13 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			lineEdit_2->setText("");
 		}
 		comboBox_3->setCurrentIndex(index);
-		unordered_map<string, Property*> filtered = system->FilterByNumberOfBedrooms(noOfBedrooms.toInt());
-		drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		if (comboBox_3->currentText() != "None") {
+			unordered_map<string, Property*> filtered = system->FilterByNumberOfBedrooms(noOfBedrooms.toInt());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
 		});
 	QObject::connect(lineEdit, &QLineEdit::editingFinished, [=]() {
 		QString location = comboBox->currentText();
@@ -279,6 +294,9 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		if (!minPrice.isEmpty() && !maxPrice.isEmpty()) {
 			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
 			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
 		}
 		});
 	QObject::connect(lineEdit_2, &QLineEdit::editingFinished, [=]() {
@@ -305,6 +323,9 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
 			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
 		}
+		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
 		});
 
 	QMetaObject::connectSlotsByName(ListingsClass);
@@ -312,8 +333,14 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 //by unordered map
 void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system, QScrollArea* scrollArea) {
 	scrollAreaWidgetContents = new QWidget();
-	if (filtered.size() != 0) {
-		int totalHeight = 200 * filtered.size();
+	if ((filtered == system->GetProperties() && ((filtered.size() - system->unVerified.size()) > 0)) || (filtered.size() != 0 && filtered != system->GetProperties())) {
+		int totalHeight;
+		if (filtered == system->GetProperties()) {
+			totalHeight = 200 * (filtered.size() - system->unVerified.size());
+		}
+		else {
+			totalHeight = 200 * filtered.size();
+		}
 		qDebug() << totalHeight;
 		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
 		int i = 1;
@@ -326,6 +353,9 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 		int currentHorizontalWidgetY = 30;
 		int currentToolButtonY = 30;
 		for (auto it = filtered.begin(); it != filtered.end(); ++it) {
+			if (!it->second->GetVerfied()) {
+				continue;
+			}
 			QFrame* lineBetweenLabels2 = new QFrame(scrollAreaWidgetContents);
 			lineBetweenLabels2->setObjectName("line" + i);
 			lineBetweenLabels2->setGeometry(QRect(300, currentLine2Y, 31, 16));
@@ -604,233 +634,235 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 		int currentToolButtonY = 30;
 		for (auto it = filtered.begin(); it != filtered.end(); ++it) {
 			for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+				if (!it2->second->GetVerfied()) {
+					continue;
+				}
+				QFrame* lineBetweenLabels2 = new QFrame(scrollAreaWidgetContents);
+				lineBetweenLabels2->setObjectName("line" + i);
+				lineBetweenLabels2->setGeometry(QRect(300, currentLine2Y, 31, 16));
+				lineBetweenLabels2->setStyleSheet(QString::fromUtf8("#line_7{\n"
+					"background-color:white;\n"
+					"}"));
+				lineBetweenLabels2->setFrameShape(QFrame::Shape::HLine);
+				lineBetweenLabels2->setFrameShadow(QFrame::Shadow::Sunken);
+				lineBetweenLabels2->show();
+				QPushButton* pushButtonMain = new QPushButton(scrollAreaWidgetContents);
+				pushButtonMain->setObjectName("pushButton" + i);
+				pushButtonMain->setGeometry(QRect(10, currentButtonY, 741, 171));
+				pushButtonMain->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+					"background:white;\n"
+					"border:none;\n"
+					"border-radius:15px;\n"
+					"}"));
+				pushButtonMain->show();
+				QWidget* img = new QWidget(scrollAreaWidgetContents);
+				img->setObjectName("widget" + i);
+				img->setGeometry(QRect(40, currentImgY, 171, 131));
+				img->setStyleSheet(QString::fromUtf8("QWidget{\n"
+					"background-color:#CCD0CD;\n"
+					"border-radius:15px;\n"
+					"background-image: url(:/Assets/home128.png);\n"
+					"background-repeat:no-repeat;\n"
+					"background-position:center;\n"
+					"}\n"
+					""));
+				img->raise();
+				img->show();
+				QLabel* price = new QLabel(scrollAreaWidgetContents);
+				price->setObjectName("price" + i);
+				price->setGeometry(QRect(230, currentPriceY, 121, 31));
+				price->setStyleSheet(QString::fromUtf8("QLabel{\n"
+					"background-color:white;\n"
+					"font-family:sans-serif;\n"
+					"font-size:24px;\n"
+					"font-weight:700;\n"
+					"color:#407BFF;\n"
+					"}"));
+				price->show();
+				string strPrice = "$" + to_string(it2->second->GetPrice());
+				price->setText(QCoreApplication::translate("ListingsClass", strPrice.c_str(), nullptr));
+				QLabel* noOfBedrooms = new QLabel(scrollAreaWidgetContents);
+				noOfBedrooms->setObjectName("noOfBedrooms" + i);
+				noOfBedrooms->setGeometry(QRect(230, currentBedroomsY, 71, 16));
+				noOfBedrooms->setStyleSheet(QString::fromUtf8("QLabel{\n"
+					"background-color:white;\n"
+					"color:#808080;\n"
+					"font-family:sans-serif;\n"
+					"font-weight:600;\n"
+					"font-size:11px;\n"
+					"}"));
+				noOfBedrooms->show();
+				string strBedrooms = to_string(it2->second->GetNumberOfBedrooms()) + " Bedrooms";
+				noOfBedrooms->setText(QCoreApplication::translate("ListingsClass", strBedrooms.c_str(), nullptr));
+				QLabel* sqFootage = new QLabel(scrollAreaWidgetContents);
+				sqFootage->setObjectName("sqFootage" + i);
+				sqFootage->setGeometry(QRect(340, currentFootageY, 49, 16));
+				sqFootage->setStyleSheet(QString::fromUtf8("QLabel{\n"
+					"background-color:white;\n"
+					"color:#808080;\n"
+					"font-family:sans-serif;\n"
+					"font-weight:600;\n"
+					"font-size:11px;\n"
+					"}"));
+				sqFootage->show();
+				string strFootage = "<p>" + to_string(it2->second->GetSquareFootage()) + "ft<sup>2";
+				sqFootage->setText(QCoreApplication::translate("ListingsClass", strFootage.c_str(), nullptr));
+				QWidget* horizontalWidget = new QWidget(scrollAreaWidgetContents);
+				horizontalWidget->setObjectName("horizontalWidget" + i);
+				horizontalWidget->setGeometry(QRect(218, currentHorizontalWidgetY, 331, 41));
+				horizontalWidget->setStyleSheet(QString::fromUtf8("background:white;"));
+				horizontalWidget->show();
+				QHBoxLayout* horizontalLayout = new QHBoxLayout(horizontalWidget);
+				horizontalLayout->setSpacing(6);
+				horizontalLayout->setContentsMargins(11, 11, 11, 11);
+				horizontalLayout->setObjectName("horizontalLayout" + i);
+				QLabel* location = new QLabel(horizontalWidget);
+				location->setObjectName("location" + i);
+				location->setStyleSheet(QString::fromUtf8("QLabel{\n"
+					"background-color:white;\n"
+					"font-family:sans-serif;\n"
+					"font-weight:600;\n"
+					"font-size:14px;\n"
+					"}"));
+				horizontalLayout->addWidget(location);
+				location->show();
+				string strlocation = "";
+				strlocation += it2->second->GetLocation() + ",";
+				strlocation += it2->second->GetBuildingNumber() + ",";
+				strlocation += it2->second->GetApartmentNumber();
+				location->setText(QCoreApplication::translate("ListingsClass", strlocation.c_str(), nullptr));
+				QFrame* lineBetweenLabels1 = new QFrame(horizontalWidget);
+				lineBetweenLabels1->setObjectName("line" + i);
+				lineBetweenLabels1->setStyleSheet(QString::fromUtf8("#line_6{\n"
+					"background:white;\n"
+					"}"));
+				lineBetweenLabels1->setFrameShape(QFrame::Shape::HLine);
+				lineBetweenLabels1->setFrameShadow(QFrame::Shadow::Sunken);
 
-			QFrame* lineBetweenLabels2 = new QFrame(scrollAreaWidgetContents);
-			lineBetweenLabels2->setObjectName("line" + i);
-			lineBetweenLabels2->setGeometry(QRect(300, currentLine2Y, 31, 16));
-			lineBetweenLabels2->setStyleSheet(QString::fromUtf8("#line_7{\n"
-				"background-color:white;\n"
-				"}"));
-			lineBetweenLabels2->setFrameShape(QFrame::Shape::HLine);
-			lineBetweenLabels2->setFrameShadow(QFrame::Shadow::Sunken);
-			lineBetweenLabels2->show();
-			QPushButton* pushButtonMain = new QPushButton(scrollAreaWidgetContents);
-			pushButtonMain->setObjectName("pushButton" + i);
-			pushButtonMain->setGeometry(QRect(10, currentButtonY, 741, 171));
-			pushButtonMain->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-				"background:white;\n"
-				"border:none;\n"
-				"border-radius:15px;\n"
-				"}"));
-			pushButtonMain->show();
-			QWidget* img = new QWidget(scrollAreaWidgetContents);
-			img->setObjectName("widget" + i);
-			img->setGeometry(QRect(40, currentImgY, 171, 131));
-			img->setStyleSheet(QString::fromUtf8("QWidget{\n"
-				"background-color:#CCD0CD;\n"
-				"border-radius:15px;\n"
-				"background-image: url(:/Assets/home128.png);\n"
-				"background-repeat:no-repeat;\n"
-				"background-position:center;\n"
-				"}\n"
-				""));
-			img->raise();
-			img->show();
-			QLabel* price = new QLabel(scrollAreaWidgetContents);
-			price->setObjectName("price" + i);
-			price->setGeometry(QRect(230, currentPriceY, 121, 31));
-			price->setStyleSheet(QString::fromUtf8("QLabel{\n"
-				"background-color:white;\n"
-				"font-family:sans-serif;\n"
-				"font-size:24px;\n"
-				"font-weight:700;\n"
-				"color:#407BFF;\n"
-				"}"));
-			price->show();
-			string strPrice = "$" + to_string(it2->second->GetPrice());
-			price->setText(QCoreApplication::translate("ListingsClass", strPrice.c_str(), nullptr));
-			QLabel* noOfBedrooms = new QLabel(scrollAreaWidgetContents);
-			noOfBedrooms->setObjectName("noOfBedrooms" + i);
-			noOfBedrooms->setGeometry(QRect(230, currentBedroomsY, 71, 16));
-			noOfBedrooms->setStyleSheet(QString::fromUtf8("QLabel{\n"
-				"background-color:white;\n"
-				"color:#808080;\n"
-				"font-family:sans-serif;\n"
-				"font-weight:600;\n"
-				"font-size:11px;\n"
-				"}"));
-			noOfBedrooms->show();
-			string strBedrooms = to_string(it2->second->GetNumberOfBedrooms()) + " Bedrooms";
-			noOfBedrooms->setText(QCoreApplication::translate("ListingsClass", strBedrooms.c_str(), nullptr));
-			QLabel* sqFootage = new QLabel(scrollAreaWidgetContents);
-			sqFootage->setObjectName("sqFootage" + i);
-			sqFootage->setGeometry(QRect(340, currentFootageY, 49, 16));
-			sqFootage->setStyleSheet(QString::fromUtf8("QLabel{\n"
-				"background-color:white;\n"
-				"color:#808080;\n"
-				"font-family:sans-serif;\n"
-				"font-weight:600;\n"
-				"font-size:11px;\n"
-				"}"));
-			sqFootage->show();
-			string strFootage = "<p>" + to_string(it2->second->GetSquareFootage()) + "ft<sup>2";
-			sqFootage->setText(QCoreApplication::translate("ListingsClass", strFootage.c_str(), nullptr));
-			QWidget* horizontalWidget = new QWidget(scrollAreaWidgetContents);
-			horizontalWidget->setObjectName("horizontalWidget" + i);
-			horizontalWidget->setGeometry(QRect(218, currentHorizontalWidgetY, 331, 41));
-			horizontalWidget->setStyleSheet(QString::fromUtf8("background:white;"));
-			horizontalWidget->show();
-			QHBoxLayout* horizontalLayout = new QHBoxLayout(horizontalWidget);
-			horizontalLayout->setSpacing(6);
-			horizontalLayout->setContentsMargins(11, 11, 11, 11);
-			horizontalLayout->setObjectName("horizontalLayout" + i);
-			QLabel* location = new QLabel(horizontalWidget);
-			location->setObjectName("location" + i);
-			location->setStyleSheet(QString::fromUtf8("QLabel{\n"
-				"background-color:white;\n"
-				"font-family:sans-serif;\n"
-				"font-weight:600;\n"
-				"font-size:14px;\n"
-				"}"));
-			horizontalLayout->addWidget(location);
-			location->show();
-			string strlocation = "";
-			strlocation += it2->second->GetLocation() + ",";
-			strlocation += it2->second->GetBuildingNumber() + ",";
-			strlocation += it2->second->GetApartmentNumber();
-			location->setText(QCoreApplication::translate("ListingsClass", strlocation.c_str(), nullptr));
-			QFrame* lineBetweenLabels1 = new QFrame(horizontalWidget);
-			lineBetweenLabels1->setObjectName("line" + i);
-			lineBetweenLabels1->setStyleSheet(QString::fromUtf8("#line_6{\n"
-				"background:white;\n"
-				"}"));
-			lineBetweenLabels1->setFrameShape(QFrame::Shape::HLine);
-			lineBetweenLabels1->setFrameShadow(QFrame::Shadow::Sunken);
+				horizontalLayout->addWidget(lineBetweenLabels1);
+				lineBetweenLabels1->show();
+				QLabel* type = new QLabel(horizontalWidget);
+				type->setObjectName("Type" + i);
+				type->setStyleSheet(QString::fromUtf8("QLabel{\n"
+					"background:white;\n"
+					"font-family:sans-serif;\n"
+					"font-weight:700;\n"
+					"color:#808080;\n"
+					"}"));
+				horizontalLayout->addWidget(type);
+				type->show();
+				string strType = it2->second->GetPropertyType();
+				type->setText(QCoreApplication::translate("ListingsClass", strType.c_str(), nullptr));
+				ClickEventFilter* filter = new ClickEventFilter();
+				filter->addWidget(lineBetweenLabels1);
+				filter->addWidget(lineBetweenLabels2);
+				filter->addWidget(type);
+				filter->addWidget(img);
+				filter->addWidget(price);
+				filter->addWidget(location);
+				filter->addWidget(sqFootage);
+				filter->addWidget(noOfBedrooms);
+				QToolButton* toolButton = new QToolButton(scrollAreaWidgetContents);
+				toolButton->setObjectName("toolButton");
+				toolButton->setGeometry(QRect(700, currentToolButtonY, 31, 22));
+				toolButton->setStyleSheet(QString::fromUtf8("QToolButton{\n"
+					"background:white;\n"
+					"border:none;\n"
+					"padding-right: 0px;\n"
+					"}\n"
+					"QToolButton::menu-indicator{\n"
+					"image: none;\n"
+					"}"));
+				QIcon icon1;
+				icon1.addFile(QString::fromUtf8(":/Assets/more32.png"), QSize(), QIcon::Normal, QIcon::Off);
+				toolButton->setIcon(icon1);
+				toolButton->setIconSize(QSize(32, 32));
+				toolButton->setPopupMode(QToolButton::InstantPopup);
+				QMenu* menu = new QMenu(scrollAreaWidgetContents);
+				QAction* addToCompare = new QAction("Add To Compare");
+				QAction* removeFromCompare = new QAction("Remove From Compare");
+				QAction* edit = new QAction("Edit");
+				QAction* del = new QAction("Delete");
+				if (system->propertyComparison.find(it2->second->GetpropertyId()) == system->propertyComparison.end()) {
+					menu->addAction(addToCompare);
+				}
+				else {
+					menu->addAction(removeFromCompare);
+				}
+				Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
+				auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
+				string propertyId = it2->second->GetpropertyId();
+				if (admin || userProperties.find(propertyId) != userProperties.end()) {
+					menu->addAction(edit);
+					menu->addAction(del);
+				}
+				menu->setStyleSheet("QMenu {\n"
+					"background-color: white;\n"       // Background color
+					"border: 1px solid #ccc;\n"        // Border style
+					"}\n"
+					"QMenu::item {\n"
+					"font-family:sans-serif;\n"
+					"font-weight:700;\n"
+					"padding: 5px 20px;\n"             // Padding for menu items
+					"}"
+					"QMenu::item:selected {\n"
+					"color:white;\n"
+					"background-color: #407BFF;\n"    // Background color of selected item
+					"}");
+				toolButton->setMenu(menu);
+				QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
+					qDebug() << "clickedB";
+					});
 
-			horizontalLayout->addWidget(lineBetweenLabels1);
-			lineBetweenLabels1->show();
-			QLabel* type = new QLabel(horizontalWidget);
-			type->setObjectName("Type" + i);
-			type->setStyleSheet(QString::fromUtf8("QLabel{\n"
-				"background:white;\n"
-				"font-family:sans-serif;\n"
-				"font-weight:700;\n"
-				"color:#808080;\n"
-				"}"));
-			horizontalLayout->addWidget(type);
-			type->show();
-			string strType = it2->second->GetPropertyType();
-			type->setText(QCoreApplication::translate("ListingsClass", strType.c_str(), nullptr));
-			ClickEventFilter* filter = new ClickEventFilter();
-			filter->addWidget(lineBetweenLabels1);
-			filter->addWidget(lineBetweenLabels2);
-			filter->addWidget(type);
-			filter->addWidget(img);
-			filter->addWidget(price);
-			filter->addWidget(location);
-			filter->addWidget(sqFootage);
-			filter->addWidget(noOfBedrooms);
-			QToolButton* toolButton = new QToolButton(scrollAreaWidgetContents);
-			toolButton->setObjectName("toolButton");
-			toolButton->setGeometry(QRect(700, currentToolButtonY, 31, 22));
-			toolButton->setStyleSheet(QString::fromUtf8("QToolButton{\n"
-				"background:white;\n"
-				"border:none;\n"
-				"padding-right: 0px;\n"
-				"}\n"
-				"QToolButton::menu-indicator{\n"
-				"image: none;\n"
-				"}"));
-			QIcon icon1;
-			icon1.addFile(QString::fromUtf8(":/Assets/more32.png"), QSize(), QIcon::Normal, QIcon::Off);
-			toolButton->setIcon(icon1);
-			toolButton->setIconSize(QSize(32, 32));
-			toolButton->setPopupMode(QToolButton::InstantPopup);
-			QMenu* menu = new QMenu(scrollAreaWidgetContents);
-			QAction* addToCompare = new QAction("Add To Compare");
-			QAction* removeFromCompare = new QAction("Remove From Compare");
-			QAction* edit = new QAction("Edit");
-			QAction* del = new QAction("Delete");
-			if (system->propertyComparison.find(it2->second->GetpropertyId()) == system->propertyComparison.end()) {
-				menu->addAction(addToCompare);
-			}
-			else {
-				menu->addAction(removeFromCompare);
-			}
-			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
-			auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
-			string propertyId = it2->second->GetpropertyId();
-			if (admin || userProperties.find(propertyId) != userProperties.end()) {
-				menu->addAction(edit);
-				menu->addAction(del);
-			}
-			menu->setStyleSheet("QMenu {\n"
-				"background-color: white;\n"       // Background color
-				"border: 1px solid #ccc;\n"        // Border style
-				"}\n"
-				"QMenu::item {\n"
-				"font-family:sans-serif;\n"
-				"font-weight:700;\n"
-				"padding: 5px 20px;\n"             // Padding for menu items
-				"}"
-				"QMenu::item:selected {\n"
-				"color:white;\n"
-				"background-color: #407BFF;\n"    // Background color of selected item
-				"}");
-			toolButton->setMenu(menu);
-			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
-				qDebug() << "clickedB";
-				});
+				QObject::connect(addToCompare, &QAction::triggered, [=]() {
+					try {
+						system->AddToCompare(propertyId);
+						menu->insertAction(addToCompare, removeFromCompare);
+						menu->removeAction(addToCompare);
+					}
+					catch (const exception& e) {
+						qDebug() << "add to compare failed";
+						qDebug() << e.what();
+					}
+					});
+				QObject::connect(removeFromCompare, &QAction::triggered, [=]() {
+					try {
+						system->RemoveFromCompare(propertyId);
+						menu->insertAction(removeFromCompare, addToCompare);
+						menu->removeAction(removeFromCompare);
+					}
+					catch (const exception& e) {
+						qDebug() << "remove from compare failed";
+						qDebug() << e.what();
+					}
+					});
+				QObject::connect(del, &QAction::triggered, [=]() {
+					try
+					{
+						system->RemoveProperty(propertyId, system->currentUserId);
+					}
+					catch (const exception& e)
+					{
+						qDebug() << e.what();
+					}
+					});
+				QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
+					try {
+						//move to property details page
+					}
+					catch (const exception& e) {
 
-			QObject::connect(addToCompare, &QAction::triggered, [=]() {
-				try {
-					system->AddToCompare(propertyId);
-					menu->insertAction(addToCompare, removeFromCompare);
-					menu->removeAction(addToCompare);
-				}
-				catch (const exception& e) {
-					qDebug() << "add to compare failed";
-					qDebug() << e.what();
-				}
-				});
-			QObject::connect(removeFromCompare, &QAction::triggered, [=]() {
-				try {
-					system->RemoveFromCompare(propertyId);
-					menu->insertAction(removeFromCompare, addToCompare);
-					menu->removeAction(removeFromCompare);
-				}
-				catch (const exception& e) {
-					qDebug() << "remove from compare failed";
-					qDebug() << e.what();
-				}
-				});
-			QObject::connect(del, &QAction::triggered, [=]() {
-				try
-				{
-					system->RemoveProperty(propertyId, system->currentUserId);
-				}
-				catch (const exception& e)
-				{
-					qDebug() << e.what();
-				}
-				});
-			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
-				try {
-					//move to property details page
-				}
-				catch (const exception& e) {
-
-				}
-				});
-			i++;
-			currentImgY += 200;
-			currentLine2Y += 200;
-			currentButtonY += 200;
-			currentPriceY += 200;
-			currentBedroomsY += 200;
-			currentFootageY += 200;
-			currentHorizontalWidgetY += 200;
-			currentToolButtonY += 200;
+					}
+					});
+				i++;
+				currentImgY += 200;
+				currentLine2Y += 200;
+				currentButtonY += 200;
+				currentPriceY += 200;
+				currentBedroomsY += 200;
+				currentFootageY += 200;
+				currentHorizontalWidgetY += 200;
+				currentToolButtonY += 200;
 			}
 		}
 		scrollArea->setWidget(scrollAreaWidgetContents);

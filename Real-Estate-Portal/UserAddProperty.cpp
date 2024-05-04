@@ -5,7 +5,7 @@ UserAddProperty::UserAddProperty(QWidget* parent)
 {
 	//ui.setupUi(this);
 }
-void UserAddProperty::setupUi(QWidget* Form)
+void UserAddProperty::setupUi(QWidget* Form,System* system)
 {
     if (Form->objectName().isEmpty())
         Form->setObjectName("Form");
@@ -247,8 +247,8 @@ void UserAddProperty::setupUi(QWidget* Form)
     QMetaObject::connectSlotsByName(Form);
 } 
 void UserAddProperty::onPushButtonClick(System* system) {
-    QString apartementNumber = lineEdit->text();
-    QString buidingNumber = lineEdit_2->text();
+    QString apartmentNumber = lineEdit->text();
+    QString buildingNumber = lineEdit_2->text();
     QString price = lineEdit_3->text();
     QString location = comboBox->currentText(); 
     QString propertyType = comboBox_2->currentText(); 
@@ -256,10 +256,10 @@ void UserAddProperty::onPushButtonClick(System* system) {
     int space = spinBox->value();
     int room = spinBox_2->value();
 
-    if (apartementNumber.isEmpty()) {
+    if (apartmentNumber.isEmpty()) {
         throw exception("Enter Apartment Number");
     }
-    else if (buidingNumber.isEmpty()) {
+    else if (buildingNumber.isEmpty()) {
         throw exception("Enter Building Number");
     }
     else if (price.isEmpty()) {
@@ -281,7 +281,7 @@ void UserAddProperty::onPushButtonClick(System* system) {
         throw exception("Enter Property Description");
     }
     else {
-        system->AddProperty(location.toLocal8Bit().constData(),propertyType.toLocal8Bit().constData(),buildingNumber.toInt(), apartmentNumber.toInt(), space.toInt(), room.toInt(), price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+        system->AddProperty(location.toLocal8Bit().constData(),propertyType.toLocal8Bit().constData(),buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
     }
 }
 void UserAddProperty::retranslateUi(QWidget* Form)

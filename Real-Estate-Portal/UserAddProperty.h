@@ -12,7 +12,7 @@
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
-
+#include "System.h"
 QT_BEGIN_NAMESPACE
 
 class UserAddProperty : public QWidget
@@ -21,6 +21,7 @@ class UserAddProperty : public QWidget
 public slots:
     void onPushButtonClick(System* system);
 public:
+    UserAddProperty(QWidget* parent);
     QFrame* frame;
     QLabel* headLabel;
     QFrame* frame_2;
@@ -47,7 +48,7 @@ public:
     QPushButton* description;
     QPushButton* homeImage;
 
-    void setupUi(QWidget* Form);
+    void setupUi(QWidget* Form, System* system);
     void retranslateUi(QWidget* Form);
     
 

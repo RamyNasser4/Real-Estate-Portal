@@ -12,6 +12,7 @@ public:
 	unordered_map<int, User*> users;
 	queue<Property*> unVerified;
 	int currentUserId;
+	string currentUserName;
 	//Hashtables for filter
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
@@ -39,7 +40,7 @@ public:
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, string propertyDescription);
-	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, string propertyId);
+	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, int currentUserId);
 	void EditMobileNumber(int currentUserId, string mobileNumber);
 	void AddAdmin(string firstName, string lastName, int nationalId, string password);
