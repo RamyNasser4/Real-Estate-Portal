@@ -451,7 +451,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/location.png</normaloff>:/new/prefix1/Assets/location.png</iconset>
+       <normaloff>:/Assets/location.png</normaloff>:/Assets/location.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -474,7 +474,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/price.png</normaloff>:/new/prefix1/Assets/price.png</iconset>
+       <normaloff>:/Assets/price.png</normaloff>:/Assets/price.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -497,7 +497,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/number-of-rooms.png</normaloff>:/new/prefix1/Assets/number-of-rooms.png</iconset>
+       <normaloff>:/Assets/number-of-rooms.png</normaloff>:/Assets/number-of-rooms.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -520,7 +520,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/squareFootage.png</normaloff>:/new/prefix1/Assets/squareFootage.png</iconset>
+       <normaloff>:/Assets/squareFootage.png</normaloff>:/Assets/squareFootage.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -543,7 +543,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/Type.png</normaloff>:/new/prefix1/Assets/Type.png</iconset>
+       <normaloff>:/Assets/Type.png</normaloff>:/Assets/Type.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -566,7 +566,7 @@ border:none;
      </property>
      <property name="icon">
       <iconset resource="Resource.qrc">
-       <normaloff>:/new/prefix1/Assets/description.png</normaloff>:/new/prefix1/Assets/description.png</iconset>
+       <normaloff>:/Assets/description.png</normaloff>:/Assets/description.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -590,7 +590,7 @@ border:none;
     </property>
     <property name="icon">
      <iconset resource="Resource.qrc">
-      <normaloff>:/new/prefix1/Assets/propertyHead.png</normaloff>:/new/prefix1/Assets/propertyHead.png</iconset>
+      <normaloff>:/Assets/propertyHead.png</normaloff>:/Assets/propertyHead.png</iconset>
     </property>
     <property name="iconSize">
      <size>

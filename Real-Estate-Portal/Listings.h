@@ -21,6 +21,10 @@
 #include <QtWidgets/QWidget>
 #include <QStackedWidget>
 #include <QScrollArea>
+#include <QToolButton>
+#include <QMenu>
+#include <QAction>
+#include <QMouseEvent>
 #include "System.h"
 QT_BEGIN_NAMESPACE
 
@@ -73,7 +77,8 @@ public:
     QLabel* label_25;
 
     void setupUi(QStackedWidget* ListingsClass,System* system);
-    
+    void drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system,QScrollArea* scrollArea);
+    void drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea);
 
     void retranslateUi(QStackedWidget* ListingsClass);
     
@@ -83,7 +88,16 @@ public:
 namespace Ui {
     class ListingsClass : public Listings {};
 } // namespace Ui
+class ClickEventFilter : public QObject {
+public:
+    QList<QWidget*> widgets;
+    ClickEventFilter(QObject* parent = nullptr);
+    void addWidget(QWidget* widget);
 
+protected:
+    // Override eventFilter to handle mouse events
+    bool eventFilter(QObject* obj, QEvent* event)  override;
+};
 QT_END_NAMESPACE
 
 #endif // LISTINGSPLQCRI_H

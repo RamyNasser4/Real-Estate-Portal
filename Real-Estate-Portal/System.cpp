@@ -1,6 +1,5 @@
 #include "System.h"
 #include "User.h"
-#include "Admin.h"
 #include <string>
 #include <iostream>
 using namespace std;
@@ -37,6 +36,7 @@ void System::Login(int ID, string password) {
 			else {
 				cout << "User Signed In" << endl;
 			}
+			currentUserId = users[ID]->GetNationalId();
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
@@ -134,15 +134,15 @@ unordered_map<string, Property*> System::FilterByType(string type) {
 unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) {
 	return propertyFilterBedRooms[bedrooms];
 }
-unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
+map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, int maxPrice) {
 	if (minPrice > maxPrice)
 		swap(minPrice, maxPrice);
 	auto lower = propertyFilterPrice.lower_bound(minPrice);
 	auto upper = propertyFilterPrice.upper_bound(maxPrice);
-	unordered_map<string, Property*> filtered;
+	map<int, unordered_map<string,Property*>> filtered;
 	for (auto umap = lower; umap != upper; ++umap) {
 		for (auto property = umap->second.begin(); property != umap->second.end(); property++) {
-			filtered[property->second->GetpropertyId()] = property->second;
+			filtered[property->second->GetPrice()][property->second->GetpropertyId()] = property->second;
 		}
 	}
 	return filtered;

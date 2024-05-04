@@ -51,6 +51,8 @@ public:
     void retranslateUi(QWidget* Form);
     
 
+private:
+	//Ui::UserAddPropertyClass ui;
 };
 
 namespace Ui {

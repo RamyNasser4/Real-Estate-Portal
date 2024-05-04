@@ -14,7 +14,6 @@
 #include "signup.h"
 #include "ui_Signup.h"
 #include <qstring.h>
-#include <Home.h>
 
 QT_BEGIN_NAMESPACE
 QT_BEGIN_NAMESPACE
