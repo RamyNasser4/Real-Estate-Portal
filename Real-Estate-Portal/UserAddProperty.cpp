@@ -186,49 +186,49 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
     locationImage->setObjectName("locationImage");
     locationImage->setGeometry(QRect(40, 10, 51, 51));
     QIcon icon;
-    icon.addFile(QString::fromUtf8(":/new/prefix1/Assets/location.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon.addFile(QString::fromUtf8(":/Assets/location.png"), QSize(), QIcon::Normal, QIcon::Off);
     locationImage->setIcon(icon);
     locationImage->setIconSize(QSize(40, 40));
     dollarImage = new QPushButton(frame_2);
     dollarImage->setObjectName("dollarImage");
     dollarImage->setGeometry(QRect(430, 120, 31, 31));
     QIcon icon1;
-    icon1.addFile(QString::fromUtf8(":/new/prefix1/Assets/price.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(QString::fromUtf8(":/Assets/price.png"), QSize(), QIcon::Normal, QIcon::Off);
     dollarImage->setIcon(icon1);
     dollarImage->setIconSize(QSize(28, 28));
     roomNumber = new QPushButton(frame_2);
     roomNumber->setObjectName("roomNumber");
     roomNumber->setGeometry(QRect(660, 120, 31, 31));
     QIcon icon2;
-    icon2.addFile(QString::fromUtf8(":/new/prefix1/Assets/number-of-rooms.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(QString::fromUtf8(":/Assets/number-of-rooms.png"), QSize(), QIcon::Normal, QIcon::Off);
     roomNumber->setIcon(icon2);
     roomNumber->setIconSize(QSize(25, 25));
     squareFootage = new QPushButton(frame_2);
     squareFootage->setObjectName("squareFootage");
     squareFootage->setGeometry(QRect(540, 120, 31, 31));
     QIcon icon3;
-    icon3.addFile(QString::fromUtf8(":/new/prefix1/Assets/squareFootage.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon3.addFile(QString::fromUtf8(":/Assets/squareFootage.png"), QSize(), QIcon::Normal, QIcon::Off);
     squareFootage->setIcon(icon3);
     squareFootage->setIconSize(QSize(40, 40));
     type = new QPushButton(frame_2);
     type->setObjectName("type");
     type->setGeometry(QRect(440, 10, 41, 51));
     QIcon icon4;
-    icon4.addFile(QString::fromUtf8(":/new/prefix1/Assets/Type.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon4.addFile(QString::fromUtf8(":/Assets/Type.png"), QSize(), QIcon::Normal, QIcon::Off);
     type->setIcon(icon4);
     type->setIconSize(QSize(45, 45));
     description = new QPushButton(frame_2);
     description->setObjectName("description");
     description->setGeometry(QRect(330, 250, 41, 41));
     QIcon icon5;
-    icon5.addFile(QString::fromUtf8(":/new/prefix1/Assets/description.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon5.addFile(QString::fromUtf8(":/Assets/description.png"), QSize(), QIcon::Normal, QIcon::Off);
     description->setIcon(icon5);
     description->setIconSize(QSize(40, 40));
     homeImage = new QPushButton(frame);
     homeImage->setObjectName("homeImage");
     homeImage->setGeometry(QRect(210, 20, 51, 51));
     QIcon icon6;
-    icon6.addFile(QString::fromUtf8(":/new/prefix1/Assets/propertyHead.png"), QSize(), QIcon::Normal, QIcon::Off);
+    icon6.addFile(QString::fromUtf8(":/Assets/propertyHead.png"), QSize(), QIcon::Normal, QIcon::Off);
     homeImage->setIcon(icon6);
     homeImage->setIconSize(QSize(50, 50));
 
@@ -236,7 +236,14 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
     QObject::connect(pushButton, &QPushButton::clicked, [=]() {
         try {
             onPushButtonClick(system);
-            
+            lineEdit->clear();
+            lineEdit_2->clear();
+            lineEdit_3->clear();
+            comboBox->setCurrentIndex(0); // Reset to default index
+            comboBox_2->setCurrentIndex(0); // Reset to default index
+            textEdit->clear();
+            spinBox->setValue(0);
+            spinBox_2->setValue(0);
        
         }
         catch (const exception& e) {
@@ -257,15 +264,46 @@ void UserAddProperty::onPushButtonClick(System* system) {
     QString description = textEdit->toPlainText();
     int space = spinBox->value();
     int room = spinBox_2->value();
-
+    bool isbuildingNumber = true;
+    bool isapartmentNumber = true;
+    bool isPrice = true;
+    for (int i = 0; i < buildingNumber.size(); i++) {
+        if (buildingNumber[i].isSymbol() || buildingNumber[i].isSpace() || buildingNumber[i].isLetter() || buildingNumber[i].isMark()) {
+            isbuildingNumber = false;
+        }
+    }
+    for (int i = 0; i < apartmentNumber.size(); i++) {
+        if (apartmentNumber[i].isSymbol() || apartmentNumber[i].isSpace() || apartmentNumber[i].isLetter() || apartmentNumber[i].isMark()) {
+            isapartmentNumber = false;
+        }
+    }
+    for (int i = 0; i < price.size(); i++) {
+        if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
+            isPrice = false;
+        }
+    }
     if (apartmentNumber.isEmpty() || buildingNumber.isEmpty() || price.isEmpty() || location.isEmpty() ||
         propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
         throw exception("Fill all fields!");
     }
+    else if (isbuildingNumber == false) {
+        throw exception("Enter Valid Building Number");
+    }
+    else if (isapartmentNumber == false) {
+        throw exception("Enter Valid Apartment Number");
+    }
+    else if (space < 49) {
+        throw exception("Minimum Space is 50");
+    }
+    else if (price.toInt() < 499999) {
+        throw exception("Minimum price $500,000");
+    }
+    else if (isPrice == false) {
+        throw exception("Enter Valid Price");
+    }
     else {
         QMessageBox::information(this, "Success", "Request submitted successfully");
         system->AddProperty(location.toLocal8Bit().constData(),propertyType.toLocal8Bit().constData(),buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
-    
     }
 }
 void UserAddProperty::retranslateUi(QWidget* Form)
@@ -298,7 +336,7 @@ void UserAddProperty::retranslateUi(QWidget* Form)
     label_4->setText(QCoreApplication::translate("Form", "Space", nullptr));
     lineEdit_3->setPlaceholderText(QCoreApplication::translate("Form", "Price", nullptr));
     label_5->setText(QCoreApplication::translate("Form", " Description", nullptr));
-    pushButton->setText(QCoreApplication::translate("Form", "PushButton", nullptr));
+    pushButton->setText(QCoreApplication::translate("Form", "Submit", nullptr));
     locationImage->setText(QString());
     dollarImage->setText(QString());
     roomNumber->setText(QString());

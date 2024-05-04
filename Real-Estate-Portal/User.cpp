@@ -103,7 +103,8 @@ unordered_map<string, Property*> User::GetUserProperties() {
 	return properties;
 }
 void User::UserAddedProperty(string propertyId, Property* property) {
-	properties[propertyId] = property;
+	//properties[propertyId] = property;
+	properties.insert({ propertyId,property });
 }
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {

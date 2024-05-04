@@ -248,7 +248,7 @@ void Signup::onPushButton1Click(System* system) {
 
 
         if (nationalId[i].isSymbol()|| nationalId[i].isSpace()|| nationalId[i].isLetter()|| nationalId[i].isMark()) {
-            isPhoneNumm = false;
+            isNationalIdNumm = false;
         }
     }
     for (int i = 0; i < phoneNumber.size(); i++) {
