@@ -23,8 +23,7 @@ public:
 	User(string firstName, string lastName, int nationalId);
 	User(string firstName, string lastName);
 	User(string firstName);
-	User(const User& other);
-
+	User(cons
 	int GetNationalId();
 	string GetFirstName();
 	string GetLastName();
