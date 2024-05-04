@@ -51,7 +51,7 @@
     <ClCompile Include="UserAddProperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddpropertyError.cpp">
+    <ClCompile Include="AdminAddProperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -115,7 +115,7 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="UserAddProperty.ui" />
-    <QtUic Include="AddpropertyError.ui" />
+    <QtUic Include="AdminAddProperty.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -139,7 +139,7 @@
     <QtMoc Include="UserAddProperty.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AddpropertyError.h">
+    <QtMoc Include="AdminAddProperty.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

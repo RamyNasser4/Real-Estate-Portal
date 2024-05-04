@@ -65,9 +65,11 @@
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>6.8.0_msvc2019_64</QtInstall>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>6.8.0_msvc2019_64</QtInstall>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -130,13 +132,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;C:\Qt\6.8.0\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;C:\Qt\6.8.0\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt6Widgets.lib;Qt6Core.lib;Qt6Gui.lib;Qt6Widgets.lib;Qt6Core.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt6Widgets.lib;Qt6Core.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,8 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddpropertyError.cpp" />
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="AdminAddProperty.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="Home.cpp" />
@@ -179,7 +181,7 @@
     <QtMoc Include="UserAddProperty.h" />
     <QtMoc Include="Login.h" />
     <QtMoc Include="Home.h" />
-    <QtMoc Include="AddpropertyError.h" />
+    <QtMoc Include="AdminAddProperty.h" />
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProperty.h" />
     <ClInclude Include="Listings.h" />
@@ -195,7 +197,7 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="AddpropertyError.ui" />
+    <QtUic Include="AdminAddProperty.ui" />
     <QtUic Include="DialogButtonBottom.ui" />
     <QtUic Include="EditProperty.ui" />
     <QtUic Include="Home.ui" />

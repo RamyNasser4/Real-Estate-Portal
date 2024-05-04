@@ -1,7 +1,7 @@
 #include "Property.h"
 #include <string>
 using namespace std;
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription)
 {
 	this->location = Location;
 	this->propertyType = PropertyType;
@@ -17,10 +17,10 @@ Property::Property(string Location, string PropertyType, string BuildingNumber, 
 	this->propertyDescription = propertyDescription;
 }
 
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId, bool highlighted) {
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted) {
 	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, highlighted, "");
 }
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, int currentUserId) {
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId) {
 	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, false);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName)
@@ -162,7 +162,7 @@ int Property::GetNumberOfBedrooms()
 int Property::GetPrice() {
 	return price;
 }
-int Property::GetUserId() {
+string Property::GetUserId() {
 	return userId;
 }
 bool Property::GetHighlighted() {

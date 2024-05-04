@@ -1,8 +1,8 @@
 <UI version="4.0" >
- <class>AddpropertyErrorClass</class>
- <widget class="QDialog" name="AddpropertyErrorClass" >
+ <class>AdminAddPropertyClass</class>
+ <widget class="QWidget" name="AdminAddPropertyClass" >
   <property name="objectName" >
-   <string notr="true">AddpropertyErrorClass</string>
+   <string notr="true">AdminAddPropertyClass</string>
   </property>
   <property name="geometry" >
    <rect>
@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>AddpropertyError</string>
+   <string>AdminAddProperty</string>
   </property>$centralwidget$
  </widget>
  <layoutDefault spacing="6" margin="11" />

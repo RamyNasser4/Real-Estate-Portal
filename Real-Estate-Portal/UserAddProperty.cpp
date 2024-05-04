@@ -1,4 +1,6 @@
 #include "UserAddProperty.h"
+#include <QMessageBox>
+#include "Dialog.h"
 
 UserAddProperty::UserAddProperty(QWidget* parent)
 	: QWidget(parent)
@@ -248,99 +250,119 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
 			textEdit->moveCursor(QTextCursor::End);
 		}
 
-
 		});
-	retranslateUi(Form);
-	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
-		try {
-			onPushButtonClick(system);
+		retranslateUi(Form);
+		QObject::connect(pushButton, &QPushButton::clicked, [=]() { {
+				try {
+					onPushButtonClick(system);
+					lineEdit->clear();
+					lineEdit_2->clear();
+					lineEdit_3->clear();
+					comboBox->setCurrentIndex(0); // Reset to default index
+					comboBox_2->setCurrentIndex(0); // Reset to default index
+					textEdit->clear();
+					spinBox->setValue(0);
+					spinBox_2->setValue(0);
+
+				}
+				catch (const exception& e) {
+					QDialog* qdialog = new QDialog();
+					Dialog dialog;
+					dialog.setupUi(qdialog, e.what());
+					qdialog->exec();
+				}
+			}
+			});
+		QMetaObject::connectSlotsByName(Form);
 		}
-		catch (const exception& e) {
-			/* QDialog* qdialog = new QDialog();
-			 Dialog dialog;
-			 dialog.setupUi(qdialog, e.what());
-			 qdialog->exec();*/
+		void UserAddProperty::onPushButtonClick(System* system) {
+			QString apartmentNumber = lineEdit->text();
+			QString buildingNumber = lineEdit_2->text();
+			QString price = lineEdit_3->text();
+			QString location = comboBox->currentText();
+			QString propertyType = comboBox_2->currentText();
+			QString description = textEdit->toPlainText();
+			int space = spinBox->value();
+			int room = spinBox_2->value();
+			bool isbuildingNumber = true;
+			bool isapartmentNumber = true;
+			bool isPrice = true;
+			for (int i = 0; i < buildingNumber.size(); i++) {
+				if (buildingNumber[i].isSymbol() || buildingNumber[i].isSpace() || buildingNumber[i].isLetter() || buildingNumber[i].isMark()) {
+					isbuildingNumber = false;
+				}
+			}
+			for (int i = 0; i < apartmentNumber.size(); i++) {
+				if (apartmentNumber[i].isSymbol() || apartmentNumber[i].isSpace() || apartmentNumber[i].isLetter() || apartmentNumber[i].isMark()) {
+					isapartmentNumber = false;
+				}
+			}
+			for (int i = 0; i < price.size(); i++) {
+				if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
+					isPrice = false;
+				}
+			}
+			if (apartmentNumber.isEmpty() || buildingNumber.isEmpty() || price.isEmpty() || location.isEmpty() ||
+				propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
+				throw exception("Fill all fields!");
+			}
+			else if (isbuildingNumber == false) {
+				throw exception("Enter Valid Building Number");
+			}
+			else if (isapartmentNumber == false) {
+				throw exception("Enter Valid Apartment Number");
+			}
+			else if (space < 49) {
+				throw exception("Minimum Space is 50");
+			}
+			else if (price.toInt() < 499999) {
+				throw exception("Minimum price $500,000");
+			}
+			else if (isPrice == false) {
+				throw exception("Enter Valid Price");
+			}
+			else {
+				QMessageBox::information(this, "Success", "Request submitted successfully");
+				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+			}
 		}
+		void UserAddProperty::retranslateUi(QWidget* Form)
+		{
+			Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
+			headLabel->setText(QCoreApplication::translate("Form", "Add Property Request", nullptr));
+			lineEdit->setPlaceholderText(QCoreApplication::translate("Form", "  Apartment Number", nullptr));
+			lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "  Building Number", nullptr));
+			comboBox->setItemText(0, QCoreApplication::translate("Form", "Cairo", nullptr));
+			comboBox->setItemText(1, QCoreApplication::translate("Form", "Giza", nullptr));
+			comboBox->setItemText(2, QCoreApplication::translate("Form", "Alexandria", nullptr));
+			comboBox->setItemText(3, QString());
+			comboBox->setItemText(4, QString());
 
-		});
+			comboBox->setPlaceholderText(QCoreApplication::translate("Form", "  Choose Location", nullptr));
+			formLabels->setText(QCoreApplication::translate("Form", "Location", nullptr));
+			label->setText(QCoreApplication::translate("Form", "Type", nullptr));
+			label_2->setText(QCoreApplication::translate("Form", "Price", nullptr));
+			label_3->setText(QCoreApplication::translate("Form", "Room", nullptr));
+			label_6->setText("Characters: 0");
+			comboBox_2->setItemText(0, QCoreApplication::translate("Form", "Apartment", nullptr));
+			comboBox_2->setItemText(1, QCoreApplication::translate("Form", "Duplex", nullptr));
+			comboBox_2->setItemText(2, QCoreApplication::translate("Form", "Town House", nullptr));
+			comboBox_2->setItemText(3, QCoreApplication::translate("Form", "Twin House", nullptr));
+			comboBox_2->setItemText(4, QCoreApplication::translate("Form", "Pent House", nullptr));
+			comboBox_2->setItemText(5, QCoreApplication::translate("Form", "Villa", nullptr));
+			comboBox_2->setItemText(6, QCoreApplication::translate("Form", "Chalet", nullptr));
+			comboBox_2->setItemText(7, QString());
 
-	QMetaObject::connectSlotsByName(Form);
-}
-void UserAddProperty::onPushButtonClick(System* system) {
-	QString apartmentNumber = lineEdit->text();
-	QString buildingNumber = lineEdit_2->text();
-	QString price = lineEdit_3->text();
-	QString location = comboBox->currentText();
-	QString propertyType = comboBox_2->currentText();
-	QString description = textEdit->toPlainText();
-	int space = spinBox->value();
-	int room = spinBox_2->value();
-
-	if (apartmentNumber.isEmpty()) {
-		throw exception("Enter Apartment Number");
-	}
-	else if (buildingNumber.isEmpty()) {
-		throw exception("Enter Building Number");
-	}
-	else if (price.isEmpty()) {
-		throw exception("Enter Price");
-	}
-	else if (location.isEmpty()) {
-		throw exception("Choose Location");
-	}
-	else if (propertyType.isEmpty()) {
-		throw exception("Choose Proprety Type");
-	}
-	else if (space == 0) {
-		throw exception("Choose Location");
-	}
-	else if (room == 0) {
-		throw exception("Choose Location");
-	}
-	else if (description.isEmpty()) {
-		throw exception("Enter Property Description");
-	}
-	else {
-		system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
-	}
-}
-void UserAddProperty::retranslateUi(QWidget* Form)
-{
-	Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
-	headLabel->setText(QCoreApplication::translate("Form", "Add Property Request", nullptr));
-	lineEdit->setPlaceholderText(QCoreApplication::translate("Form", "  Apartment Number", nullptr));
-	lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "  Building Number", nullptr));
-	comboBox->setItemText(0, QCoreApplication::translate("Form", "Cairo", nullptr));
-	comboBox->setItemText(1, QCoreApplication::translate("Form", "Giza", nullptr));
-	comboBox->setItemText(2, QCoreApplication::translate("Form", "Alexandria", nullptr));
-	comboBox->setItemText(3, QString());
-	comboBox->setItemText(4, QString());
-
-	comboBox->setPlaceholderText(QCoreApplication::translate("Form", "  Choose Location", nullptr));
-	formLabels->setText(QCoreApplication::translate("Form", "Location", nullptr));
-	label->setText(QCoreApplication::translate("Form", "Type", nullptr));
-	label_2->setText(QCoreApplication::translate("Form", "Price", nullptr));
-	label_3->setText(QCoreApplication::translate("Form", "Room", nullptr));
-	label_6->setText("Characters: 0");
-	comboBox_2->setItemText(0, QCoreApplication::translate("Form", "Apartment", nullptr));
-	comboBox_2->setItemText(1, QCoreApplication::translate("Form", "Duplex", nullptr));
-	comboBox_2->setItemText(2, QCoreApplication::translate("Form", "Town House", nullptr));
-	comboBox_2->setItemText(3, QCoreApplication::translate("Form", "Twin House", nullptr));
-	comboBox_2->setItemText(4, QCoreApplication::translate("Form", "Pent House", nullptr));
-	comboBox_2->setItemText(5, QCoreApplication::translate("Form", "Villa", nullptr));
-	comboBox_2->setItemText(6, QCoreApplication::translate("Form", "Chalet", nullptr));
-	comboBox_2->setItemText(7, QString());
-
-	comboBox_2->setPlaceholderText(QCoreApplication::translate("Form", "  Choose Type", nullptr));
-	label_4->setText(QCoreApplication::translate("Form", "Space", nullptr));
-	lineEdit_3->setPlaceholderText(QCoreApplication::translate("Form", "Price", nullptr));
-	label_5->setText(QCoreApplication::translate("Form", " Description", nullptr));
-	pushButton->setText(QCoreApplication::translate("Form", "PushButton", nullptr));
-	locationImage->setText(QString());
-	dollarImage->setText(QString());
-	roomNumber->setText(QString());
-	squareFootage->setText(QString());
-	type->setText(QString());
-	description->setText(QString());
-	homeImage->setText(QString());
-}
+			comboBox_2->setPlaceholderText(QCoreApplication::translate("Form", "  Choose Type", nullptr));
+			label_4->setText(QCoreApplication::translate("Form", "Space", nullptr));
+			lineEdit_3->setPlaceholderText(QCoreApplication::translate("Form", "Price", nullptr));
+			label_5->setText(QCoreApplication::translate("Form", " Description", nullptr));
+			pushButton->setText(QCoreApplication::translate("Form", "Submit", nullptr));
+			locationImage->setText(QString());
+			dollarImage->setText(QString());
+			roomNumber->setText(QString());
+			squareFootage->setText(QString());
+			type->setText(QString());
+			description->setText(QString());
+			homeImage->setText(QString());
+		}

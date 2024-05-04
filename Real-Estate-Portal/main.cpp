@@ -11,7 +11,6 @@
 #include "Dialog.h"
 #include "Signup.h"
 #include "UserAddProperty.h"
-#include "EditProperty.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -33,7 +32,7 @@ void readFile(System* system) {
 			getline(ss, password, '*');
 			getline(ss, mobileNumber, '*');
 			int ID = stoi(stringId);
-			system->SignUp(firstName, lastName, ID, password,mobileNumber);
+			system->SignUp(firstName, lastName, stringId, password,mobileNumber);
 		}
 	}
 	else {
@@ -107,7 +106,7 @@ void writeFile(System* system) {
 int main(int argc, char* argv[]) {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "123","2123");
+	system->SignUp("Ramy", "Khalifa", "23", "123", "2123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
@@ -133,16 +132,16 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
-	system->AddAdmin("Ramy", "Ramy",12345, "123");
-	Admin* admin = new Admin("Ramy", "Ramy", 1, "123");
-	system->users[1] = admin;
-	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,"this is property");
-	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egypt","villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", 1, "this is property");
-	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", 1, "this is property");
+	
+	User* admin = new Admin("Ramy", "Ramy", "1", "123");
+	system->users["1"] = admin;
+	system->AddProperty("egypt", "villa", "14", 4, 7, 4, 7000, "Ramy Khalifa", "23", "this is property");
+	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egypt", "villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", "1", "this is property");
 	system->FilterByLocation("eg");
 	system->FilterByLocation("ep");
 	system->FilterByNumberOfBedrooms(4);
@@ -156,7 +155,8 @@ int main(int argc, char* argv[]) {
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
-	admin->AdminApproveorDeclineProperty(*system,true);
+	//test for userAddProperty
+	system->Login("23", "123");
 	//cout << system->UserCounter() << endl;
 	//system->RemoveUser(1,23);
 	//cout << system->UserCounter() << endl;
@@ -169,18 +169,17 @@ int main(int argc, char* argv[]) {
     Login* login = new Login();
 	Home* home = new Home();
 	Signup* signup = new Signup();
-	UserAddProperty* useraddproperty = new UserAddProperty(widget);
-	EditProperty* editproperty = new EditProperty(widget);
+	UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
-	widget->addWidget(login);
+	/*widget->addWidget(login);
 	widget->addWidget(home);
 	widget->addWidget(signup);
-	widget->addWidget(editproperty);
-	widget->addWidget(useraddproperty);
-	widget->setCurrentWidget(login);	
-	//widget->setCurrentWidget(useraddproperty);
-	//useraddproperty->setupUi(widget, system);
-    login->setupUi(widget,system,home,signup);
+	widget->setCurrentWidget(login);
+    login->setupUi(widget,system,home,signup);*/
+	widget->setCurrentWidget(req);
+	req->setupUi(widget, system);
+
+ 
 	widget->show();
 	return a.exec();
 }

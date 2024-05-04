@@ -6,10 +6,10 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-Admin::Admin(string firstName, string lastName, int nationalId, string password) : User(firstName, lastName, nationalId, password) {
+Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password) {
 
 }
-Admin::Admin(string firstName, string lastName, int nationalId) {
+Admin::Admin(string firstName, string lastName, string nationalId) {
 	Admin(firstName, lastName, nationalId, "");
 }
 Admin::Admin(string firstName, string lastName) {
@@ -24,7 +24,7 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, string propertyDescription, System &system) {
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System &system) {
 	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId,false,propertyDescription);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
@@ -39,7 +39,7 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
 }
-void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, string propertyDescription, System& system,string propertyId)
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system,string propertyId)
 {
 	
 	Property* property = system.properties[propertyId];
@@ -89,7 +89,7 @@ void Admin::RemoveProperty(string propertyId, System &system) {
 }
 
 
-void Admin::RemoveUser(int ID, System &system) {
+void Admin::RemoveUser(string ID, System &system) {
 	unordered_map<string, Property*>propertiesToRemove = system.users[ID]->GetUserProperties();
 	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
 		RemoveProperty(it->second->GetpropertyId(), system);
