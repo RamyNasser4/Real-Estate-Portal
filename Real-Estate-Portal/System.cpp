@@ -13,7 +13,7 @@ unordered_map <string, Property*> System::GetProperties() {
 unordered_map<string, Property*>  System::GetPropertyComparison() {
 	return propertyComparison;
 }
-unordered_map<int, unordered_map<string, Property*>>System:: GetPropertyFilterSquareFootage() {
+map<int, unordered_map<string, Property*>>System:: GetPropertyFilterSquareFootage() {
 	return propertyFilterSquareFootage;
 }
 unordered_map<int, unordered_map<string, Property*>> System:: GetpropertyFilterBedRooms() {
@@ -141,8 +141,18 @@ void System::RemoveProperty(string propertyId, string currentUserId) {
 
 
 }
-unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
-	return propertyFilterSquareFootage[squareFootage];
+map<int, unordered_map<string, Property*>> System::FilterBySquareFootage(int minSquareFootage,int maxSquareFootage) {
+	if (minSquareFootage > maxSquareFootage)
+		swap(minSquareFootage, maxSquareFootage);
+	auto lower = propertyFilterSquareFootage.lower_bound(minSquareFootage);
+	auto upper = propertyFilterSquareFootage.upper_bound(maxSquareFootage);
+	map<int, unordered_map<string, Property*>> filtered;
+	for (auto umap = lower; umap != upper; ++umap) {
+		for (auto property = umap->second.begin(); property != umap->second.end(); property++) {
+			filtered[property->second->GetSquareFootage()][property->second->GetpropertyId()] = property->second;
+		}
+	}
+	return filtered;
 }
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
 	return propertyFilterLocations[locations];

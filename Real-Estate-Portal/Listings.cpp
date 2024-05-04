@@ -24,20 +24,46 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	pushButton_3 = new QPushButton(widget);
 	pushButton_3->setObjectName("pushButton_3");
 	pushButton_3->setGeometry(QRect(660, 40, 91, 31));
-	pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+	pushButton_3->setStyleSheet(QString::fromUtf8("/*QPushButton{\n"
 		"font-family:sans-serif;\n"
 		"font-weight:600;\n"
 		"font-size:20px;\n"
 		"border-radius: 10px;\n"
 		"border:0.5px solid black;\n"
 		"background-color: white;\n"
-		"}\n"
-		"/*QPushButton:hover{\n"
-		"color:white;\n"
+		"}*/\n"
+		"QPushButton{\n"
 		"background-color:#407BFF;\n"
+		"font-family:sans-serif;\n"
+		"font-weight:700;\n"
+		"color:white;\n"
+		"border:none;\n"
+		"border-radius:10px;\n"
+		"}"));
+	pushButton_4 = new QPushButton(widget);
+	pushButton_4->setObjectName("pushButton_4");
+	pushButton_4->setGeometry(QRect(480, 40, 131, 31));
+	pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+		"background-color:#407BFF;\n"
+		"font-family:sans-serif;\n"
+		"font-weight:700;\n"
+		"color:white;\n"
+		"border:none;\n"
+		"border-radius:10px;\n"
+		"}\n"
+		"/*QPushButton{\n"
+		"font-family:sans-serif;\n"
+		"font-weight:600;\n"
+		"font-size:20px;\n"
+		"border-radius: 10px;\n"
+		"border:0.5px solid black;\n"
+		"background-color: white;\n"
 		"}*/"));
+	QIcon icon2;
+	icon2.addFile(QString::fromUtf8(":/Assets/plus32.png"), QSize(), QIcon::Normal, QIcon::Off);
+	pushButton_4->setIcon(icon2);
 	QIcon icon;
-	icon.addFile(QString::fromUtf8(":/Assets/filter.png"), QSize(), QIcon::Normal, QIcon::Off);
+	icon.addFile(QString::fromUtf8(":/Assets/filterw32.png"), QSize(), QIcon::Normal, QIcon::Off);
 	pushButton_3->setIcon(icon);
 	widget_2 = new QWidget(widget);
 	widget_2->setObjectName("widget_2");
@@ -195,6 +221,8 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		int index = comboBox->currentIndex();
 		QString type = comboBox_2->currentText();
 		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
 		QString minPrice = lineEdit->text();
 		QString maxPrice = lineEdit_2->text();
 		if (type != "None") {
@@ -202,6 +230,12 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		}
 		if (noOfBedrooms != "None") {
 			comboBox_3->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
 		}
 		if (!minPrice.isEmpty()) {
 			lineEdit->setText("");
@@ -223,6 +257,8 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		QString type = comboBox_2->currentText();
 		int index = comboBox_2->currentIndex();
 		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
 		QString minPrice = lineEdit->text();
 		QString maxPrice = lineEdit_2->text();
 		if (location != "None") {
@@ -230,6 +266,12 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		}
 		if (noOfBedrooms != "None") {
 			comboBox_3->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
 		}
 		if (!minPrice.isEmpty()) {
 			lineEdit->setText("");
@@ -251,6 +293,8 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		QString type = comboBox_2->currentText();
 		QString noOfBedrooms = comboBox_3->currentText();
 		int index = comboBox_3->currentIndex();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
 		QString minPrice = lineEdit->text();
 		QString maxPrice = lineEdit_2->text();
 		if (type != "None") {
@@ -258,6 +302,12 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		}
 		if (location != "None") {
 			comboBox->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
 		}
 		if (!minPrice.isEmpty()) {
 			lineEdit->setText("");
@@ -278,6 +328,8 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		QString location = comboBox->currentText();
 		QString type = comboBox_2->currentText();
 		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
 		QString minPrice = lineEdit->text();
 		QString maxPrice = lineEdit_2->text();
 		if (type != "None") {
@@ -289,27 +341,11 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		if (location != "None") {
 			comboBox->setCurrentIndex(0);
 		}
-		lineEdit->setText(minPrice);
-		lineEdit_2->setText(maxPrice);
-		if (!minPrice.isEmpty() && !maxPrice.isEmpty()) {
-			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
 		}
-		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
-		}
-		});
-	QObject::connect(lineEdit_2, &QLineEdit::editingFinished, [=]() {
-		QString location = comboBox->currentText();
-		QString type = comboBox_2->currentText();
-		QString noOfBedrooms = comboBox_3->currentText();
-		QString minPrice = lineEdit->text();
-		QString maxPrice = lineEdit_2->text();
-		if (type != "None") {
-			comboBox_2->setCurrentIndex(0);
-		}
-		if (noOfBedrooms != "None") {
-			comboBox_3->setCurrentIndex(0);
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
 		}
 		if (!minPrice.isEmpty()) {
 			lineEdit->setText("");
@@ -323,11 +359,118 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
 			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
 		}
+		});
+	QObject::connect(lineEdit_2, &QLineEdit::editingFinished, [=]() {
+		QString location = comboBox->currentText();
+		QString type = comboBox_2->currentText();
+		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
+		QString minPrice = lineEdit->text();
+		QString maxPrice = lineEdit_2->text();
+		if (type != "None") {
+			comboBox_2->setCurrentIndex(0);
+		}
+		if (noOfBedrooms != "None") {
+			comboBox_3->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
+		}
+		if (!minPrice.isEmpty()) {
+			lineEdit->setText("");
+		}
+		if (!maxPrice.isEmpty()) {
+			lineEdit_2->setText("");
+		}
+		lineEdit->setText(minPrice);
+		lineEdit_2->setText(maxPrice);
+		if (!minPrice.isEmpty() && !maxPrice.isEmpty()) {
+			qDebug() << minPrice.toInt();
+			qDebug() << maxPrice.toInt();
+			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
 		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
 			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
 		}
 		});
-
+	QObject::connect(lineEdit_3, &QLineEdit::editingFinished, [=]() {
+		QString location = comboBox->currentText();
+		QString type = comboBox_2->currentText();
+		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
+		QString minPrice = lineEdit->text();
+		QString maxPrice = lineEdit_2->text();
+		if (type != "None") {
+			comboBox_2->setCurrentIndex(0);
+		}
+		if (noOfBedrooms != "None") {
+			comboBox_3->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
+		}
+		if (!minPrice.isEmpty()) {
+			lineEdit->setText("");
+		}
+		if (!maxPrice.isEmpty()) {
+			lineEdit_2->setText("");
+		}
+		lineEdit_3->setText(minSqFootage);
+		lineEdit_4->setText(maxSqFootage);
+		if (!minSqFootage.isEmpty() && !maxSqFootage.isEmpty()) {
+			map<int, unordered_map<string, Property*>> filtered = system->FilterBySquareFootage(minSqFootage.toInt(), maxSqFootage.toInt());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else if (minSqFootage.isEmpty() && minSqFootage.isEmpty()) {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
+		});
+	QObject::connect(lineEdit_4, &QLineEdit::editingFinished, [=]() {
+		QString location = comboBox->currentText();
+		QString type = comboBox_2->currentText();
+		QString noOfBedrooms = comboBox_3->currentText();
+		QString minSqFootage = lineEdit_3->text();
+		QString maxSqFootage = lineEdit_4->text();
+		QString minPrice = lineEdit->text();
+		QString maxPrice = lineEdit_2->text();
+		if (type != "None") {
+			comboBox_2->setCurrentIndex(0);
+		}
+		if (noOfBedrooms != "None") {
+			comboBox_3->setCurrentIndex(0);
+		}
+		if (!minSqFootage.isEmpty()) {
+			lineEdit_3->setText("");
+		}
+		if (!maxSqFootage.isEmpty()) {
+			lineEdit_4->setText("");
+		}
+		if (!minPrice.isEmpty()) {
+			lineEdit->setText("");
+		}
+		if (!maxPrice.isEmpty()) {
+			lineEdit_2->setText("");
+		}
+		lineEdit_3->setText(minSqFootage);
+		lineEdit_4->setText(maxSqFootage);
+		if (!minSqFootage.isEmpty() && !maxSqFootage.isEmpty()) {
+			map<int, unordered_map<string, Property*>> filtered = system->FilterBySquareFootage(minSqFootage.toInt(), maxSqFootage.toInt());
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+		}
+		else if (minSqFootage.isEmpty() && minSqFootage.isEmpty()) {
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+		}
+		});
+	//QObject::connect(pushButton,&QPushButton::)
 	QMetaObject::connectSlotsByName(ListingsClass);
 } // setupUi
 //by unordered map
@@ -620,7 +763,13 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea) {
 	scrollAreaWidgetContents = new QWidget();
 	if (filtered.size() != 0) {
-		int totalHeight = 200 * filtered.size();
+		int totalProperties = 0;
+		for (auto it = filtered.begin(); it != filtered.end(); ++it) {
+			for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+				totalProperties++;
+			}
+		}
+		int totalHeight = 200 * totalProperties;
 		qDebug() << totalHeight;
 		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
 		int i = 1;
@@ -925,6 +1074,7 @@ void Listings::retranslateUi(QStackedWidget* ListingsClass)
 	label_21->setText(QCoreApplication::translate("ListingsClass", "<p>163m<sup>2", nullptr));
 	label_24->setText(QCoreApplication::translate("ListingsClass", "3 El Hegaz St., El Mahkama Station", nullptr));
 	label_25->setText(QCoreApplication::translate("ListingsClass", "Townhouse", nullptr));*/
+	pushButton_4->setText(QCoreApplication::translate("ListingsClass", " Add Property", nullptr));
 } // retranslateUi
 ClickEventFilter::ClickEventFilter(QObject* parent) : QObject(parent) {
 

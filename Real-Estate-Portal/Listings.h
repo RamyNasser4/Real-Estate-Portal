@@ -66,6 +66,7 @@ public:
     QLabel* label_18;
     QFrame* line_8;
     QPushButton* pushButton_2;
+    QPushButton* pushButton_4;
     QLabel* label_19;
     QWidget* widget_4;
     QLabel* label_20;

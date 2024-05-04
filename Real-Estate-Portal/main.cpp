@@ -149,8 +149,8 @@ int main(int argc, char* argv[]) {
 	system->FilterByPrice(1000, 200);
 	system->FilterByPrice(2000, 1000);
 	system->FilterByPrice(4000, 6000);
-	system->FilterBySquareFootage(7);
-	system->FilterBySquareFootage(70);
+	/*system->FilterBySquareFootage(7);
+	system->FilterBySquareFootage(70);*/
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
