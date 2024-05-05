@@ -41,17 +41,18 @@ public:
 	int GetSquareFootage();
 	int GetNumberOfBedrooms();
 	int GetPrice();
-	string GetUserId();
 	int GetApartmentNumber();
 	bool GetVerfied();
 	bool GetHighlighted();
 
+	string GetUserId();
 	string GetpropertyId();
 	string GetLocation();
 	string GetPropertyType();
 	string GetBuildingNumber();
 	string GetUserName();
 	string GetPropertyDescription();
+	string GeneratePropertyId();
 
 	void SetPropertyType(string PropertyType);
 	void SetBuildingNumber(string BuildingNumber);
@@ -65,7 +66,7 @@ public:
 	void SetHighlight(bool value);
 	void SetPropertyDescription(string propertyDescription);
 
-	string GeneratePropertyId();
+	
 };
 
 #endif
