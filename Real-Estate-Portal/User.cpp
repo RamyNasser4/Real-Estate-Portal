@@ -103,7 +103,8 @@ unordered_map<string, Property*> User::GetUserProperties() {
 	return properties;
 }
 void User::UserAddedProperty(string propertyId, Property* property) {
-	properties[propertyId] = property;
+	//properties[propertyId] = property;
+	properties.insert({ propertyId,property });
 }
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {
@@ -119,13 +120,6 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterType[property->GetPropertyType()].erase(editPropertyId);
 			system.propertyFilterType[PropertyType][editPropertyId] = property;
 			property->SetPropertyType(PropertyType);
-		}
-		if (property->GetBuildingNumber() != BuildingNumber) {
-			property->SetBuildingNumber(BuildingNumber);
-		}
-		if (property->GetApartmentNumber() != ApartmentNumber) {
-
-			property->SetApartmentNumber(ApartmentNumber);
 		}
 		if (property->GetSquareFootage() != SquareFootage)
 		{
@@ -145,10 +139,9 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterPrice[price][editPropertyId] = property;
 			property->SetPrice(price);
 		}
-		if (property->GetPropertyDescription() != propertyDescription) {
-			property->SetPropertyDescription(propertyDescription);
-		}
-
+		property->SetBuildingNumber(BuildingNumber);
+		property->SetApartmentNumber(ApartmentNumber);
+		property->SetPropertyDescription(propertyDescription);
 	}
 }
 

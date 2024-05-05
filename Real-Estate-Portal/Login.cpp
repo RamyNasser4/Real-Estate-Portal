@@ -104,6 +104,7 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 	lineEdit_2->setObjectName("lineEdit_2");
 	lineEdit_2->setGeometry(QRect(50, 250, 231, 41));
 	lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_2->setEchoMode(QLineEdit::Password);
 	label_2 = new QLabel(frame_2);
 	label_2->setObjectName("label_2");
 	label_2->setGeometry(QRect(50, 130, 121, 16));

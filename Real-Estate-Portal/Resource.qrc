@@ -26,5 +26,9 @@
         <file>Assets/remove16.png</file>
         <file>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</file>
         <file>Assets/SideBarBg.png</file>
+        <file>Assets/plusb16.png</file>
+        <file>Assets/filterw16.png</file>
+        <file>Assets/filterw32.png</file>
+        <file>Assets/plus32.png</file>
     </qresource>
 </RCC>

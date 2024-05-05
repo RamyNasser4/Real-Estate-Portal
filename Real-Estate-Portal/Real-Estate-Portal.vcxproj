@@ -166,6 +166,7 @@
     <ClCompile Include="Compare.cpp" />
     <ClCompile Include="Compare_3.cpp" />
     <ClCompile Include="Compare_4.cpp" />
+    <ClCompile Include="AdminAddProperty.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="Home.cpp" />
@@ -186,6 +187,7 @@
     <QtMoc Include="Compare.h" />
     <QtMoc Include="Compare_3.h" />
     <QtMoc Include="Compare_4.h" />
+    <QtMoc Include="AdminAddProperty.h" />
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProperty.h" />
     <ClInclude Include="Listings.h" />
@@ -204,6 +206,7 @@
     <QtUic Include="Compare.ui" />
     <QtUic Include="Compare_3.ui" />
     <QtUic Include="Compare_4.ui" />
+    <QtUic Include="AdminAddProperty.ui" />
     <QtUic Include="DialogButtonBottom.ui" />
     <QtUic Include="EditProperty.ui" />
     <QtUic Include="Home.ui" />

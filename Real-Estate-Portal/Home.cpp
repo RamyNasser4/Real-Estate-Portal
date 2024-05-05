@@ -169,7 +169,7 @@ void Home::setupUi(QStackedWidget* HomeClass,System* system)
         "    font-weight: bold;\n"
         "}"));
     page = new Listings();
-    page->setObjectName("page");
+    page->setObjectName("Listings");
     label = new QLabel(page);
     label->setObjectName("label");
     label->setGeometry(QRect(-20, 40, 251, 61));

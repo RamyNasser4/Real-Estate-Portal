@@ -6,7 +6,7 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password) {
+Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password,"") {
 
 }
 Admin::Admin(string firstName, string lastName, string nationalId) {
