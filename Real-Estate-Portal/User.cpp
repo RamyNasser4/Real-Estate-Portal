@@ -144,7 +144,9 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 		property->SetPropertyDescription(propertyDescription);
 	}
 }
-
+bool User::UserHasProperty(string propertyId) {
+	return (properties.find(propertyId).userId == this.nationalId);
+}
 User::~User() {
 
 }
