@@ -260,7 +260,7 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     retranslateUi(Form);
     QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
         try {
-            onPushButtonClick(system,propertyId);
+            onPushButtonClick(Form,system,propertyId);
         }
         catch (const exception& e) {
             /* QDialog* qdialog = new QDialog();
@@ -290,10 +290,10 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     string price = to_string(editedProperty->GetPrice());
     lineEdit_3->setText(price.c_str());
     //
-    int Space = spinBox->value();
+    int Space = editedProperty->GetSquareFootage();
     spinBox->setValue(Space);
     //
-    int numberOfRooms = spinBox_2->value();
+    int numberOfRooms = editedProperty->GetNumberOfBedrooms();
     spinBox_2->setValue(numberOfRooms);
     //
     textEdit->setText(editedProperty->GetPropertyDescription().c_str());
@@ -302,7 +302,7 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     
 } // setupUi
 
-void EditProperty::onPushButtonClick(System* system,string propertyId)
+void EditProperty::onPushButtonClick(QStackedWidget* Form,System* system,string propertyId)
 {   
     
     QString apartmentNumber = lineEdit->text();
@@ -339,8 +339,20 @@ void EditProperty::onPushButtonClick(System* system,string propertyId)
         throw exception("Enter Property Description");
     }
     else {
-        QMessageBox::information(this, "Success", "Edit Done Successfully");
         system->EditProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData(),propertyId);
+        QMessageBox::information(this, "Success", "Edit Done Successfully");
+        for (int i = 0; i < Form->count(); ++i) {
+            QWidget* currentWidget = Form->widget(i);
+            if (currentWidget->objectName() == "Listings") {
+                currentWidget = new Listings();
+                Listings* listings = dynamic_cast<Listings*>(currentWidget);
+                Form->hide();
+                Form->setCurrentWidget(currentWidget);
+                listings->setupUi(Form, system);
+                Form->show();
+                break;
+            }
+        }
     }
 }
 

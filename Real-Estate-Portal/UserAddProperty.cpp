@@ -7,7 +7,7 @@ UserAddProperty::UserAddProperty(QWidget* parent)
 {
 	//ui.setupUi(this);
 }
-void UserAddProperty::setupUi(QWidget* Form, System* system)
+void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
@@ -254,7 +254,7 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
 		retranslateUi(Form);
 		QObject::connect(pushButton, &QPushButton::clicked, [=]() { {
 				try {
-					onPushButtonClick(system);
+					onPushButtonClick(system,Form);
 					lineEdit->clear();
 					lineEdit_2->clear();
 					lineEdit_3->clear();
@@ -275,7 +275,7 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
 			});
 		QMetaObject::connectSlotsByName(Form);
 		}
-		void UserAddProperty::onPushButtonClick(System* system) {
+		void UserAddProperty::onPushButtonClick(System* system, QStackedWidget* Form) {
 			QString apartmentNumber = lineEdit->text();
 			QString buildingNumber = lineEdit_2->text();
 			QString price = lineEdit_3->text();
@@ -322,11 +322,23 @@ void UserAddProperty::setupUi(QWidget* Form, System* system)
 				throw exception("Enter Valid Price");
 			}
 			else {
-				QMessageBox::information(this, "Success", "Request submitted successfully");
 				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+				QMessageBox::information(this, "Success", "Request submitted successfully");
+				for (int i = 0; i < Form->count(); ++i) {
+					QWidget* currentWidget = Form->widget(i);
+					if (currentWidget->objectName() == "Listings") {
+						currentWidget = new Listings();
+						Listings* listings = dynamic_cast<Listings*>(currentWidget);
+						Form->hide();
+						Form->setCurrentWidget(currentWidget);
+						listings->setupUi(Form, system);
+						Form->show();
+						break;
+					}
+				}
 			}
 		}
-		void UserAddProperty::retranslateUi(QWidget* Form)
+		void UserAddProperty::retranslateUi(QStackedWidget* Form)
 		{
 			Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
 			headLabel->setText(QCoreApplication::translate("Form", "Add Property Request", nullptr));

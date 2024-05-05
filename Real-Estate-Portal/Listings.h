@@ -26,6 +26,7 @@
 #include <QAction>
 #include <QMouseEvent>
 #include "System.h"
+#include "UserAddProperty.h"
 QT_BEGIN_NAMESPACE
 
 class Listings : public QWidget
@@ -79,7 +80,7 @@ public:
 
     void setupUi(QStackedWidget* ListingsClass,System* system);
     void drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system,QScrollArea* scrollArea,QStackedWidget* ListedComponents);
-    void drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea);
+    void drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea, QStackedWidget* ListedComponents);
 
     void retranslateUi(QStackedWidget* ListingsClass);
     

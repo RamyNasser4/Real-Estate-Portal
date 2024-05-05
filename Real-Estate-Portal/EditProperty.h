@@ -13,6 +13,7 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QStackedWidget>
 #include "System.h"
+#include "Listings.h"
 QT_BEGIN_NAMESPACE
 
 class EditProperty : public QWidget
@@ -20,7 +21,7 @@ class EditProperty : public QWidget
 	Q_OBJECT
 
 public slots:
-	void onPushButtonClick(System* system,string propertyId);
+	void onPushButtonClick(QStackedWidget* Form,System* system,string propertyId);
 public:
 	EditProperty(QWidget* parent=nullptr);
 	QFrame* frame;

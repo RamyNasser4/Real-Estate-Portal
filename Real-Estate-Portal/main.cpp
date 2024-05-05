@@ -169,15 +169,15 @@ int main(int argc, char* argv[]) {
     Login* login = new Login();
 	Home* home = new Home();
 	Signup* signup = new Signup();
-	UserAddProperty* req = new UserAddProperty(widget);
+	//UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
-	/*widget->addWidget(login);
+	widget->addWidget(login);
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home,signup);*/
-	widget->setCurrentWidget(req);
-	req->setupUi(widget, system);
+    login->setupUi(widget,system,home,signup);
+	//widget->setCurrentWidget(req);
+	//req->setupUi(widget, system);
 
  
 	widget->show();

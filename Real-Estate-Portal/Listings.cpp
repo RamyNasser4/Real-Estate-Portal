@@ -206,16 +206,21 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	widget_2->hide();
 	retranslateUi(ListingsClass);
 	QObject::connect(pushButton_3, &QPushButton::clicked, widget_2, [=]() {
-		//delete scrollAreaWidgetContents;
-		/*scrollAreaWidgetContents = new QWidget();
-		scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 759, 559));*/
 		if (widget_2->isVisible()) {
 			widget_2->hide();
 		}
 		else {
 			widget_2->show();
 		}
+		});
+	QObject::connect(pushButton_4, &QPushButton::clicked, [=]() {
+		UserAddProperty* addProperty = new UserAddProperty(nullptr);
+		ListingsClass->hide();
+		ListingsClass->addWidget(addProperty);
+		ListingsClass->setCurrentWidget(addProperty);
+		addProperty->setupUi(ListingsClass, system);
+		ListingsClass->show();
+
 		});
 	QObject::connect(comboBox, &QComboBox::currentTextChanged, [=]() {
 		QString location = comboBox->currentText();
@@ -358,7 +363,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		lineEdit_2->setText(maxPrice);
 		if (!minPrice.isEmpty() && !maxPrice.isEmpty()) {
 			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
 			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
@@ -396,7 +401,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 			qDebug() << minPrice.toInt();
 			qDebug() << maxPrice.toInt();
 			map<int, unordered_map<string, Property*>> filtered = system->FilterByPrice(minPrice.toInt(), maxPrice.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else if (minPrice.isEmpty() && maxPrice.isEmpty()) {
 			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
@@ -432,10 +437,10 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		lineEdit_4->setText(maxSqFootage);
 		if (!minSqFootage.isEmpty() && !maxSqFootage.isEmpty()) {
 			map<int, unordered_map<string, Property*>> filtered = system->FilterBySquareFootage(minSqFootage.toInt(), maxSqFootage.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else if (minSqFootage.isEmpty() && minSqFootage.isEmpty()) {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	QObject::connect(lineEdit_4, &QLineEdit::editingFinished, [=]() {
@@ -468,10 +473,10 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		lineEdit_4->setText(maxSqFootage);
 		if (!minSqFootage.isEmpty() && !maxSqFootage.isEmpty()) {
 			map<int, unordered_map<string, Property*>> filtered = system->FilterBySquareFootage(minSqFootage.toInt(), maxSqFootage.toInt());
-			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea,ListingsClass);
 		}
 		else if (minSqFootage.isEmpty() && minSqFootage.isEmpty()) {
-			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea);
+			drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea,ListingsClass);
 		}
 		});
 	//QObject::connect(pushButton,&QPushButton::)
@@ -706,6 +711,18 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 				try
 				{
 					system->RemoveProperty(propertyId, system->currentUserId);
+					for (int i = 0; i < ListComponents->count(); ++i) {
+						QWidget* currentWidget = ListComponents->widget(i);
+						if (currentWidget->objectName() == "Listings") {
+							currentWidget = new Listings();
+							Listings* listings = dynamic_cast<Listings*>(currentWidget);
+							ListComponents->hide();
+							ListComponents->setCurrentWidget(currentWidget);
+							listings->setupUi(ListComponents, system);
+							ListComponents->show();
+							break;
+						}
+					}
 				}
 				catch (const exception& e)
 				{
@@ -779,7 +796,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 	}
 }
 //by map of unordererd map
-void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea) {
+void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_map<string, Property*>> filtered, System* system, QScrollArea* scrollArea, QStackedWidget* ListComponents) {
 	scrollAreaWidgetContents = new QWidget();
 	if (filtered.size() != 0) {
 		int totalProperties = 0;
@@ -1008,6 +1025,18 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 					try
 					{
 						system->RemoveProperty(propertyId, system->currentUserId);
+						for (int i = 0; i < ListComponents->count(); ++i) {
+							QWidget* currentWidget = ListComponents->widget(i);
+							if (currentWidget->objectName() == "Listings") {
+								currentWidget = new Listings();
+								Listings* listings = dynamic_cast<Listings*>(currentWidget);
+								ListComponents->hide();
+								ListComponents->setCurrentWidget(currentWidget);
+								listings->setupUi(ListComponents, system);
+								ListComponents->show();
+								break;
+							}
+						}
 					}
 					catch (const exception& e)
 					{
@@ -1020,6 +1049,21 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 					}
 					catch (const exception& e) {
 
+					}
+					});
+				QObject::connect(edit, &QAction::triggered, [=]() {
+					try
+					{
+						EditProperty* editProperty = new EditProperty();
+						ListComponents->hide();
+						ListComponents->addWidget(editProperty);
+						ListComponents->setCurrentWidget(editProperty);
+						editProperty->setupUi(ListComponents, system, propertyId);
+						ListComponents->show();
+					}
+					catch (const exception& e)
+					{
+						qDebug() << e.what();
 					}
 					});
 				i++;
