@@ -41,6 +41,7 @@ public:
     //void onPushButton1Click(System* system);
     void retranslateUi(QStackedWidget* Form);
 	Login(QWidget *parent = nullptr);
+
 	~Login();
 
 private:

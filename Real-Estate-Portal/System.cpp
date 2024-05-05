@@ -216,3 +216,9 @@ bool System::FindUser(string nationalid) {
 	return false;
 
 }
+Property* System::GetProperty(string propertyId) {
+	if (properties.find(propertyId) != properties.end()) {
+		return properties.find(propertyId)->second;
+	}
+	else return nullptr;
+}
