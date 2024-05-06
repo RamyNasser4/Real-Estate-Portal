@@ -38,6 +38,7 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterType[PropertyType][propertyId] = NewProperty;
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
+	system.propertiesCount++;
 }
 void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
@@ -89,6 +90,7 @@ void Admin::RemoveProperty(string propertyId, System& system) {
 	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
 	system.properties.erase(propertyId);
 	delete property;
+	system.propertiesCount--;
 }
 
 
@@ -104,6 +106,7 @@ void Admin::RemoveUser(string ID, System& system) {
 	else {
 		system.users.erase(ID);
 		cout << "User Successfully Deleted." << endl;
+		system.userCount--;
 	}
 }
 
@@ -114,6 +117,7 @@ void Admin::AdminApproveorDeclineProperty(System& system, bool approved) {
 		if (approved) {
 			system.properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
 			cout << "Property Approved!";
+			system.propertiesCount++;
 		}
 		else {
 			cout << "Property Declined";
