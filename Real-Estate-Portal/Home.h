@@ -26,6 +26,10 @@ QT_BEGIN_NAMESPACE
 #include <string>
 #include "Login.h"
 #include "Signup.h"
+#include "Compare.h"
+#include "Compare_3.h"
+#include "Compare_4.h"
+#include "Dialog.h"
 using namespace std;
 class ClickableWidget : public QWidget {
 public:

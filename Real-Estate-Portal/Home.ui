@@ -152,6 +152,19 @@ background-position:left center;
       </size>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>16</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="widget_4" native="true">
     <property name="geometry">
@@ -199,6 +212,67 @@ background-position:left center;
      </property>
      <property name="text">
       <string>  Compare</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_6" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>670</y>
+      <width>219</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/*QWidget:hover{
+background-color:#407BFF;
+}
+QPushButton:hover{
+background-color:#407BFF;
+background-image: url(:/Assets/menu.png);
+color:white;
+}*/</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>0</y>
+       <width>201</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-image: url(:/Assets/logoutGrey32.png);
+background-repeat:no-repeat;
+background-position:left center;
+}
+/*QPushButton:hover{
+	background-image: url(:/Assets/menu.png);
+}*/</string>
+     </property>
+     <property name="text">
+      <string>Log out</string>
      </property>
      <property name="iconSize">
       <size>
@@ -280,7 +354,7 @@ QComboBox:item:checked {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page"/>
    <widget class="QWidget" name="page_2"/>

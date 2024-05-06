@@ -12,6 +12,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include "System.h"
 
 QT_BEGIN_NAMESPACE
 class Compare : public QWidget
@@ -38,7 +39,7 @@ private:
     QPushButton* homeImage;
 public:
 	Compare(QWidget *parent = nullptr);
-    void setupUi(QWidget* Form);
+    void setupUi(QWidget* Form, System* system);
     void retranslateUi(QWidget* Form);
 	~Compare();
 

@@ -66,6 +66,7 @@ void System::Login(string ID, string password) {
 void System::Logout() {
 	currentUserId = "";
 	currentUserName = "";
+	propertyComparison.clear();
 }
 void System::RemoveUser(string adminID, string userID, System& system) {
 	if (users.find(adminID) != users.end()) {
