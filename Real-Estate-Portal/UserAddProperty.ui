@@ -116,7 +116,7 @@ border:none;
    <widget class="QLabel" name="headLabel">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>280</x>
       <y>20</y>
       <width>311</width>
       <height>51</height>
