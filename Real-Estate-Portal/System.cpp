@@ -39,6 +39,7 @@ void System::SignUp(string fName, string lName, string natId, string password, s
 		throw exception("User already exists");
 		//Call login
 	}
+	usercount++;
 }
 void System::Login(string ID, string password) {
 	if (users.find(ID) == users.end()) {
@@ -68,7 +69,7 @@ void System::Logout() {
 	currentUserName = "";
 	propertyComparison.clear();
 }
-void System::RemoveUser(string adminID, string userID, System& system) {
+void System::RemoveUser(string adminID, string userID) {
 	if (users.find(adminID) != users.end()) {
 		Admin* admin = dynamic_cast<Admin*>(users[adminID]);
 		if (admin) {
@@ -83,6 +84,7 @@ void System::RemoveUser(string adminID, string userID, System& system) {
 		cout << "Invalid ID" << endl;
 		throw exception("Invalid ID");
 	}
+	usercount--;
 }
 void System::Request(Property* property) {
 	if (!property->GetVerfied()) {
@@ -197,10 +199,10 @@ map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, i
 }
 int System::UserCounter()
 {
-	return users.size();
+	return userCount;
 }
 int System::PropertiesCounter() {
-	return properties.size();
+	return propertiesCount;
 }
 void System::EditMobileNumber(string currentUserId, string newmobileNumber)
 {
