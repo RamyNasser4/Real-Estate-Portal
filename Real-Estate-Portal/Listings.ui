@@ -832,6 +832,36 @@ font-weight:600;
        <string>We couldn't find any properties that match your search</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>75</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-color:transparent;
+border:none;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="Resource.qrc">
+        <normaloff>:/Assets/bookmarkv2.png</normaloff>:/Assets/bookmarkv2.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+     </widget>
+     <zorder>label_18</zorder>
      <zorder>label_17</zorder>
      <zorder>horizontalWidget</zorder>
      <zorder>line_7</zorder>
@@ -847,9 +877,9 @@ font-weight:600;
      <zorder>label_19</zorder>
      <zorder>toolButton</zorder>
      <zorder>widget_4</zorder>
-     <zorder>label_18</zorder>
      <zorder>label_7</zorder>
      <zorder>label_8</zorder>
+     <zorder>pushButton_5</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="pushButton_4">

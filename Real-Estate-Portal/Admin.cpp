@@ -122,9 +122,9 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	}
 	
 }
-void Admin::HighlightProperty(string propertyId, System& system) {
-	if (system.properties.find(propertyId) != system.properties.end()) {
-		Property* property = system.properties[propertyId];
+void Admin::HighlightProperty(string propertyId, System* system) {
+	if (system->properties.find(propertyId) != system->properties.end()) {
+		Property* property = system->properties[propertyId];
 		if (!property->GetHighlighted()) {
 			property->SetHighlight(true);
 			cout << "Property highlighted successfully\n";
@@ -139,9 +139,9 @@ void Admin::HighlightProperty(string propertyId, System& system) {
 	}
 
 }
-void Admin::RemoveHighlight(string propertyId, System& system) {
-	if (system.properties.find(propertyId) != system.properties.end()) {
-		Property* property = system.properties[propertyId];
+void Admin::RemoveHighlight(string propertyId, System* system) {
+	if (system->properties.find(propertyId) != system->properties.end()) {
+		Property* property = system->properties[propertyId];
 		if (property->GetHighlighted()) {
 			property->SetHighlight(false);
 			cout << "Highlighted removed successfully\n";

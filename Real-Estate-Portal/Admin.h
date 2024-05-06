@@ -19,7 +19,7 @@ public:
 	void RemoveProperty(string propertyId,System &system);
 
 	void AdminApproveorDeclineProperty(System &system, bool approve);
-	void HighlightProperty(string propertyId, System& system);
-	void RemoveHighlight(string propretyId, System& syste);
+	void HighlightProperty(string propertyId, System* system);
+	void RemoveHighlight(string propretyId, System* system);
 };
 
