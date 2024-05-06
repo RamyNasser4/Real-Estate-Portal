@@ -1,3 +1,4 @@
+#include <QWidget>
 #ifndef USERADDPROPERTYPNMARP_H
 #define USERADDPROPERTYPNMARP_H
 #include <QtCore/QVariant>
@@ -11,14 +12,16 @@
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
+#include <QStackedWidget>
 #include "System.h"
+#include "Listings.h"
 QT_BEGIN_NAMESPACE
 
 class UserAddProperty : public QWidget
 {
     Q_OBJECT
 public slots:
-    void onPushButtonClick(System* system);
+    void onPushButtonClick(System* system, QStackedWidget* Form);
 public:
     UserAddProperty(QWidget* parent);
     QFrame* frame;
@@ -46,9 +49,9 @@ public:
     QPushButton* type;
     QPushButton* description;
     QPushButton* homeImage;
-
-    void setupUi(QWidget* Form, System* system);
-    void retranslateUi(QWidget* Form);
+    QLabel* label_6;
+    void setupUi(QStackedWidget* Form, System* system);
+    void retranslateUi(QStackedWidget* Form);
     
 
 private:
@@ -56,7 +59,7 @@ private:
 };
 
 namespace Ui {
-    class Form : public UserAddProperty {};
+    class Form123 : public UserAddProperty {};
 } 
 
 QT_END_NAMESPACE

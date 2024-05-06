@@ -35,7 +35,7 @@ private:
 	Ui::PropertycardClass ui;
 };
 namespace Ui {
-    class Form : public Propertycard {};
+    class Form123213 : public Propertycard {};
 } // namespace Ui
 
 QT_END_NAMESPACE

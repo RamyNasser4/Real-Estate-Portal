@@ -118,6 +118,8 @@ int main(int argc, char* argv[]) {
 	//User* user = new User("Sebaay", "Ashraf", 65, "koty");
 	//system->SignUp("Sebaay", "Ashraf", 65, "koty", "23123");
 	//cout << user->GetFirstName() << endl;
+	// 
+	// 
 	//cout << user->GetLastName() << endl;
 	//cout << user->GetName() << endl;
 	//cout << user->GetNationalId() << endl;
@@ -150,8 +152,8 @@ int main(int argc, char* argv[]) {
 	system->FilterByPrice(1000, 200);
 	system->FilterByPrice(2000, 1000);
 	system->FilterByPrice(4000, 6000);
-	system->FilterBySquareFootage(7);
-	system->FilterBySquareFootage(70);
+	/*system->FilterBySquareFootage(7);
+	system->FilterBySquareFootage(70);*/
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
@@ -169,15 +171,15 @@ int main(int argc, char* argv[]) {
     Login* login = new Login();
 	Home* home = new Home();
 	Signup* signup = new Signup();
-	UserAddProperty* req = new UserAddProperty(widget);
+	//UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
-	/*widget->addWidget(login);
+	widget->addWidget(login);
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home,signup);*/
-	widget->setCurrentWidget(req);
-	req->setupUi(widget, system);
+    login->setupUi(widget,system,home,signup);
+	//widget->setCurrentWidget(req);
+	//req->setupUi(widget, system);
 
  
 	widget->show();

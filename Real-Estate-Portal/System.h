@@ -14,7 +14,7 @@ public:
 	string currentUserId;
 	string currentUserName;
 	//Hashtables for filter
-	unordered_map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
+	map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
@@ -24,7 +24,7 @@ public:
 	unordered_map<string, User*> GetUsers();
 	unordered_map<string, Property*> GetProperties();
 	unordered_map<string, Property*> GetPropertyComparison();
-	unordered_map<int, unordered_map<string, Property*>> GetPropertyFilterSquareFootage();
+	map<int, unordered_map<string, Property*>> GetPropertyFilterSquareFootage();
 	unordered_map<int, unordered_map<string, Property*>> GetpropertyFilterBedRooms();
 	unordered_map<string, unordered_map<string, Property*>> GetPropertyFilterType();
 	unordered_map<string, unordered_map<string, Property*>> GetPropertyFilterLocations();
@@ -32,7 +32,7 @@ public:
 
 
 	//Filter functions 
-	unordered_map<string, Property*> FilterBySquareFootage(int squareFootage);
+	map<int, unordered_map<string, Property*>> FilterBySquareFootage(int minSquareFootage,int maxSquareFootage);
 	unordered_map<string, Property*> FilterByNumberOfBedrooms(int bedrooms);
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	map<int, unordered_map<string,Property*>> FilterByPrice(int minPrice, int maxPrice);
@@ -54,6 +54,7 @@ public:
 	int UserCounter();
 	int PropertiesCounter();
 	bool FindUser(string nationalid);
+	Property* GetProperty(string propertyId);
 	
 };
 
