@@ -3,7 +3,7 @@
 Compare_4::Compare_4(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
+	//ui.setupUi(this);
 }/********************************************************************************
 ** Form generated from reading UI file 'compare 4fokqmL.ui'
 **
@@ -340,7 +340,7 @@ Compare_4::Compare_4(QWidget *parent)
 
 
 namespace Ui {
-    class Form : public Compare_4 {};
+    class cmp4Form : public Compare_4 {};
 } // namespace Ui
 
 

@@ -30,5 +30,7 @@
         <file>Assets/filterw16.png</file>
         <file>Assets/filterw32.png</file>
         <file>Assets/plus32.png</file>
+        <file>Assets/logoutGrey32.png</file>
+        <file>Assets/logoutW32.png</file>
     </qresource>
 </RCC>

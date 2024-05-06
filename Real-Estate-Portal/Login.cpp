@@ -1,6 +1,7 @@
 #include "Login.h"
 #include "Dialog.h"
 #include "Propertycard.h"
+#include "Home.h"
 Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
@@ -148,7 +149,7 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 		try {
 			Form->hide();
 			Form->setCurrentWidget(signup);
-			signup->setupUi(Form, system,home);
+			signup->setupUi(Form, system,this, home);
 			QObject::connect(signup->pushButton_2, &QPushButton::clicked, signup->pushButton_2, [=]() {
 				try {
 					qDebug() << "yyyyy";
@@ -172,10 +173,15 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 			onPushButton1Click(system);
 			Form->hide();
 			Form->setCurrentWidget(home);
-			home->setupUi(Form,system);
-			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			home->setupUi(Form, system,this,signup);
+			HoverEventFilter* filter0;
+			Admin* admin = dynamic_cast<Admin*>(system->users[system->currentUserId]);
+			if (admin) {
+				filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			}
 			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
 			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+			HoverEventFilter* filter3 = new HoverEventFilter(home->widget_6, home->pushButton_6,home, ":/Assets/logoutW32.png", ":/Assets/logoutGrey32.png");
 			Form->show();
 		}
 		catch (const exception& e) {

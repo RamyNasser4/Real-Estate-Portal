@@ -24,7 +24,18 @@ QT_BEGIN_NAMESPACE
 #include "Listings.h"
 #include <QEvent>
 #include <string>
+#include "Login.h"
+#include "Signup.h"
 using namespace std;
+class ClickableWidget : public QWidget {
+public:
+    ClickableWidget(QStackedWidget* stackedWidget,System* system,QString widgetName,QWidget* parent = nullptr);
+    QStackedWidget* stackedWidget;
+    System* system;
+    QString widgetName;
+protected:
+    void mousePressEvent(QMouseEvent* event) override;
+};
 class Home : public QWidget
 {
 	Q_OBJECT
@@ -32,12 +43,14 @@ class Home : public QWidget
 public:
     QWidget* widget;
     QPushButton* pushButton;
-    QWidget* widget_2;
-    QWidget* widget_3;
+    ClickableWidget* widget_2;
+    ClickableWidget* widget_3;
     QPushButton* pushButton_4;
     QPushButton* pushButton_5;
-    QWidget* widget_4;
+    ClickableWidget* widget_4;
     QPushButton* pushButton_8;
+    ClickableWidget* widget_6;
+    QPushButton* pushButton_6;
     QStackedWidget* stackedWidget;
     //QWidget* page;
     Listings* page;
@@ -45,7 +58,7 @@ public:
     QPushButton* pushButton_3;
     QComboBox* comboBox;
     QWidget* page_2;
-    void setupUi(QStackedWidget* HomeClass, System* system);
+    void setupUi(QStackedWidget* HomeClass, System* system, Login* login, Signup* signup);
     void retranslateUi(QStackedWidget* HomeClass);
 	Home(QWidget *parent=nullptr);
 
@@ -57,13 +70,13 @@ private:
 class HoverEventFilter : public QObject {
     Q_OBJECT
 public:
-    HoverEventFilter(QWidget* parentWidget, QPushButton* buttonToStyle, QObject* parent,string Hover,string noHover);
+    HoverEventFilter(ClickableWidget* parentWidget, QPushButton* buttonToStyle, QObject* parent,string Hover,string noHover);
 
 protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
 
 private:
-    QWidget* m_parentWidget;
+    ClickableWidget* m_parentWidget;
     QPushButton* m_buttonToStyle;
     string noHover;
     string Hover;

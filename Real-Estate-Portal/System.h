@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include <map>
+#include <vector>
 #include <string>
 #include <queue>
 #include "User.h"
@@ -19,11 +20,11 @@ public:
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
-	unordered_map<string, Property*> propertyComparison;
+	vector<Property*> propertyComparison;
 	unordered_map<string, Property*> properties;
 	unordered_map<string, User*> GetUsers();
 	unordered_map<string, Property*> GetProperties();
-	unordered_map<string, Property*> GetPropertyComparison();
+	vector<Property*> GetPropertyComparison();
 	map<int, unordered_map<string, Property*>> GetPropertyFilterSquareFootage();
 	unordered_map<int, unordered_map<string, Property*>> GetpropertyFilterBedRooms();
 	unordered_map<string, unordered_map<string, Property*>> GetPropertyFilterType();
@@ -42,7 +43,9 @@ public:
 	void Request(Property *property);
 	void SignUp(string fName, string lName, string natId, string password,string mobileNumber);
 	void Login(string ID, string password);
-	void UserChangePassword(string currentPassword,string newPassword,User& user);
+	void Logout();
+	void UserChangePassword(string currentPassword,string newPassword,User* user);
+	void EditProfile(string fName, string lName, string mobNum, string currPass, string newPass);
 	void RemoveUser(string adminID, string userID,System &system);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);

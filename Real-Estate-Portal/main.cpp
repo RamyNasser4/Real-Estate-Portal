@@ -169,6 +169,7 @@ int main(int argc, char* argv[]) {
 	QApplication a(argc, argv);
 	QStackedWidget* widget = new QStackedWidget();
     Login* login = new Login();
+	login->setObjectName("Login");
 	Home* home = new Home();
 	Signup* signup = new Signup();
 	//UserAddProperty* req = new UserAddProperty(widget);

@@ -15,10 +15,9 @@
 #include <QFontDatabase>
 #include <QStackedWidget>
 #include "System.h"
-#include "Home.h"
 #include "Signup.h"
 QT_BEGIN_NAMESPACE
-
+class Home;
 class Login : public QWidget
 {
 	Q_OBJECT

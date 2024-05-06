@@ -3,7 +3,7 @@
 Compare_3::Compare_3(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
+	//ui.setupUi(this);
 }/********************************************************************************
 ** Form generated from reading UI file 'compare 3XYJNJt.ui'
 **
@@ -290,7 +290,7 @@ Compare_3::Compare_3(QWidget *parent)
 
 
 namespace Ui {
-    class Form : public Compare_3 {};
+    class cmp3Form : public Compare_3 {};
 } // namespace Ui
 
 

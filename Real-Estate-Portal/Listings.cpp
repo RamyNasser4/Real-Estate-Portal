@@ -654,7 +654,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			QAction* removeFromCompare = new QAction("Remove From Compare");
 			QAction* edit = new QAction("Edit");
 			QAction* del = new QAction("Delete");
-			if (system->propertyComparison.find(it->second->GetpropertyId()) == system->propertyComparison.end()) {
+			auto cmpIt = std::find(system->propertyComparison.begin(), system->propertyComparison.end(), system->properties[it->second->GetpropertyId()]);
+			if (cmpIt == system->propertyComparison.end()) {
 				menu->addAction(addToCompare);
 			}
 			else {
@@ -968,7 +969,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				QAction* removeFromCompare = new QAction("Remove From Compare");
 				QAction* edit = new QAction("Edit");
 				QAction* del = new QAction("Delete");
-				if (system->propertyComparison.find(it2->second->GetpropertyId()) == system->propertyComparison.end()) {
+				auto cmpIt = std::find(system->propertyComparison.begin(), system->propertyComparison.end(), system->properties[it2->second->GetpropertyId()]);
+				if (cmpIt == system->propertyComparison.end()) {
 					menu->addAction(addToCompare);
 				}
 				else {

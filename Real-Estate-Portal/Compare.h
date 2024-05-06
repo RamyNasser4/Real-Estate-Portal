@@ -43,7 +43,7 @@ public:
 	~Compare();
 
 private:
-	Ui::CompareClass ui;
+	//Ui::CompareClass ui;
 };
 QT_END_NAMESPACE
 

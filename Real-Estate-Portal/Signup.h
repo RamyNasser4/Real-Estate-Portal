@@ -7,15 +7,8 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include "System.h"
-#include "Home.h"
-
-
-QT_BEGIN_NAMESPACE
-namespace Ui {
-    class Signup;
-}
-QT_END_NAMESPACE
-
+class Login;
+class Home;
 class Signup : public QWidget
 {
     Q_OBJECT
@@ -26,11 +19,11 @@ public:
     ~Signup();
     void onPushButton1Click(System* system);
       
-    void setupUi(QStackedWidget* Signup, System* system,Home* home);
+    void setupUi(QStackedWidget* Signup, System* system,Login* login,Home* home);
     void retranslateUi(QStackedWidget* Signup);
 
 private:
-    Ui::Signup *ui;
+    //Ui::Signup *ui;
     QFrame* frame;
     QFrame* frame_2;
     QLabel* label;

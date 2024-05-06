@@ -12,6 +12,8 @@
 #include "Dialog.h"
 #include "Signup.h"
 #include "signup.h"
+#include "Home.h"
+#include "Login.h"
 #include "ui_Signup.h"
 #include <qstring.h>
 
@@ -38,7 +40,7 @@ Signup::Signup(QWidget* parent)
 
 
 
-void Signup::setupUi(QStackedWidget* Signup, System* system,Home* home )
+void Signup::setupUi(QStackedWidget* Signup, System* system, Login* login, Home* home )
 {
     if (Signup->objectName().isEmpty())
         Signup->setObjectName("Signup");
@@ -200,7 +202,7 @@ void Signup::setupUi(QStackedWidget* Signup, System* system,Home* home )
 			onPushButton1Click(system);
             Signup->hide();
             Signup->setCurrentWidget(home);
-			home->setupUi(Signup,system);
+			home->setupUi(Signup,system,login,this);
 			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
 			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
 			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");

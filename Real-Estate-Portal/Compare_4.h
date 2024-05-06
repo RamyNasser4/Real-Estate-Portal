@@ -59,7 +59,7 @@ public:
 	~Compare_4();
 
 private:
-	Ui::Compare_4Class ui;
+	//Ui::Compare_4Class ui;
 };
 QT_END_NAMESPACE
 

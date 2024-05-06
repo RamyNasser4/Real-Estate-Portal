@@ -13,7 +13,7 @@
 Compare::Compare(QWidget* parent)
     : QWidget(parent)
 {
-    ui.setupUi(this);
+    //ui.setupUi(this);
 }
 
 
@@ -247,7 +247,7 @@ Compare::Compare(QWidget* parent)
 
 
 namespace Ui {
-    class Form : public Compare {};
+    class cmpForm : public Compare {};
 } // namespace Ui
 
 // COMPAREDAAWMO_H
