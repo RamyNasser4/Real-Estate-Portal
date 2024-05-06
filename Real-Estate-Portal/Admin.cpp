@@ -6,7 +6,7 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password,"") {
+Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password, "") {
 
 }
 Admin::Admin(string firstName, string lastName, string nationalId) {
@@ -24,8 +24,8 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System &system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId,false,propertyDescription);
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -39,29 +39,23 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
 }
-void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system,string propertyId)
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
-	
+
 	Property* property = system.properties[propertyId];
-	
+
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 		system.propertyFilterLocations[Location][propertyId] = property;
-		property->SetLocation(Location);	
+		property->SetLocation(Location);
 	}
-	
+
 	if (property->GetPropertyType() != PropertyType)
 	{
 		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
 		system.propertyFilterType[PropertyType][propertyId] = property;
 		property->SetPropertyType(PropertyType);
-	}
-	if (property->GetBuildingNumber() != BuildingNumber) {
-		property->SetBuildingNumber(BuildingNumber);
-	}
-	if (property->GetApartmentNumber() != ApartmentNumber) {
-		property->SetApartmentNumber(ApartmentNumber);
 	}
 	if (property->GetSquareFootage() != SquareFootage)
 	{
@@ -81,13 +75,13 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 		system.propertyFilterPrice[price][propertyId] = property;
 		property->SetPrice(price);
 	}
-	if (property->GetPropertyDescription() != propertyDescription) {
-		property->SetPropertyDescription(propertyDescription);
-	}
+	property->SetPropertyDescription(propertyDescription);
+	property->SetBuildingNumber(BuildingNumber);
+	property->SetApartmentNumber(ApartmentNumber);
 }
 
 
-void Admin::RemoveProperty(string propertyId, System &system) {
+void Admin::RemoveProperty(string propertyId, System& system) {
 	Property* property = system.properties[propertyId];
 	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
 	system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
@@ -98,7 +92,7 @@ void Admin::RemoveProperty(string propertyId, System &system) {
 }
 
 
-void Admin::RemoveUser(string ID, System &system) {
+void Admin::RemoveUser(string ID, System& system) {
 	unordered_map<string, Property*>propertiesToRemove = system.users[ID]->GetUserProperties();
 	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
 		RemoveProperty(it->second->GetpropertyId(), system);
@@ -113,7 +107,7 @@ void Admin::RemoveUser(string ID, System &system) {
 	}
 }
 
-void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
+void Admin::AdminApproveorDeclineProperty(System& system, bool approved) {
 	if (!system.unVerified.empty()) {
 		Property* AcceptedProperty = system.unVerified.front();
 		system.unVerified.pop();
@@ -129,7 +123,7 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 		cout << "There are no Properties to approve or decline";
 		throw exception("Property Not Found");
 	}
-	
+
 }
 void Admin::HighlightProperty(string propertyId, System* system) {
 	if (system->properties.find(propertyId) != system->properties.end()) {

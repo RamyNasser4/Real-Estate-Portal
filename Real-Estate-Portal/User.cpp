@@ -144,7 +144,7 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 		property->SetPropertyDescription(propertyDescription);
 	}
 }
-bool User::UserHasProperty(string propertyId) {
+bool User::HasProperty(string propertyId) {
 	return (properties.find(propertyId) != properties.end());
 }
 User::~User() {

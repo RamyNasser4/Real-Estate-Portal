@@ -41,7 +41,7 @@ public:
 	void UserAddedProperty(string propertyId, Property* property);
 	void UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId);
 	void RemoveProperty(string propertyid, System& system);
-	bool UserHasProperty(string propertyId);
+	bool HasProperty(string propertyId);
 	virtual ~User();
 
 

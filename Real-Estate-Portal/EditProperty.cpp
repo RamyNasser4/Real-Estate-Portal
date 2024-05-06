@@ -116,10 +116,12 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     lineEdit->setObjectName("lineEdit");
     lineEdit->setGeometry(QRect(220, 240, 161, 41));
     lineEdit->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
+    lineEdit->setMaxLength(10);
     lineEdit_2 = new QLineEdit(frame_2);
     lineEdit_2->setObjectName("lineEdit_2");
     lineEdit_2->setGeometry(QRect(40, 240, 171, 41));
     lineEdit_2->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
+    lineEdit_2->setMaxLength(10);
     comboBox = new QComboBox(frame_2);
     comboBox->addItem(QString());
     comboBox->addItem(QString());
@@ -175,6 +177,7 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     lineEdit_3->setObjectName("lineEdit_3");
     lineEdit_3->setGeometry(QRect(430, 240, 101, 41));
     lineEdit_3->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
+    lineEdit_3->setMaxLength(10);
     label_5 = new QLabel(frame_2);
     label_5->setObjectName("label_5");
     label_5->setGeometry(QRect(370, 300, 131, 41));

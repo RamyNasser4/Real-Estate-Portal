@@ -133,6 +133,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit->setObjectName("lineEdit");
 	lineEdit->setGeometry(QRect(620, 35, 61, 31));
 	lineEdit->setStyleSheet(QString::fromUtf8(""));
+	lineEdit->setMaxLength(10);
 	line = new QFrame(widget_2);
 	line->setObjectName("line");
 	line->setGeometry(QRect(690, 45, 16, 16));
@@ -142,6 +143,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit_2->setObjectName("lineEdit_2");
 	lineEdit_2->setGeometry(QRect(715, 35, 61, 31));
 	lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_2->setMaxLength(10);
 	label_6 = new QLabel(widget_2);
 	label_6->setObjectName("label_6");
 	label_6->setGeometry(QRect(480, 10, 111, 21));
@@ -154,6 +156,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		"border:0 solid white;\n"
 		"border-radius:5px;\n"
 		"}"));
+	lineEdit_3->setMaxLength(10);
 	line_2 = new QFrame(widget_2);
 	line_2->setObjectName("line_2");
 	line_2->setGeometry(QRect(525, 45, 16, 16));
@@ -170,6 +173,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit_4->setObjectName("lineEdit_4");
 	lineEdit_4->setGeometry(QRect(550, 35, 61, 31));
 	lineEdit_4->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_4->setMaxLength(10);
 	line_5 = new QFrame(widget);
 	line_5->setObjectName("line_5");
 	line_5->setGeometry(QRect(30, 170, 731, 16));
