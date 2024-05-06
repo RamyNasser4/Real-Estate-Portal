@@ -110,7 +110,7 @@ void Admin::RemoveUser(string ID, System& system) {
 	}
 }
 
-void Admin::AdminApproveorDeclineProperty(System& system, bool approved) {
+void Admin::AdminApproveorDeclineProperty(System& system, bool approved,User &user) {
 	if (!system.unVerified.empty()) {
 		Property* AcceptedProperty = system.unVerified.front();
 		system.unVerified.pop();
@@ -118,6 +118,7 @@ void Admin::AdminApproveorDeclineProperty(System& system, bool approved) {
 			system.properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
 			cout << "Property Approved!";
 			system.propertiesCount++;
+			user.UserCountProperty++;
 		}
 		else {
 			cout << "Property Declined";

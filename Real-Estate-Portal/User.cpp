@@ -85,7 +85,7 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	system.properties[propertyId] = NewProperty;
 	UserAddedProperty(propertyId, NewProperty);
 	system.Request(NewProperty);
-	UserCountProperty++;
+	
 	
 }
 void User::RemoveProperty(string propertyId, System& system) {

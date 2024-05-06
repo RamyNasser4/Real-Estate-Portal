@@ -13,11 +13,13 @@ protected:
 	string password;
 	string mobileNumber;
 	string nationalId;
-	int UserCountProperty=0;
+	
+	
 
 
 	unordered_map<string, Property*> properties;
 public:
+	int UserCountProperty = 0;
 	User();
 	User(string firstName, string lastName, string nationalId, string password, string mobileNumber);
 	User(string firstName, string lastName, string nationalId, string password);

@@ -18,7 +18,7 @@ public:
 	void RemoveUser(string ID, System& system);
 	void RemoveProperty(string propertyId,System &system);
 
-	void AdminApproveorDeclineProperty(System &system, bool approve);
+	void AdminApproveorDeclineProperty(System &system, bool approve,User &user);
 	void HighlightProperty(string propertyId, System* system);
 	void RemoveHighlight(string propretyId, System* system);
 };
