@@ -54,6 +54,10 @@ string User::GetMobileNumber() {
 string User::GetNationalId() {
 	return this->nationalId;
 }
+int User::GetUserCountProperty() {
+	return UserCountProperty;
+}
+
 void User::SetFirstName(string firstname) {
 	this->firstName = firstname;
 }
@@ -81,6 +85,8 @@ void User::AddProperty(string Location, string PropertyType, string BuildingNumb
 	system.properties[propertyId] = NewProperty;
 	UserAddedProperty(propertyId, NewProperty);
 	system.Request(NewProperty);
+	UserCountProperty++;
+	
 }
 void User::RemoveProperty(string propertyId, System& system) {
 	Property* property = system.properties[propertyId];
@@ -92,11 +98,14 @@ void User::RemoveProperty(string propertyId, System& system) {
 		system.properties.erase(propertyId);
 		properties.erase(propertyId);
 		delete property;
+		system.propertiesCount--;
+		UserCountProperty--;
+		
 	}
 	else {
 		throw exception("Property doesn't belong to User");
 	}
-
+	
 
 }
 unordered_map<string, Property*> User::GetUserProperties() {
@@ -105,6 +114,7 @@ unordered_map<string, Property*> User::GetUserProperties() {
 void User::UserAddedProperty(string propertyId, Property* property) {
 	//properties[propertyId] = property;
 	properties.insert({ propertyId,property });
+	
 }
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {

@@ -13,6 +13,7 @@ protected:
 	string password;
 	string mobileNumber;
 	string nationalId;
+	int UserCountProperty=0;
 
 
 	unordered_map<string, Property*> properties;
@@ -30,6 +31,7 @@ public:
 	string GetName();
 	string GetPassword();
 	string GetMobileNumber();
+	int GetUserCountProperty();
 	unordered_map<string, Property*>GetUserProperties();
 	
 	void SetFirstName(string firstname);
