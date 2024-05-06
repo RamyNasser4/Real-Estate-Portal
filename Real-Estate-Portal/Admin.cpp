@@ -51,6 +51,24 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 		property->SetLocation(Location);	
 	}
 	
+	if (property->GetPropertyType() != PropertyType)
+	{
+		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
+		system.propertyFilterType[PropertyType][propertyId] = property;
+		property->SetPropertyType(PropertyType);
+	}
+	if (property->GetBuildingNumber() != BuildingNumber) {
+		property->SetBuildingNumber(BuildingNumber);
+	}
+	if (property->GetApartmentNumber() != ApartmentNumber) {
+		property->SetApartmentNumber(ApartmentNumber);
+	}
+	if (property->GetSquareFootage() != SquareFootage)
+	{
+		system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+		system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
+		property->SetSquareFootage(SquareFootage);
+	}
 	if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
 	{
 		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
@@ -63,17 +81,8 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 		system.propertyFilterPrice[price][propertyId] = property;
 		property->SetPrice(price);
 	}
-	if (property->GetPropertyType() != PropertyType)
-	{
-		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
-		system.propertyFilterType[PropertyType][propertyId] = property;
-		property->SetPropertyType(PropertyType);
-	}
-	if (property->GetSquareFootage() != SquareFootage)
-	{
-		system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
-		system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
-		property->SetSquareFootage(SquareFootage);
+	if (property->GetPropertyDescription() != propertyDescription) {
+		property->SetPropertyDescription(propertyDescription);
 	}
 }
 
