@@ -168,6 +168,7 @@
     <ClCompile Include="Compare_4.cpp" />
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="EditProperty.cpp" />
+    <ClCompile Include="EditUser.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="Listings.cpp" />
     <ClCompile Include="Login.cpp" />
@@ -188,6 +189,7 @@
     <QtMoc Include="Compare_4.h" />
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProperty.h" />
+    <ClInclude Include="EditUser.h" />
     <ClInclude Include="Listings.h" />
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />
