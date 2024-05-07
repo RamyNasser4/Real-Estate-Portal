@@ -42,6 +42,9 @@
     <ClCompile Include="Listings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EditProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Property.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditProperty.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
