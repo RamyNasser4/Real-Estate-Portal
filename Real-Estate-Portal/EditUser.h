@@ -5,13 +5,15 @@
 using namespace std;
 class EditUser
 {
-	User oldUser;
-	User newUser;
+	string oldFirstName;
+	string newFirstName;
+	string oldLastName;
+	string newLastName;
+	string oldMobileNumber;
+	string newMobileNumber;
+	bool password;
 	time_t timeStamp;
-	EditUser(User oldUser, User newUser, time_t time);
-	EditUser(User oldUser, User newUser);
-	EditUser(User oldUser);
-	EditUser();
+	EditUser(string oldFirstName,string newFirstName,string oldLastName,string newLastName,string oldMobileNumber,string newMobileNumber,bool password,time_t timestamp);
 
 
 };

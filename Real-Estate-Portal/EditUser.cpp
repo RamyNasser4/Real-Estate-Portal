@@ -3,17 +3,13 @@
 #include <iostream>
 #include"User.h"
 using namespace std;
-EditUser::EditUser(User oldUser, User newUser, time_t timeStamp) {
-	this->oldUser = oldUser;
-	this->newUser = newUser;
-	this->timeStamp = timeStamp;
-}
-EditUser::EditUser(User oldUser, User newUser) {
-	EditUser(oldUser, newUser, NULL);
-}
-EditUser::EditUser(User oldUser) {
-	EditUser(oldUser,newUser);
-}
-EditUser::EditUser() {
-	EditUser(oldUser);
+EditUser::EditUser(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password, time_t timestamp) {
+	this->oldFirstName = oldFirstName;
+	this->newFirstName = newFirstName;
+	this->oldLastName = oldLastName;
+	this->newLastName = newLastName;
+	this->oldMobileNumber = oldMobileNumber;
+	this->newMobileNumber = newMobileNumber;
+	this->password = password;
+	this->timeStamp = timestamp;
 }
