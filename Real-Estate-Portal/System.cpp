@@ -39,7 +39,7 @@ void System::SignUp(string fName, string lName, string natId, string password, s
 		throw exception("User already exists");
 		//Call login
 	}
-	usercount++;
+	userCount++;
 }
 void System::Login(string ID, string password) {
 	if (users.find(ID) == users.end()) {
@@ -84,7 +84,7 @@ void System::RemoveUser(string adminID, string userID) {
 		cout << "Invalid ID" << endl;
 		throw exception("Invalid ID");
 	}
-	usercount--;
+	userCount--;
 }
 void System::Request(Property* property) {
 	if (!property->GetVerfied()) {
