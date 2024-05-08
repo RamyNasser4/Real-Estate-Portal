@@ -15,9 +15,9 @@
 #include <QFontDatabase>
 #include <QStackedWidget>
 #include "System.h"
-#include "Home.h"
+#include "Signup.h"
 QT_BEGIN_NAMESPACE
-
+class Home;
 class Login : public QWidget
 {
 	Q_OBJECT
@@ -35,11 +35,12 @@ public:
     QLabel* label_4;
     QPushButton* pushButton_2;
 
-    void setupUi(QStackedWidget* Form,System* system,Home* home);
+    void setupUi(QStackedWidget* Form,System* system,Home* home,Signup* signup);
 public:
     //void onPushButton1Click(System* system);
     void retranslateUi(QStackedWidget* Form);
 	Login(QWidget *parent = nullptr);
+
 	~Login();
 
 private:

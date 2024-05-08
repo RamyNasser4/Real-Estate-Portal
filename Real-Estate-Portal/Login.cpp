@@ -1,12 +1,13 @@
 #include "Login.h"
 #include "Dialog.h"
 #include "Propertycard.h"
+#include "Home.h"
 Login::Login(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 }
-void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
+void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* signup) {
 	if (Form->objectName().isEmpty())
 		Form->setObjectName("Form");
 	Form->resize(1024, 720);
@@ -104,6 +105,7 @@ void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
 	lineEdit_2->setObjectName("lineEdit_2");
 	lineEdit_2->setGeometry(QRect(50, 250, 231, 41));
 	lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_2->setEchoMode(QLineEdit::Password);
 	label_2 = new QLabel(frame_2);
 	label_2->setObjectName("label_2");
 	label_2->setGeometry(QRect(50, 130, 121, 16));
@@ -145,28 +147,44 @@ void Login::setupUi(QStackedWidget* Form, System* system,Home* home) {
 	retranslateUi(Form);
 	QObject::connect(pushButton_2, &QPushButton::clicked, pushButton_2, [=]() {
 		try {
-			
+			Form->hide();
+			Form->setCurrentWidget(signup);
+			signup->setupUi(Form, system,this, home);
+			QObject::connect(signup->pushButton_2, &QPushButton::clicked, signup->pushButton_2, [=]() {
+				try {
+					qDebug() << "yyyyy";
+					Form->hide();
+					Form->setCurrentWidget(this);
+					this->setupUi(Form, system, home, signup);
+					Form->show();
+				}
+				catch (const exception& e) {
+					qDebug() << e.what();
+				}
+				});
+			Form->show();
 		}
-		catch (const std::exception& e) {
-			QDialog* qdialog = new QDialog();
-			Dialog dialog;
-			dialog.setupUi(qdialog, e.what());
-			qdialog->exec();
+		catch (const exception& e) {
+			qDebug() << e.what();
 		}
-		//Form->show();
 		});
 	QObject::connect(pushButton, &QPushButton::clicked, pushButton, [=]() {
 		try {
 			onPushButton1Click(system);
 			Form->hide();
 			Form->setCurrentWidget(home);
-			home->setupUi(Form);
-			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			home->setupUi(Form, system,this,signup);
+			HoverEventFilter* filter0;
+			Admin* admin = dynamic_cast<Admin*>(system->users[system->currentUserId]);
+			if (admin) {
+				filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+			}
 			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
 			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+			HoverEventFilter* filter3 = new HoverEventFilter(home->widget_6, home->pushButton_6,home, ":/Assets/logoutW32.png", ":/Assets/logoutGrey32.png");
 			Form->show();
 		}
-		catch (const std::exception& e) {
+		catch (const exception& e) {
 			QDialog* qdialog = new QDialog();
 			Dialog dialog;
 			dialog.setupUi(qdialog, e.what());
@@ -180,13 +198,13 @@ void Login::onPushButton1Click(System* system) {
 	QString nationalId = lineEdit->text();
 	QString password = lineEdit_2->text();
 	if (nationalId.isEmpty()) {
-		throw std::exception("Enter National ID");
+		throw exception("Enter National ID");
 	}
 	else if (password.isEmpty()) {
-		throw std::exception("Enter Password");
+		throw exception("Enter Password");
 	}
 	else {
-		system->Login(nationalId.toInt(), password.toLocal8Bit().constData());
+		system->Login(nationalId.toLocal8Bit().constData(), password.toLocal8Bit().constData());
 	}
 }
 void Login::retranslateUi(QStackedWidget* Form) {

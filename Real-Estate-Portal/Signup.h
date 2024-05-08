@@ -5,28 +5,25 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QStackedWidget>
 #include "System.h"
-
-
-QT_BEGIN_NAMESPACE
-namespace Ui {
-    class Signup;
-}
-QT_END_NAMESPACE
-
+class Login;
+class Home;
 class Signup : public QWidget
 {
     Q_OBJECT
 
 public:
+    QPushButton* pushButton_2;
     Signup(QWidget* parent = nullptr);
     ~Signup();
-
-    void setupUi(QWidget* Signup, System* system);
-    void retranslateUi(QWidget* Signup);
+    void onPushButton1Click(System* system);
+      
+    void setupUi(QStackedWidget* Signup, System* system,Login* login,Home* home);
+    void retranslateUi(QStackedWidget* Signup);
 
 private:
-    Ui::Signup *ui;
+    //Ui::Signup *ui;
     QFrame* frame;
     QFrame* frame_2;
     QLabel* label;
@@ -43,5 +40,5 @@ private:
     QLineEdit* lineEdit_6;
     QPushButton* pushButton;
     QLabel* label_11;
-    QPushButton* pushButton_2;
+   
 };

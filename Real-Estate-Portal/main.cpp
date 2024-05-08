@@ -9,6 +9,8 @@
 #include "Login.h"
 #include "Home.h"
 #include "Dialog.h"
+#include "Signup.h"
+#include "UserAddProperty.h"
 using namespace std;
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -30,7 +32,7 @@ void readFile(System* system) {
 			getline(ss, password, '*');
 			getline(ss, mobileNumber, '*');
 			int ID = stoi(stringId);
-			system->SignUp(firstName, lastName, ID, password,mobileNumber);
+			system->SignUp(firstName, lastName, stringId, password,mobileNumber);
 		}
 	}
 	else {
@@ -104,11 +106,11 @@ void writeFile(System* system) {
 int main(int argc, char* argv[]) {
 	//test sign up and login
 	System* system = new System();
-	system->SignUp("Ramy", "Khalifa", 23, "123","2123");
+	system->SignUp("Ramy", "Khalifa", "23", "123", "2123");
 	//system->SignUp("Ramy", "Khalifa", 23, "Ghazaly123");
 	//system->SignUp("khalifa", "Alawe", 23, "Ghazaly00");
 	//system->Login(12, "Koty");
-	system->Login(23, "Ghazaly123");
+	//system->Login(23, "Ghazaly123");
 	//system->Login(23, "abdo");
 	//system->Login(15, "Ghazaly123");
 
@@ -116,6 +118,8 @@ int main(int argc, char* argv[]) {
 	//User* user = new User("Sebaay", "Ashraf", 65, "koty");
 	//system->SignUp("Sebaay", "Ashraf", 65, "koty", "23123");
 	//cout << user->GetFirstName() << endl;
+	// 
+	// 
 	//cout << user->GetLastName() << endl;
 	//cout << user->GetName() << endl;
 	//cout << user->GetNationalId() << endl;
@@ -130,16 +134,16 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
-	system->AddProperty("egypt","villa","14",4,7,4,7000,"Ramy Khalifa",23,false,"this is property");
 	
-	User* admin = new Admin("Ramy", "Ramy", 1, "123");
-	system->users[1] = admin;
-	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egypt","villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", 1, false, "this is property");
-	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", 1, false, "this is property");
+	User* admin = new Admin("Ramy", "Ramy", "1", "123");
+	system->users["1"] = admin;
+	system->AddProperty("egypt", "villa", "14", 4, 7, 4, 7000, "Ramy Khalifa", "23", "this is property");
+	system->AddProperty("eg", "villa", "14", 4, 7, 8, 1000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("eg", "appartment", "14", 9, 7, 4, 2000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egypt", "villa", "14", 4, 1, 4, 3000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "villa", "14", 4, 9, 4, 4000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "school", "14", 4, 4, 4, 5000, "Ramy Khalifa", "1", "this is property");
+	system->AddProperty("egy", "garage", "14", 4, 3, 4, 6000, "Ramy Khalifa", "1", "this is property");
 	system->FilterByLocation("eg");
 	system->FilterByLocation("ep");
 	system->FilterByNumberOfBedrooms(4);
@@ -148,11 +152,13 @@ int main(int argc, char* argv[]) {
 	system->FilterByPrice(1000, 200);
 	system->FilterByPrice(2000, 1000);
 	system->FilterByPrice(4000, 6000);
-	system->FilterBySquareFootage(7);
-	system->FilterBySquareFootage(70);
+	/*system->FilterBySquareFootage(7);
+	system->FilterBySquareFootage(70);*/
 	system->FilterByType("villa");
 	system->FilterByType("school");
 	system->FilterByType("pool");
+	//test for userAddProperty
+	system->Login("23", "123");
 	//cout << system->UserCounter() << endl;
 	//system->RemoveUser(1,23);
 	//cout << system->UserCounter() << endl;
@@ -163,12 +169,20 @@ int main(int argc, char* argv[]) {
 	QApplication a(argc, argv);
 	QStackedWidget* widget = new QStackedWidget();
     Login* login = new Login();
+	login->setObjectName("Login");
 	Home* home = new Home();
+	Signup* signup = new Signup();
+	//UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
 	widget->addWidget(login);
 	widget->addWidget(home);
+	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home);
+    login->setupUi(widget,system,home,signup);
+	//widget->setCurrentWidget(req);
+	//req->setupUi(widget, system);
+
+ 
 	widget->show();
 	return a.exec();
 }

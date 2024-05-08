@@ -1,28 +1,47 @@
 #include "System.h"
 #include "User.h"
-#include "Admin.h"
 #include <string>
 #include <iostream>
 using namespace std;
 
-unordered_map<int, User*> System::GetUsers() {
+unordered_map<string, User*> System::GetUsers() {
 	return users;
 }
 unordered_map <string, Property*> System::GetProperties() {
 	return properties;
 }
-void System::SignUp(string fName, string lName, int natId, string password, string mobileNumber) {
+vector<Property*>  System::GetPropertyComparison() {
+	return propertyComparison;
+}
+map<int, unordered_map<string, Property*>>System::GetPropertyFilterSquareFootage() {
+	return propertyFilterSquareFootage;
+}
+unordered_map<int, unordered_map<string, Property*>> System::GetpropertyFilterBedRooms() {
+	return propertyFilterBedRooms;
+
+}
+unordered_map<string, unordered_map<string, Property*>> System::GetPropertyFilterType() {
+	return propertyFilterType;
+}
+unordered_map<string, unordered_map<string, Property*>> System::GetPropertyFilterLocations() {
+	return propertyFilterLocations;
+}
+map<int, unordered_map<string, Property*>>System::GetPropertyFilterPrice() {
+	return propertyFilterPrice;
+}
+void System::SignUp(string fName, string lName, string natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password, mobileNumber);
 		cout << "Registered Successfully " << endl;
 	}
 	else {
 		cout << "User already exists" << endl;
-		throw std::exception("User already exists");
+		throw exception("User already exists");
 		//Call login
 	}
+	usercount++;
 }
-void System::Login(int ID, string password) {
+void System::Login(string ID, string password) {
 	if (users.find(ID) == users.end()) {
 		//Call Sign Up
 		cout << "User is not Registered to system" << " " << "Sign Up " << endl;
@@ -37,14 +56,20 @@ void System::Login(int ID, string password) {
 			else {
 				cout << "User Signed In" << endl;
 			}
+			currentUserId = users[ID]->GetNationalId();
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
-			throw std::exception("Invalid National ID or Password");
+			throw exception("Invalid National ID or Password");
 		}
 	}
 }
-void System::RemoveUser(int adminID,int userID, System &system) {
+void System::Logout() {
+	currentUserId = "";
+	currentUserName = "";
+	propertyComparison.clear();
+}
+void System::RemoveUser(string adminID, string userID) {
 	if (users.find(adminID) != users.end()) {
 		Admin* admin = dynamic_cast<Admin*>(users[adminID]);
 		if (admin) {
@@ -52,79 +77,103 @@ void System::RemoveUser(int adminID,int userID, System &system) {
 		}
 		else {
 			cout << "No Permission to remove user" << endl;
-			throw new exception("No Permission to remove user");
+			throw exception("No Permission to remove user");
 		}
 	}
 	else {
 		cout << "Invalid ID" << endl;
-		throw new exception("Invalid ID");
+		throw exception("Invalid ID");
 	}
+	usercount--;
 }
 void System::Request(Property* property) {
 	if (!property->GetVerfied()) {
 		unVerified.push(property);
 	}
 }
-void System::UserChangePassword(string currentPassword, string newPassword, User& user) {
-	if (user.GetPassword() == currentPassword) {
-		user.SetPassword(newPassword);
+void System::UserChangePassword(string currentPassword, string newPassword, User* user) {
+	if (user->GetPassword() == currentPassword) {
+		user->SetPassword(newPassword);
 		cout << "Password changed successfuly\n";
 	}
 	else {
 		cout << "Incorrect password, Please try again.\n";
-		throw new exception("Incorrect password");
+		throw exception("Incorrect password");
 	}
+}
+void System::EditProfile(string fName, string lName, string mobNum, string currPass, string newPass) {
+	User* user = users[currentUserId];
+	UserChangePassword(currPass, newPass, user);
+	EditMobileNumber(currentUserId, mobNum);
+	user->SetFirstName(fName);
+	user->SetLastName(lName);
 }
 void System::AddToCompare(string propertyId) {
 	if (propertyComparison.size() <= 3) {
-		if (propertyComparison.find(propertyId) == propertyComparison.end()) {
-			propertyComparison[propertyId] = properties[propertyId];
+		auto it = std::find(propertyComparison.begin(), propertyComparison.end(), properties[propertyId]);
+		if (it == propertyComparison.end()) {
+			propertyComparison.push_back(properties[propertyId]);
 		}
 		else {
-			throw new exception("Property already in comparison list");
+			throw exception("Property already in comparison list");
 		}
 	}
 	else {
-		throw new exception("Cannot compare more than 4 properties");
+		throw exception("Cannot compare more than 4 properties");
 	}
 }
 void System::RemoveFromCompare(string propertyId) {
-	propertyComparison.erase(propertyId);
+	auto it = std::find(propertyComparison.begin(), propertyComparison.end(), properties[propertyId]);
+	if (it != propertyComparison.end()) {
+		propertyComparison.erase(it);
+	}
+	else {
+		throw exception("Property not in comparison");
+	}
 }
-void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription) {
+void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
+		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
 	}
 	else {
 		//in case of not an admin
-		 
-		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId,highlighted,propertyDescription, *this);
+
+		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
 	}
 }
-void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms,  int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system, string propertyId) {
+void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
-		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, highlighted,propertyDescription, *this, propertyId);
+		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, propertyDescription, *this, propertyId);
 	}
 	else {
-		//Call Edit property fn from User Class
+		users[currentUserId]->UserEditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, *this, propertyId);
 	}
 }
-void System::RemoveProperty(string propertyId, System& system, int currentUserId) {
+void System::RemoveProperty(string propertyId, string currentUserId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
 		admin->RemoveProperty(propertyId, *this);
 	}
 	else {
 		users[currentUserId]->RemoveProperty(propertyId, *this);
-		//Call Remove Property fn from User Class
 	}
 
 
 }
-unordered_map<string, Property*> System::FilterBySquareFootage(int squareFootage) {
-	return propertyFilterSquareFootage[squareFootage];
+map<int, unordered_map<string, Property*>> System::FilterBySquareFootage(int minSquareFootage, int maxSquareFootage) {
+	if (minSquareFootage > maxSquareFootage)
+		swap(minSquareFootage, maxSquareFootage);
+	auto lower = propertyFilterSquareFootage.lower_bound(minSquareFootage);
+	auto upper = propertyFilterSquareFootage.upper_bound(maxSquareFootage);
+	map<int, unordered_map<string, Property*>> filtered;
+	for (auto umap = lower; umap != upper; ++umap) {
+		for (auto property = umap->second.begin(); property != umap->second.end(); property++) {
+			filtered[property->second->GetSquareFootage()][property->second->GetpropertyId()] = property->second;
+		}
+	}
+	return filtered;
 }
 unordered_map<string, Property*> System::FilterByLocation(string locations) {
 	return propertyFilterLocations[locations];
@@ -135,27 +184,27 @@ unordered_map<string, Property*> System::FilterByType(string type) {
 unordered_map<string, Property*> System::FilterByNumberOfBedrooms(int bedrooms) {
 	return propertyFilterBedRooms[bedrooms];
 }
-unordered_map<string, Property*> System::FilterByPrice(int minPrice, int maxPrice) {
+map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, int maxPrice) {
 	if (minPrice > maxPrice)
 		swap(minPrice, maxPrice);
 	auto lower = propertyFilterPrice.lower_bound(minPrice);
 	auto upper = propertyFilterPrice.upper_bound(maxPrice);
-	unordered_map<string, Property*> filtered;
+	map<int, unordered_map<string, Property*>> filtered;
 	for (auto umap = lower; umap != upper; ++umap) {
 		for (auto property = umap->second.begin(); property != umap->second.end(); property++) {
-			filtered[property->second->GetpropertyId()] = property->second;
+			filtered[property->second->GetPrice()][property->second->GetpropertyId()] = property->second;
 		}
 	}
 	return filtered;
 }
 int System::UserCounter()
 {
-	return users.size();
+	return userCount;
 }
 int System::PropertiesCounter() {
-	return properties.size();
+	return propertiesCount;
 }
-void System::EditMobileNumber(int currentUserId, string newmobileNumber)
+void System::EditMobileNumber(string currentUserId, string newmobileNumber)
 {
 	if (users.find(currentUserId) != users.end())
 	{
@@ -163,19 +212,34 @@ void System::EditMobileNumber(int currentUserId, string newmobileNumber)
 	}
 	else
 	{
-		cout << "Unavailable User ID \n";
+		throw exception("User not found");
 	}
 }
-void System::AddAdmin(string firstName, string lastName, int nationalId, string password)
+void System::AddAdmin(string firstName, string lastName, string nationalId, string password)
 {
 	if (users.find(nationalId) == users.end()) {
 		users[nationalId] = new Admin(firstName, lastName, nationalId, password);
 		cout << "Registered Successfully " << endl;
 	}
-	else 
+	else
 	{
 		cout << "ID already exists" << endl;
-		throw std::exception("User already exists");
+		throw exception("User already exists");
 		//Call login
 	}
+}
+bool System::FindUser(string nationalid) {
+	if (users.find(nationalid) != users.end()) {
+
+		return true;
+
+	}
+	return false;
+
+}
+Property* System::GetProperty(string propertyId) {
+	if (properties.find(propertyId) != properties.end()) {
+		return properties.find(propertyId)->second;
+	}
+	return nullptr;
 }

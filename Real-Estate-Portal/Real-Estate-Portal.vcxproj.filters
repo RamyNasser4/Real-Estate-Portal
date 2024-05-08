@@ -42,7 +42,25 @@
     <ClCompile Include="Listings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Signup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="EditProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserAddProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compare_3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compare_4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +83,7 @@
     <ClInclude Include="Listings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EditProperty.h">
+    <ClInclude Include="EditUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -102,6 +120,16 @@
     <QtUic Include="Listings.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Signup.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EditProperty.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UserAddProperty.ui" />
+    <QtUic Include="Compare.ui" />
+    <QtUic Include="Compare_3.ui" />
+    <QtUic Include="Compare_4.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -114,6 +142,24 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Home.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Signup.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EditProperty.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UserAddProperty.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Compare.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Compare_3.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Compare_4.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

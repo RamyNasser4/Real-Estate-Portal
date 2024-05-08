@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>741</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>741</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+        font-family:Sans Serif Collection;
+        background:#1B425E;
+        font-size:24px;
+}
+#homeImage{
+background:#1B425E;
+border:none;
+}
+#headLabel{
+        background:#1B425E;
+        color:#CCD0CD;
+        font-weight:600;
+        font-size:30px;
+}
+#frame_2{
+        background:#CCD0CD;
+}
+QLabel{
+color:#2B2A2A;
+  background:#CCD0CD;
+}
+
+QLineEdit{
+        border:solid;
+       border-radius:5px;
+       background: white;
+        color:#2B2A2A;
+        font-size:15px;
+  }
+QComboBox{
+        background: white;
+        color:#2B2A2A;
+        border-style:solid; 
+ }
+QSpinBox{
+background: white;
+ color:#2B2A2A;
+}
+#textEdit{
+        background: white;
+        color:#2B2A2A;
+        border-style:solid;
+        border-radius:5px;
+        font-size:15px;
+ }
+#pushButton{
+background: #1B425E;
+color:white;
+border-style:solid;
+border-radius:5px;
+}
+#pushButton:hover{
+background: white;
+color: #1B425E;
+}
+#locationImage{
+background:#CCD0CD;
+border:none;
+}
+#squareFootage{
+background:#CCD0CD;
+border:none;
+}
+#dollarImage{
+background:#CCD0CD;
+border:none;
+}
+#roomNumber{
+background:#CCD0CD;
+border:none;
+}
+#type{
+background:#CCD0CD;
+border:none;
+}
+#description{
+background:#CCD0CD;
+border:none;
+}
+
+
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+   <widget class="QLabel" name="headLabel">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>20</y>
+      <width>301</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>comparison</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>100</y>
+      <width>991</width>
+      <height>681</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame_3{
+background-color:white
+}
+QLabel{
+font-size:20px;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>170</y>
+       <width>301</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+background-color:white;
+ width: 200px;
+        height: 200px;
+        border: 2px solid white;
+        border-radius: 50%;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QLabel" name="all_labels">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Location :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Type :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Space :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Rooms :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_11">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>250</y>
+        <width>241</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Price :</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_5">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>170</y>
+       <width>311</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+background-color:white;
+ width: 200px;
+        height: 200px;
+        border: 2px solid white;
+        border-radius: 50%;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QLabel" name="all_labels_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Location :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Type :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Space :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_10">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Rooms :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="all_labels_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>250</y>
+        <width>261</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#all_labels{
+font-size:18px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Price :</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>110</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Property 1</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>110</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Property 2</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="homeImage">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Resource.qrc">
+      <normaloff>:/Assets/propertyHead.png</normaloff>:/Assets/propertyHead.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

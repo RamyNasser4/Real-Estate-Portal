@@ -6,10 +6,10 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-Admin::Admin(string firstName, string lastName, int nationalId, string password) : User(firstName, lastName, nationalId, password) {
+Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password, "") {
 
 }
-Admin::Admin(string firstName, string lastName, int nationalId) {
+Admin::Admin(string firstName, string lastName, string nationalId) {
 	Admin(firstName, lastName, nationalId, "");
 }
 Admin::Admin(string firstName, string lastName) {
@@ -24,8 +24,8 @@ Admin::Admin() {
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
-void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System &system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId,highlighted,propertyDescription);
+void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -38,31 +38,20 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 	system.propertyFilterType[PropertyType][propertyId] = NewProperty;
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
+	system.propertiesCount++;
 }
-void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, int currentUserId, bool highlighted, string propertyDescription, System& system,string propertyId)
+void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
-	
+
 	Property* property = system.properties[propertyId];
-	
+
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 		system.propertyFilterLocations[Location][propertyId] = property;
-		property->SetLocation(Location);	
+		property->SetLocation(Location);
 	}
-	
-	if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
-	{
-		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
-		system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = property;
-		property->SetNumberOfBedrooms(NumberOfBedrooms);
-	}
-	if (property->GetPrice() != price)
-	{
-		system.propertyFilterPrice[property->GetPrice()].erase(propertyId);
-		system.propertyFilterPrice[price][propertyId] = property;
-		property->SetPrice(price);
-	}
+
 	if (property->GetPropertyType() != PropertyType)
 	{
 		system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
@@ -75,10 +64,25 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 		system.propertyFilterSquareFootage[SquareFootage][propertyId] = property;
 		property->SetSquareFootage(SquareFootage);
 	}
+	if (property->GetNumberOfBedrooms() != NumberOfBedrooms)
+	{
+		system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
+		system.propertyFilterBedRooms[NumberOfBedrooms][propertyId] = property;
+		property->SetNumberOfBedrooms(NumberOfBedrooms);
+	}
+	if (property->GetPrice() != price)
+	{
+		system.propertyFilterPrice[property->GetPrice()].erase(propertyId);
+		system.propertyFilterPrice[price][propertyId] = property;
+		property->SetPrice(price);
+	}
+	property->SetPropertyDescription(propertyDescription);
+	property->SetBuildingNumber(BuildingNumber);
+	property->SetApartmentNumber(ApartmentNumber);
 }
 
 
-void Admin::RemoveProperty(string propertyId, System &system) {
+void Admin::RemoveProperty(string propertyId, System& system) {
 	Property* property = system.properties[propertyId];
 	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
 	system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
@@ -86,31 +90,35 @@ void Admin::RemoveProperty(string propertyId, System &system) {
 	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
 	system.properties.erase(propertyId);
 	delete property;
+	system.propertiesCount--;
 }
 
 
-void Admin::RemoveUser(int ID, System &system) {
+void Admin::RemoveUser(string ID, System& system) {
 	unordered_map<string, Property*>propertiesToRemove = system.users[ID]->GetUserProperties();
 	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
 		RemoveProperty(it->second->GetpropertyId(), system);
 	}
 	if (system.users.find(ID) == system.users.end()) {
 		cout << "this ID is not registered on the system." << endl;
-		throw new exception("User Not Found");
+		throw exception("User Not Found");
 	}
 	else {
 		system.users.erase(ID);
 		cout << "User Successfully Deleted." << endl;
+		system.userCount--;
 	}
 }
 
-void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
+void Admin::AdminApproveorDeclineProperty(System& system, bool approved,User &user) {
 	if (!system.unVerified.empty()) {
 		Property* AcceptedProperty = system.unVerified.front();
 		system.unVerified.pop();
 		if (approved) {
 			system.properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
 			cout << "Property Approved!";
+			system.propertiesCount++;
+			user.UserCountProperty++;
 		}
 		else {
 			cout << "Property Declined";
@@ -118,13 +126,13 @@ void Admin::AdminApproveorDeclineProperty(System &system,bool approved) {
 	}
 	else {
 		cout << "There are no Properties to approve or decline";
-		throw new exception("Property Not Found");
+		throw exception("Property Not Found");
 	}
-	
+
 }
-void Admin::HighlightProperty(string propertyId, System& system) {
-	if (system.properties.find(propertyId) != system.properties.end()) {
-		Property* property = system.properties[propertyId];
+void Admin::HighlightProperty(string propertyId, System* system) {
+	if (system->properties.find(propertyId) != system->properties.end()) {
+		Property* property = system->properties[propertyId];
 		if (!property->GetHighlighted()) {
 			property->SetHighlight(true);
 			cout << "Property highlighted successfully\n";
@@ -135,13 +143,13 @@ void Admin::HighlightProperty(string propertyId, System& system) {
 	}
 	else {
 		cout << "Property doesn't exists\n";
-		throw new exception("Property Not Found");
+		throw exception("Property Not Found");
 	}
 
 }
-void Admin::RemoveHighlight(string propertyId, System& system) {
-	if (system.properties.find(propertyId) != system.properties.end()) {
-		Property* property = system.properties[propertyId];
+void Admin::RemoveHighlight(string propertyId, System* system) {
+	if (system->properties.find(propertyId) != system->properties.end()) {
+		Property* property = system->properties[propertyId];
 		if (property->GetHighlighted()) {
 			property->SetHighlight(false);
 			cout << "Highlighted removed successfully\n";
