@@ -16,7 +16,6 @@ using namespace std;
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 #include <QDialog>
-#include <Dashboard.h>
 void readFile(System* system) {
 	fstream readFile;
 	readFile.open("../users.txt", ios::out | ios::in);
@@ -173,17 +172,13 @@ int main(int argc, char* argv[]) {
 	login->setObjectName("Login");
 	Home* home = new Home();
 	Signup* signup = new Signup();
-	Dashboard* dashboard = new Dashboard();
 	//UserAddProperty* req = new UserAddProperty(widget);
 	//Home* home = new Home();
-	widget->addWidget(dashboard);
-
-	/*widget->addWidget(login);
+	widget->addWidget(login);
 	widget->addWidget(home);
-	widget->addWidget(signup);*/
-	widget->setCurrentWidget(dashboard);
-	dashboard->setupUi(widget);
-   // login->setupUi(widget,system,home,signup);
+	widget->addWidget(signup);
+	widget->setCurrentWidget(login);
+    login->setupUi(widget,system,home,signup);
 	//widget->setCurrentWidget(req);
 	//req->setupUi(widget, system);
 
