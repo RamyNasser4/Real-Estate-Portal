@@ -232,7 +232,7 @@ font-size:15px;
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>:/Assets/home128.png</pixmap>
+           <pixmap resource="Resource.qrc">:/Assets/home128.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -361,7 +361,7 @@ border:none;
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="Resource.qrc">
             <normaloff>:/Assets/more32.png</normaloff>:/Assets/more32.png</iconset>
           </property>
           <property name="iconSize">
@@ -434,7 +434,7 @@ font-size:15px;
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>:/Assets/home128.png</pixmap>
+           <pixmap resource="Resource.qrc">:/Assets/home128.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -563,7 +563,7 @@ border:none;
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="Resource.qrc">
             <normaloff>:/Assets/more32.png</normaloff>:/Assets/more32.png</iconset>
           </property>
           <property name="iconSize">
@@ -592,7 +592,7 @@ border:none;
            <string/>
           </property>
           <property name="icon">
-           <iconset>
+           <iconset resource="Resource.qrc">
             <normaloff>:/Assets/bookmarkv2.png</normaloff>:/Assets/bookmarkv2.png</iconset>
           </property>
           <property name="iconSize">
@@ -608,6 +608,28 @@ border:none;
       <zorder>line_8</zorder>
       <zorder>scrollArea_2</zorder>
       <zorder>label</zorder>
+     </widget>
+     <widget class="QLabel" name="label_45">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>93</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#label_11{
+color:black;
+  border-radius: 25px;
+
+
+font-size:15px;
+}</string>
+      </property>
+      <property name="text">
+       <string>All Properties :</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
@@ -689,7 +711,7 @@ font-size:15px;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/Assets/home128.png</pixmap>
+        <pixmap resource="Resource.qrc">:/Assets/home128.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
