@@ -243,3 +243,10 @@ Property* System::GetProperty(string propertyId) {
 	}
 	return nullptr;
 }
+User* System::GetUser(string userId) {
+	if (users.find(userId) != users.end()) {
+		return users.find(userId)->second;
+	}
+	return nullptr;
+}
+
