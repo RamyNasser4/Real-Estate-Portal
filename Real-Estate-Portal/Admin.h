@@ -7,6 +7,7 @@ class Admin : public User
 protected:
 public:
 	Admin();
+	Admin(string firstName, string lastName, string nationalId, string password,string mobileNumber);
 	Admin(string firstName, string lastName, string nationalId, string password);
 	Admin(string firstName, string lastName, string nationalId);
 	Admin(string firstName, string lastName);
@@ -18,8 +19,8 @@ public:
 	void RemoveUser(string ID, System& system);
 	void RemoveProperty(string propertyId,System &system);
 
-	void AdminApproveorDeclineProperty(System &system, bool approve);
-	void HighlightProperty(string propertyId, System& system);
-	void RemoveHighlight(string propretyId, System& syste);
+	void AdminApproveorDeclineProperty(System* system, bool approve,User* user);
+	void HighlightProperty(string propertyId, System* system);
+	void RemoveHighlight(string propretyId, System* system);
 };
 

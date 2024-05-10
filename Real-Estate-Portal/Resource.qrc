@@ -38,5 +38,8 @@
         <file>Assets/edit (2).png</file>
         <file>Assets/editing.png</file>
         <file>Assets/Userprofile.png</file>
+        <file>Assets/bookmark.png</file>
+        <file>Assets/bookmarkv2.png</file>
+        <file>profile.png</file>
     </qresource>
 </RCC>

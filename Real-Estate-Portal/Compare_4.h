@@ -12,7 +12,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
-
+#include "System.h"
 QT_BEGIN_NAMESPACE
 
 
@@ -54,7 +54,7 @@ public:
     QPushButton* homeImage;
 public:
 	Compare_4(QWidget *parent = nullptr);
-    void setupUi(QWidget* Form);;
+    void setupUi(QWidget* Form, System* system);;
     void retranslateUi(QWidget* Form);
 	~Compare_4();
 

@@ -14,6 +14,8 @@ public:
 	queue<Property*> unVerified;
 	string currentUserId;
 	string currentUserName;
+	int propertiesCount = 0;
+	int userCount = 0;
 	//Hashtables for filter
 	map<int, unordered_map<string, Property*>> propertyFilterSquareFootage;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterType;
@@ -46,7 +48,7 @@ public:
 	void Logout();
 	void UserChangePassword(string currentPassword,string newPassword,User* user);
 	void EditProfile(string fName, string lName, string mobNum, string currPass, string newPass);
-	void RemoveUser(string adminID, string userID,System &system);
+	void RemoveUser(string adminID, string userID);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
@@ -58,6 +60,8 @@ public:
 	int PropertiesCounter();
 	bool FindUser(string nationalid);
 	Property* GetProperty(string propertyId);
-	
+	User* GetUser(string userId);
+
+
 };
 

@@ -133,6 +133,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit->setObjectName("lineEdit");
 	lineEdit->setGeometry(QRect(620, 35, 61, 31));
 	lineEdit->setStyleSheet(QString::fromUtf8(""));
+	lineEdit->setMaxLength(10);
 	line = new QFrame(widget_2);
 	line->setObjectName("line");
 	line->setGeometry(QRect(690, 45, 16, 16));
@@ -142,6 +143,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit_2->setObjectName("lineEdit_2");
 	lineEdit_2->setGeometry(QRect(715, 35, 61, 31));
 	lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_2->setMaxLength(10);
 	label_6 = new QLabel(widget_2);
 	label_6->setObjectName("label_6");
 	label_6->setGeometry(QRect(480, 10, 111, 21));
@@ -154,6 +156,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		"border:0 solid white;\n"
 		"border-radius:5px;\n"
 		"}"));
+	lineEdit_3->setMaxLength(10);
 	line_2 = new QFrame(widget_2);
 	line_2->setObjectName("line_2");
 	line_2->setGeometry(QRect(525, 45, 16, 16));
@@ -170,6 +173,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	lineEdit_4->setObjectName("lineEdit_4");
 	lineEdit_4->setGeometry(QRect(550, 35, 61, 31));
 	lineEdit_4->setStyleSheet(QString::fromUtf8(""));
+	lineEdit_4->setMaxLength(10);
 	line_5 = new QFrame(widget);
 	line_5->setObjectName("line_5");
 	line_5->setGeometry(QRect(30, 170, 731, 16));
@@ -504,6 +508,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 		int currentFootageY = 70;
 		int currentHorizontalWidgetY = 30;
 		int currentToolButtonY = 30;
+		int currentBookmarkY = 0;
 		for (auto it = filtered.begin(); it != filtered.end(); ++it) {
 			if (!it->second->GetVerfied()) {
 				continue;
@@ -652,6 +657,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			QMenu* menu = new QMenu(scrollAreaWidgetContents);
 			QAction* addToCompare = new QAction("Add To Compare");
 			QAction* removeFromCompare = new QAction("Remove From Compare");
+			QAction* highlight = new QAction("Highlight");
+			QAction* removeHighlight = new QAction("Remove Highlight");
 			QAction* edit = new QAction("Edit");
 			QAction* del = new QAction("Delete");
 			auto cmpIt = std::find(system->propertyComparison.begin(), system->propertyComparison.end(), system->properties[it->second->GetpropertyId()]);
@@ -664,6 +671,12 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
 			auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
 			string propertyId = it->second->GetpropertyId();
+			if (admin && it->second->GetHighlighted()) {
+				menu->addAction(removeHighlight);
+			}
+			else {
+				menu->addAction(highlight);
+			}
 			if (admin || userProperties.find(propertyId) != userProperties.end()) {
 				menu->addAction(edit);
 				menu->addAction(del);
@@ -682,6 +695,23 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 				"background-color: #407BFF;\n"    // Background color of selected item
 				"}");
 			toolButton->setMenu(menu);
+			QPushButton* highlightButton = new QPushButton(scrollAreaWidgetContents);
+			highlightButton->setObjectName("pushButton_5");
+			highlightButton->setGeometry(QRect(0, currentBookmarkY, 75, 61));
+			highlightButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+				"background-color:transparent;\n"
+				"border:none;\n"
+				"}"));
+			QIcon icon2;
+			icon2.addFile(QString::fromUtf8(":/Assets/bookmarkv2.png"), QSize(), QIcon::Normal, QIcon::Off);
+			highlightButton->setIcon(icon2);
+			highlightButton->setIconSize(QSize(40, 40));
+			if (it->second->GetHighlighted()) {
+				highlightButton->setVisible(true);
+			}
+			else {
+				highlightButton->setVisible(false);
+			}
 			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
 				qDebug() << "clickedB";
 				});
@@ -707,6 +737,18 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 					qDebug() << "remove from compare failed";
 					qDebug() << e.what();
 				}
+				});
+			QObject::connect(highlight, &QAction::triggered, [=]() {
+				admin->HighlightProperty(propertyId, system);
+				highlightButton->setVisible(true);
+				menu->insertAction(highlight, removeHighlight);
+				menu->removeAction(highlight);
+				});
+			QObject::connect(removeHighlight, &QAction::triggered, [=]() {
+				admin->RemoveHighlight(propertyId, system);
+				highlightButton->setVisible(false);
+				menu->insertAction(removeHighlight, highlight);
+				menu->removeAction(removeHighlight);
 				});
 			QObject::connect(del, &QAction::triggered, [=]() {
 				try
@@ -762,6 +804,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			currentFootageY += 200;
 			currentHorizontalWidgetY += 200;
 			currentToolButtonY += 200;
+			currentBookmarkY += 200;
 		}
 		scrollArea->setWidget(scrollAreaWidgetContents);
 		scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -818,6 +861,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 		int currentFootageY = 70;
 		int currentHorizontalWidgetY = 30;
 		int currentToolButtonY = 30;
+		int currentBookmarkY = 0;
 		for (auto it = filtered.begin(); it != filtered.end(); ++it) {
 			for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
 				if (!it2->second->GetVerfied()) {
@@ -967,6 +1011,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				QMenu* menu = new QMenu(scrollAreaWidgetContents);
 				QAction* addToCompare = new QAction("Add To Compare");
 				QAction* removeFromCompare = new QAction("Remove From Compare");
+				QAction* highlight = new QAction("Highlight");
+				QAction* removeHighlight = new QAction("Remove Highlight");
 				QAction* edit = new QAction("Edit");
 				QAction* del = new QAction("Delete");
 				auto cmpIt = std::find(system->propertyComparison.begin(), system->propertyComparison.end(), system->properties[it2->second->GetpropertyId()]);
@@ -979,6 +1025,12 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
 				auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
 				string propertyId = it2->second->GetpropertyId();
+				if (admin && it2->second->GetHighlighted()) {
+					menu->addAction(removeHighlight);
+				}
+				else {
+					menu->addAction(highlight);
+				}
 				if (admin || userProperties.find(propertyId) != userProperties.end()) {
 					menu->addAction(edit);
 					menu->addAction(del);
@@ -997,6 +1049,23 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 					"background-color: #407BFF;\n"    // Background color of selected item
 					"}");
 				toolButton->setMenu(menu);
+				QPushButton* highlightButton = new QPushButton(scrollAreaWidgetContents);
+				highlightButton->setObjectName("pushButton_5");
+				highlightButton->setGeometry(QRect(0, currentBookmarkY, 75, 61));
+				highlightButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+					"background-color:transparent;\n"
+					"border:none;\n"
+					"}"));
+				QIcon icon2;
+				icon2.addFile(QString::fromUtf8(":/Assets/bookmarkv2.png"), QSize(), QIcon::Normal, QIcon::Off);
+				highlightButton->setIcon(icon2);
+				highlightButton->setIconSize(QSize(40, 40));
+				if (it2->second->GetHighlighted()) {
+					highlightButton->setVisible(true);
+				}
+				else {
+					highlightButton->setVisible(false);
+				}
 				QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
 					qDebug() << "clickedB";
 					});
@@ -1022,6 +1091,18 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 						qDebug() << "remove from compare failed";
 						qDebug() << e.what();
 					}
+					});
+				QObject::connect(highlight, &QAction::triggered, [=]() {
+					admin->HighlightProperty(propertyId, system);
+					highlightButton->setVisible(true);
+					menu->insertAction(highlight, removeHighlight);
+					menu->removeAction(highlight);
+					});
+				QObject::connect(removeHighlight, &QAction::triggered, [=]() {
+					admin->RemoveHighlight(propertyId,system);
+					highlightButton->setVisible(false);
+					menu->insertAction(removeHighlight, highlight);
+					menu->removeAction(removeHighlight);
 					});
 				QObject::connect(del, &QAction::triggered, [=]() {
 					try
@@ -1077,6 +1158,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				currentFootageY += 200;
 				currentHorizontalWidgetY += 200;
 				currentToolButtonY += 200;
+				currentBookmarkY += 200;
 			}
 		}
 		scrollArea->setWidget(scrollAreaWidgetContents);

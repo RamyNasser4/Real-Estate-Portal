@@ -39,6 +39,7 @@ void System::SignUp(string fName, string lName, string natId, string password, s
 		throw exception("User already exists");
 		//Call login
 	}
+	userCount++;
 }
 void System::Login(string ID, string password) {
 	if (users.find(ID) == users.end()) {
@@ -56,6 +57,7 @@ void System::Login(string ID, string password) {
 				cout << "User Signed In" << endl;
 			}
 			currentUserId = users[ID]->GetNationalId();
+			currentUserName = users[ID]->GetName();
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
@@ -66,8 +68,9 @@ void System::Login(string ID, string password) {
 void System::Logout() {
 	currentUserId = "";
 	currentUserName = "";
+	propertyComparison.clear();
 }
-void System::RemoveUser(string adminID, string userID, System& system) {
+void System::RemoveUser(string adminID, string userID) {
 	if (users.find(adminID) != users.end()) {
 		Admin* admin = dynamic_cast<Admin*>(users[adminID]);
 		if (admin) {
@@ -136,7 +139,7 @@ void System::AddProperty(string Location, string PropertyType, string BuildingNu
 	else {
 		//in case of not an admin
 
-		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
+		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, users[currentUserId]->GetName(), currentUserId, propertyDescription, *this);
 	}
 }
 void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {
@@ -196,10 +199,10 @@ map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, i
 }
 int System::UserCounter()
 {
-	return users.size();
+	return userCount;
 }
 int System::PropertiesCounter() {
-	return properties.size();
+	return propertiesCount;
 }
 void System::EditMobileNumber(string currentUserId, string newmobileNumber)
 {
@@ -238,5 +241,12 @@ Property* System::GetProperty(string propertyId) {
 	if (properties.find(propertyId) != properties.end()) {
 		return properties.find(propertyId)->second;
 	}
-	else return nullptr;
+	return nullptr;
 }
+User* System::GetUser(string userId) {
+	if (users.find(userId) != users.end()) {
+		return users.find(userId)->second;
+	}
+	return nullptr;
+}
+

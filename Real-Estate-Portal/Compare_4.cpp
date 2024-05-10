@@ -14,7 +14,7 @@ Compare_4::Compare_4(QWidget *parent)
 
 
 
-    void Compare_4::setupUi(QWidget* Form)
+    void Compare_4::setupUi(QWidget* Form, System* system)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName("Form");
@@ -303,7 +303,46 @@ Compare_4::Compare_4(QWidget *parent)
         homeImage->setIconSize(QSize(120, 120));
 
         retranslateUi(Form);
-
+        string location1 = "Location : " + system->GetPropertyComparison()[0]->GetLocation();
+        all_labels->setText(location1.c_str());
+        string type1 = "Type : " + system->GetPropertyComparison()[0]->GetPropertyType();
+        all_labels_3->setText(type1.c_str());
+        string space1 = "<p>Space : " + to_string(system->GetPropertyComparison()[0]->GetSquareFootage()) + "ft<sup>2";
+        all_labels_7->setText(space1.c_str());
+        string bedrooms1 = "Bedrooms : " + to_string(system->GetPropertyComparison()[0]->GetNumberOfBedrooms());
+        all_labels_9->setText(bedrooms1.c_str());
+        string price1 = "Price : " + to_string(system->GetPropertyComparison()[0]->GetPrice());
+        all_labels_11->setText(price1.c_str());
+        string location2 = "Location : " + system->GetPropertyComparison()[1]->GetLocation();
+        all_labels_2->setText(location2.c_str());
+        string type2 = "Type : " + system->GetPropertyComparison()[1]->GetPropertyType();
+        all_labels_4->setText(type2.c_str());
+        string space2 = "<p>Space : " + to_string(system->GetPropertyComparison()[1]->GetSquareFootage()) + "ft<sup>2";
+        all_labels_8->setText(space2.c_str());
+        string bedrooms2 = "Bedrooms : " + to_string(system->GetPropertyComparison()[1]->GetNumberOfBedrooms());
+        all_labels_10->setText(bedrooms2.c_str());
+        string price2 = "Price : " + to_string(system->GetPropertyComparison()[1]->GetPrice());
+        all_labels_12->setText(price2.c_str());
+        string location3 = "Location : " + system->GetPropertyComparison()[2]->GetLocation();
+        all_labels_5->setText(location3.c_str());
+        string type3 = "Type : " + system->GetPropertyComparison()[2]->GetPropertyType();
+        all_labels_6->setText(type3.c_str());
+        string space3 = "<p>Space : " + to_string(system->GetPropertyComparison()[2]->GetSquareFootage()) + "ft<sup>3";
+        all_labels_13->setText(space3.c_str());
+        string bedrooms3 = "Bedrooms : " + to_string(system->GetPropertyComparison()[2]->GetNumberOfBedrooms());
+        all_labels_14->setText(bedrooms3.c_str());
+        string price3 = "Price : " + to_string(system->GetPropertyComparison()[2]->GetPrice());
+        all_labels_15->setText(price3.c_str());
+        string location4 = "Location : " + system->GetPropertyComparison()[3]->GetLocation();
+        all_labels_16->setText(location4.c_str());
+        string type4 = "Type : " + system->GetPropertyComparison()[3]->GetPropertyType();
+        all_labels_17->setText(type4.c_str());
+        string space4 = "<p>Space : " + to_string(system->GetPropertyComparison()[3]->GetSquareFootage()) + "ft<sup>4";
+        all_labels_18->setText(space4.c_str());
+        string bedrooms4 = "Bedrooms : " + to_string(system->GetPropertyComparison()[3]->GetNumberOfBedrooms());
+        all_labels_19->setText(bedrooms4.c_str());
+        string price4 = "Price : " + to_string(system->GetPropertyComparison()[3]->GetPrice());
+        all_labels_20->setText(price4.c_str());
         QMetaObject::connectSlotsByName(Form);
     } // setupUi
 

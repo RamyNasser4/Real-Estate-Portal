@@ -5,7 +5,7 @@ Home::Home(QWidget* parent)
 {
 	//ui.setupUi(this);
 }
-void Home::setupUi(QStackedWidget* HomeClass, System* system,Login* login,Signup* signup)
+void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Signup* signup)
 {
 	if (HomeClass->objectName().isEmpty())
 		HomeClass->setObjectName("HomeClass");
@@ -178,7 +178,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system,Login* login,Signup
 	pushButton_8->setIconSize(QSize(36, 36));
 	pushButton_8->setFlat(false);
 	QString logout = "Login";
-	widget_6 = new ClickableWidget(HomeClass,system,logout,widget);
+	widget_6 = new ClickableWidget(HomeClass, system, logout, widget,login,this,signup);
 	widget_6->setObjectName("widget_6");
 	widget_6->setGeometry(QRect(10, 670, 219, 50));
 	widget_6->setStyleSheet(QString::fromUtf8("QWidget:hover{\n"
@@ -238,9 +238,10 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system,Login* login,Signup
 				QWidget* currentWidget = stackedWidget->widget(i);
 				if (currentWidget->objectName() == "Listings") {
 					currentWidget = new Listings();
-					Listings* listings = dynamic_cast<Listings*>(currentWidget);
 					stackedWidget->hide();
-					stackedWidget->setCurrentWidget(currentWidget);
+					stackedWidget->setCurrentIndex(i);
+					qDebug() << stackedWidget->currentWidget()->objectName();
+					Listings* listings = dynamic_cast<Listings*>(currentWidget);
 					listings->setupUi(stackedWidget, system);
 					stackedWidget->show();
 					break;
@@ -248,24 +249,134 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system,Login* login,Signup
 			}
 		}
 		});
+	QObject::connect(pushButton_8, &QPushButton::clicked, [=]() {
+		qDebug() << system->propertyComparison.size();
+		if (system->propertyComparison.size() == 2) {
+			if (stackedWidget->currentWidget()->objectName() != "Compare") {
+				bool addedBefore = false;
+				for (int i = 0; i < stackedWidget->count(); ++i) {
+					QWidget* currentWidget = stackedWidget->widget(i);
+					if (currentWidget->objectName() == "Compare") {
+						currentWidget = new Compare();
+						Compare* compare = dynamic_cast<Compare*>(currentWidget);
+						stackedWidget->hide();
+						stackedWidget->setCurrentIndex(i);
+						qDebug() << stackedWidget->currentWidget()->objectName();
+						compare->setupUi(stackedWidget, system);
+						stackedWidget->show();
+						addedBefore = true;
+						break;
+					}
+				}
+				if (!addedBefore) {
+					Compare* compare = new Compare();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+					stackedWidget->show();
+				}
+			}
+		}
+		else if (system->propertyComparison.size() == 3) {
+			if (stackedWidget->currentWidget()->objectName() != "Compare") {
+				bool addedBefore = false;
+				for (int i = 0; i < stackedWidget->count(); ++i) {
+					QWidget* currentWidget = stackedWidget->widget(i);
+					if (currentWidget->objectName() == "Compare") {
+						currentWidget = new Compare_3();
+						Compare_3* compare = dynamic_cast<Compare_3*>(currentWidget);
+						stackedWidget->hide();
+						stackedWidget->setCurrentIndex(i);
+						qDebug() << stackedWidget->currentWidget()->objectName();
+						compare->setupUi(stackedWidget, system);
+						stackedWidget->show();
+						addedBefore = true;
+						break;
+					}
+				}
+				if (!addedBefore) {
+					Compare_3* compare = new Compare_3();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+					stackedWidget->show();
+				}
+			}
+		}
+		else if (system->propertyComparison.size() == 4) {
+			if (stackedWidget->currentWidget()->objectName() != "Compare") {
+				bool addedBefore = false;
+				for (int i = 0; i < stackedWidget->count(); ++i) {
+					QWidget* currentWidget = stackedWidget->widget(i);
+					if (currentWidget->objectName() == "Compare") {
+						currentWidget = new Compare_4();
+						Compare_4* compare = dynamic_cast<Compare_4*>(currentWidget);
+						stackedWidget->hide();
+						stackedWidget->setCurrentIndex(i);
+						qDebug() << stackedWidget->currentWidget()->objectName();
+						compare->setupUi(stackedWidget, system);
+						stackedWidget->show();
+						addedBefore = true;
+						break;
+					}
+				}
+				if (!addedBefore) {
+					Compare_4* compare = new Compare_4();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+					stackedWidget->show();
+				}
+			}
+		}
+		else {
+			QDialog* qdialog = new QDialog();
+			Dialog dialog;
+			dialog.setupUi(qdialog, "Add Properties to Compare");
+			qdialog->exec();
+		}
+		});
+	QObject::connect(pushButton_4, &QPushButton::clicked, [=]() {
+		if (stackedWidget->currentWidget()->objectName() != "Dashboard") {
+			bool addedBefore = false;
+			for (int i = 0; i < stackedWidget->count(); ++i) {
+				QWidget* currentWidget = stackedWidget->widget(i);
+				if (currentWidget->objectName() == "Dashboard") {
+					currentWidget = new Dashboard();
+					stackedWidget->hide();
+					stackedWidget->setCurrentIndex(i);
+					qDebug() << stackedWidget->currentWidget()->objectName();
+					Dashboard* dashboard = dynamic_cast<Dashboard*>(currentWidget);
+					dashboard->setupUi(stackedWidget, system);
+					stackedWidget->show();
+					addedBefore = true;
+					break;
+				}
+			}
+			if (!addedBefore) {
+				Dashboard* dashboard = new Dashboard();
+				dashboard->setObjectName("Dashboard");
+				stackedWidget->hide();
+				stackedWidget->addWidget(dashboard);
+				stackedWidget->setCurrentWidget(dashboard);
+				dashboard->setupUi(stackedWidget, system);
+				stackedWidget->show();
+			}
+		}
+		});
 	QObject::connect(pushButton_6, &QPushButton::clicked, [=]() {
 		qDebug() << "logout clicked";
+		system->Logout();
 		HomeClass->hide();
 		HomeClass->setCurrentIndex(0);
 		login->setupUi(HomeClass, system, this, signup);
 		HomeClass->show();
-		/*for (int i = 0; i < stackedWidget->count(); ++i) {
-			QWidget* currentWidget = stackedWidget->widget(i);
-			if (currentWidget->objectName() == "Login") {
-				currentWidget = new Login();
-				Listings* listings = dynamic_cast<Listings*>(currentWidget);
-				stackedWidget->hide();
-				stackedWidget->setCurrentWidget(currentWidget);
-				listings->setupUi(stackedWidget, system);
-				stackedWidget->show();
-				break;
-			}
-		}*/
 		});
 	retranslateUi(HomeClass);
 
@@ -332,9 +443,12 @@ bool HoverEventFilter::eventFilter(QObject* obj, QEvent* event) {
 	}
 	return QObject::eventFilter(obj, event);
 }
-ClickableWidget::ClickableWidget(QStackedWidget* stackedWidget, System* system, QString widgetName, QWidget* parent) : QWidget(parent) {
+ClickableWidget::ClickableWidget(QStackedWidget* stackedWidget, System* system, QString widgetName, QWidget* parent, Login* login, Home* home, Signup* signup) : QWidget(parent) {
 	this->stackedWidget = stackedWidget;
 	this->system = system;
+	this->login = login;
+	this->home = home;
+	this->signup = signup;
 	this->widgetName = widgetName;
 }
 void ClickableWidget::mousePressEvent(QMouseEvent* event) {
@@ -342,20 +456,92 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 		if (widgetName == "Login") {
 			stackedWidget->hide();
 			stackedWidget->setCurrentIndex(0);
+			login->setupUi(stackedWidget, system, home, signup);
 			stackedWidget->show();
 		}
 		else if (stackedWidget->currentWidget()->objectName() != widgetName) {
+			bool addedBefore = false;
 			for (int i = 0; i < stackedWidget->count(); ++i) {
 				QWidget* currentWidget = stackedWidget->widget(i);
 				if (currentWidget->objectName() == widgetName) {
-					currentWidget = new Listings();
-					Listings* listings = dynamic_cast<Listings*>(currentWidget);
 					stackedWidget->hide();
-					stackedWidget->setCurrentWidget(currentWidget);
-					listings->setupUi(stackedWidget, system);
+					stackedWidget->setCurrentIndex(i);
+					if (widgetName == "Listings") {
+						currentWidget = new Listings();
+						Listings* listings = dynamic_cast<Listings*>(currentWidget);
+						listings->setupUi(stackedWidget, system);
+					}
+					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 2) {
+						currentWidget = new Compare();
+						Compare* cmp2 = dynamic_cast<Compare*>(currentWidget);
+						cmp2->setupUi(stackedWidget, system);
+					}
+					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 3) {
+						currentWidget = new Compare_3();
+						Compare_3* cmp3 = dynamic_cast<Compare_3*>(currentWidget);
+						cmp3->setupUi(stackedWidget, system);
+					}
+					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 4) {
+						currentWidget = new Compare_4();
+						Compare_4* cmp4 = dynamic_cast<Compare_4*>(currentWidget);
+						cmp4->setupUi(stackedWidget, system);
+					}
+					else if (widgetName == "Compare") {
+						QDialog* qdialog = new QDialog();
+						Dialog dialog;
+						dialog.setupUi(qdialog, "Add Properties to Compare");
+						qdialog->exec();
+					}
+					else if (widgetName == "Dashboard") {
+						currentWidget = new Dashboard();
+						Dashboard* dashboard = dynamic_cast<Dashboard*>(currentWidget);
+						dashboard->setupUi(stackedWidget, system);
+					}
 					stackedWidget->show();
+					addedBefore = true;
 					break;
 				}
+			}
+			if (!addedBefore) {
+				if (widgetName == "Compare" && system->GetPropertyComparison().size() == 2) {
+					Compare* compare = new Compare();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+				}
+				else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 3) {
+					Compare_3* compare = new Compare_3();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+				}
+				else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 4) {
+					Compare_4* compare = new Compare_4();
+					compare->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(compare);
+					stackedWidget->setCurrentWidget(compare);
+					compare->setupUi(stackedWidget, system);
+				}
+				else if (widgetName == "Compare") {
+					QDialog* qdialog = new QDialog();
+					Dialog dialog;
+					dialog.setupUi(qdialog, "Add Properties to Compare");
+					qdialog->exec();
+				}
+				else if (widgetName == "Dashboard") {
+					Dashboard* dashboard = new Dashboard();
+					dashboard->setObjectName("Compare");
+					stackedWidget->hide();
+					stackedWidget->addWidget(dashboard);
+					stackedWidget->setCurrentWidget(dashboard);
+					dashboard->setupUi(stackedWidget, system);
+				}
+				stackedWidget->show();
 			}
 		}
 	}
