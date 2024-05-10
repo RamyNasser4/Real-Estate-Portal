@@ -51,9 +51,6 @@
     <ClCompile Include="UserAddProperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdminAddProperty.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Compare.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -61,6 +58,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Compare_4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditUser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditUser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -127,7 +133,8 @@
     <QtUic Include="Compare.ui" />
     <QtUic Include="Compare_3.ui" />
     <QtUic Include="Compare_4.ui" />
-    <QtUic Include="AdminAddProperty.ui" />
+    <QtUic Include="MyProfile.ui" />
+    <QtUic Include="EditUser.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -160,7 +167,7 @@
     <QtMoc Include="Compare_4.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="AdminAddProperty.h">
+    <QtMoc Include="MyProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
