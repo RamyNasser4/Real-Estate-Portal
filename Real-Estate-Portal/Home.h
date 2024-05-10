@@ -59,6 +59,8 @@ public:
     QPushButton* pushButton_8;
     ClickableWidget* widget_6;
     QPushButton* pushButton_6;
+    ClickableWidget* widget_7;
+    QPushButton* pushButton_11;
     QStackedWidget* stackedWidget;
     //QWidget* page;
     Listings* page;

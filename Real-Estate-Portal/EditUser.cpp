@@ -2,7 +2,7 @@
 
 EditUser::EditUser(QStackedWidget* parent) : QWidget(parent)
 {
-    setupUi(parent);
+    //setupUi(parent);
 }
 void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* profile, User* user)
 {

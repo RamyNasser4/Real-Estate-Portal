@@ -183,6 +183,7 @@
     <ClCompile Include="Signup.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserAddProperty.cpp" />
+    <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UserAddProperty.h" />
@@ -192,21 +193,20 @@
     <QtMoc Include="Compare_3.h" />
     <QtMoc Include="Compare_4.h" />
     <QtMoc Include="Dashboard.h" />
-    <ClInclude Include="Dialog.h" />
+    <QtMoc Include="MyProfile.h" />
     <QtMoc Include="EditProperty.h" />
+    <QtMoc Include="Sidebar.h" />
+    <QtMoc Include="Propertycard.h" />
+    <QtMoc Include="Signup.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Dialog.h" />
     <ClInclude Include="EditUser.h" />
     <ClInclude Include="EditPropertyRequest.h" />
     <ClInclude Include="EditUserRequest.h" />
     <ClInclude Include="Listings.h" />
-    <QtMoc Include="MyProfile.h" />
     <ClInclude Include="Property.h" />
-    <ClCompile Include="System.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Admin.h" />
-    <QtMoc Include="Sidebar.h" />
-    <QtMoc Include="Propertycard.h" />
-    <QtMoc Include="Signup.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

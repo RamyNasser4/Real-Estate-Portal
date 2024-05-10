@@ -1,9 +1,9 @@
 #include "MyProfile.h"
 #include "User.h"
-MyProfile::MyProfile(User& user, QWidget* parent)
-    : QWidget(parent), user(user) --
+MyProfile::MyProfile( QWidget* parent)
+    : QWidget(parent)
 {
-    setupUi(this);
+    //setupUi(this);
 }
 void MyProfile::setupUi(QWidget* MyProfile)
 {
