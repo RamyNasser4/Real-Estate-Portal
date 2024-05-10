@@ -32,11 +32,11 @@
         <file>Assets/plus32.png</file>
         <file>Assets/logoutGrey32.png</file>
         <file>Assets/logoutW32.png</file>
-        <file>Assets/profile.png</file>
         <file>Assets/edit.png</file>
         <file>Assets/padlock.png</file>
         <file>Assets/edit (1).png</file>
         <file>Assets/edit (2).png</file>
         <file>Assets/editing.png</file>
+        <file>Assets/Userprofile.png</file>
     </qresource>
 </RCC>
