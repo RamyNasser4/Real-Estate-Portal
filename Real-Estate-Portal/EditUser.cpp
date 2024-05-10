@@ -140,7 +140,7 @@ void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* p
                 DoneButtonClick(system);
                 stackWidget->hide();
                 stackWidget->setCurrentWidget(profile);
-                profile->setupUi(widget);
+                profile->setupUi(stackWidget,system);
             }
             catch (const exception& e) {
                 QDialog* qdialog = new QDialog();

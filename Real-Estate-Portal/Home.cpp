@@ -396,6 +396,34 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 			}
 		}
 		});
+	QObject::connect(pushButton_11, &QPushButton::clicked, [=]() {
+		if (stackedWidget->currentWidget()->objectName() != "Profile") {
+			bool addedBefore = false;
+			for (int i = 0; i < stackedWidget->count(); ++i) {
+				QWidget* currentWidget = stackedWidget->widget(i);
+				if (currentWidget->objectName() == "Profile") {
+					currentWidget = new MyProfile();
+					stackedWidget->hide();
+					stackedWidget->setCurrentIndex(i);
+					qDebug() << stackedWidget->currentWidget()->objectName();
+					MyProfile* profile = dynamic_cast<MyProfile*>(currentWidget);
+					profile->setupUi(stackedWidget, system);
+					stackedWidget->show();
+					addedBefore = true;
+					break;
+				}
+			}
+			if (!addedBefore) {
+				MyProfile* profile = new MyProfile();
+				profile->setObjectName("Profile");
+				stackedWidget->hide();
+				stackedWidget->addWidget(profile);
+				stackedWidget->setCurrentWidget(profile);
+				profile->setupUi(stackedWidget, system);
+				stackedWidget->show();
+			}
+		}
+		});
 	QObject::connect(pushButton_6, &QPushButton::clicked, [=]() {
 		qDebug() << "logout clicked";
 		system->Logout();
@@ -527,6 +555,11 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 						Dashboard* dashboard = dynamic_cast<Dashboard*>(currentWidget);
 						dashboard->setupUi(stackedWidget, system);
 					}
+					else if (widgetName == "Profile") {
+						currentWidget = new MyProfile();
+						MyProfile* profile = dynamic_cast<MyProfile*>(currentWidget);
+						profile->setupUi(stackedWidget, system);
+					}
 					stackedWidget->show();
 					addedBefore = true;
 					break;
@@ -570,6 +603,14 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 					stackedWidget->addWidget(dashboard);
 					stackedWidget->setCurrentWidget(dashboard);
 					dashboard->setupUi(stackedWidget, system);
+				}
+				else if (widgetName == "Profile") {
+					MyProfile* profile = new MyProfile();
+					profile->setObjectName("Profile");
+					stackedWidget->hide();
+					stackedWidget->addWidget(profile);
+					stackedWidget->setCurrentWidget(profile);
+					profile->setupUi(stackedWidget, system);
 				}
 				stackedWidget->show();
 			}
