@@ -60,6 +60,8 @@ public:
 	int PropertiesCounter();
 	bool FindUser(string nationalid);
 	Property* GetProperty(string propertyId);
-	
+	User* GetUser(string userId);
+
+
 };
 
