@@ -57,6 +57,7 @@ void System::Login(string ID, string password) {
 				cout << "User Signed In" << endl;
 			}
 			currentUserId = users[ID]->GetNationalId();
+			currentUserName = users[ID]->GetName();
 		}
 		else {
 			cout << "Invalid National ID or Password" << endl;
@@ -84,7 +85,6 @@ void System::RemoveUser(string adminID, string userID) {
 		cout << "Invalid ID" << endl;
 		throw exception("Invalid ID");
 	}
-	userCount--;
 }
 void System::Request(Property* property) {
 	if (!property->GetVerfied()) {
@@ -139,7 +139,7 @@ void System::AddProperty(string Location, string PropertyType, string BuildingNu
 	else {
 		//in case of not an admin
 
-		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
+		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, users[currentUserId]->GetName(), currentUserId, propertyDescription, *this);
 	}
 }
 void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {

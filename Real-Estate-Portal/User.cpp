@@ -43,7 +43,7 @@ string User::GetLastName() {
 	return this->lastName;
 }
 string User::GetName() {
-	return "firstName + " " + lastName";
+	return firstName + " " + lastName;
 }
 string User::GetPassword() {
 	return password;

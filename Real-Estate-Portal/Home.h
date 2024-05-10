@@ -30,11 +30,15 @@ QT_BEGIN_NAMESPACE
 #include "Compare_3.h"
 #include "Compare_4.h"
 #include "Dialog.h"
+#include "Dashboard.h"
 using namespace std;
 class ClickableWidget : public QWidget {
 public:
-    ClickableWidget(QStackedWidget* stackedWidget,System* system,QString widgetName,QWidget* parent = nullptr);
+    ClickableWidget(QStackedWidget* stackedWidget,System* system,QString widgetName,QWidget* parent = nullptr, Login* login = nullptr,Home* home = nullptr,Signup* signup=nullptr);
     QStackedWidget* stackedWidget;
+    Login* login;
+    Home* home;
+    Signup* signup;
     System* system;
     QString widgetName;
 protected:

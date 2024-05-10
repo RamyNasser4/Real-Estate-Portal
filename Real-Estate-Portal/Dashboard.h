@@ -15,6 +15,9 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
+#include <QMenu>
+#include "System.h"
+#include "EditProperty.h"
 
 QT_BEGIN_NAMESPACE
 class Dashboard : public QWidget
@@ -90,17 +93,20 @@ public:
     QLabel* label_17;
     QLabel* label_18;
     QLabel* label_32;
+    QLabel* label_47;
 
 	Q_OBJECT
 
 public:
 	Dashboard(QWidget *parent = nullptr);
-    void setupUi(QWidget* Dashboard);
+    void setupUi(QStackedWidget* Dashboard,System* system);
     void retranslateUi(QWidget* Dashboard);
+    void drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea, QStackedWidget* ListComponents);
+    void drawUsers(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea);
 	~Dashboard();
 
 private:
-	Ui::DashboardClass ui;
+	//Ui::DashboardClass ui;
 };
 QT_END_NAMESPACE
 

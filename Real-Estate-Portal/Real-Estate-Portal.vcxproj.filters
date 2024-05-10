@@ -60,10 +60,13 @@
     <ClCompile Include="Compare_4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EditUser.cpp">
+    <ClCompile Include="EditUserRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Dashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditPropertyRequest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,7 +89,10 @@
     <ClInclude Include="Listings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EditUser.h">
+    <ClInclude Include="EditUserRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditPropertyRequest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -129,11 +135,21 @@
     <QtUic Include="EditProperty.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="UserAddProperty.ui" />
-    <QtUic Include="Compare.ui" />
-    <QtUic Include="Compare_3.ui" />
-    <QtUic Include="Compare_4.ui" />
-    <QtUic Include="Dashboard.ui" />
+    <QtUic Include="Dashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Compare.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Compare_3.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Compare_4.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UserAddProperty.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">

@@ -170,7 +170,7 @@
     <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="EditPropertyRequest.cpp" />
-    <ClCompile Include="EditUser.cpp" />
+    <ClCompile Include="EditUserRequest.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="Listings.cpp" />
     <ClCompile Include="Login.cpp" />
@@ -193,7 +193,7 @@
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProperty.h" />
     <ClInclude Include="EditPropertyRequest.h" />
-    <ClInclude Include="EditUser.h" />
+    <ClInclude Include="EditUserRequest.h" />
     <ClInclude Include="Listings.h" />
     <ClInclude Include="Property.h" />
     <ClCompile Include="System.cpp" />

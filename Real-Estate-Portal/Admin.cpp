@@ -6,6 +6,9 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
+Admin::Admin(string firstName, string lastName, string nationalId, string password, string mobileNumber) : User(firstName,lastName,nationalId,password,mobileNumber) {
+
+}
 Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password, "") {
 
 }
@@ -110,15 +113,15 @@ void Admin::RemoveUser(string ID, System& system) {
 	}
 }
 
-void Admin::AdminApproveorDeclineProperty(System& system, bool approved,User &user) {
-	if (!system.unVerified.empty()) {
-		Property* AcceptedProperty = system.unVerified.front();
-		system.unVerified.pop();
+void Admin::AdminApproveorDeclineProperty(System* system, bool approved, User* user) {
+	if (!system->unVerified.empty()) {
+		Property* AcceptedProperty = system->unVerified.front();
+		system->unVerified.pop();
 		if (approved) {
-			system.properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
+			system->properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
 			cout << "Property Approved!";
-			system.propertiesCount++;
-			user.UserCountProperty++;
+			system->propertiesCount++;
+			user->UserCountProperty++;
 		}
 		else {
 			cout << "Property Declined";
