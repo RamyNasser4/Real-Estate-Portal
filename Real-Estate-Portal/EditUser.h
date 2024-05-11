@@ -42,8 +42,8 @@ public:
     QPushButton* pushButton_3;
     QPushButton* pushButton_4;
 
-    void setupUi(QStackedWidget* stackWidget, System* system,MyProfile* profile, User* user);
-    void retranslateUi(QStackedWidget* stackWidget);
+    void setupUi(QStackedWidget* stackWidget, System* system,MyProfile* profile);
+    void retranslateUi(QStackedWidget* stackWidget, System* system);
     void DoneButtonClick(System* system);
 private slots:
     void onPushButtonClicked();

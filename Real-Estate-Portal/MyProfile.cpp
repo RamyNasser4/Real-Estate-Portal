@@ -102,27 +102,56 @@ void MyProfile::setupUi(QStackedWidget* MyProfile, System* system)
 		"}"
 	);
     drawBoxes(scrollAreaWidgetContents, system, scrollArea, MyProfile);
-    pushButton_3 = new QPushButton(frame);
-    pushButton_3->setObjectName("pushButton_3");
-    pushButton_3->setGeometry(QRect(650, 130, 111, 51));
-    pushButton_4 = new QPushButton(frame);
-    pushButton_4->setObjectName("pushButton_4");
-    pushButton_4->setGeometry(QRect(660, 130, 31, 51));
-    pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-        "border:none;\n"
-        "background:#3F6793;\n"
-        "}"));
-    QIcon icon2;
-    icon2.addFile(QString::fromUtf8(":/Assets/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-    pushButton_4->setIcon(icon2);
-    label_5 = new QLabel(frame);
-    label_5->setObjectName("label_5");
-    label_5->setGeometry(QRect(700, 140, 41, 31));
-    label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
-        "color:white;\n"
-        "font-size:20px;\n"
-        "background:#3F6793;\n"
-        "}"));
+	QIcon icon1;
+	icon1.addFile(QString::fromUtf8(":/Assets/more32.png"), QSize(), QIcon::Normal, QIcon::Off);
+	toolButton_2 = new QToolButton(frame);
+	toolButton_2->setObjectName("toolButton_2");
+	toolButton_2->setGeometry(QRect(700, 130, 61, 41));
+	toolButton_2->setStyleSheet(QString::fromUtf8("QToolButton{\n"
+		"background:transparent;\n"
+		"border:none;\n"
+		"}\n"
+		"QToolButton::menu-indicator{\n"
+		"image: none;\n"
+		"}"));
+	toolButton_2->setIcon(icon1);
+	toolButton_2->setIconSize(QSize(100, 100));
+	toolButton_2->setPopupMode(QToolButton::InstantPopup);
+	QMenu* menu = new QMenu(frame);
+	QAction* editprofile = new QAction("Edit Profile");
+	QAction* changepass = new QAction("Change Password");
+	menu->addAction(editprofile);
+	menu->addAction(changepass);
+	menu->setStyleSheet("QMenu {\n"
+		"background-color: white;\n"       // Background color
+		"border: 1px solid #ccc;\n"        // Border style
+		"}\n"
+		"QMenu::item {\n"
+		"font-family:sans-serif;\n"
+		"font-weight:700;\n"
+		"padding: 5px 20px;\n"             // Padding for menu items
+		"}"
+		"QMenu::item:selected {\n"
+		"color:white;\n"
+		"background-color: #407BFF;\n"    // Background color of selected item
+		"}");
+	toolButton_2->setMenu(menu);
+	QObject::connect(editprofile, &QAction::triggered, [=]() {
+		EditProfile* editprof = new EditProfile();
+		MyProfile->hide();
+		MyProfile->addWidget(editprof);
+		MyProfile->setCurrentWidget(editprof);
+		editprof->setupUi(MyProfile, system,this);
+		MyProfile->show();
+		});
+	QObject::connect(changepass, &QAction::triggered, [=]() {
+		ChangePassword* changepassword = new ChangePassword();
+		MyProfile->hide();
+		MyProfile->addWidget(changepassword);
+		MyProfile->setCurrentWidget(changepassword);
+		changepassword->setupUi(MyProfile, system,this);
+		MyProfile->show();
+		});
     retranslateUi(MyProfile,system);
     QMetaObject::connectSlotsByName(MyProfile);
 }
@@ -493,7 +522,4 @@ void MyProfile::retranslateUi(QWidget* MyProfile,System* system)
     label_20->setText(QCoreApplication::translate("MyProfile", "2 Bedrooms", nullptr));
     label_21->setText(QCoreApplication::translate("MyProfile", "<p>163m<sup>2", nullptr));*/
     //toolButton->setText(QString());
-    pushButton_3->setText(QString());
-    pushButton_4->setText(QString());
-    label_5->setText(QCoreApplication::translate("MyProfile", "Edit", nullptr));
 } 

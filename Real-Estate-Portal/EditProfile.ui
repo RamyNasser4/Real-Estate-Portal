@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EditUserClass</class>
- <widget class="QWidget" name="EditUserClass">
+ <class>EditProfileClass</class>
+ <widget class="QWidget" name="EditProfileClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
+    <width>802</width>
     <height>741</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>EditUser</string>
+   <string>EditProfile</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -94,12 +94,12 @@ background:#1B425E;
       <rect>
        <x>80</x>
        <y>40</y>
-       <width>131</width>
+       <width>171</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>Edit User</string>
+      <string>Edit Profile</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -132,72 +132,11 @@ background:#1B425E;
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>120</y>
-      <width>201</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Change Password</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame_2">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>170</y>
-      <width>361</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Raised</enum>
-    </property>
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="geometry">
-      <rect>
-       <x>32</x>
-       <y>30</y>
-       <width>291</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="placeholderText">
-      <string> CurrentPassword</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>90</y>
-       <width>291</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="placeholderText">
-      <string>  NewPassword</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>360</y>
+      <y>120</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -210,7 +149,7 @@ background:#1B425E;
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>410</y>
+      <y>170</y>
       <width>361</width>
       <height>221</height>
      </rect>
@@ -286,34 +225,11 @@ background:#1B425E;
      <string>Done</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>131</y>
-      <width>21</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="Resource.qrc">
-      <normaloff>:/Assets/padlock.png</normaloff>:/Assets/padlock.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
       <x>38</x>
-      <y>370</y>
+      <y>130</y>
       <width>31</width>
       <height>21</height>
      </rect>

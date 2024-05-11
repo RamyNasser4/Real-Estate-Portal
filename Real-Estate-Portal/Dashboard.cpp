@@ -649,6 +649,9 @@ void Dashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system, QSc
 		int totalHeight = 100 * system->UserCounter();
 		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
 		for (auto it = users.begin(); it != users.end(); ++it) {
+			if (it->second->GetNationalId() == system->currentUserId) {
+				continue;
+			}
 			QFrame* userCard = new QFrame(scrollAreaWidgetContents);
 			userCard->setObjectName("userCard" + i);
 			userCard->setGeometry(QRect(10, currentCardY, 761, 41));

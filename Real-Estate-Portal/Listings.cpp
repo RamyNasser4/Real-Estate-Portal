@@ -774,7 +774,12 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 				});
 			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
 				try {
-					//move to property details page
+					PropertyDetails* details = new PropertyDetails();
+					ListComponents->hide();
+					ListComponents->addWidget(details);
+					ListComponents->setCurrentWidget(details);
+					details->setupUi(ListComponents, system, propertyId);
+					ListComponents->show();
 				}
 				catch (const exception& e) {
 
