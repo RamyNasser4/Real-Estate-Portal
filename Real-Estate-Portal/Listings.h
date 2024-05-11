@@ -27,6 +27,7 @@
 #include <QMouseEvent>
 #include "System.h"
 #include "UserAddProperty.h"
+#include "PropertyDetails.h"
 QT_BEGIN_NAMESPACE
 
 class Listings : public QWidget

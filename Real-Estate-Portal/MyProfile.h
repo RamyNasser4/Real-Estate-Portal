@@ -16,7 +16,8 @@
 #include "Listings.h"
 #include "System.h"
 #include "EditProperty.h"
-#include "EditUser.h"
+#include "EditProfile.h"
+#include "ChangePassword.h"
 using namespace std;
 QT_BEGIN_NAMESPACE
 
@@ -51,9 +52,8 @@ private:
     QLabel* label_20;
     QLabel* label_21;
     QToolButton* toolButton;
-    QPushButton* pushButton_3;
-    QPushButton* pushButton_4;
     QLabel* label_5;
+    QToolButton* toolButton_2;
 };
 
 

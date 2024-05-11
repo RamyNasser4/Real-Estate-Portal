@@ -43,5 +43,8 @@
         <file>profile.png</file>
         <file>Assets/profileg32.png</file>
         <file>Assets/profilew32.png</file>
+        <file>Assets/padlockw64.png</file>
+        <file>Assets/padlockg64.png</file>
+        <file>Assets/apartments.jpg</file>
     </qresource>
 </RCC>

@@ -163,11 +163,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="ChangePassword.cpp" />
     <ClCompile Include="Compare.cpp" />
     <ClCompile Include="Compare_3.cpp" />
     <ClCompile Include="Compare_4.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="EditProfile.cpp" />
     <ClCompile Include="EditProperty.cpp" />
     <ClCompile Include="EditPropertyRequest.cpp" />
     <ClCompile Include="EditUserRequest.cpp" />
@@ -201,7 +203,9 @@
     <QtMoc Include="Signup.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ChangePassword.h" />
     <ClInclude Include="Dialog.h" />
+    <QtMoc Include="EditProfile.h" />
     <ClInclude Include="EditUser.h" />
     <ClInclude Include="EditPropertyRequest.h" />
     <ClInclude Include="EditUserRequest.h" />
@@ -213,11 +217,13 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="ChangePassword.ui" />
     <QtUic Include="Compare.ui" />
     <QtUic Include="Compare_3.ui" />
     <QtUic Include="Compare_4.ui" />
     <QtUic Include="Dashboard.ui" />
     <QtUic Include="DialogButtonBottom.ui" />
+    <QtUic Include="EditProfile.ui" />
     <QtUic Include="EditProperty.ui" />
     <QtUic Include="EditUser.ui" />
     <QtUic Include="Home.ui" />

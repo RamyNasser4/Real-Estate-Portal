@@ -78,6 +78,12 @@
     <ClCompile Include="PropertyDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EditProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangePassword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Property.h">
@@ -183,6 +189,12 @@
     <QtUic Include="PropertyDetails.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="EditProfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ChangePassword.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -222,6 +234,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="PropertyDetails.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EditProfile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ChangePassword.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
