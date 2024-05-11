@@ -41,5 +41,7 @@
         <file>Assets/bookmark.png</file>
         <file>Assets/bookmarkv2.png</file>
         <file>profile.png</file>
+        <file>Assets/profileg32.png</file>
+        <file>Assets/profilew32.png</file>
     </qresource>
 </RCC>

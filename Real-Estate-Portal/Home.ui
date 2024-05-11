@@ -44,7 +44,7 @@ color:white;
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>150</y>
       <width>219</width>
       <height>50</height>
      </rect>
@@ -170,7 +170,7 @@ background-position:left center;
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
+      <y>50</y>
       <width>219</width>
       <height>50</height>
      </rect>
@@ -273,6 +273,67 @@ background-position:left center;
      </property>
      <property name="text">
       <string>Log out</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>36</width>
+       <height>36</height>
+      </size>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_7" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>219</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">/*QWidget:hover{
+background-color:#407BFF;
+}
+QPushButton:hover{
+background-color:#407BFF;
+background-image: url(:/Assets/menu.png);
+color:white;
+}*/</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_11">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>0</y>
+       <width>201</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-image: url(:/Assets/profileg32.png);
+background-repeat:no-repeat;
+background-position:left center;
+}
+/*QPushButton:hover{
+	background-image: url(:/Assets/menu.png);
+}*/</string>
+     </property>
+     <property name="text">
+      <string>Profile  </string>
      </property>
      <property name="iconSize">
       <size>

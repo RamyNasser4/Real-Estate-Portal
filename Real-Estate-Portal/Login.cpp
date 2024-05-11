@@ -182,6 +182,7 @@ void Login::setupUi(QStackedWidget* Form, System* system, Home* home, Signup* si
 			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
 			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
 			HoverEventFilter* filter3 = new HoverEventFilter(home->widget_6, home->pushButton_6,home, ":/Assets/logoutW32.png", ":/Assets/logoutGrey32.png");
+			HoverEventFilter* filter4 = new HoverEventFilter(home->widget_7, home->pushButton_11, home, ":/Assets/profilew32.png", ":/Assets/profileg32.png");
 			Form->show();
 		}
 		catch (const exception& e) {

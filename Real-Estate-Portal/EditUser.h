@@ -49,9 +49,9 @@ private slots:
     void onPushButtonClicked();
 
 };
-namespace Ui {
+/*namespace Ui {
     class EditUser : public EditUser {};
-} // namespace Ui
+}*/ // namespace Ui
 
 
 QT_END_NAMESPACE

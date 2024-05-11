@@ -103,7 +103,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 		QString dashboard = "Dashboard";
 		widget_2 = new ClickableWidget(stackedWidget, system, dashboard, widget);
 		widget_2->setObjectName("widget_2");
-		widget_2->setGeometry(QRect(10, 100, 219, 50));
+		widget_2->setGeometry(QRect(10, 150, 219, 50));
 		widget_2->setStyleSheet(QString::fromUtf8("QWidget:hover{\n"
 			"background-color:#407BFF;\n"
 			"}\n"
@@ -177,6 +177,32 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 		"}*/"));
 	pushButton_8->setIconSize(QSize(36, 36));
 	pushButton_8->setFlat(false);
+	QString profile = "Profile";
+	widget_7 = new ClickableWidget(stackedWidget,system,profile,widget);
+	widget_7->setObjectName("widget_7");
+	widget_7->setGeometry(QRect(10, 100, 219, 50));
+	widget_7->setStyleSheet(QString::fromUtf8("QWidget:hover{\n"
+		"background-color:#407BFF;\n"
+		"}\n"
+		"/*QPushButton:hover{\n"
+		"background-color:#407BFF;\n"
+		"background-image: url(:/Assets/menu.png);\n"
+		"color:white;\n"
+		"}*/"));
+	pushButton_11 = new QPushButton(widget_7);
+	pushButton_11->setObjectName("pushButton_11");
+	pushButton_11->setGeometry(QRect(18, 0, 201, 50));
+	pushButton_11->setMinimumSize(QSize(0, 50));
+	pushButton_11->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+		"	background-image: url(:/Assets/profileg32.png);\n"
+		"background-repeat:no-repeat;\n"
+		"background-position:left center;\n"
+		"}\n"
+		"/*QPushButton:hover{\n"
+		"	background-image: url(:/Assets/menu.png);\n"
+		"}*/"));
+	pushButton_11->setIconSize(QSize(36, 36));
+	pushButton_11->setFlat(false);
 	QString logout = "Login";
 	widget_6 = new ClickableWidget(HomeClass, system, logout, widget,login,this,signup);
 	widget_6->setObjectName("widget_6");
@@ -370,6 +396,34 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 			}
 		}
 		});
+	QObject::connect(pushButton_11, &QPushButton::clicked, [=]() {
+		if (stackedWidget->currentWidget()->objectName() != "Profile") {
+			bool addedBefore = false;
+			for (int i = 0; i < stackedWidget->count(); ++i) {
+				QWidget* currentWidget = stackedWidget->widget(i);
+				if (currentWidget->objectName() == "Profile") {
+					currentWidget = new MyProfile();
+					stackedWidget->hide();
+					stackedWidget->setCurrentIndex(i);
+					qDebug() << stackedWidget->currentWidget()->objectName();
+					MyProfile* profile = dynamic_cast<MyProfile*>(currentWidget);
+					profile->setupUi(stackedWidget, system);
+					stackedWidget->show();
+					addedBefore = true;
+					break;
+				}
+			}
+			if (!addedBefore) {
+				MyProfile* profile = new MyProfile();
+				profile->setObjectName("Profile");
+				stackedWidget->hide();
+				stackedWidget->addWidget(profile);
+				stackedWidget->setCurrentWidget(profile);
+				profile->setupUi(stackedWidget, system);
+				stackedWidget->show();
+			}
+		}
+		});
 	QObject::connect(pushButton_6, &QPushButton::clicked, [=]() {
 		qDebug() << "logout clicked";
 		system->Logout();
@@ -396,6 +450,10 @@ void Home::retranslateUi(QStackedWidget* HomeClass)
 	pushButton_6->setText(QCoreApplication::translate("HomeClass", "Log out", nullptr));
 #if QT_CONFIG(shortcut)
 	pushButton_6->setShortcut(QString());
+#endif // QT_CONFIG(shortcut)
+	pushButton_11->setText(QCoreApplication::translate("HomeClass", "Profile  ", nullptr));
+#if QT_CONFIG(shortcut)
+	pushButton_11->setShortcut(QString());
 #endif // QT_CONFIG(shortcut)
 #if QT_CONFIG(shortcut)
 #endif // QT_CONFIG(shortcut)
@@ -497,6 +555,11 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 						Dashboard* dashboard = dynamic_cast<Dashboard*>(currentWidget);
 						dashboard->setupUi(stackedWidget, system);
 					}
+					else if (widgetName == "Profile") {
+						currentWidget = new MyProfile();
+						MyProfile* profile = dynamic_cast<MyProfile*>(currentWidget);
+						profile->setupUi(stackedWidget, system);
+					}
 					stackedWidget->show();
 					addedBefore = true;
 					break;
@@ -540,6 +603,14 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 					stackedWidget->addWidget(dashboard);
 					stackedWidget->setCurrentWidget(dashboard);
 					dashboard->setupUi(stackedWidget, system);
+				}
+				else if (widgetName == "Profile") {
+					MyProfile* profile = new MyProfile();
+					profile->setObjectName("Profile");
+					stackedWidget->hide();
+					stackedWidget->addWidget(profile);
+					stackedWidget->setCurrentWidget(profile);
+					profile->setupUi(stackedWidget, system);
 				}
 				stackedWidget->show();
 			}

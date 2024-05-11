@@ -12,19 +12,23 @@
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
-#include "User.h";
-QT_BEGIN_NAMESPACE
+#include <QStackedWidget>
+#include "Listings.h"
+#include "System.h"
+#include "EditProperty.h"
 using namespace std;
+QT_BEGIN_NAMESPACE
+
 class MyProfile : public QWidget {
     Q_OBJECT
 
 public:
-    MyProfile (User& user,QWidget* parent = nullptr);
-    void setupUi(QWidget* MyProfile);
-    void retranslateUi(QWidget* MyProfile);
+    MyProfile(QWidget* parent = nullptr);
+    void setupUi(QStackedWidget* MyProfile,System* system);
+    void drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea, QStackedWidget* ListComponents);
+    void retranslateUi(QWidget* MyProfile, System* system);
    // void drawPropertyBoxes(unordered_map<string, Property*> properties);
 private:
-    User& user;
     QWidget* widget;
     QFrame* frame;
     QFrame* frame_2;

@@ -31,6 +31,7 @@ QT_BEGIN_NAMESPACE
 #include "Compare_4.h"
 #include "Dialog.h"
 #include "Dashboard.h"
+#include "MyProfile.h"
 using namespace std;
 class ClickableWidget : public QWidget {
 public:
@@ -59,6 +60,8 @@ public:
     QPushButton* pushButton_8;
     ClickableWidget* widget_6;
     QPushButton* pushButton_6;
+    ClickableWidget* widget_7;
+    QPushButton* pushButton_11;
     QStackedWidget* stackedWidget;
     //QWidget* page;
     Listings* page;
