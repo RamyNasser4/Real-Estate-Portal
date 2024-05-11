@@ -389,8 +389,15 @@ border:none;
        <height>51</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+color:white;
+font-size:20px;
+background:#3F6793;
+}</string>
+     </property>
      <property name="text">
-      <string/>
+      <string>    Edit</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_4">
@@ -414,26 +421,6 @@ background:#3F6793;
      <property name="icon">
       <iconset resource="Resource.qrc">
        <normaloff>:/Assets/edit.png</normaloff>:/Assets/edit.png</iconset>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>700</x>
-       <y>140</y>
-       <width>41</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-color:white;
-font-size:20px;
-background:#3F6793;
-}</string>
-     </property>
-     <property name="text">
-      <string>Edit</string>
      </property>
     </widget>
    </widget>

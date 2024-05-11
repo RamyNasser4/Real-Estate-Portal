@@ -4,7 +4,7 @@ EditUser::EditUser(QStackedWidget* parent) : QWidget(parent)
 {
     //setupUi(parent);
 }
-void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* profile, User* user)
+void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* profile)
 {
     if (stackWidget->objectName().isEmpty())
         stackWidget->setObjectName("EditUserClass");
@@ -91,10 +91,12 @@ void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* p
     lineEdit->setObjectName("lineEdit");
     lineEdit->setGeometry(QRect(32, 30, 291, 41));
     lineEdit->setStyleSheet(QString::fromUtf8(""));
+    lineEdit->setEchoMode(QLineEdit::Password);
     lineEdit_2 = new QLineEdit(frame_2);
     lineEdit_2->setObjectName("lineEdit_2");
     lineEdit_2->setGeometry(QRect(30, 90, 291, 41));
     lineEdit_2->setStyleSheet(QString::fromUtf8(""));
+    lineEdit_2->setEchoMode(QLineEdit::Password);
     label_3 = new QLabel(widget);
     label_3->setObjectName("label_3");
     label_3->setGeometry(QRect(70, 360, 51, 41));
@@ -134,13 +136,14 @@ void EditUser::setupUi(QStackedWidget* stackWidget, System* system, MyProfile* p
     pushButton_4->setIcon(icon2);
     pushButton_4->setIconSize(QSize(20, 20));
 
-    retranslateUi(stackWidget);
-    QObject::connect(pushButton, &QPushButton::clicked, [=]() { {
+    retranslateUi(stackWidget,system);
+    QObject::connect(pushButton_2, &QPushButton::clicked, [=]() { {
             try {
                 DoneButtonClick(system);
                 stackWidget->hide();
                 stackWidget->setCurrentWidget(profile);
                 profile->setupUi(stackWidget,system);
+                stackWidget->show();
             }
             catch (const exception& e) {
                 QDialog* qdialog = new QDialog();
@@ -164,18 +167,24 @@ void EditUser::DoneButtonClick(System* system) {
     system->EditProfile(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(),number.toLocal8Bit().constData(),CurrentPassword.toLocal8Bit().constData(),NewPassword.toLocal8Bit().constData());
 }
 
-void  EditUser::retranslateUi(QStackedWidget* stackWidget)
+void  EditUser::retranslateUi(QStackedWidget* stackWidget,System* system)
 {
+    User* currentUser = system->GetUser(system->currentUserId);
     stackWidget->setWindowTitle(QCoreApplication::translate("EditUserClass", "EditUser", nullptr));
     label->setText(QCoreApplication::translate("EditUserClass", "Edit User", nullptr));
     pushButton->setText(QString());
     label_2->setText(QCoreApplication::translate("EditUserClass", "Change Password", nullptr));
     lineEdit->setPlaceholderText(QCoreApplication::translate("EditUserClass", " CurrentPassword", nullptr));
+    lineEdit->setText(currentUser->GetPassword().c_str());
     lineEdit_2->setPlaceholderText(QCoreApplication::translate("EditUserClass", "  NewPassword", nullptr));
+    lineEdit_2->setText(currentUser->GetPassword().c_str());
     label_3->setText(QCoreApplication::translate("EditUserClass", "Edit ", nullptr));
     lineEdit_4->setPlaceholderText(QCoreApplication::translate("EditUserClass", "  Edit Number", nullptr));
+    lineEdit_4->setText(currentUser->GetMobileNumber().c_str());
     lineEdit_5->setPlaceholderText(QCoreApplication::translate("EditUserClass", "  Edit FirstName", nullptr));
+    lineEdit_5->setText(currentUser->GetFirstName().c_str());
     lineEdit_6->setPlaceholderText(QCoreApplication::translate("EditUserClass", "  Edit LastName", nullptr));
+    lineEdit_6->setText(currentUser->GetLastName().c_str());
     pushButton_2->setText(QCoreApplication::translate("EditUserClass", "Done", nullptr));
     pushButton_3->setText(QString());
     pushButton_4->setText(QString());

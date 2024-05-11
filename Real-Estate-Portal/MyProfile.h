@@ -16,6 +16,7 @@
 #include "Listings.h"
 #include "System.h"
 #include "EditProperty.h"
+#include "EditUser.h"
 using namespace std;
 QT_BEGIN_NAMESPACE
 

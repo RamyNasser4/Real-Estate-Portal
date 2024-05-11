@@ -102,9 +102,14 @@ void MyProfile::setupUi(QStackedWidget* MyProfile, System* system)
 		"}"
 	);
     drawBoxes(scrollAreaWidgetContents, system, scrollArea, MyProfile);
-    pushButton_3 = new QPushButton(frame);
-    pushButton_3->setObjectName("pushButton_3");
-    pushButton_3->setGeometry(QRect(650, 130, 111, 51));
+	pushButton_3 = new QPushButton(frame);
+	pushButton_3->setObjectName("pushButton_3");
+	pushButton_3->setGeometry(QRect(650, 130, 111, 51));
+	pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+		"color:white;\n"
+		"font-size:20px;\n"
+		"background:#3F6793;\n"
+		"}"));
     pushButton_4 = new QPushButton(frame);
     pushButton_4->setObjectName("pushButton_4");
     pushButton_4->setGeometry(QRect(660, 130, 31, 51));
@@ -115,14 +120,22 @@ void MyProfile::setupUi(QStackedWidget* MyProfile, System* system)
     QIcon icon2;
     icon2.addFile(QString::fromUtf8(":/Assets/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
     pushButton_4->setIcon(icon2);
-    label_5 = new QLabel(frame);
-    label_5->setObjectName("label_5");
-    label_5->setGeometry(QRect(700, 140, 41, 31));
-    label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
-        "color:white;\n"
-        "font-size:20px;\n"
-        "background:#3F6793;\n"
-        "}"));
+	QObject::connect(pushButton_3, &QPushButton::clicked, [=]() {
+		EditUser* edituser = new EditUser();
+		MyProfile->hide();
+		MyProfile->addWidget(edituser);
+		MyProfile->setCurrentWidget(edituser);
+		edituser->setupUi(MyProfile, system, this);
+		MyProfile->show();
+		});
+	QObject::connect(pushButton_4, &QPushButton::clicked, [=]() {
+		EditUser* edituser = new EditUser();
+		MyProfile->hide();
+		MyProfile->addWidget(edituser);
+		MyProfile->setCurrentWidget(edituser);
+		edituser->setupUi(MyProfile, system, this);
+		MyProfile->show();
+		});
     retranslateUi(MyProfile,system);
     QMetaObject::connectSlotsByName(MyProfile);
 }
@@ -493,7 +506,6 @@ void MyProfile::retranslateUi(QWidget* MyProfile,System* system)
     label_20->setText(QCoreApplication::translate("MyProfile", "2 Bedrooms", nullptr));
     label_21->setText(QCoreApplication::translate("MyProfile", "<p>163m<sup>2", nullptr));*/
     //toolButton->setText(QString());
-    pushButton_3->setText(QString());
+	pushButton_3->setText(QCoreApplication::translate("MyProfileClass", "    Edit", nullptr));
     pushButton_4->setText(QString());
-    label_5->setText(QCoreApplication::translate("MyProfile", "Edit", nullptr));
 } 
