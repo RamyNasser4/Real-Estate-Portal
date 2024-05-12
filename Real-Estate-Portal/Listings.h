@@ -94,7 +94,10 @@ namespace Ui {
 class ClickEventFilter : public QObject {
 public:
     QList<QWidget*> widgets;
-    ClickEventFilter(QObject* parent = nullptr);
+    ClickEventFilter(QStackedWidget* stackedWidget, System* system, string propertyId, QObject* parent = nullptr);
+    QStackedWidget* stackedWidget;
+    System* system;
+    string propertyId;
     void addWidget(QWidget* widget);
 
 protected:

@@ -118,7 +118,7 @@ void PropertyDetails::retranslateUi(QStackedWidget* PropertyDetailsClass, System
     label_24->setText(QCoreApplication::translate("PropertyDetailsClass", strlocation.c_str(), nullptr));
     string type = currentProperty->GetLocation();
     label->setText(QCoreApplication::translate("PropertyDetailsClass", type.c_str(), nullptr));
-    string bedroomsAndFootage = "<p>" + to_string(currentProperty->GetNumberOfBedrooms()) + " Bedrooms &nbsp;&#9679;&nbsp;&nbsp;" + to_string(currentProperty->GetSquareFootage()) + "<sup>2";
+    string bedroomsAndFootage = "<p>" + to_string(currentProperty->GetNumberOfBedrooms()) + " Bedrooms &nbsp;&#9679;&nbsp;&nbsp;" + to_string(currentProperty->GetSquareFootage()) + "ft<sup>2";
     label_2->setText(QCoreApplication::translate("PropertyDetailsClass", bedroomsAndFootage.c_str(), nullptr));
     string userName = "Listed By : " + system->GetUser(currentProperty->GetUserId())->GetName();
     label_3->setText(QCoreApplication::translate("PropertyDetailsClass", userName.c_str(), nullptr));

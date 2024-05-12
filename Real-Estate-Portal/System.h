@@ -22,6 +22,7 @@ public:
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
+	map<int, unordered_map<string, Property*>> propertyFilterComparison;
 	vector<Property*> propertyComparison;
 	unordered_map<string, Property*> properties;
 	unordered_map<string, User*> GetUsers();
@@ -51,6 +52,8 @@ public:
 	void RemoveUser(string adminID, string userID);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
+	vector<Property*> GetTop3Compared();
+	void handleComparison();
 	void AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
 	void EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, string currentUserId);

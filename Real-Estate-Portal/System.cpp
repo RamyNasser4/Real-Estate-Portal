@@ -131,6 +131,30 @@ void System::RemoveFromCompare(string propertyId) {
 		throw exception("Property not in comparison");
 	}
 }
+void System::handleComparison() {
+	for (int i = 0; propertyComparison.size() > 0; ++i) {
+		propertyComparison[i]->IncrementCompare();
+		propertyFilterComparison[propertyComparison[i]->GetCompareCounter() - 1].erase(propertyComparison[i]->GetpropertyId());
+		propertyFilterComparison[propertyComparison[i]->GetCompareCounter()][propertyComparison[i]->GetpropertyId()] = propertyComparison[i];
+	}
+}
+vector<Property*> System::GetTop3Compared() {
+	vector<Property*> top3Properties;
+	for (auto it = propertyFilterComparison.rbegin(); it != propertyFilterComparison.rend(); ++it) {
+		bool isFull = false;
+		for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+			top3Properties.push_back(it2->second);
+			if (top3Properties.size() == 3) {
+				isFull = true;
+				break;
+			}
+		}
+		if (isFull) {
+			break;
+		}
+	}
+	return top3Properties;
+}
 void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {

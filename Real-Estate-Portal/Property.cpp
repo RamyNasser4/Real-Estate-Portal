@@ -1,7 +1,7 @@
 #include "Property.h"
 #include <string>
 using namespace std;
-Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription)
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription,int compareCounter)
 {
 	this->location = Location;
 	this->propertyType = PropertyType;
@@ -15,48 +15,52 @@ Property::Property(string Location, string PropertyType, string BuildingNumber, 
 	this->userId = currentUserId;
 	this->highlighted = highlighted;
 	this->propertyDescription = propertyDescription;
+	this->comparedCounter = compareCounter;
 }
-
+Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription)
+{
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, highlighted, propertyDescription,0);
+}
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted) {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, highlighted, "");
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, highlighted,"");
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId) {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId, false);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, currentUserId,false);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName, 0);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, currentUserName,0);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price, "");
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, price,"");
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int  SquareFootage, int NumberOfBedrooms, bool verified)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified, 0);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, verified,0);
 
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms,false);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, 0);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage,0);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber)
 {
-	Property(Location, PropertyType, BuildingNumber, ApartmentNumber, 0);
+	Property(Location, PropertyType, BuildingNumber, ApartmentNumber,0);
 }
 Property::Property(string Location, string PropertyType, string BuildingNumber)
 {
-	Property(Location, PropertyType, BuildingNumber, 0);
+	Property(Location, PropertyType, BuildingNumber,0);
 }
 Property::Property(string Location, string PropertyType) {
-	Property(Location, PropertyType, "");
+	Property(Location, PropertyType,"");
 }
 Property::Property(string Location) {
-	Property(Location, "");
+	Property(Location,"");
 }
 Property::Property()
 {
@@ -76,6 +80,7 @@ Property::Property(const Property& Other)
 	this->userId = Other.userId;
 	this->highlighted = Other.highlighted;
 	this->propertyDescription = Other.propertyDescription;
+	this->comparedCounter = Other.comparedCounter;
 }
 string Property::GeneratePropertyId() {
 	char alphabet[36] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -162,6 +167,9 @@ int Property::GetNumberOfBedrooms()
 int Property::GetPrice() {
 	return price;
 }
+int Property::GetCompareCounter() {
+	return comparedCounter;
+}
 string Property::GetUserId() {
 	return userId;
 }
@@ -176,6 +184,8 @@ bool Property::GetVerfied()
 string Property::GetPropertyDescription() {
 	return propertyDescription;
 }
-
+void Property::IncrementCompare() {
+	++comparedCounter;
+}
 
 

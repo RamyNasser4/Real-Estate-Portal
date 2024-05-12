@@ -17,11 +17,13 @@ class Property
 	int squareFootage;
 	int numberOfBedrooms;
 	int price;
+	int comparedCounter;
 	bool verified;
 protected:
 	bool highlighted;
 
 public:
+	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription,int compareCounter);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted);
 	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool Verified, int price, string currentUserName, string currentUserId);
@@ -42,6 +44,7 @@ public:
 	int GetNumberOfBedrooms();
 	int GetPrice();
 	int GetApartmentNumber();
+	int GetCompareCounter();
 	bool GetVerfied();
 	bool GetHighlighted();
 
@@ -65,6 +68,7 @@ public:
 	void SetPropertyId(string propertyId);
 	void SetHighlight(bool value);
 	void SetPropertyDescription(string propertyDescription);
+	void IncrementCompare();
 
 	
 };

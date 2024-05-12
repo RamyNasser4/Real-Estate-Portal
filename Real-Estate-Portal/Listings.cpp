@@ -629,7 +629,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			type->show();
 			string strType = it->second->GetPropertyType();
 			type->setText(QCoreApplication::translate("ListingsClass", strType.c_str(), nullptr));
-			ClickEventFilter* filter = new ClickEventFilter();
+			string propertyId = it->second->GetpropertyId();
+			ClickEventFilter* filter = new ClickEventFilter(ListComponents,system,propertyId);
 			filter->addWidget(lineBetweenLabels1);
 			filter->addWidget(lineBetweenLabels2);
 			filter->addWidget(type);
@@ -670,11 +671,10 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			}
 			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
 			auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
-			string propertyId = it->second->GetpropertyId();
 			if (admin && it->second->GetHighlighted()) {
 				menu->addAction(removeHighlight);
 			}
-			else {
+			else if (admin) {
 				menu->addAction(highlight);
 			}
 			if (admin || userProperties.find(propertyId) != userProperties.end()) {
@@ -988,7 +988,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				type->show();
 				string strType = it2->second->GetPropertyType();
 				type->setText(QCoreApplication::translate("ListingsClass", strType.c_str(), nullptr));
-				ClickEventFilter* filter = new ClickEventFilter();
+				string propertyId = it2->second->GetpropertyId();
+				ClickEventFilter* filter = new ClickEventFilter(ListComponents,system,propertyId);
 				filter->addWidget(lineBetweenLabels1);
 				filter->addWidget(lineBetweenLabels2);
 				filter->addWidget(type);
@@ -1029,11 +1030,10 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				}
 				Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
 				auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
-				string propertyId = it2->second->GetpropertyId();
 				if (admin && it2->second->GetHighlighted()) {
 					menu->addAction(removeHighlight);
 				}
-				else {
+				else if (admin) {
 					menu->addAction(highlight);
 				}
 				if (admin || userProperties.find(propertyId) != userProperties.end()) {
@@ -1133,7 +1133,12 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 					});
 				QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
 					try {
-						//move to property details page
+						PropertyDetails* details = new PropertyDetails();
+						ListComponents->hide();
+						ListComponents->addWidget(details);
+						ListComponents->setCurrentWidget(details);
+						details->setupUi(ListComponents, system, propertyId);
+						ListComponents->show();
 					}
 					catch (const exception& e) {
 
@@ -1213,23 +1218,12 @@ void Listings::retranslateUi(QStackedWidget* ListingsClass)
 	label_6->setText(QCoreApplication::translate("ListingsClass", "By sq. Footage :", nullptr));
 	lineEdit_3->setPlaceholderText(QCoreApplication::translate("ListingsClass", "Min. Area", nullptr));
 	lineEdit_4->setPlaceholderText(QCoreApplication::translate("ListingsClass", "Max. Area", nullptr));
-	/*pushButton->setText(QString());
-	label_13->setText(QCoreApplication::translate("ListingsClass", "3 El Hegaz St., El Mahkama Station", nullptr));
-	label_14->setText(QCoreApplication::translate("ListingsClass", "Townhouse", nullptr));
-	label_15->setText(QCoreApplication::translate("ListingsClass", "2 Bedrooms", nullptr));
-	label_16->setText(QCoreApplication::translate("ListingsClass", "<p>163m<sup>2", nullptr));
-	label_17->setText(QCoreApplication::translate("ListingsClass", "$245,250", nullptr));
-	label_18->setText(QString());
-	pushButton_2->setText(QString());
-	label_19->setText(QCoreApplication::translate("ListingsClass", "$245,250", nullptr));
-	label_20->setText(QCoreApplication::translate("ListingsClass", "2 Bedrooms", nullptr));
-	label_21->setText(QCoreApplication::translate("ListingsClass", "<p>163m<sup>2", nullptr));
-	label_24->setText(QCoreApplication::translate("ListingsClass", "3 El Hegaz St., El Mahkama Station", nullptr));
-	label_25->setText(QCoreApplication::translate("ListingsClass", "Townhouse", nullptr));*/
 	pushButton_4->setText(QCoreApplication::translate("ListingsClass", " Add Property", nullptr));
 } // retranslateUi
-ClickEventFilter::ClickEventFilter(QObject* parent) : QObject(parent) {
-
+ClickEventFilter::ClickEventFilter(QStackedWidget* stackedWidget,System* system,string propertyId, QObject* parent) : QObject(parent) {
+	this->stackedWidget = stackedWidget;
+	this->system = system;
+	this->propertyId = propertyId;
 }
 void ClickEventFilter::addWidget(QWidget* widget) {
 	widgets.append(widget);
@@ -1242,7 +1236,12 @@ bool ClickEventFilter::eventFilter(QObject* obj, QEvent* event) {
 		if (mouseEvent->button() == Qt::LeftButton) {
 			for (QWidget* widget : widgets) {
 				if (obj == widget) {
-					qDebug() << "clicked";
+					PropertyDetails* details = new PropertyDetails();
+					stackedWidget->hide();
+					stackedWidget->addWidget(details);
+					stackedWidget->setCurrentWidget(details);
+					details->setupUi(stackedWidget, system, propertyId);
+					stackedWidget->show();
 					return true; // Event handled
 				}
 			}

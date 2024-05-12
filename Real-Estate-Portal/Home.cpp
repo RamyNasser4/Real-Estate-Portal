@@ -284,6 +284,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 					QWidget* currentWidget = stackedWidget->widget(i);
 					if (currentWidget->objectName() == "Compare") {
 						currentWidget = new Compare();
+						system->handleComparison();
 						Compare* compare = dynamic_cast<Compare*>(currentWidget);
 						stackedWidget->hide();
 						stackedWidget->setCurrentIndex(i);
@@ -296,6 +297,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 				}
 				if (!addedBefore) {
 					Compare* compare = new Compare();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);
@@ -312,6 +314,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 					QWidget* currentWidget = stackedWidget->widget(i);
 					if (currentWidget->objectName() == "Compare") {
 						currentWidget = new Compare_3();
+						system->handleComparison();
 						Compare_3* compare = dynamic_cast<Compare_3*>(currentWidget);
 						stackedWidget->hide();
 						stackedWidget->setCurrentIndex(i);
@@ -324,6 +327,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 				}
 				if (!addedBefore) {
 					Compare_3* compare = new Compare_3();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);
@@ -340,6 +344,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 					QWidget* currentWidget = stackedWidget->widget(i);
 					if (currentWidget->objectName() == "Compare") {
 						currentWidget = new Compare_4();
+						system->handleComparison();
 						Compare_4* compare = dynamic_cast<Compare_4*>(currentWidget);
 						stackedWidget->hide();
 						stackedWidget->setCurrentIndex(i);
@@ -352,6 +357,7 @@ void Home::setupUi(QStackedWidget* HomeClass, System* system, Login* login, Sign
 				}
 				if (!addedBefore) {
 					Compare_4* compare = new Compare_4();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);
@@ -531,16 +537,19 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 					}
 					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 2) {
 						currentWidget = new Compare();
+						system->handleComparison();
 						Compare* cmp2 = dynamic_cast<Compare*>(currentWidget);
 						cmp2->setupUi(stackedWidget, system);
 					}
 					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 3) {
 						currentWidget = new Compare_3();
+						system->handleComparison();
 						Compare_3* cmp3 = dynamic_cast<Compare_3*>(currentWidget);
 						cmp3->setupUi(stackedWidget, system);
 					}
 					else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 4) {
 						currentWidget = new Compare_4();
+						system->handleComparison();
 						Compare_4* cmp4 = dynamic_cast<Compare_4*>(currentWidget);
 						cmp4->setupUi(stackedWidget, system);
 					}
@@ -568,6 +577,7 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 			if (!addedBefore) {
 				if (widgetName == "Compare" && system->GetPropertyComparison().size() == 2) {
 					Compare* compare = new Compare();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);
@@ -576,6 +586,7 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 				}
 				else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 3) {
 					Compare_3* compare = new Compare_3();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);
@@ -584,6 +595,7 @@ void ClickableWidget::mousePressEvent(QMouseEvent* event) {
 				}
 				else if (widgetName == "Compare" && system->GetPropertyComparison().size() == 4) {
 					Compare_4* compare = new Compare_4();
+					system->handleComparison();
 					compare->setObjectName("Compare");
 					stackedWidget->hide();
 					stackedWidget->addWidget(compare);

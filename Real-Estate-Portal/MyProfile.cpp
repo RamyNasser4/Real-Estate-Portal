@@ -294,7 +294,8 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			type->show();
 			string strType = it->second->GetPropertyType();
 			type->setText(QCoreApplication::translate("ListingsClass", strType.c_str(), nullptr));
-			ClickEventFilter* filter = new ClickEventFilter();
+			string propertyId = it->second->GetpropertyId();
+			ClickEventFilter* filter = new ClickEventFilter(ListComponents,system,propertyId);
 			filter->addWidget(lineBetweenLabels1);
 			filter->addWidget(lineBetweenLabels2);
 			filter->addWidget(type);
@@ -335,11 +336,10 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			}
 			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
 			auto userProperties = system->GetUsers()[system->currentUserId]->GetUserProperties();
-			string propertyId = it->second->GetpropertyId();
 			if (admin && it->second->GetHighlighted()) {
 				menu->addAction(removeHighlight);
 			}
-			else {
+			else if(admin) {
 				menu->addAction(highlight);
 			}
 			if (admin || userProperties.find(propertyId) != userProperties.end()) {
@@ -374,7 +374,7 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			if (it->second->GetHighlighted()) {
 				highlightButton->setVisible(true);
 			}
-			else {
+			else{
 				highlightButton->setVisible(false);
 			}
 			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
@@ -439,7 +439,12 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 				});
 			QObject::connect(pushButtonMain, &QPushButton::clicked, [=]() {
 				try {
-					//move to property details page
+					PropertyDetails* details = new PropertyDetails();
+					ListComponents->hide();
+					ListComponents->addWidget(details);
+					ListComponents->setCurrentWidget(details);
+					details->setupUi(ListComponents, system, propertyId);
+					ListComponents->show();
 				}
 				catch (const exception& e) {
 
