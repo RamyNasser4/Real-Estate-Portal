@@ -22,6 +22,7 @@ public:
 	unordered_map<int, unordered_map<string, Property*>> propertyFilterBedRooms;
 	unordered_map<string, unordered_map<string, Property*>> propertyFilterLocations;
 	map<int, unordered_map<string, Property*>> propertyFilterPrice;
+	map<int, User*> userFilterByPropertyCount;
 	vector<Property*> propertyComparison;
 	unordered_map<string, Property*> properties;
 	unordered_map<string, User*> GetUsers();
@@ -40,7 +41,7 @@ public:
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	map<int, unordered_map<string,Property*>> FilterByPrice(int minPrice, int maxPrice);
 	unordered_map<string, Property*>  FilterByType(string type);
-
+	void SortUserByPropertyCount(string nationalID);
 
 	void Request(Property *property);
 	void SignUp(string fName, string lName, string natId, string password,string mobileNumber);
@@ -61,6 +62,7 @@ public:
 	bool FindUser(string nationalid);
 	Property* GetProperty(string propertyId);
 	User* GetUser(string userId);
+	User* UserWithMostProperties();
 
 
 };
