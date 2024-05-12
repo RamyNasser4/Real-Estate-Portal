@@ -221,6 +221,21 @@ map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, i
 	}
 	return filtered;
 }
+void System::SortUserByPropertyCount(string nationalID) {
+	User* user = GetUser(nationalID);
+	// if he is in the map and we want to change his count
+	if (userFilterByPropertyCount.find(user->GetUserCountProperty()) != userFilterByPropertyCount.end() &&
+		userFilterByPropertyCount[user->GetUserCountProperty()]->GetNationalId() == user->GetNationalId()) {
+		userFilterByPropertyCount.erase(user->GetUserCountProperty());
+		++user->UserCountProperty;
+		userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+	}
+	// if he is not in the map
+	else {
+		++user->UserCountProperty;
+		userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+	}
+}
 int System::UserCounter()
 {
 	return userCount;
@@ -272,5 +287,15 @@ User* System::GetUser(string userId) {
 		return users.find(userId)->second;
 	}
 	return nullptr;
+}
+User* System::UserWithMostProperties() {
+
+	if (!userFilterByPropertyCount.empty()) {
+		return userFilterByPropertyCount.rbegin()->second;
+	}
+	else {
+		return nullptr;
+	}
+
 }
 
