@@ -46,9 +46,9 @@ void Admin::AddProperty(string Location, string PropertyType, string BuildingNum
 }
 void Admin::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
-
+	
 	Property* property = system.properties[propertyId];
-
+	EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(),property->GetPropertyType(),property->GetBuildingNumber(),property->GetApartmentNumber(),property->GetSquareFootage(),property->GetNumberOfBedrooms(),property->GetPrice(),property->GetPropertyDescription(),Location,PropertyType,BuildingNumber,ApartmentNumber,SquareFootage,NumberOfBedrooms,price,propertyDescription,property->GetpropertyId());
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
@@ -83,6 +83,7 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 	property->SetPropertyDescription(propertyDescription);
 	property->SetBuildingNumber(BuildingNumber);
 	property->SetApartmentNumber(ApartmentNumber);
+	system.EditPropertyLogs.push_back(CurrentRequest);
 }
 
 

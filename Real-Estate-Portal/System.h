@@ -7,6 +7,8 @@
 #include "User.h"
 #include "Admin.h"
 #include "Property.h"
+#include "EditPropertyRequest.h"
+#include "EditUserRequest.h"
 using namespace std;
 class System{
 public:
@@ -66,7 +68,8 @@ public:
 	Property* GetProperty(string propertyId);
 	User* GetUser(string userId);
 	User* UserWithMostProperties();
-
+	vector<EditPropertyRequest*>EditPropertyContainer;
+	vector<EditUserRequest*>EditUserContainer;
 
 };
 
