@@ -84,6 +84,21 @@
     <ClCompile Include="ChangePassword.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PropertiesDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UsersDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnalyticsDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogsDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Property.h">
@@ -195,6 +210,24 @@
     <QtUic Include="ChangePassword.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="analytics.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PropertiesDashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="RequestDashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UsersDashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="AnalyticsDashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LogsDashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Login.h">
@@ -240,6 +273,21 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ChangePassword.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PropertiesDashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="RequestDashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UsersDashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AnalyticsDashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LogsDashboard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

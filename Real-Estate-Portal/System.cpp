@@ -132,7 +132,7 @@ void System::RemoveFromCompare(string propertyId) {
 	}
 }
 void System::handleComparison() {
-	for (int i = 0; propertyComparison.size() > 0; ++i) {
+	for (int i = 0; propertyComparison.size() > i; ++i) {
 		propertyComparison[i]->IncrementCompare();
 		propertyFilterComparison[propertyComparison[i]->GetCompareCounter() - 1].erase(propertyComparison[i]->GetpropertyId());
 		propertyFilterComparison[propertyComparison[i]->GetCompareCounter()][propertyComparison[i]->GetpropertyId()] = propertyComparison[i];

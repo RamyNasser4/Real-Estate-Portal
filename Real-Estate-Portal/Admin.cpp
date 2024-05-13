@@ -28,7 +28,7 @@ Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
 void Admin::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription);
+	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription,0);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -99,6 +99,10 @@ void Admin::RemoveProperty(string propertyId, System& system) {
 
 
 void Admin::RemoveUser(string ID, System& system) {
+	while (!system.unVerified.empty() &&
+		system.unVerified.front()->GetUserId() == ID) {
+		system.unVerified.pop();
+	}
 	unordered_map<string, Property*>propertiesToRemove = system.users[ID]->GetUserProperties();
 	for (auto it = propertiesToRemove.begin(); it != propertiesToRemove.end(); it++) {
 		RemoveProperty(it->second->GetpropertyId(), system);
@@ -126,6 +130,9 @@ void Admin::AdminApproveorDeclineProperty(System* system, bool approved, User* u
 		}
 		else {
 			cout << "Property Declined";
+		}
+		while (system->users.find(system->unVerified.front()->GetUserId()) == system->users.end()) {
+			system->unVerified.pop();
 		}
 	}
 	else {

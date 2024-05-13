@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="AnalyticsDashboard.cpp" />
     <ClCompile Include="ChangePassword.cpp" />
     <ClCompile Include="Compare.cpp" />
     <ClCompile Include="Compare_3.cpp" />
@@ -177,16 +178,20 @@
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="Listings.cpp" />
     <ClCompile Include="Login.cpp" />
+    <ClCompile Include="LogsDashboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyProfile.cpp" />
+    <ClCompile Include="PropertiesDashboard.cpp" />
     <ClCompile Include="Property.cpp" />
     <ClCompile Include="Propertycard.cpp" />
     <ClCompile Include="PropertyDetails.cpp" />
+    <ClCompile Include="RequestDashboard.cpp" />
     <ClCompile Include="Sidebar.cpp" />
     <ClCompile Include="Signup.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserAddProperty.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="UsersDashboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UserAddProperty.h" />
@@ -203,20 +208,26 @@
     <QtMoc Include="Signup.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="UsersDashboard.h" />
     <QtMoc Include="ChangePassword.h" />
+    <QtMoc Include="AnalyticsDashboard.h" />
     <ClInclude Include="Dialog.h" />
     <QtMoc Include="EditProfile.h" />
     <ClInclude Include="EditUser.h" />
     <ClInclude Include="EditPropertyRequest.h" />
     <ClInclude Include="EditUserRequest.h" />
     <ClInclude Include="Listings.h" />
+    <QtMoc Include="PropertiesDashboard.h" />
+    <QtMoc Include="LogsDashboard.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="Admin.h" />
     <QtMoc Include="PropertyDetails.h" />
+    <QtMoc Include="RequestDashboard.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="AnalyticsDashboard.ui" />
     <QtUic Include="ChangePassword.ui" />
     <QtUic Include="Compare.ui" />
     <QtUic Include="Compare_3.ui" />
@@ -229,13 +240,18 @@
     <QtUic Include="Home.ui" />
     <QtUic Include="Listings.ui" />
     <QtUic Include="Login.ui" />
+    <QtUic Include="LogsDashboard.ui" />
     <QtUic Include="MyProfile.ui" />
+    <QtUic Include="PropertiesDashboard.ui" />
     <QtUic Include="Propertycard.ui" />
     <QtUic Include="PropertyDetails.ui" />
+    <QtUic Include="RequestDashboard.ui" />
     <QtUic Include="Sidebar.ui" />
     <QtUic Include="Signup.ui" />
     <QtUic Include="UserAddProperty.ui" />
+    <QtUic Include="UsersDashboard.ui" />
     <QtUic Include="Widget.ui" />
+    <QtUic Include="analytics.ui" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Login.png" />
