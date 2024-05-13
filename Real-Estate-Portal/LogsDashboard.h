@@ -2,7 +2,7 @@
 
 #include <QWidget>
 #include "ui_LogsDashboard.h"
-
+#include "System.h"
 class LogsDashboard : public QWidget
 {
 	Q_OBJECT
@@ -92,7 +92,9 @@ public:
     QTextEdit* textEdit_4;
     QLabel* label_187;
 	LogsDashboard(QWidget *parent = nullptr);
-    void setupUi(QWidget* LogsDashboardClass);
+    void setupUi(QWidget* LogsDashboardClass, System* system);
+    void drawUsers(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea);
+    void drawProperties(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea);
     void retranslateUi(QWidget* LogsDashboardClass);
 	~LogsDashboard();
 

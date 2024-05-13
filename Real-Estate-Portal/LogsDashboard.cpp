@@ -5,7 +5,7 @@ LogsDashboard::LogsDashboard(QWidget *parent)
 {
 	//ui.setupUi(this);
 }
-void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
+void LogsDashboard::setupUi(QWidget* LogsDashboardClass,System* system)
 {
     if (LogsDashboardClass->objectName().isEmpty())
         LogsDashboardClass->setObjectName("LogsDashboardClass");
@@ -47,76 +47,26 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     scrollArea_7 = new QScrollArea(page_4);
     scrollArea_7->setObjectName("scrollArea_7");
     scrollArea_7->setGeometry(QRect(0, 190, 791, 201));
-    scrollArea_7->setWidgetResizable(true);
-    scrollAreaWidgetContents_7 = new QWidget();
-    scrollAreaWidgetContents_7->setObjectName("scrollAreaWidgetContents_7");
-    scrollAreaWidgetContents_7->setGeometry(QRect(0, 0, 789, 199));
-    frame_18 = new QFrame(scrollAreaWidgetContents_7);
-    frame_18->setObjectName("frame_18");
-    frame_18->setGeometry(QRect(20, 10, 761, 41));
-    frame_18->setStyleSheet(QString::fromUtf8("QFrame{\n"
-        "  border-radius: 15px;\n"
-        "  border: 2px solid white ;\n"
-        "background-color:white;\n"
-        "\n"
-        "}\n"
-        "QLabel\n"
-        "{\n"
-        "font-size:15px;\n"
-        "font-weight:bold;\n"
-        "color:#2B2A2A;\n"
-        "}\n"
-        "QPushButton{\n"
-        "  border-radius: 10px;\n"
-        "  background: #FF7F7F;\n"
-        "color:white;\n"
-        "\n"
-        "\n"
-        "\n"
-        "}\n"
-        "\n"
-        "QPushButton:hover{\n"
-        "background: #CCD0CD;\n"
-        "color:Black;\n"
-        "}\n"
-        "\n"
-        ""));
-    frame_18->setFrameShape(QFrame::Shape::StyledPanel);
-    frame_18->setFrameShadow(QFrame::Shadow::Raised);
-    label_143 = new QLabel(frame_18);
-    label_143->setObjectName("label_143");
-    label_143->setGeometry(QRect(50, 3, 141, 31));
-    label_144 = new QLabel(frame_18);
-    label_144->setObjectName("label_144");
-    label_144->setGeometry(QRect(240, 3, 141, 31));
-    label_145 = new QLabel(frame_18);
-    label_145->setObjectName("label_145");
-    label_145->setGeometry(QRect(600, 3, 131, 31));
-    label_146 = new QLabel(frame_18);
-    label_146->setObjectName("label_146");
-    label_146->setGeometry(QRect(7, 5, 31, 31));
-    label_146->setPixmap(QPixmap(QString::fromUtf8("Assets/profile.png")));
-    label_146->setScaledContents(true);
-    pushButton_9 = new QPushButton(frame_18);
-    pushButton_9->setObjectName("pushButton_9");
-    pushButton_9->setGeometry(QRect(430, 8, 91, 24));
-    pushButton_9->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-        "  border-radius: 10px;\n"
-        "  background: #699CCC;\n"
-        "color:white;\n"
-        "\n"
-        "\n"
-        "\n"
-        "}\n"
-        "\n"
-        "QPushButton:hover{\n"
-        "background: #CCD0CD;\n"
-        "color:black;\n"
-        "\n"
-        "}\n"
-        "\n"
-        ""));
-    scrollArea_7->setWidget(scrollAreaWidgetContents_7);
+    scrollArea_7->setStyleSheet(
+        "QScrollBar:vertical {"
+        "border: 1px solid #999999;"
+        "background: #F0F0F0;"
+        "width: 15px;"
+        "margin: 22px 0 22px 0;"
+        "}"
+        "QScrollBar::handle:vertical {"
+        "background: #666666;"
+        "min-height: 20px;"
+        "border-radius: 7px;"
+        "}"
+        "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+        "background: none;"
+        "}"
+        "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+        "background: none;"
+        "}"
+    );
+    drawUsers(scrollAreaWidgetContents_7, system, scrollArea_7);
     label_147 = new QLabel(page_4);
     label_147->setObjectName("label_147");
     label_147->setGeometry(QRect(70, 90, 211, 31));
@@ -167,71 +117,26 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     scrollArea_8 = new QScrollArea(page_4);
     scrollArea_8->setObjectName("scrollArea_8");
     scrollArea_8->setGeometry(QRect(0, 510, 791, 201));
-    scrollArea_8->setWidgetResizable(true);
-    scrollAreaWidgetContents_8 = new QWidget();
-    scrollAreaWidgetContents_8->setObjectName("scrollAreaWidgetContents_8");
-    scrollAreaWidgetContents_8->setGeometry(QRect(0, 0, 789, 199));
-    frame_20 = new QFrame(scrollAreaWidgetContents_8);
-    frame_20->setObjectName("frame_20");
-    frame_20->setGeometry(QRect(20, 10, 761, 41));
-    frame_20->setStyleSheet(QString::fromUtf8("QFrame{\n"
-        "  border-radius: 15px;\n"
-        "  border: 2px solid white ;\n"
-        "background-color:white;\n"
-        "\n"
-        "}\n"
-        "QLabel\n"
-        "{\n"
-        "font-size:15px;\n"
-        "font-weight:bold;\n"
-        "color:#2B2A2A;\n"
-        "}\n"
-        "QPushButton{\n"
-        "  border-radius: 10px;\n"
-        "  background: #FF7F7F;\n"
-        "color:white;\n"
-        "\n"
-        "\n"
-        "\n"
-        "}\n"
-        "\n"
-        "QPushButton:hover{\n"
-        "background: #CCD0CD;\n"
-        "color:Black;\n"
-        "}\n"
-        "\n"
-        ""));
-    frame_20->setFrameShape(QFrame::Shape::StyledPanel);
-    frame_20->setFrameShadow(QFrame::Shadow::Raised);
-    label_152 = new QLabel(frame_20);
-    label_152->setObjectName("label_152");
-    label_152->setGeometry(QRect(20, 3, 141, 31));
-    label_153 = new QLabel(frame_20);
-    label_153->setObjectName("label_153");
-    label_153->setGeometry(QRect(240, 3, 161, 31));
-    label_154 = new QLabel(frame_20);
-    label_154->setObjectName("label_154");
-    label_154->setGeometry(QRect(600, 3, 131, 31));
-    pushButton_10 = new QPushButton(frame_20);
-    pushButton_10->setObjectName("pushButton_10");
-    pushButton_10->setGeometry(QRect(430, 8, 91, 24));
-    pushButton_10->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-        "  border-radius: 10px;\n"
-        "  background: #699CCC;\n"
-        "color:white;\n"
-        "\n"
-        "\n"
-        "\n"
-        "}\n"
-        "\n"
-        "QPushButton:hover{\n"
-        "background: #CCD0CD;\n"
-        "color:black;\n"
-        "\n"
-        "}\n"
-        "\n"
-        ""));
-    scrollArea_8->setWidget(scrollAreaWidgetContents_8);
+    scrollArea_8->setStyleSheet(
+        "QScrollBar:vertical {"
+        "border: 1px solid #999999;"
+        "background: #F0F0F0;"
+        "width: 15px;"
+        "margin: 22px 0 22px 0;"
+        "}"
+        "QScrollBar::handle:vertical {"
+        "background: #666666;"
+        "min-height: 20px;"
+        "border-radius: 7px;"
+        "}"
+        "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+        "background: none;"
+        "}"
+        "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+        "background: none;"
+        "}"
+    );
+    drawProperties(scrollAreaWidgetContents_8, system, scrollArea_8);
     line_16 = new QFrame(page_4);
     line_16->setObjectName("line_16");
     line_16->setGeometry(QRect(30, 390, 731, 16));
@@ -284,6 +189,7 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     label_159 = new QLabel(frame_21);
     label_159->setObjectName("label_159");
     label_159->setGeometry(QRect(600, 3, 131, 31));
+    //user changes
     stackedWidget_2->addWidget(page_4);
     page_5 = new QWidget();
     page_5->setObjectName("page_5");
@@ -397,6 +303,7 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     all_labels_28->setGeometry(QRect(10, 270, 271, 41));
     all_labels_28->setStyleSheet(QString::fromUtf8(""));
     stackedWidget_2->addWidget(page_5);
+    //property details page
     page_6 = new QWidget();
     page_6->setObjectName("page_6");
     pushButton_12 = new QPushButton(page_6);
@@ -435,7 +342,7 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     line_18->setFrameShadow(QFrame::Shadow::Sunken);
     frame_24 = new QFrame(page_6);
     frame_24->setObjectName("frame_24");
-    frame_24->setGeometry(QRect(20, 90, 751, 291));
+    frame_24->setGeometry(QRect(20, 80, 751, 291));
     frame_24->setStyleSheet(QString::fromUtf8("QFrame{\n"
         "  border-radius: 25px;\n"
         "  border: 2px solid white ;\n"
@@ -512,12 +419,12 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
     label_174->setGeometry(QRect(20, 210, 91, 21));
     label_175 = new QLabel(page_6);
     label_175->setObjectName("label_175");
-    label_175->setGeometry(QRect(380, 385, 31, 21));
+    label_175->setGeometry(QRect(380, 375, 31, 21));
     label_175->setPixmap(QPixmap(QString::fromUtf8(":/Assets/double down arrow.png")));
     label_175->setScaledContents(true);
     frame_25 = new QFrame(page_6);
     frame_25->setObjectName("frame_25");
-    frame_25->setGeometry(QRect(20, 410, 751, 291));
+    frame_25->setGeometry(QRect(20, 400, 751, 291));
     frame_25->setStyleSheet(QString::fromUtf8("QFrame{\n"
         "  border-radius: 25px;\n"
         "  border: 2px solid white ;\n"
@@ -596,30 +503,348 @@ void LogsDashboard::setupUi(QWidget* LogsDashboardClass)
 
     retranslateUi(LogsDashboardClass);
 
-    stackedWidget_2->setCurrentIndex(2);
-
+    //stackedWidget_2->setCurrentIndex(2);
+    QObject::connect(pushButton_11, &QPushButton::clicked, [=]() {
+        stackedWidget_2->setCurrentWidget(page_4);
+        });
+    QObject::connect(pushButton_12, &QPushButton::clicked, [=]() {
+        stackedWidget_2->setCurrentWidget(page_4);
+        });
 
     QMetaObject::connectSlotsByName(LogsDashboardClass);
 } // setupUi
+void LogsDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea) {
+    scrollAreaWidgetContents = new QWidget(scrollArea);
+    vector<EditUserRequest*> editUserLogs = system->EditUserLogs;
+    if (editUserLogs.size() != 0) {
+        int i = 1;
+        int currentCardY = 10;
+        int totalHeight = 100 * editUserLogs.size();
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
+        for (auto it = editUserLogs.rbegin(); it != editUserLogs.rend(); ++it) {
+            QFrame* userCard = new QFrame(scrollAreaWidgetContents);
+            userCard->setObjectName("userCard" + i);
+            userCard->setGeometry(QRect(20, currentCardY, 761, 41));
+            userCard->setStyleSheet(QString::fromUtf8("QFrame{\n"
+                "  border-radius: 15px;\n"
+                "  border: 2px solid white ;\n"
+                "background-color:white;\n"
+                "\n"
+                "}\n"
+                "QLabel\n"
+                "{\n"
+                "font-size:15px;\n"
+                "font-weight:bold;\n"
+                "color:#2B2A2A;\n"
+                "}\n"
+                "QPushButton{\n"
+                "  border-radius: 10px;\n"
+                "  background: #FF7F7F;\n"
+                "color:white;\n"
+                "\n"
+                "\n"
+                "\n"
+                "}\n"
+                "\n"
+                "QPushButton:hover{\n"
+                "background: #CCD0CD;\n"
+                "color:Black;\n"
+                "}\n"
+                "\n"
+                ""));
+            userCard->setFrameShape(QFrame::Shape::StyledPanel);
+            userCard->setFrameShadow(QFrame::Shadow::Raised);
+            QLabel* nationalID = new QLabel(userCard);
+            nationalID->setObjectName("nationalID" + i);
+            nationalID->setGeometry(QRect(50, 3, 141, 31));
+            string strNationalID = "#" + (*it)->GetNationalId();
+            nationalID->setText(strNationalID.c_str());
+            QLabel* Name = new QLabel(userCard);
+            Name->setObjectName("fName" + i);
+            Name->setGeometry(QRect(240, 3, 141, 31));
+            string strName = (*it)->GetNewFirstName() + " " + (*it)->GetNewLastName();
+            Name->setText(strName.c_str());
+            QPushButton* action = new QPushButton(userCard);
+            action->setObjectName("action"+i);
+            action->setGeometry(QRect(430, 8, 91, 24));
+            action->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+                "  border-radius: 10px;\n"
+                "  background: #699CCC;\n"
+                "color:white;\n"
+                "\n"
+                "\n"
+                "\n"
+                "}\n"
+                "\n"
+                "QPushButton:hover{\n"
+                "background: #CCD0CD;\n"
+                "color:black;\n"
+                "\n"
+                "}\n"
+                "\n"
+                ""));
+            action->setText("View Action");
+            QLabel* Date = new QLabel(userCard);
+            Date->setObjectName("Date" + i);
+            Date->setGeometry(QRect(600, 3, 131, 31));
+            time_t tDate = (*it)->GetTime();
+            char buffer[26]; // Enough space to hold the string representation of time
+            size_t bufferSize = sizeof(buffer);
+            ctime_s(buffer, bufferSize, &tDate);
+            string strDate = buffer;
+            Date->setText("12/10/2004");
+            QLabel* profileIcon = new QLabel(userCard);
+            profileIcon->setObjectName("profileIcon" + i);
+            profileIcon->setGeometry(QRect(7, 5, 31, 31));
+            profileIcon->setPixmap(QPixmap(QString::fromUtf8("Assets/profile.png")));
+            profileIcon->setScaledContents(true);
+            string strOldFName = "First Name : " + (*it)->GetOldFirstName();
+            string strOldLName = "Last Name : " + (*it)->GetOldLastName();
+            string strOldMob = "Phone Number : " + (*it)->GetOldMobileNumber();
+            string userID = "User ID : " + (*it)->GetNationalId();
+            string passState = (*it)->GetPasswordChanged() ? "Password State : Changed " : "Password State : Unchanged";
+            string strNewFName = "First Name : " + (*it)->GetNewFirstName();
+            string strNewLName = "Last Name : " + (*it)->GetNewLastName();
+            string strNewMob = "Phone Number : " + (*it)->GetNewMobileNumber();
+            QObject::connect(action, &QPushButton::clicked, [=]() {
+                all_labels_7->setText(QCoreApplication::translate("LogsDashboardClass", strOldFName.c_str(), nullptr));
+                all_labels_8->setText(QCoreApplication::translate("LogsDashboardClass", strOldMob.c_str(), nullptr));
+                all_labels_25->setText(QCoreApplication::translate("LogsDashboardClass", strOldLName.c_str(), nullptr));
+                all_labels_9->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
+                all_labels_26->setText(QCoreApplication::translate("LogsDashboardClass", "Password State :", nullptr));
+                all_labels_10->setText(QCoreApplication::translate("LogsDashboardClass", strNewFName.c_str(), nullptr));
+                all_labels_11->setText(QCoreApplication::translate("LogsDashboardClass", strNewMob.c_str(), nullptr));
+                all_labels_27->setText(QCoreApplication::translate("LogsDashboardClass", strNewLName.c_str(), nullptr));
+                all_labels_12->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
+                all_labels_28->setText(QCoreApplication::translate("LogsDashboardClass", passState.c_str(), nullptr));
+                stackedWidget_2->setCurrentWidget(page_5);
+                });
+            i++;
+            currentCardY += 50;
+        }
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+    else {
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
+        QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
+        placeholder->setObjectName("placeholder");
+        placeholder->setGeometry(QRect(130, 0, 501, 441));
+        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
+        QLabel* label1 = new QLabel(scrollAreaWidgetContents);
+        label1->setObjectName("label_38");
+        label1->setGeometry(QRect(240, 460, 321, 31));
+        label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-size:30px;\n"
+            "font-family:sans-serif;\n"
+            "font-weight:600;\n"
+            "}"));
+        QLabel* label2 = new QLabel(scrollAreaWidgetContents);
+        label2->setObjectName("label_39");
+        label2->setGeometry(QRect(310, 500, 181, 16));
+        label2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-family:sans-serif;\n"
+            "color:#808080;\n"
+            "font-weight:600;\n"
+            "}"));
+        label1->setText(QCoreApplication::translate("ListingsClass", "No Properties To Show", nullptr));
+        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties ", nullptr));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+}
+void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea) {
+    scrollAreaWidgetContents = new QWidget(scrollArea);
+    vector<EditPropertyRequest*> editPropertyLogs = system->EditPropertyLogs;
+    if (editPropertyLogs.size() != 0) {
+        int i = 1;
+        int currentCardY = 10;
+        int totalHeight = 100 * editPropertyLogs.size();
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
+        for (auto it = editPropertyLogs.rbegin(); it != editPropertyLogs.rend(); ++it) {
+            QFrame* propertyCard = new QFrame(scrollAreaWidgetContents);
+            propertyCard->setObjectName("propertyCard" + i);
+            propertyCard->setGeometry(QRect(20, currentCardY, 761, 41));
+            propertyCard->setStyleSheet(QString::fromUtf8("QFrame{\n"
+                "  border-radius: 15px;\n"
+                "  border: 2px solid white ;\n"
+                "background-color:white;\n"
+                "\n"
+                "}\n"
+                "QLabel\n"
+                "{\n"
+                "font-size:15px;\n"
+                "font-weight:bold;\n"
+                "color:#2B2A2A;\n"
+                "}\n"
+                "QPushButton{\n"
+                "  border-radius: 10px;\n"
+                "  background: #FF7F7F;\n"
+                "color:white;\n"
+                "\n"
+                "\n"
+                "\n"
+                "}\n"
+                "\n"
+                "QPushButton:hover{\n"
+                "background: #CCD0CD;\n"
+                "color:Black;\n"
+                "}\n"
+                "\n"
+                ""));
+            propertyCard->setFrameShape(QFrame::Shape::StyledPanel);
+            propertyCard->setFrameShadow(QFrame::Shadow::Raised);
+            QLabel* PropertyID = new QLabel(propertyCard);
+            PropertyID->setObjectName("PropertyID" + i);
+            PropertyID->setGeometry(QRect(20, 3, 141, 31));
+            string strPropertyID = (*it)->GetPropertyId();
+            PropertyID->setText(strPropertyID.c_str());
+            QLabel* nationalID = new QLabel(propertyCard);
+            nationalID->setObjectName("nationalID" + i);
+            nationalID->setGeometry(QRect(240, 3, 161, 31));
+            string strNationalID = "#" + (*it)->GetUserId();
+            nationalID->setText(strNationalID.c_str());
+            QPushButton* action = new QPushButton(propertyCard);
+            action->setObjectName("action" + i);
+            action->setGeometry(QRect(430, 8, 91, 24));
+            action->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+                "  border-radius: 10px;\n"
+                "  background: #699CCC;\n"
+                "color:white;\n"
+                "\n"
+                "\n"
+                "\n"
+                "}\n"
+                "\n"
+                "QPushButton:hover{\n"
+                "background: #CCD0CD;\n"
+                "color:black;\n"
+                "\n"
+                "}\n"
+                "\n"
+                ""));
+            action->setText("View Action");
+            QLabel* Date = new QLabel(propertyCard);
+            Date->setObjectName("Date" + i);
+            Date->setGeometry(QRect(600, 3, 131, 31));
+            time_t tDate = (*it)->GetTime();
+            char buffer[26]; // Enough space to hold the string representation of time
+            size_t bufferSize = sizeof(buffer);
+            ctime_s(buffer, bufferSize, &tDate);
+            string strDate = buffer;
+            Date->setText("12/10/2004");
+            string strOldLocation = "Location : " + (*it)->GetOldLocation();
+            string strOldSqFootage = "Space : " + to_string((*it)->GetOldSquareFootage());
+            string strOldBedrooms = "Bedrooms : " + to_string((*it)->GetOldNumberOfBedrooms());
+            string strOldPrice = "Price : " + to_string((*it)->GetOldPrice());
+            string strOldType = "Type : " + (*it)->GetOldPropertyType();
+            string strOldBuilding = " Building Number : " + (*it)->GetOldBuildingNumber();
+            string userID = "User ID :" + (*it)->GetUserId();
+            string userName = "Username : " + system->GetUser((*it)->GetUserId())->GetName();
+            string logPropertyID = "Property ID : " + (*it)->GetPropertyId();
+            string strOldApartment = "Apartment Number : " + to_string((*it)->GetOldApartmentNumber());
+            string strOldDescription = (*it)->GetOldPropertyDescription();
+            string strNewLocation = "Location : " + (*it)->GetNewLocation();
+            string strNewSqFootage = "Space : " + to_string((*it)->GetNewSquareFootage());
+            string strNewBedrooms = "Bedrooms : " + to_string((*it)->GetNewNumberOfBedrooms());
+            string strNewPrice = "Price : " + to_string((*it)->GetNewPrice());
+            string strNewType = "Type : " + (*it)->GetNewPropertyType();
+            string strNewBuilding = " Building Number : " + (*it)->GetNewBuildingNumber();
+            string strNewApartment = "Apartment Number : " + to_string((*it)->GetNewApartmentNumber());
+            string strNewDescription = (*it)->GetNewPropertyDescription();
+            QObject::connect(action, &QPushButton::clicked, [=]() {
+                label_164->setText(QCoreApplication::translate("LogsDashboardClass", strOldLocation.c_str(), nullptr));
+                label_165->setText(QCoreApplication::translate("LogsDashboardClass", strOldSqFootage.c_str(), nullptr));
+                label_166->setText(QCoreApplication::translate("LogsDashboardClass", strOldBedrooms.c_str(), nullptr));
+                label_167->setText(QCoreApplication::translate("LogsDashboardClass", strOldPrice.c_str(), nullptr));
+                label_168->setText(QCoreApplication::translate("LogsDashboardClass", strOldType.c_str(), nullptr));
+                label_169->setText(QCoreApplication::translate("LogsDashboardClass", strOldBuilding.c_str(), nullptr));
+                label_170->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
+                label_171->setText(QCoreApplication::translate("LogsDashboardClass", userName.c_str(), nullptr));
+                label_172->setText(QCoreApplication::translate("LogsDashboardClass", logPropertyID.c_str(), nullptr));
+                label_173->setText(QCoreApplication::translate("LogsDashboardClass", strOldApartment.c_str(), nullptr));
+                /*textEdit_3->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                    "p, li { white-space: pre-wrap; }\n"
+                    "hr { height: 1px; border-width: 0; }\n"
+                    "li.unchecked::marker { content: \"\\2610\"; }\n"
+                    "li.checked::marker { content: \"\\2612\"; }\n"
+                    "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+                    "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff</p"
+                    "></body></html>", nullptr));*/
+                textEdit_3->setText(strOldDescription.c_str());
+                label_174->setText(QCoreApplication::translate("LogsDashboardClass", "Description :", nullptr));
+                label_176->setText(QString());
+                label_177->setText(QCoreApplication::translate("LogsDashboardClass", strNewLocation.c_str(), nullptr));
+                label_178->setText(QCoreApplication::translate("LogsDashboardClass", strNewSqFootage.c_str(), nullptr));
+                label_179->setText(QCoreApplication::translate("LogsDashboardClass", strNewBedrooms.c_str(), nullptr));
+                label_180->setText(QCoreApplication::translate("LogsDashboardClass", strNewPrice.c_str(), nullptr));
+                label_181->setText(QCoreApplication::translate("LogsDashboardClass", strNewType.c_str(), nullptr));
+                label_182->setText(QCoreApplication::translate("LogsDashboardClass", strNewBuilding.c_str(), nullptr));
+                label_183->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
+                label_184->setText(QCoreApplication::translate("LogsDashboardClass", userName.c_str(), nullptr));
+                label_185->setText(QCoreApplication::translate("LogsDashboardClass", logPropertyID.c_str(), nullptr));
+                label_186->setText(QCoreApplication::translate("LogsDashboardClass", strNewApartment.c_str(), nullptr));
+                /*textEdit_4->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                    "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+                    "p, li { white-space: pre-wrap; }\n"
+                    "hr { height: 1px; border-width: 0; }\n"
+                    "li.unchecked::marker { content: \"\\2610\"; }\n"
+                    "li.checked::marker { content: \"\\2612\"; }\n"
+                    "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+                    "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff</p"
+                    "></body></html>", nullptr));*/
+                textEdit_4->setText(strNewDescription.c_str());
+                label_187->setText(QCoreApplication::translate("LogsDashboardClass", "Description :", nullptr));
+                stackedWidget_2->setCurrentWidget(page_6);
+                });
+            i++;
+            currentCardY += 50;
+        }
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+    else {
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
+        QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
+        placeholder->setObjectName("placeholder");
+        placeholder->setGeometry(QRect(130, 0, 501, 441));
+        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
+        QLabel* label1 = new QLabel(scrollAreaWidgetContents);
+        label1->setObjectName("label_38");
+        label1->setGeometry(QRect(240, 460, 321, 31));
+        label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-size:30px;\n"
+            "font-family:sans-serif;\n"
+            "font-weight:600;\n"
+            "}"));
+        QLabel* label2 = new QLabel(scrollAreaWidgetContents);
+        label2->setObjectName("label_39");
+        label2->setGeometry(QRect(310, 500, 181, 16));
+        label2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+            "font-family:sans-serif;\n"
+            "color:#808080;\n"
+            "font-weight:600;\n"
+            "}"));
+        label1->setText(QCoreApplication::translate("ListingsClass", "No Properties To Show", nullptr));
+        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties ", nullptr));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+}
 void LogsDashboard::retranslateUi(QWidget* LogsDashboardClass)
 {
     LogsDashboardClass->setWindowTitle(QCoreApplication::translate("LogsDashboardClass", "LogsDashboard", nullptr));
     label_141->setText(QCoreApplication::translate("LogsDashboardClass", "Logs", nullptr));
     label_142->setText(QString());
-    label_143->setText(QCoreApplication::translate("LogsDashboardClass", "#12345678901234", nullptr));
-    label_144->setText(QCoreApplication::translate("LogsDashboardClass", "Ahmed", nullptr));
-    label_145->setText(QCoreApplication::translate("LogsDashboardClass", "012345678900", nullptr));
-    label_146->setText(QString());
-    pushButton_9->setText(QCoreApplication::translate("LogsDashboardClass", "View Change", nullptr));
     label_147->setText(QCoreApplication::translate("LogsDashboardClass", "Users Logs :", nullptr));
     label_148->setText(QCoreApplication::translate("LogsDashboardClass", "# ID", nullptr));
     label_149->setText(QCoreApplication::translate("LogsDashboardClass", "Name", nullptr));
     label_150->setText(QCoreApplication::translate("LogsDashboardClass", "Action", nullptr));
-    label_151->setText(QCoreApplication::translate("LogsDashboardClass", "Date", nullptr));
-    label_152->setText(QCoreApplication::translate("LogsDashboardClass", "12345678901234", nullptr));
-    label_153->setText(QCoreApplication::translate("LogsDashboardClass", "# 1234567890", nullptr));
-    label_154->setText(QCoreApplication::translate("LogsDashboardClass", "19/33/34", nullptr));
-    pushButton_10->setText(QCoreApplication::translate("LogsDashboardClass", "View Change", nullptr));
     label_155->setText(QCoreApplication::translate("LogsDashboardClass", "Properties Logs :", nullptr));
     label_156->setText(QCoreApplication::translate("LogsDashboardClass", "Property ID", nullptr));
     label_157->setText(QCoreApplication::translate("LogsDashboardClass", "#User Id", nullptr));
@@ -627,62 +852,11 @@ void LogsDashboard::retranslateUi(QWidget* LogsDashboardClass)
     label_159->setText(QCoreApplication::translate("LogsDashboardClass", "Date", nullptr));
     label_160->setText(QCoreApplication::translate("LogsDashboardClass", "User Changes", nullptr));
     pushButton_11->setText(QString());
-    all_labels_7->setText(QCoreApplication::translate("LogsDashboardClass", "First Name :", nullptr));
-    all_labels_8->setText(QCoreApplication::translate("LogsDashboardClass", "Phone Number : 12345678900", nullptr));
-    all_labels_25->setText(QCoreApplication::translate("LogsDashboardClass", "Second Name :", nullptr));
-    all_labels_9->setText(QCoreApplication::translate("LogsDashboardClass", "User ID :", nullptr));
-    all_labels_26->setText(QCoreApplication::translate("LogsDashboardClass", "Password State :", nullptr));
+    
     label_161->setText(QString());
-    all_labels_10->setText(QCoreApplication::translate("LogsDashboardClass", "First Name :", nullptr));
-    all_labels_11->setText(QCoreApplication::translate("LogsDashboardClass", "Phone Number : 12345678900", nullptr));
-    all_labels_27->setText(QCoreApplication::translate("LogsDashboardClass", "Second Name :", nullptr));
-    all_labels_12->setText(QCoreApplication::translate("LogsDashboardClass", "User ID :", nullptr));
-    all_labels_28->setText(QCoreApplication::translate("LogsDashboardClass", "Password State :", nullptr));
-    pushButton_12->setText(QString());
     label_162->setText(QCoreApplication::translate("LogsDashboardClass", "Properties Changes", nullptr));
-    label_163->setText(QString());
-    label_164->setText(QCoreApplication::translate("LogsDashboardClass", "Location :", nullptr));
-    label_165->setText(QCoreApplication::translate("LogsDashboardClass", "Space :", nullptr));
-    label_166->setText(QCoreApplication::translate("LogsDashboardClass", "Bedrooms :", nullptr));
-    label_167->setText(QCoreApplication::translate("LogsDashboardClass", "Price : ", nullptr));
-    label_168->setText(QCoreApplication::translate("LogsDashboardClass", "Type :", nullptr));
-    label_169->setText(QCoreApplication::translate("LogsDashboardClass", "Building Number: ", nullptr));
-    label_170->setText(QCoreApplication::translate("LogsDashboardClass", "User ID :", nullptr));
-    label_171->setText(QCoreApplication::translate("LogsDashboardClass", "User Name :", nullptr));
-    label_172->setText(QCoreApplication::translate("LogsDashboardClass", "Property ID : ", nullptr));
-    label_173->setText(QCoreApplication::translate("LogsDashboardClass", "Apartmant number :", nullptr));
-    textEdit_3->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-        "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-        "p, li { white-space: pre-wrap; }\n"
-        "hr { height: 1px; border-width: 0; }\n"
-        "li.unchecked::marker { content: \"\\2610\"; }\n"
-        "li.checked::marker { content: \"\\2612\"; }\n"
-        "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff</p"
-        "></body></html>", nullptr));
-    label_174->setText(QCoreApplication::translate("LogsDashboardClass", "Description :", nullptr));
+    pushButton_12->setText(QString());
     label_175->setText(QString());
-    label_176->setText(QString());
-    label_177->setText(QCoreApplication::translate("LogsDashboardClass", "Location :", nullptr));
-    label_178->setText(QCoreApplication::translate("LogsDashboardClass", "Space :", nullptr));
-    label_179->setText(QCoreApplication::translate("LogsDashboardClass", "Bedrooms :", nullptr));
-    label_180->setText(QCoreApplication::translate("LogsDashboardClass", "Price : ", nullptr));
-    label_181->setText(QCoreApplication::translate("LogsDashboardClass", "Type :", nullptr));
-    label_182->setText(QCoreApplication::translate("LogsDashboardClass", "Building Number: ", nullptr));
-    label_183->setText(QCoreApplication::translate("LogsDashboardClass", "User ID :", nullptr));
-    label_184->setText(QCoreApplication::translate("LogsDashboardClass", "User Name :", nullptr));
-    label_185->setText(QCoreApplication::translate("LogsDashboardClass", "Property ID : ", nullptr));
-    label_186->setText(QCoreApplication::translate("LogsDashboardClass", "Apartmant number :", nullptr));
-    textEdit_4->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-        "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-        "p, li { white-space: pre-wrap; }\n"
-        "hr { height: 1px; border-width: 0; }\n"
-        "li.unchecked::marker { content: \"\\2610\"; }\n"
-        "li.checked::marker { content: \"\\2612\"; }\n"
-        "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully Life's a journey, not a destination. Embrace the adventure, cherish the moments, and live fully ffffffff</p"
-        "></body></html>", nullptr));
-    label_187->setText(QCoreApplication::translate("LogsDashboardClass", "Description :", nullptr));
 } // retranslateUi
 
 LogsDashboard::~LogsDashboard()

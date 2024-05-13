@@ -68,3 +68,13 @@ string EditUserRequest::GetNewLastName() {
 string EditUserRequest::GetNewMobileNumber() {
     return newMobileNumber;
 }
+string EditUserRequest::GetNationalId() {
+    return NationalID;
+}
+bool EditUserRequest::GetPasswordChanged() {
+    return password;
+}
+time_t EditUserRequest::GetTime() {
+    return timeStamp;
+}
+

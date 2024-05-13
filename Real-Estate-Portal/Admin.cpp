@@ -48,7 +48,7 @@ void Admin::EditProperty(string Location, string PropertyType, string BuildingNu
 {
 	
 	Property* property = system.properties[propertyId];
-	EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(),property->GetPropertyType(),property->GetBuildingNumber(),property->GetApartmentNumber(),property->GetSquareFootage(),property->GetNumberOfBedrooms(),property->GetPrice(),property->GetPropertyDescription(),Location,PropertyType,BuildingNumber,ApartmentNumber,SquareFootage,NumberOfBedrooms,price,propertyDescription,property->GetpropertyId());
+	EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(),property->GetPropertyType(),property->GetBuildingNumber(),property->GetApartmentNumber(),property->GetSquareFootage(),property->GetNumberOfBedrooms(),property->GetPrice(),property->GetPropertyDescription(),Location,PropertyType,BuildingNumber,ApartmentNumber,SquareFootage,NumberOfBedrooms,price,propertyDescription,property->GetpropertyId(),property->GetUserId());
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);

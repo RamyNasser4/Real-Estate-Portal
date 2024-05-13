@@ -118,6 +118,7 @@ void User::UserAddedProperty(string propertyId, Property* property) {
 void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {
 		Property* property = system.properties[editPropertyId];
+		EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetBuildingNumber(), property->GetApartmentNumber(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(),property->GetUserId());
 		if (property->GetLocation() != Location)
 		{
 			system.propertyFilterLocations[property->GetLocation()].erase(editPropertyId);
@@ -151,6 +152,7 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 		property->SetBuildingNumber(BuildingNumber);
 		property->SetApartmentNumber(ApartmentNumber);
 		property->SetPropertyDescription(propertyDescription);
+		system.EditPropertyLogs.push_back(CurrentRequest);
 	}
 }
 bool User::HasProperty(string propertyId) {

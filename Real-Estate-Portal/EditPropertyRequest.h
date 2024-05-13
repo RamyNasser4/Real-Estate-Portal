@@ -27,9 +27,10 @@ class EditPropertyRequest
 
 	time_t CurrentTime;
 	string PropertyID;
+	string userID;
 public: 
 
-	EditPropertyRequest(string OldLocation, string OldPropertyType, string OldBuildingNumber, int OldApartmentNumber, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OLdpropertyDescription, string NewLocation, string NewPropertyType, string NewBuildingNumber, int NewApartmentNumber, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID);
+	EditPropertyRequest(string OldLocation, string OldPropertyType, string OldBuildingNumber, int OldApartmentNumber, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OLdpropertyDescription, string NewLocation, string NewPropertyType, string NewBuildingNumber, int NewApartmentNumber, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID,string UserID);
 	
 	
 	//setters for old parameters
@@ -61,8 +62,9 @@ public:
 	string GetOldLocation() ;
 	string GetOldPropertyType() ;
 	string GetOldBuildingNumber() ;
-	string GetOldUserName() ;
 	string GetOldPropertyDescription() ;
+	string GetPropertyId();
+	string GetUserId();
 	int GetOldApartmentNumber() ;
 	int GetOldSquareFootage() ;
 	int GetOldNumberOfBedrooms() ;
@@ -71,11 +73,11 @@ public:
 	string GetNewLocation() ;
 	string GetNewPropertyType() ;
 	string GetNewBuildingNumber() ;
-	string GetNewUserName() ;
 	string GetNewPropertyDescription() ;
 	int GetNewApartmentNumber() ;
 	int GetNewSquareFootage() ;
 	int GetNewNumberOfBedrooms() ;
 	int GetNewPrice();
+	time_t GetTime();
 };
 

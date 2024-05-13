@@ -110,10 +110,11 @@ void System::EditProfile(string fName,string lName, string mobNum, string currPa
 	{
 		PasswordChanged = true;
 	}
-	EditUserRequest* CurrentUserEdit = new EditUserRequest(user->GetFirstName(), fName, user->GetLastName(), lName, user->GetMobileNumber(), mobNum,user->GetPassword(),PasswordChanged );
+	EditUserRequest* CurrentUserEdit = new EditUserRequest(user->GetFirstName(), fName, user->GetLastName(), lName, user->GetMobileNumber(), mobNum,PasswordChanged,user->GetNationalId() );
 	EditMobileNumber(currentUserId, mobNum);
 	user->SetFirstName(fName);
 	user->SetLastName(lName);
+	EditUserLogs.push_back(CurrentUserEdit);
 }
 void System::AddToCompare(string propertyId) {
 	if (propertyComparison.size() <= 3) {

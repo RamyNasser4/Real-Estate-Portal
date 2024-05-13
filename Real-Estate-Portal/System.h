@@ -68,8 +68,8 @@ public:
 	Property* GetProperty(string propertyId);
 	User* GetUser(string userId);
 	User* UserWithMostProperties();
-	vector<EditPropertyRequest*>EditPropertyContainer;
-	vector<EditUserRequest*>EditUserContainer;
+	vector<EditPropertyRequest*>EditPropertyLogs;
+	vector<EditUserRequest*>EditUserLogs;
 
 };
 

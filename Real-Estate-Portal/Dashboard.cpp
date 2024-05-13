@@ -59,7 +59,7 @@ void Dashboard::setupUi(QStackedWidget* Dashboard, System* system)
 	tab_6 = new QWidget();
 	tab_6->setObjectName("tab_6");
 	LogsDashboard* logsDashboard = new LogsDashboard();
-	logsDashboard->setupUi(tab_6);
+	logsDashboard->setupUi(tab_6,system);
 	tabWidget->addTab(tab_6, QString("Logs"));
 	QObject::connect(tabWidget, &QTabWidget::currentChanged, [=]() {
 		if (tabWidget->currentIndex() == 1) {
@@ -67,6 +67,10 @@ void Dashboard::setupUi(QStackedWidget* Dashboard, System* system)
 		}
 		else if (tabWidget->currentIndex() == 3) {
 			analyticsDashboard->updateUi(system, Dashboard);
+		}
+		else if (tabWidget->currentIndex() == 4) {
+			logsDashboard->drawProperties(logsDashboard->scrollAreaWidgetContents_8, system, logsDashboard->scrollArea_8);
+			logsDashboard->drawUsers(logsDashboard->scrollAreaWidgetContents_7, system, logsDashboard->scrollArea_7);
 		}
 		});
 	retranslateUi(Dashboard);

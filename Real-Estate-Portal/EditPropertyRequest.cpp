@@ -3,7 +3,7 @@
 #include<string.h>
 #include<ctime>
 using namespace std;
-EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldBuildingNumber, int OldApartmentNumber, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OLdpropertyDescription, string NewLocation, string NewPropertyType, string NewBuildingNumber, int NewApartmentNumber, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID)
+EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldBuildingNumber, int OldApartmentNumber, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OldpropertyDescription, string NewLocation, string NewPropertyType, string NewBuildingNumber, int NewApartmentNumber, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID,string userID)
 {
 	this->Oldlocation = OldLocation;
 	this->OldpropertyType = OldPropertyType;
@@ -25,6 +25,7 @@ EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyT
 
 	this->CurrentTime = time(&CurrentTime);
 	this->PropertyID = PropertyID;
+	this->userID = userID;
 }
 
 	//setters 
@@ -117,14 +118,15 @@ string EditPropertyRequest::GetOldBuildingNumber() {
 	return OldbuildingNumber;
 }
 
-string EditPropertyRequest::GetOldUserName() {
-	return OlduserName;
-}
-
 string EditPropertyRequest::GetOldPropertyDescription() {
 	return OldpropertyDescription;
 }
-
+string EditPropertyRequest::GetPropertyId() {
+	return PropertyID;
+}
+string EditPropertyRequest::GetUserId() {
+	return userID;
+}
 int EditPropertyRequest::GetOldApartmentNumber() {
 	return OldapartmentNumber;
 }
@@ -153,10 +155,6 @@ string EditPropertyRequest::GetNewBuildingNumber() {
 	return NewbuildingNumber;
 }
 
-string EditPropertyRequest::GetNewUserName() {
-	return NewuserName;
-}
-
 string EditPropertyRequest::GetNewPropertyDescription() {
 	return NewpropertyDescription;
 }
@@ -175,4 +173,7 @@ int EditPropertyRequest::GetNewNumberOfBedrooms() {
 
 int EditPropertyRequest::GetNewPrice() {
 	return Newprice;
+}
+time_t EditPropertyRequest::GetTime() {
+	return CurrentTime;
 }

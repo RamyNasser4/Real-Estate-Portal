@@ -35,5 +35,8 @@ public:
     string GetNewFirstName();
     string GetNewLastName();
     string GetNewMobileNumber();
+    string GetNationalId();
+    bool GetPasswordChanged();
+    time_t GetTime();
 };
 
