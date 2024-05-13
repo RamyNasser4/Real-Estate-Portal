@@ -3,7 +3,7 @@
 #include <iostream>
 #include"User.h"
 using namespace std;
-EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password, time_t timestamp) {
+EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password,string NationalID) {
 	this->oldFirstName = oldFirstName;
 	this->newFirstName = newFirstName;
 	this->oldLastName =	 oldLastName;
@@ -11,7 +11,8 @@ EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, strin
 	this->oldMobileNumber = oldMobileNumber;
 	this->newMobileNumber = newMobileNumber;
 	this->password = password;
-	this->timeStamp = timestamp;
+    this->timeStamp = time(&timeStamp);
+    this->NationalID = NationalID;
 }
 
 //setters

@@ -13,7 +13,9 @@ class EditUserRequest
 	string newMobileNumber;
 	bool password;
 	time_t timeStamp;
-	EditUserRequest(string oldFirstName,string newFirstName,string oldLastName,string newLastName,string oldMobileNumber,string newMobileNumber,bool password,time_t timestamp);
+    string NationalID;
+public:
+	EditUserRequest(string oldFirstName,string newFirstName,string oldLastName,string newLastName,string oldMobileNumber,string newMobileNumber,bool password,string NationalID);
 
     //setters
 
