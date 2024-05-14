@@ -164,7 +164,30 @@ void EditUser::DoneButtonClick(System* system) {
     QString firstName= lineEdit_5->text();
     QString lastName = lineEdit_6->text();
     QString number = lineEdit_4->text();
-    system->EditProfile(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(),number.toLocal8Bit().constData(),CurrentPassword.toLocal8Bit().constData(),NewPassword.toLocal8Bit().constData());
+   /* bool isPhoneNumm = true;
+    for (int i = 0; i < number.size(); i++) {
+        if (number[i].isSymbol() || number[i].isSpace() || number[i].isLetter() || number[i].isMark()) {
+            isPhoneNumm = false;
+        }
+    }
+    if (NewPassword.isEmpty()) {
+        throw exception("Enter A Password");
+    }
+    else if (NewPassword.length() < 8) {
+        throw exception("Password Must Exceed 8 Characters");
+    }
+    else if (number.isEmpty()) {
+        throw exception("Enter Your Phone Number");
+    }
+    else if (number.length() != 11) {
+        throw exception("Enter Valid Phone Number");
+    }
+    else if (isPhoneNumm == false) {
+        throw exception("Enter Valid Phone Number");
+    }*/
+    //else {
+        system->EditProfile(firstName.toLocal8Bit().constData(), lastName.toLocal8Bit().constData(), number.toLocal8Bit().constData(), CurrentPassword.toLocal8Bit().constData(), NewPassword.toLocal8Bit().constData());
+   // }
 }
 
 void  EditUser::retranslateUi(QStackedWidget* stackWidget,System* system)
