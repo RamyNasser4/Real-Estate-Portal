@@ -141,28 +141,12 @@ border:none;
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>160</y>
-       <width>161</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="inputMethodHints">
-      <set>Qt::InputMethodHint::ImhDigitsOnly</set>
-     </property>
-     <property name="placeholderText">
-      <string>  Apartment Number</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="lineEdit_2">
      <property name="geometry">
       <rect>
        <x>40</x>
        <y>160</y>
-       <width>171</width>
+       <width>341</width>
        <height>41</height>
       </rect>
      </property>
@@ -170,7 +154,7 @@ border:none;
       <set>Qt::InputMethodHint::ImhDigitsOnly</set>
      </property>
      <property name="placeholderText">
-      <string>  Building Number</string>
+      <string>Address Line</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox">
@@ -598,6 +582,47 @@ font-size:10px;
      <property name="text">
       <string>Word Count:</string>
      </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>115</y>
+       <width>341</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="placeholderText">
+      <string>  Choose City</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Cairo</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Giza</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Alexandria</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string/>
+      </property>
+     </item>
     </widget>
    </widget>
    <widget class="QPushButton" name="homeImage">
