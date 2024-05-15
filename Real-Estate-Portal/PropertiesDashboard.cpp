@@ -155,11 +155,11 @@ void PropertiesDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* s
 			type->setGeometry(QRect(400, 80, 211, 21));
 			string strType = "Type : " + it->second->GetPropertyType();
 			type->setText(strType.c_str());
-			QLabel* buildingNumber = new QLabel(propertyCard);
-			buildingNumber->setObjectName("buildingNo" + i);
-			buildingNumber->setGeometry(QRect(400, 120, 191, 21));
-			string strBuilding = "Building number : " + it->second->GetBuildingNumber();
-			buildingNumber->setText(strBuilding.c_str());
+			QLabel* City = new QLabel(propertyCard);
+			City->setObjectName("City" + i);
+			City->setGeometry(QRect(400, 120, 191, 21));
+			string strCity = "City : " + it->second->GetCity();
+			City->setText(strCity.c_str());
 			QLabel* userID = new QLabel(propertyCard);
 			userID->setObjectName("userID" + i);
 			userID->setGeometry(QRect(180, 160, 221, 21));

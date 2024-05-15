@@ -740,19 +740,19 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
             string strOldBedrooms = "Bedrooms : " + to_string((*it)->GetOldNumberOfBedrooms());
             string strOldPrice = "Price : " + to_string((*it)->GetOldPrice());
             string strOldType = "Type : " + (*it)->GetOldPropertyType();
-            string strOldBuilding = " Building Number : " + (*it)->GetOldBuildingNumber();
+            string strOldCity = " City : " + (*it)->GetOldCity();
             string userID = "User ID :" + (*it)->GetUserId();
             string userName = "Username : " + system->GetUser((*it)->GetUserId())->GetName();
             string logPropertyID = "Property ID : " + (*it)->GetPropertyId();
-            string strOldApartment = "Apartment Number : " + to_string((*it)->GetOldApartmentNumber());
+            string strOldAddress = "Address Line : " + (*it)->GetOldAddressLine();
             string strOldDescription = (*it)->GetOldPropertyDescription();
             string strNewLocation = "Location : " + (*it)->GetNewLocation();
             string strNewSqFootage = "Space : " + to_string((*it)->GetNewSquareFootage());
             string strNewBedrooms = "Bedrooms : " + to_string((*it)->GetNewNumberOfBedrooms());
             string strNewPrice = "Price : " + to_string((*it)->GetNewPrice());
             string strNewType = "Type : " + (*it)->GetNewPropertyType();
-            string strNewBuilding = " Building Number : " + (*it)->GetNewBuildingNumber();
-            string strNewApartment = "Apartment Number : " + to_string((*it)->GetNewApartmentNumber());
+            string strNewCity = " City : " + (*it)->GetNewCity();
+            string strNewAddress = "Address Line : " + (*it)->GetNewAddressLine();
             string strNewDescription = (*it)->GetNewPropertyDescription();
             QObject::connect(action, &QPushButton::clicked, [=]() {
                 label_164->setText(QCoreApplication::translate("LogsDashboardClass", strOldLocation.c_str(), nullptr));
@@ -760,11 +760,11 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
                 label_166->setText(QCoreApplication::translate("LogsDashboardClass", strOldBedrooms.c_str(), nullptr));
                 label_167->setText(QCoreApplication::translate("LogsDashboardClass", strOldPrice.c_str(), nullptr));
                 label_168->setText(QCoreApplication::translate("LogsDashboardClass", strOldType.c_str(), nullptr));
-                label_169->setText(QCoreApplication::translate("LogsDashboardClass", strOldBuilding.c_str(), nullptr));
+                label_169->setText(QCoreApplication::translate("LogsDashboardClass", strOldCity.c_str(), nullptr));
                 label_170->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
                 label_171->setText(QCoreApplication::translate("LogsDashboardClass", userName.c_str(), nullptr));
                 label_172->setText(QCoreApplication::translate("LogsDashboardClass", logPropertyID.c_str(), nullptr));
-                label_173->setText(QCoreApplication::translate("LogsDashboardClass", strOldApartment.c_str(), nullptr));
+                label_173->setText(QCoreApplication::translate("LogsDashboardClass", strOldAddress.c_str(), nullptr));
                 /*textEdit_3->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                     "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                     "p, li { white-space: pre-wrap; }\n"
@@ -782,11 +782,11 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
                 label_179->setText(QCoreApplication::translate("LogsDashboardClass", strNewBedrooms.c_str(), nullptr));
                 label_180->setText(QCoreApplication::translate("LogsDashboardClass", strNewPrice.c_str(), nullptr));
                 label_181->setText(QCoreApplication::translate("LogsDashboardClass", strNewType.c_str(), nullptr));
-                label_182->setText(QCoreApplication::translate("LogsDashboardClass", strNewBuilding.c_str(), nullptr));
+                label_182->setText(QCoreApplication::translate("LogsDashboardClass", strNewCity.c_str(), nullptr));
                 label_183->setText(QCoreApplication::translate("LogsDashboardClass", userID.c_str(), nullptr));
                 label_184->setText(QCoreApplication::translate("LogsDashboardClass", userName.c_str(), nullptr));
                 label_185->setText(QCoreApplication::translate("LogsDashboardClass", logPropertyID.c_str(), nullptr));
-                label_186->setText(QCoreApplication::translate("LogsDashboardClass", strNewApartment.c_str(), nullptr));
+                label_186->setText(QCoreApplication::translate("LogsDashboardClass", strNewAddress.c_str(), nullptr));
                 /*textEdit_4->setHtml(QCoreApplication::translate("LogsDashboardClass", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                     "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                     "p, li { white-space: pre-wrap; }\n"

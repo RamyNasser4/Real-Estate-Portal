@@ -604,8 +604,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 			location->show();
 			string strlocation = "";
 			strlocation += it->second->GetLocation() + ",";
-			strlocation += it->second->GetBuildingNumber() + ",";
-			strlocation += it->second->GetApartmentNumber();
+			strlocation += it->second->GetCity() + ",";
+			strlocation += it->second->GetAddressLine();
 			location->setText(QCoreApplication::translate("ListingsClass", strlocation.c_str(), nullptr));
 			QFrame* lineBetweenLabels1 = new QFrame(horizontalWidget);
 			lineBetweenLabels1->setObjectName("line" + i);
@@ -963,8 +963,8 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 				location->show();
 				string strlocation = "";
 				strlocation += it2->second->GetLocation() + ",";
-				strlocation += it2->second->GetBuildingNumber() + ",";
-				strlocation += it2->second->GetApartmentNumber();
+				strlocation += it2->second->GetCity() + ",";
+				strlocation += it2->second->GetAddressLine();
 				location->setText(QCoreApplication::translate("ListingsClass", strlocation.c_str(), nullptr));
 				QFrame* lineBetweenLabels1 = new QFrame(horizontalWidget);
 				lineBetweenLabels1->setObjectName("line" + i);

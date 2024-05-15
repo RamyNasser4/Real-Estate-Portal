@@ -114,7 +114,7 @@ void PropertyDetails::retranslateUi(QStackedWidget* PropertyDetailsClass, System
 {
     Property* currentProperty = system->GetProperty(propertyId);
     PropertyDetailsClass->setWindowTitle(QCoreApplication::translate("PropertyDetailsClass", "PropertyDetails", nullptr));
-    string strlocation = currentProperty->GetLocation() + "," + currentProperty->GetBuildingNumber() + "," + to_string(currentProperty->GetApartmentNumber());
+    string strlocation = currentProperty->GetLocation() + "," + currentProperty->GetCity() + "," + currentProperty->GetAddressLine();
     label_24->setText(QCoreApplication::translate("PropertyDetailsClass", strlocation.c_str(), nullptr));
     string type = currentProperty->GetLocation();
     label->setText(QCoreApplication::translate("PropertyDetailsClass", type.c_str(), nullptr));

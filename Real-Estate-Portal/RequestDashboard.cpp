@@ -98,8 +98,8 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 		label_8 = new QLabel(frame);
 		label_8->setObjectName("label_8");
 		label_8->setGeometry(QRect(400, 110, 191, 21));
-		string strBuildingNumber = "Building Number: " + requestProperty->GetBuildingNumber();
-		label_8->setText(QCoreApplication::translate("Dashboard", strBuildingNumber.c_str(), nullptr));
+		string strCity = "City: " + requestProperty->GetCity();
+		label_8->setText(QCoreApplication::translate("Dashboard", strCity.c_str(), nullptr));
 		label_9 = new QLabel(frame);
 		label_9->setObjectName("label_9");
 		label_9->setGeometry(QRect(180, 150, 221, 21));
@@ -181,8 +181,8 @@ void RequestDashboard::updateUi(System* system) {
 		label_6->setText(strPrice.c_str());
 		string strType = "Type : " + requestProperty->GetPropertyType();
 		label_7->setText(QCoreApplication::translate("Dashboard", strType.c_str(), nullptr));
-		string strBuildingNumber = "Building Number: " + requestProperty->GetBuildingNumber();
-		label_8->setText(QCoreApplication::translate("Dashboard", strBuildingNumber.c_str(), nullptr));
+		string strCity = "City: " + requestProperty->GetCity();
+		label_8->setText(QCoreApplication::translate("Dashboard", strCity.c_str(), nullptr));
 		string strUserID = "User ID : " + requestProperty->GetUserId();
 		label_9->setText(QCoreApplication::translate("Dashboard", strUserID.c_str(), nullptr));
 		string strUserName = "Username : " + requestProperty->GetUserName();

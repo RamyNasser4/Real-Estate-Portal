@@ -9,11 +9,11 @@ class Property
 	string propertyId;
 	string location;
 	string propertyType;
-	string buildingNumber;
+	string city;
 	string userName;
 	string propertyDescription;
 	string userId;
-	int apartmentNumber;
+	string addressLine;
 	int squareFootage;
 	int numberOfBedrooms;
 	int price;
@@ -23,17 +23,17 @@ protected:
 	bool highlighted;
 
 public:
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription,int compareCounter);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool Verified, int price, string currentUserName, string currentUserId);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool Verified, int price, string currentUserName);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified, int price);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, bool verified);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage);
-	Property(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber);
-	Property(string Location, string PropertyType, string BuildingNumber);
+	Property(string Location, string PropertyType, string City, string addressLine, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription,int compareCounter);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool verified, int price, string currentUserName, string currentUserId, bool highlighted);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool Verified, int price, string currentUserName, string currentUserId);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool Verified, int price, string currentUserName);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool verified, int price);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, bool verified);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms);
+	Property(string Location, string PropertyType, string City, string AddressLine, int SquareFootage);
+	Property(string Location, string PropertyType, string City, string AddressLine);
+	Property(string Location, string PropertyType, string City);
 	Property(string Location, string PropertyType);
 	Property(string Location);
 	Property(const Property& Other);
@@ -43,7 +43,6 @@ public:
 	int GetSquareFootage();
 	int GetNumberOfBedrooms();
 	int GetPrice();
-	int GetApartmentNumber();
 	int GetCompareCounter();
 	bool GetVerfied();
 	bool GetHighlighted();
@@ -52,14 +51,15 @@ public:
 	string GetpropertyId();
 	string GetLocation();
 	string GetPropertyType();
-	string GetBuildingNumber();
+	string GetCity();
+	string GetAddressLine();
 	string GetUserName();
 	string GetPropertyDescription();
 	string GeneratePropertyId();
 
 	void SetPropertyType(string PropertyType);
-	void SetBuildingNumber(string BuildingNumber);
-	void SetApartmentNumber(int ApartmentNumber);
+	void SetCity(string City);
+	void SetAddressLine(string AddressLine);
 	void SetSquareFootage(int SquareFootage);
 	void SetLocation(string location);
 	void SetNumberOfBedrooms(int NumberOfBedrooms);

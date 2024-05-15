@@ -109,16 +109,11 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 	frame_2->setGeometry(QRect(-10, 100, 991, 681));
 	frame_2->setFrameShape(QFrame::Shape::StyledPanel);
 	frame_2->setFrameShadow(QFrame::Shadow::Raised);
-	lineEdit = new QLineEdit(frame_2);
-	lineEdit->setObjectName("lineEdit");
-	lineEdit->setGeometry(QRect(220, 160, 161, 41));
-	lineEdit->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
-	lineEdit->setMaxLength(10);
 	lineEdit_2 = new QLineEdit(frame_2);
 	lineEdit_2->setObjectName("lineEdit_2");
-	lineEdit_2->setGeometry(QRect(40, 160, 171, 41));
+	lineEdit_2->setGeometry(QRect(40, 160, 341, 41));
 	lineEdit_2->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
-	lineEdit_2->setMaxLength(10);
+	lineEdit_2->setMaxLength(20);
 	comboBox = new QComboBox(frame_2);
 	comboBox->addItem(QString());
 	comboBox->addItem(QString());
@@ -234,6 +229,15 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 	label_6->setStyleSheet(QString::fromUtf8("QLabel{\n"
 		"font-size:10px;\n"
 		"}"));
+	comboBox_3 = new QComboBox(frame_2);
+	comboBox_3->addItem(QString());
+	comboBox_3->addItem(QString());
+	comboBox_3->addItem(QString());
+	comboBox_3->addItem(QString());
+	comboBox_3->addItem(QString());
+	comboBox_3->setObjectName("comboBox_3");
+	comboBox_3->setGeometry(QRect(40, 115, 341, 41));
+	comboBox_3->setCursor(QCursor(Qt::PointingHandCursor));
 	homeImage = new QPushButton(frame);
 	homeImage->setObjectName("homeImage");
 	homeImage->setGeometry(QRect(210, 20, 51, 51));
@@ -258,7 +262,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		QObject::connect(pushButton, &QPushButton::clicked, [=]() { {
 				try {
 					onPushButtonClick(system,Form);
-					lineEdit->clear();
+					comboBox_3->setCurrentIndex(0);
 					lineEdit_2->clear();
 					lineEdit_3->clear();
 					comboBox->setCurrentIndex(0); // Reset to default index
@@ -279,41 +283,41 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		QMetaObject::connectSlotsByName(Form);
 		}
 		void UserAddProperty::onPushButtonClick(System* system, QStackedWidget* Form) {
-			QString apartmentNumber = lineEdit->text();
-			QString buildingNumber = lineEdit_2->text();
+			QString AddressLine = lineEdit_2->text();
+			QString City = comboBox_3->currentText();
 			QString price = lineEdit_3->text();
 			QString location = comboBox->currentText();
 			QString propertyType = comboBox_2->currentText();
 			QString description = textEdit->toPlainText();
 			int space = spinBox->value();
 			int room = spinBox_2->value();
-			bool isbuildingNumber = true;
-			bool isapartmentNumber = true;
+			bool isCity = true;
+			bool isAddressLine = true;
 			bool isPrice = true;
-			for (int i = 0; i < buildingNumber.size(); i++) {
-				if (buildingNumber[i].isSymbol() || buildingNumber[i].isSpace() || buildingNumber[i].isLetter() || buildingNumber[i].isMark()) {
-					isbuildingNumber = false;
+			/*for (int i = 0; i < City.size(); i++) {
+				if (City[i].isSymbol() || City[i].isSpace() || City[i].isLetter() || City[i].isMark()) {
+					isCity = false;
 				}
-			}
-			for (int i = 0; i < apartmentNumber.size(); i++) {
-				if (apartmentNumber[i].isSymbol() || apartmentNumber[i].isSpace() || apartmentNumber[i].isLetter() || apartmentNumber[i].isMark()) {
-					isapartmentNumber = false;
+			}*/
+			/*for (int i = 0; i < AddressLine.size(); i++) {
+				if (AddressLine[i].isSymbol() || AddressLine[i].isSpace() || AddressLine[i].isLetter() || AddressLine[i].isMark()) {
+					isAddressLine = false;
 				}
-			}
+			}*/
 			for (int i = 0; i < price.size(); i++) {
 				if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
 					isPrice = false;
 				}
 			}
-			if (apartmentNumber.isEmpty() || buildingNumber.isEmpty() || price.isEmpty() || location.isEmpty() ||
+			if (AddressLine.isEmpty() || City.isEmpty() || price.isEmpty() || location.isEmpty() ||
 				propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
 				throw exception("Fill all fields!");
 			}
-			else if (isbuildingNumber == false) {
-				throw exception("Enter Valid Building Number");
+			else if (isCity == false) {
+				throw exception("Enter Valid City");
 			}
-			else if (isapartmentNumber == false) {
-				throw exception("Enter Valid Apartment Number");
+			else if (isAddressLine == false) {
+				throw exception("Enter Valid Address Line");
 			}
 			else if (space < 49) {
 				throw exception("Minimum Space is 50");
@@ -325,7 +329,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 				throw exception("Enter Valid Price");
 			}
 			else {
-				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
 				QMessageBox::information(this, "Success", "Request submitted successfully");
 				for (int i = 0; i < Form->count(); ++i) {
 					QWidget* currentWidget = Form->widget(i);
@@ -345,8 +349,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		{
 			Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
 			headLabel->setText(QCoreApplication::translate("Form", "Add Property Request", nullptr));
-			lineEdit->setPlaceholderText(QCoreApplication::translate("Form", "  Apartment Number", nullptr));
-			lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "  Building Number", nullptr));
+			lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "  Address Line", nullptr));
 			comboBox->setItemText(0, QCoreApplication::translate("Form", "Cairo", nullptr));
 			comboBox->setItemText(1, QCoreApplication::translate("Form", "Giza", nullptr));
 			comboBox->setItemText(2, QCoreApplication::translate("Form", "Alexandria", nullptr));
@@ -369,6 +372,12 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 			comboBox_2->setItemText(7, QString());
 
 			comboBox_2->setPlaceholderText(QCoreApplication::translate("Form", "  Choose Type", nullptr));
+			comboBox_3->setPlaceholderText(QCoreApplication::translate("Form", "  Choose City", nullptr));
+			comboBox_3->setItemText(0, QCoreApplication::translate("EditPropertyClass", "Madinet Nasr", nullptr));
+			comboBox_3->setItemText(1, QCoreApplication::translate("EditPropertyClass", "El Rehab", nullptr));
+			comboBox_3->setItemText(2, QCoreApplication::translate("EditPropertyClass", "El Shrouk", nullptr));
+			comboBox_3->setItemText(4, QCoreApplication::translate("EditPropertyClass", "Masr El Gedida", nullptr));
+			comboBox_3->setItemText(3, QCoreApplication::translate("EditPropertyClass", "Manshyet El Bakry", nullptr));
 			label_4->setText(QCoreApplication::translate("Form", "Space", nullptr));
 			lineEdit_3->setPlaceholderText(QCoreApplication::translate("Form", "Price", nullptr));
 			label_5->setText(QCoreApplication::translate("Form", " Description", nullptr));

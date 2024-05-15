@@ -268,8 +268,8 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			location->show();
 			string strlocation = "";
 			strlocation += it->second->GetLocation() + ",";
-			strlocation += it->second->GetBuildingNumber() + ",";
-			strlocation += it->second->GetApartmentNumber();
+			strlocation += it->second->GetCity() + ",";
+			strlocation += it->second->GetAddressLine();
 			location->setText(QCoreApplication::translate("ListingsClass", strlocation.c_str(), nullptr));
 			QFrame* lineBetweenLabels1 = new QFrame(horizontalWidget);
 			lineBetweenLabels1->setObjectName("line" + i);

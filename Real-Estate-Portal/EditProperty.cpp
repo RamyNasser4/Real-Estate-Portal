@@ -112,16 +112,10 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     frame_2->setGeometry(QRect(-10, 100, 991, 681));
     frame_2->setFrameShape(QFrame::Shape::StyledPanel);
     frame_2->setFrameShadow(QFrame::Shadow::Raised);
-    lineEdit = new QLineEdit(frame_2);
-    lineEdit->setObjectName("lineEdit");
-    lineEdit->setGeometry(QRect(220, 240, 161, 41));
-    lineEdit->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
-    lineEdit->setMaxLength(10);
     lineEdit_2 = new QLineEdit(frame_2);
     lineEdit_2->setObjectName("lineEdit_2");
-    lineEdit_2->setGeometry(QRect(40, 240, 171, 41));
+    lineEdit_2->setGeometry(QRect(40, 240, 341, 41));
     lineEdit_2->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
-    lineEdit_2->setMaxLength(10);
     comboBox = new QComboBox(frame_2);
     comboBox->addItem(QString());
     comboBox->addItem(QString());
@@ -241,6 +235,15 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     label_7 = new QLabel(frame_2);
     label_7->setObjectName("label_7");
     label_7->setGeometry(QRect(40, 0, 411, 71));
+    comboBox_3 = new QComboBox(frame_2);
+    comboBox_3->addItem(QString());
+    comboBox_3->addItem(QString());
+    comboBox_3->addItem(QString());
+    comboBox_3->addItem(QString());
+    comboBox_3->addItem(QString());
+    comboBox_3->setObjectName("comboBox_3");
+    comboBox_3->setGeometry(QRect(40, 195, 341, 41));
+    comboBox_3->setCursor(QCursor(Qt::PointingHandCursor));
     homeImage = new QPushButton(frame);
     homeImage->setObjectName("homeImage");
     homeImage->setGeometry(QRect(260, 20, 51, 51));
@@ -285,10 +288,11 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     int index2 = comboBox_2->findText(editedProperty->GetPropertyType().c_str());
     comboBox_2->setCurrentIndex(index2);
     //
-    lineEdit_2->setText(editedProperty->GetBuildingNumber().c_str());
+    int index3 = comboBox_3->findText(editedProperty->GetCity().c_str());
+    comboBox_3->setCurrentIndex(index3);
     //
-    string ApartmentNumber = to_string(editedProperty->GetApartmentNumber());
-    lineEdit->setText(ApartmentNumber.c_str());
+    string AddressLine = editedProperty->GetAddressLine();
+    lineEdit_2->setText(AddressLine.c_str());
     //
     string price = to_string(editedProperty->GetPrice());
     lineEdit_3->setText(price.c_str());
@@ -308,8 +312,8 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
 void EditProperty::onPushButtonClick(QStackedWidget* Form,System* system,string propertyId)
 {   
     
-    QString apartmentNumber = lineEdit->text();
-    QString buildingNumber = lineEdit_2->text();
+    QString AddressLine = lineEdit_2->text();
+    QString City = comboBox_3->currentText();
     QString price = lineEdit_3->text();
     QString location = comboBox->currentText();
     QString propertyType = comboBox_2->currentText();
@@ -317,11 +321,11 @@ void EditProperty::onPushButtonClick(QStackedWidget* Form,System* system,string 
     int space = spinBox->value();
     int room = spinBox_2->value();
 
-    if (apartmentNumber.isEmpty()) {
-        throw exception("Enter Apartment Number");
+    if (AddressLine.isEmpty()) {
+        throw exception("Enter Address Line");
     }
-    else if (buildingNumber.isEmpty()) {
-        throw exception("Enter Building Number");
+    else if (City.isEmpty()) {
+        throw exception("Enter City");
     }
     else if (price.isEmpty()) {
         throw exception("Enter Price");
@@ -342,7 +346,7 @@ void EditProperty::onPushButtonClick(QStackedWidget* Form,System* system,string 
         throw exception("Enter Property Description");
     }
     else {
-        system->EditProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), buildingNumber.toLocal8Bit().constData(), apartmentNumber.toInt(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData(),propertyId);
+        system->EditProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData(),propertyId);
         QMessageBox::information(this, "Success", "Edit Done Successfully");
         for (int i = 0; i < Form->count(); ++i) {
             QWidget* currentWidget = Form->widget(i);
@@ -363,8 +367,7 @@ void EditProperty::retranslateUi(QStackedWidget* Form)
 {
     Form->setWindowTitle(QCoreApplication::translate("EditProperty", "EditProperty", nullptr));
     headLabel->setText(QCoreApplication::translate("EditProperty", "Edit Property", nullptr));
-    lineEdit->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Apartment Number", nullptr));
-    lineEdit_2->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Building Number", nullptr));
+    lineEdit_2->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Address Line", nullptr));
     comboBox->setItemText(0, QCoreApplication::translate("EditProperty", "Cairo", nullptr));
     comboBox->setItemText(1, QCoreApplication::translate("EditProperty", "Giza", nullptr));
     comboBox->setItemText(2, QCoreApplication::translate("EditProperty", "Alexandria", nullptr));
@@ -386,6 +389,13 @@ void EditProperty::retranslateUi(QStackedWidget* Form)
     comboBox_2->setItemText(7, QString());
 
     comboBox_2->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Choose Type", nullptr));
+    comboBox_3->setPlaceholderText(QCoreApplication::translate("EditPropertyClass", "  Choose City", nullptr));
+    comboBox_3->setItemText(0, QCoreApplication::translate("EditPropertyClass", "Madinet Nasr", nullptr));
+    comboBox_3->setItemText(1, QCoreApplication::translate("EditPropertyClass", "El Rehab", nullptr));
+    comboBox_3->setItemText(2, QCoreApplication::translate("EditPropertyClass", "El Shrouk", nullptr));
+    comboBox_3->setItemText(4, QCoreApplication::translate("EditPropertyClass", "Masr El Gedida", nullptr));
+    comboBox_3->setItemText(3, QCoreApplication::translate("EditPropertyClass", "Manshyet El Bakry", nullptr));
+
     label_4->setText(QCoreApplication::translate("EditProperty", "Space", nullptr));
     lineEdit_3->setPlaceholderText(QCoreApplication::translate("EditProperty", "Price", nullptr));
     label_5->setText(QCoreApplication::translate("EditProperty", " Description", nullptr));

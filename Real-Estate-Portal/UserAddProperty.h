@@ -27,7 +27,6 @@ public:
     QFrame* frame;
     QLabel* headLabel;
     QFrame* frame_2;
-    QLineEdit* lineEdit;
     QLineEdit* lineEdit_2;
     QComboBox* comboBox;
     QLabel* formLabels;
@@ -37,6 +36,7 @@ public:
     QSpinBox* spinBox;
     QSpinBox* spinBox_2;
     QComboBox* comboBox_2;
+    QComboBox* comboBox_3;
     QLabel* label_4;
     QLineEdit* lineEdit_3;
     QLabel* label_5;

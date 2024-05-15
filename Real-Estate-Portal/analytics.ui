@@ -276,7 +276,7 @@ font-size:15px;
            </rect>
           </property>
           <property name="text">
-           <string>Building Number: 17  </string>
+           <string>City:  </string>
           </property>
          </widget>
          <widget class="QLabel" name="label_29">
@@ -328,7 +328,7 @@ font-size:15px;
            </rect>
           </property>
           <property name="text">
-           <string>Apartmant number :</string>
+           <string>Address Line :</string>
           </property>
          </widget>
         </widget>

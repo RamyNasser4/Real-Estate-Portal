@@ -74,8 +74,8 @@ void User::SetMobileNumber(string mobileNumber) {
 	this->mobileNumber = mobileNumber;
 }
 
-void User::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
-	Property* NewProperty = new Property(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription,0);
+void User::AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
+	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription,0);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -115,10 +115,10 @@ void User::UserAddedProperty(string propertyId, Property* property) {
 	//properties[propertyId] = property;
 	properties.insert({ propertyId,property });
 }
-void User::UserEditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
+void User::UserEditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {
 		Property* property = system.properties[editPropertyId];
-		EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetBuildingNumber(), property->GetApartmentNumber(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(),property->GetUserId());
+		EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetCity(), property->GetAddressLine(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(),property->GetUserId());
 		if (property->GetLocation() != Location)
 		{
 			system.propertyFilterLocations[property->GetLocation()].erase(editPropertyId);
@@ -149,8 +149,8 @@ void User::UserEditProperty(string Location, string PropertyType, string Buildin
 			system.propertyFilterPrice[price][editPropertyId] = property;
 			property->SetPrice(price);
 		}
-		property->SetBuildingNumber(BuildingNumber);
-		property->SetApartmentNumber(ApartmentNumber);
+		property->SetCity(City);
+		property->SetAddressLine(AddressLine);
 		property->SetPropertyDescription(propertyDescription);
 		system.EditPropertyLogs.push_back(CurrentRequest);
 	}

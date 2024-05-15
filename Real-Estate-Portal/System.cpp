@@ -163,24 +163,24 @@ vector<Property*> System::GetTop3Compared() {
 	}
 	return top3Properties;
 }
-void System::AddProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
+void System::AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
-		admin->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
+		admin->AddProperty(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, admin->GetName(), currentUserId, propertyDescription, *this);
 	}
 	else {
 		//in case of not an admin
 
-		users[currentUserId]->AddProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, users[currentUserId]->GetName(), currentUserId, propertyDescription, *this);
+		users[currentUserId]->AddProperty(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, users[currentUserId]->GetName(), currentUserId, propertyDescription, *this);
 	}
 }
-void System::EditProperty(string Location, string PropertyType, string BuildingNumber, int ApartmentNumber, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {
+void System::EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
-		admin->EditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, propertyDescription, *this, propertyId);
+		admin->EditProperty(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, currentUserName, currentUserId, propertyDescription, *this, propertyId);
 	}
 	else {
-		users[currentUserId]->UserEditProperty(Location, PropertyType, BuildingNumber, ApartmentNumber, SquareFootage, NumberOfBedrooms, price, currentUserName, *this, propertyId);
+		users[currentUserId]->UserEditProperty(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, currentUserName, *this, propertyId);
 	}
 }
 void System::RemoveProperty(string propertyId, string currentUserId) {

@@ -3,12 +3,12 @@
 #include<string.h>
 #include<ctime>
 using namespace std;
-EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldBuildingNumber, int OldApartmentNumber, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OldpropertyDescription, string NewLocation, string NewPropertyType, string NewBuildingNumber, int NewApartmentNumber, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID,string userID)
+EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldCity, string OldAddressLine, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OldpropertyDescription, string NewLocation, string NewPropertyType, string NewCity, string NewAddressLine, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID,string userID)
 {
 	this->Oldlocation = OldLocation;
 	this->OldpropertyType = OldPropertyType;
-	this->OldbuildingNumber = OldBuildingNumber;
-	this->OldapartmentNumber = OldApartmentNumber;
+	this->Oldcity = OldCity;
+	this->OldaddressLine = OldAddressLine;
 	this->OldsquareFootage = OldSquareFootage;
 	this->OldnumberOfBedrooms = OldNumberOfBedrooms;
 	this->Oldprice = Oldprice;
@@ -16,8 +16,8 @@ EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyT
 	 
 	this->Newlocation = NewLocation;
 	this->NewpropertyType = NewPropertyType;
-	this->NewbuildingNumber = NewBuildingNumber;
-	this->NewapartmentNumber = NewApartmentNumber;
+	this->Newcity = NewCity;
+	this->NewaddressLine = NewAddressLine;
 	this->NewsquareFootage = NewSquareFootage;
 	this->NewnumberOfBedrooms = NewNumberOfBedrooms;
 	this->Newprice = Newprice;
@@ -38,8 +38,8 @@ void EditPropertyRequest::SetOldPropertyType(string OldPropertyType) {
 	this->OldpropertyType = OldPropertyType;
 }
 
-void EditPropertyRequest::SetOldBuildingNumber(string OldBuildingNumber) {
-	this->OldbuildingNumber = OldBuildingNumber;
+void EditPropertyRequest::SetOldCity(string OldCity) {
+	this->Oldcity = OldCity;
 }
 
 void EditPropertyRequest::SetOldUserName(string OldUserName) {
@@ -50,8 +50,8 @@ void EditPropertyRequest::SetOldPropertyDescription(string OldPropertyDescriptio
 	this->OldpropertyDescription = OldPropertyDescription;
 }
 
-void EditPropertyRequest::SetOldApartmentNumber(int OldApartmentNumber) {
-	this->OldapartmentNumber = OldApartmentNumber;
+void EditPropertyRequest::SetOldAddressLine(string OldAddressLine) {
+	this->OldaddressLine = OldAddressLine;
 }
 
 void EditPropertyRequest::SetOldSquareFootage(int OldSquareFootage) {
@@ -74,8 +74,8 @@ void EditPropertyRequest::SetNewPropertyType(string NewPropertyType) {
 	this->NewpropertyType = NewPropertyType;
 }
 
-void EditPropertyRequest::SetNewBuildingNumber(string NewBuildingNumber) {
-	this->NewbuildingNumber = NewBuildingNumber;
+void EditPropertyRequest::SetNewCity(string NewCity) {
+	this->Newcity = NewCity;
 }
 
 void EditPropertyRequest::SetNewUserName(string NewUserName) {
@@ -86,8 +86,8 @@ void EditPropertyRequest::SetNewPropertyDescription(string NewPropertyDescriptio
 	this->NewpropertyDescription = NewPropertyDescription;
 }
 
-void EditPropertyRequest::SetNewApartmentNumber(int NewApartmentNumber) {
-	this->NewapartmentNumber = NewApartmentNumber;
+void EditPropertyRequest::SetNewAddressLine(string NewAddressLine) {
+	this->NewaddressLine = NewAddressLine;
 }
 
 void EditPropertyRequest::SetNewSquareFootage(int NewSquareFootage) {
@@ -114,8 +114,8 @@ string EditPropertyRequest::GetOldPropertyType() {
 	return OldpropertyType;
 }
 
-string EditPropertyRequest::GetOldBuildingNumber() {
-	return OldbuildingNumber;
+string EditPropertyRequest::GetOldCity() {
+	return Oldcity;
 }
 
 string EditPropertyRequest::GetOldPropertyDescription() {
@@ -127,8 +127,8 @@ string EditPropertyRequest::GetPropertyId() {
 string EditPropertyRequest::GetUserId() {
 	return userID;
 }
-int EditPropertyRequest::GetOldApartmentNumber() {
-	return OldapartmentNumber;
+string EditPropertyRequest::GetOldAddressLine() {
+	return OldaddressLine;
 }
 
 int EditPropertyRequest::GetOldSquareFootage() {
@@ -151,16 +151,16 @@ string EditPropertyRequest::GetNewPropertyType() {
 	return NewpropertyType;
 }
 
-string EditPropertyRequest::GetNewBuildingNumber() {
-	return NewbuildingNumber;
+string EditPropertyRequest::GetNewCity() {
+	return Newcity;
 }
 
 string EditPropertyRequest::GetNewPropertyDescription() {
 	return NewpropertyDescription;
 }
 
-int EditPropertyRequest::GetNewApartmentNumber() {
-	return NewapartmentNumber;
+string EditPropertyRequest::GetNewAddressLine() {
+	return NewaddressLine;
 }
 
 int EditPropertyRequest::GetNewSquareFootage() {
