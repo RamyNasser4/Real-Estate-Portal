@@ -62,7 +62,7 @@ public:
 	void EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, string currentUserId);
 	void EditMobileNumber(string currentUserId, string mobileNumber);
-	void AddAdmin(string firstName, string lastName, string nationalId, string password);
+	void AddAdmin(string firstName, string lastName, string nationalId, string password,string mobileNumber);
 	int UserCounter();
 	int PropertiesCounter();
 	bool FindUser(string nationalid);

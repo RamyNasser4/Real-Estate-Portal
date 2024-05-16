@@ -265,10 +265,11 @@ void System::EditMobileNumber(string currentUserId, string newmobileNumber)
 		throw exception("User not found");
 	}
 }
-void System::AddAdmin(string firstName, string lastName, string nationalId, string password)
+void System::AddAdmin(string firstName, string lastName, string nationalId, string password, string mobileNumber)
 {
 	if (users.find(nationalId) == users.end()) {
-		users[nationalId] = new Admin(firstName, lastName, nationalId, password);
+		users[nationalId] = new Admin(firstName, lastName, nationalId, password,mobileNumber);
+		++userCount;
 		cout << "Registered Successfully " << endl;
 	}
 	else
