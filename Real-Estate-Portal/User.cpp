@@ -14,20 +14,20 @@ User::User(string fName, string lName, string natId, string password, string mob
 	this->password = password;
 	this->mobileNumber = mobileNumber;
 }
-User::User(string fName, string lName, string natId, string password) {
-	User(fName, lName, natId, password, "");
+User::User(string fName, string lName, string natId, string password) :User(fName, lName, natId, password, "") {
+
 }
-User::User(string fName, string lName, string natId) {
-	User(fName, lName, natId, "");
+User::User(string fName, string lName, string natId) :User(fName, lName, natId, "") {
+
 }
-User::User(string fName, string lName) {
-	User(fName, lName, 0);
+User::User(string fName, string lName) :User(fName, lName, "") {
+
 }
-User::User(string fName) {
-	User(fName, "");
+User::User(string fName) :User(fName, "") {
+
 }
-User::User() {
-	User("");
+User::User() :User("") {
+
 }
 User::User(const User& other) {
 	this->firstName = other.firstName;
@@ -75,7 +75,7 @@ void User::SetMobileNumber(string mobileNumber) {
 }
 
 void User::AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
-	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription,0);
+	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription, 0);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -118,7 +118,7 @@ void User::UserAddedProperty(string propertyId, Property* property) {
 void User::UserEditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string propertyDescription, System& system, string editPropertyId) {
 	if (properties.find(editPropertyId) != properties.end()) {
 		Property* property = system.properties[editPropertyId];
-		EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetCity(), property->GetAddressLine(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(),property->GetUserId());
+		EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetCity(), property->GetAddressLine(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(), property->GetUserId());
 		if (property->GetLocation() != Location)
 		{
 			system.propertyFilterLocations[property->GetLocation()].erase(editPropertyId);

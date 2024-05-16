@@ -101,16 +101,16 @@ void System::UserChangePassword(string currentPassword, string newPassword, User
 		throw exception("Incorrect password");
 	}
 }
-void System::EditProfile(string fName,string lName, string mobNum, string currPass, string newPass) {
+void System::EditProfile(string fName, string lName, string mobNum, string currPass, string newPass) {
 	User* user = users[currentUserId];
-	string OldPass=user->GetPassword();
+	string OldPass = user->GetPassword();
 	UserChangePassword(currPass, newPass, user);
 	bool PasswordChanged = false;
 	if (newPass != OldPass)
 	{
 		PasswordChanged = true;
 	}
-	EditUserRequest* CurrentUserEdit = new EditUserRequest(user->GetFirstName(), fName, user->GetLastName(), lName, user->GetMobileNumber(), mobNum,PasswordChanged,user->GetNationalId() );
+	EditUserRequest* CurrentUserEdit = new EditUserRequest(user->GetFirstName(), fName, user->GetLastName(), lName, user->GetMobileNumber(), mobNum, PasswordChanged, user->GetNationalId());
 	EditMobileNumber(currentUserId, mobNum);
 	user->SetFirstName(fName);
 	user->SetLastName(lName);
