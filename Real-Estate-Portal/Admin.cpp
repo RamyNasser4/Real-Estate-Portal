@@ -15,7 +15,7 @@ Admin::Admin(string firstName, string lastName, string nationalId, string passwo
 Admin::Admin(string firstName, string lastName, string nationalId) :Admin(firstName, lastName, nationalId, "") {
 
 }
-Admin::Admin(string firstName, string lastName) :Admin(firstName, lastName, 0) {
+Admin::Admin(string firstName, string lastName) :Admin(firstName, lastName, "") {
 
 }
 Admin::Admin(string firstName) :Admin(firstName, "") {
