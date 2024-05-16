@@ -20,7 +20,7 @@ User::User(string fName, string lName, string natId, string password) :User(fNam
 User::User(string fName, string lName, string natId) :User(fName, lName, natId, "") {
 
 }
-User::User(string fName, string lName) :User(fName, lName, 0) {
+User::User(string fName, string lName) :User(fName, lName, "") {
 
 }
 User::User(string fName) :User(fName, "") {
