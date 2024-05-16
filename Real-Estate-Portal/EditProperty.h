@@ -14,6 +14,7 @@
 #include <QtWidgets/QStackedWidget>
 #include "System.h"
 #include "Listings.h"
+#include "Dialog.h"
 QT_BEGIN_NAMESPACE
 
 class EditProperty : public QWidget
