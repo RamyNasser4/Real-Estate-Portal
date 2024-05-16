@@ -177,6 +177,8 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			if (!it->second->GetVerfied()) {
 				continue;
 			}
+			qDebug() << i;
+			qDebug() << it->second->GetVerfied();
 			QFrame* lineBetweenLabels2 = new QFrame(scrollAreaWidgetContents);
 			lineBetweenLabels2->setObjectName("line" + i);
 			lineBetweenLabels2->setGeometry(QRect(300, currentLine2Y, 31, 16));
@@ -419,18 +421,7 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 				try
 				{
 					system->RemoveProperty(propertyId, system->currentUserId);
-					for (int i = 0; i < ListComponents->count(); ++i) {
-						QWidget* currentWidget = ListComponents->widget(i);
-						if (currentWidget->objectName() == "Listings") {
-							currentWidget = new Listings();
-							Listings* listings = dynamic_cast<Listings*>(currentWidget);
-							ListComponents->hide();
-							ListComponents->setCurrentWidget(currentWidget);
-							listings->setupUi(ListComponents, system);
-							ListComponents->show();
-							break;
-						}
-					}
+					drawBoxes(scrollAreaWidgetContents, system, scrollArea, ListComponents);
 				}
 				catch (const exception& e)
 				{
@@ -484,11 +475,12 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
 		QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
 		placeholder->setObjectName("placeholder");
-		placeholder->setGeometry(QRect(130, 0, 501, 441));
+		placeholder->setGeometry(QRect(150, -50, 451, 381));
 		placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
+		placeholder->setScaledContents(true);
 		QLabel* label1 = new QLabel(scrollAreaWidgetContents);
 		label1->setObjectName("label_7");
-		label1->setGeometry(QRect(260, 450, 261, 31));
+		label1->setGeometry(QRect(240, 330, 291, 31));
 		label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-size:30px;\n"
 			"font-family:sans-serif;\n"
@@ -496,14 +488,15 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			"}"));
 		QLabel* label2 = new QLabel(scrollAreaWidgetContents);
 		label2->setObjectName("label_8");
-		label2->setGeometry(QRect(230, 490, 301, 16));
+		label2->setGeometry(QRect(255, 370, 301, 26));
 		label2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-family:sans-serif;\n"
 			"color:#808080;\n"
 			"font-weight:600;\n"
+			"font-size:17px;"
 			"}"));
-		label1->setText(QCoreApplication::translate("ListingsClass", "No Results Found", nullptr));
-		label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties that match your search", nullptr));
+		label1->setText(QCoreApplication::translate("ListingsClass", "No Properties Found", nullptr));
+		label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties", nullptr));
 		scrollArea->setWidget(scrollAreaWidgetContents);
 		scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 		scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

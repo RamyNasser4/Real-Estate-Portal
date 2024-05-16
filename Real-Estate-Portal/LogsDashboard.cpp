@@ -628,13 +628,13 @@ void LogsDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system,
     }
     else {
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
-        QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
+        /*QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
         placeholder->setObjectName("placeholder");
         placeholder->setGeometry(QRect(130, 0, 501, 441));
-        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
+        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));*/
         QLabel* label1 = new QLabel(scrollAreaWidgetContents);
         label1->setObjectName("label_38");
-        label1->setGeometry(QRect(240, 460, 321, 31));
+        label1->setGeometry(QRect(270, 60, 321, 41));
         label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
             "font-size:30px;\n"
             "font-family:sans-serif;\n"
@@ -642,14 +642,15 @@ void LogsDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system,
             "}"));
         QLabel* label2 = new QLabel(scrollAreaWidgetContents);
         label2->setObjectName("label_39");
-        label2->setGeometry(QRect(310, 500, 181, 16));
+        label2->setGeometry(QRect(300, 100, 300, 26));
         label2->setStyleSheet(QString::fromUtf8("QLabel{\n"
             "font-family:sans-serif;\n"
             "color:#808080;\n"
             "font-weight:600;\n"
+            "font-size:15px;"
             "}"));
-        label1->setText(QCoreApplication::translate("ListingsClass", "No Properties To Show", nullptr));
-        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties ", nullptr));
+        label1->setText(QCoreApplication::translate("ListingsClass", "No Logs To Show", nullptr));
+        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any logs ", nullptr));
         scrollArea->setWidget(scrollAreaWidgetContents);
         scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -809,13 +810,13 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
     }
     else {
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
-        QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
+        /*QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
         placeholder->setObjectName("placeholder");
         placeholder->setGeometry(QRect(130, 0, 501, 441));
-        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
+        placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));*/
         QLabel* label1 = new QLabel(scrollAreaWidgetContents);
         label1->setObjectName("label_38");
-        label1->setGeometry(QRect(240, 460, 321, 31));
+        label1->setGeometry(QRect(270, 50, 321, 41));
         label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
             "font-size:30px;\n"
             "font-family:sans-serif;\n"
@@ -823,14 +824,15 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
             "}"));
         QLabel* label2 = new QLabel(scrollAreaWidgetContents);
         label2->setObjectName("label_39");
-        label2->setGeometry(QRect(310, 500, 181, 16));
+        label2->setGeometry(QRect(300, 90, 300, 26));
         label2->setStyleSheet(QString::fromUtf8("QLabel{\n"
             "font-family:sans-serif;\n"
             "color:#808080;\n"
             "font-weight:600;\n"
+            "font-size:15px;"
             "}"));
-        label1->setText(QCoreApplication::translate("ListingsClass", "No Properties To Show", nullptr));
-        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any properties ", nullptr));
+        label1->setText(QCoreApplication::translate("ListingsClass", "No Logs To Show", nullptr));
+        label2->setText(QCoreApplication::translate("ListingsClass", "We couldn't find any logs ", nullptr));
         scrollArea->setWidget(scrollAreaWidgetContents);
         scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

@@ -55,6 +55,7 @@ public:
 	void RemoveUser(string adminID, string userID);
 	void AddToCompare(string propertyId);
 	void RemoveFromCompare(string propertyId);
+	void ResetCompare();
 	vector<Property*> GetTop3Compared();
 	void handleComparison();
 	void AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);

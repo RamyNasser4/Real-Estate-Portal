@@ -94,8 +94,10 @@ void Admin::RemoveProperty(string propertyId, System& system) {
 	system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
 	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
 	system.properties.erase(propertyId);
+	properties.erase(propertyId);
 	delete property;
 	system.propertiesCount--;
+	UserCountProperty--;
 }
 
 
@@ -132,7 +134,7 @@ void Admin::AdminApproveorDeclineProperty(System* system, bool approved, User* u
 		else {
 			cout << "Property Declined";
 		}
-		while (system->users.find(system->unVerified.front()->GetUserId()) == system->users.end()) {
+		while (system->unVerified.size() != 0 && system->users.find(system->unVerified.front()->GetUserId()) == system->users.end()) {
 			system->unVerified.pop();
 		}
 	}

@@ -78,6 +78,7 @@ public:
     QLabel* label_24;
     QFrame* line_10;
     QLabel* label_25;
+    QPushButton* pushButton_6;
 
     void setupUi(QStackedWidget* ListingsClass,System* system);
     void drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string, Property*> filtered, System* system,QScrollArea* scrollArea,QStackedWidget* ListedComponents);

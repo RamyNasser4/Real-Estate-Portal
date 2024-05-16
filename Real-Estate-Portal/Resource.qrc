@@ -46,58 +46,57 @@
         <file>Assets/padlockw64.png</file>
         <file>Assets/padlockg64.png</file>
         <file>Assets/apartments.jpg</file>
+        <file>Assets/double down arrow.png</file>
+        <file>Assets/fast-forward.png</file>
+        <file>Assets/data-collection.png</file>
+        <file>Assets/top_compare.png</file>
+        <file>Assets/analysis.png</file>
+        <file>Assets/group.png</file>
+        <file>Assets/home128.png</file>
+        <file>Assets/back.png</file>
+        <file>Assets/properties.png</file>
+        <file>Assets/down-arrow.png</file>
+        <file>Assets/number-of-rooms.png</file>
+        <file>Assets/price.png</file>
+        <file>Assets/location.png</file>
+        <file>Assets/squareFootage.png</file>
+        <file>Assets/Type.png</file>
+        <file>Assets/propertyHead.png</file>
+        <file>Assets/description.png</file>
+        <file>Assets/9318694-removebg-preview.png</file>
+        <file>Assets/add16.png</file>
+        <file>Assets/dashboard (1).png</file>
+        <file>Assets/dashboard.png</file>
+        <file>Assets/error-icon-25243.png</file>
+        <file>Assets/filter.png</file>
+        <file>Assets/home.png</file>
+        <file>Assets/homeWhite.png</file>
+        <file>Assets/left-and-right-arrows.png</file>
+        <file>Assets/left-and-right-arrowsWhite.png</file>
+        <file>Assets/Login.png</file>
+        <file>Assets/menu.png</file>
+        <file>Assets/more32.png</file>
+        <file>Assets/plus16.png</file>
+        <file>Assets/remove16.png</file>
+        <file>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</file>
+        <file>Assets/SideBarBg.png</file>
+        <file>Assets/plusb16.png</file>
+        <file>Assets/filterw16.png</file>
+        <file>Assets/filterw32.png</file>
+        <file>Assets/plus32.png</file>
+        <file>Assets/logoutGrey32.png</file>
+        <file>Assets/logoutW32.png</file>
+        <file>Assets/edit.png</file>
+        <file>Assets/padlock.png</file>
+        <file>Assets/edit (1).png</file>
+        <file>Assets/edit (2).png</file>
+        <file>Assets/editing.png</file>
+        <file>Assets/Userprofile.png</file>
+        <file>Assets/bookmark.png</file>
+        <file>Assets/bookmarkv2.png</file>
+        <file>profile.png</file>
+        <file>Assets/profileg32.png</file>
+        <file>Assets/profilew32.png</file>
+        <file>Assets/resetw32.png</file>
     </qresource>
-  <qresource prefix="/">
-    <file>Assets/double down arrow.png</file>
-    <file>Assets/fast-forward.png</file>
-    <file>Assets/data-collection.png</file>
-    <file>Assets/top_compare.png</file>
-    <file>Assets/analysis.png</file>
-    <file>Assets/group.png</file>
-    <file>Assets/home128.png</file>
-    <file>Assets/back.png</file>
-    <file>Assets/properties.png</file>
-    <file>Assets/down-arrow.png</file>
-    <file>Assets/number-of-rooms.png</file>
-    <file>Assets/price.png</file>
-    <file>Assets/location.png</file>
-    <file>Assets/squareFootage.png</file>
-    <file>Assets/Type.png</file>
-    <file>Assets/propertyHead.png</file>
-    <file>Assets/description.png</file>
-    <file>Assets/9318694-removebg-preview.png</file>
-    <file>Assets/add16.png</file>
-    <file>Assets/dashboard (1).png</file>
-    <file>Assets/dashboard.png</file>
-    <file>Assets/error-icon-25243.png</file>
-    <file>Assets/filter.png</file>
-    <file>Assets/home.png</file>
-    <file>Assets/homeWhite.png</file>
-    <file>Assets/left-and-right-arrows.png</file>
-    <file>Assets/left-and-right-arrowsWhite.png</file>
-    <file>Assets/Login.png</file>
-    <file>Assets/menu.png</file>
-    <file>Assets/more32.png</file>
-    <file>Assets/plus16.png</file>
-    <file>Assets/remove16.png</file>
-    <file>Assets/Screenshot_2024-04-24_021204-removebg-preview.png</file>
-    <file>Assets/SideBarBg.png</file>
-    <file>Assets/plusb16.png</file>
-    <file>Assets/filterw16.png</file>
-    <file>Assets/filterw32.png</file>
-    <file>Assets/plus32.png</file>
-    <file>Assets/logoutGrey32.png</file>
-    <file>Assets/logoutW32.png</file>
-    <file>Assets/edit.png</file>
-    <file>Assets/padlock.png</file>
-    <file>Assets/edit (1).png</file>
-    <file>Assets/edit (2).png</file>
-    <file>Assets/editing.png</file>
-    <file>Assets/Userprofile.png</file>
-    <file>Assets/bookmark.png</file>
-    <file>Assets/bookmarkv2.png</file>
-    <file>profile.png</file>
-    <file>Assets/profileg32.png</file>
-    <file>Assets/profilew32.png</file>
-  </qresource>
 </RCC>

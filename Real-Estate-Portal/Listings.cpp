@@ -24,7 +24,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		"}"));
 	pushButton_3 = new QPushButton(widget);
 	pushButton_3->setObjectName("pushButton_3");
-	pushButton_3->setGeometry(QRect(660, 40, 91, 31));
+	pushButton_3->setGeometry(QRect(570, 40, 91, 31));
 	pushButton_3->setStyleSheet(QString::fromUtf8("/*QPushButton{\n"
 		"font-family:sans-serif;\n"
 		"font-weight:600;\n"
@@ -43,7 +43,7 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		"}"));
 	pushButton_4 = new QPushButton(widget);
 	pushButton_4->setObjectName("pushButton_4");
-	pushButton_4->setGeometry(QRect(480, 40, 131, 31));
+	pushButton_4->setGeometry(QRect(400, 40, 131, 31));
 	pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 		"background-color:#407BFF;\n"
 		"font-family:sans-serif;\n"
@@ -66,6 +66,29 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 	QIcon icon;
 	icon.addFile(QString::fromUtf8(":/Assets/filterw32.png"), QSize(), QIcon::Normal, QIcon::Off);
 	pushButton_3->setIcon(icon);
+	pushButton_6 = new QPushButton(widget);
+	pushButton_6->setObjectName("pushButton_6");
+	pushButton_6->setGeometry(QRect(700, 40, 91, 31));
+	pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+		"background-color:#407BFF;\n"
+		"font-family:sans-serif;\n"
+		"font-weight:700;\n"
+		"color:white;\n"
+		"border:none;\n"
+		"border-radius:10px;\n"
+		"}\n"
+		"/*QPushButton{\n"
+		"font-family:sans-serif;\n"
+		"font-weight:600;\n"
+		"font-size:20px;\n"
+		"border-radius: 10px;\n"
+		"border:0.5px solid black;\n"
+		"background-color: white;\n"
+		"}*/"));
+	QIcon icon4;
+	icon4.addFile(QString::fromUtf8(":/Assets/resetw32.png"), QSize(), QIcon::Normal, QIcon::Off);
+	pushButton_6->setIcon(icon4);
+	
 	widget_2 = new QWidget(widget);
 	widget_2->setObjectName("widget_2");
 	widget_2->setGeometry(QRect(0, 80, 801, 81));
@@ -225,6 +248,11 @@ void Listings::setupUi(QStackedWidget* ListingsClass, System* system)
 		addProperty->setupUi(ListingsClass, system);
 		ListingsClass->show();
 
+		});
+	QObject::connect(pushButton_6, &QPushButton::clicked, [=]() {
+		system->ResetCompare();
+		comboBox->setCurrentIndex(1);
+		comboBox->setCurrentIndex(0);
 		});
 	QObject::connect(comboBox, &QComboBox::currentTextChanged, [=]() {
 		QString location = comboBox->currentText();
@@ -754,7 +782,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 				try
 				{
 					system->RemoveProperty(propertyId, system->currentUserId);
-					for (int i = 0; i < ListComponents->count(); ++i) {
+					/*for (int i = 0; i < ListComponents->count(); ++i) {
 						QWidget* currentWidget = ListComponents->widget(i);
 						if (currentWidget->objectName() == "Listings") {
 							currentWidget = new Listings();
@@ -765,7 +793,10 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 							ListComponents->show();
 							break;
 						}
-					}
+					}*/
+					unordered_map<string, Property*> filtered2 = filtered;
+					filtered2.erase(propertyId);
+					drawBoxes(scrollAreaWidgetContents, system->GetProperties(), system, scrollArea, ListComponents);
 				}
 				catch (const exception& e)
 				{
@@ -1113,7 +1144,7 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 					try
 					{
 						system->RemoveProperty(propertyId, system->currentUserId);
-						for (int i = 0; i < ListComponents->count(); ++i) {
+						/*for (int i = 0; i < ListComponents->count(); ++i) {
 							QWidget* currentWidget = ListComponents->widget(i);
 							if (currentWidget->objectName() == "Listings") {
 								currentWidget = new Listings();
@@ -1124,7 +1155,9 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, map<int, unordered_m
 								ListComponents->show();
 								break;
 							}
-						}
+						}*/
+						it->second.erase(propertyId);
+						drawBoxes(scrollAreaWidgetContents, filtered, system, scrollArea, ListComponents);
 					}
 					catch (const exception& e)
 					{
@@ -1219,6 +1252,7 @@ void Listings::retranslateUi(QStackedWidget* ListingsClass)
 	lineEdit_3->setPlaceholderText(QCoreApplication::translate("ListingsClass", "Min. Area", nullptr));
 	lineEdit_4->setPlaceholderText(QCoreApplication::translate("ListingsClass", "Max. Area", nullptr));
 	pushButton_4->setText(QCoreApplication::translate("ListingsClass", " Add Property", nullptr));
+	pushButton_6->setText(QCoreApplication::translate("ListingsClass", "Reset", nullptr));
 } // retranslateUi
 ClickEventFilter::ClickEventFilter(QStackedWidget* stackedWidget,System* system,string propertyId, QObject* parent) : QObject(parent) {
 	this->stackedWidget = stackedWidget;

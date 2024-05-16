@@ -1,6 +1,6 @@
 #include "PropertiesDashboard.h"
 
-PropertiesDashboard::PropertiesDashboard(QWidget *parent)
+PropertiesDashboard::PropertiesDashboard(QWidget* parent)
 	: QWidget(parent)
 {
 	//ui.setupUi(this);
@@ -74,13 +74,12 @@ void PropertiesDashboard::setupUi(QWidget* PropertiesDashboardClass, System* sys
 void PropertiesDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea, QStackedWidget* ListComponents) {
 	scrollAreaWidgetContents = new QWidget();
 	unordered_map<string, Property*> properties = system->GetProperties();
-	int totalHeight = 230 * system->PropertiesCounter();
-	qDebug() << totalHeight;
-	scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
-	int i = 1;
-	int currentCardY = 10;
-	if (properties.size() != 0) {
-
+	if (system->PropertiesCounter() != 0) {
+		int totalHeight = 230 * system->PropertiesCounter();
+		qDebug() << totalHeight;
+		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, totalHeight));
+		int i = 1;
+		int currentCardY = 10;
 		for (auto it = properties.begin(); it != properties.end(); ++it) {
 			if (!it->second->GetVerfied()) {
 				continue;
@@ -249,6 +248,8 @@ void PropertiesDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* s
 				{
 					system->RemoveProperty(propertyId, system->currentUserId);
 					drawBoxes(scrollAreaWidgetContents, system, scrollArea, ListComponents);
+					string count = "All Properties : " + to_string(system->PropertiesCounter());
+					label_45->setText(count.c_str());
 				}
 				catch (const exception& e)
 				{

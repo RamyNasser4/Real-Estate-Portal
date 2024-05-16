@@ -139,6 +139,9 @@ void System::RemoveFromCompare(string propertyId) {
 		throw exception("Property not in comparison");
 	}
 }
+void System::ResetCompare() {
+	propertyComparison.clear();
+}
 void System::handleComparison() {
 	for (int i = 0; propertyComparison.size() > i; ++i) {
 		propertyComparison[i]->IncrementCompare();
