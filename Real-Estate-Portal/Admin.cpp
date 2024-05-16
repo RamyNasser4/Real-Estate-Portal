@@ -6,29 +6,29 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
-Admin::Admin(string firstName, string lastName, string nationalId, string password, string mobileNumber) : User(firstName,lastName,nationalId,password,mobileNumber) {
+Admin::Admin(string firstName, string lastName, string nationalId, string password, string mobileNumber) : User(firstName, lastName, nationalId, password, mobileNumber) {
 
 }
-Admin::Admin(string firstName, string lastName, string nationalId, string password) : User(firstName, lastName, nationalId, password, "") {
+Admin::Admin(string firstName, string lastName, string nationalId, string password) : Admin(firstName, lastName, nationalId, password, "") {
 
 }
-Admin::Admin(string firstName, string lastName, string nationalId) {
-	Admin(firstName, lastName, nationalId, "");
+Admin::Admin(string firstName, string lastName, string nationalId) :Admin(firstName, lastName, nationalId, "") {
+
 }
-Admin::Admin(string firstName, string lastName) {
-	Admin(firstName, lastName, 0);
+Admin::Admin(string firstName, string lastName) :Admin(firstName, lastName, 0) {
+
 }
-Admin::Admin(string firstName) {
-	Admin(firstName, "");
+Admin::Admin(string firstName) :Admin(firstName, "") {
+
 }
-Admin::Admin() {
-	Admin("");
+Admin::Admin() : Admin("") {
+
 }
 Admin::Admin(const Admin& admin) : User((User)admin) {
 
 }
 void Admin::AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system) {
-	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription,0);
+	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, false, propertyDescription, 0);
 	string propertyId = NewProperty->GeneratePropertyId();
 	while (system.properties.find(propertyId) != system.properties.end()) {
 		propertyId = NewProperty->GeneratePropertyId();
@@ -46,9 +46,9 @@ void Admin::AddProperty(string Location, string PropertyType, string City, strin
 }
 void Admin::EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
-	
+
 	Property* property = system.properties[propertyId];
-	EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(),property->GetPropertyType(),property->GetCity(),property->GetAddressLine(),property->GetSquareFootage(),property->GetNumberOfBedrooms(),property->GetPrice(),property->GetPropertyDescription(),Location,PropertyType,City,AddressLine,SquareFootage,NumberOfBedrooms,price,propertyDescription,property->GetpropertyId(),property->GetUserId());
+	EditPropertyRequest* CurrentRequest = new EditPropertyRequest(property->GetLocation(), property->GetPropertyType(), property->GetCity(), property->GetAddressLine(), property->GetSquareFootage(), property->GetNumberOfBedrooms(), property->GetPrice(), property->GetPropertyDescription(), Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, propertyDescription, property->GetpropertyId(), property->GetUserId());
 	if (property->GetLocation() != Location)
 	{
 		system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
