@@ -141,14 +141,14 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 		label_44->setText(QCoreApplication::translate("Dashboard", "No More Requests To Show", nullptr));
 		label_44->setVisible(false);
 		QObject::connect(pushButton, &QPushButton::clicked, [=]() {
-			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
-			User* user = system->GetUsers()[requestProperty->GetUserId()];
+			Admin* admin = dynamic_cast<Admin*>(system->GetUser(system->currentUserId));
+			User* user = system->GetUser(system->unVerified.front()->GetUserId());
 			admin->AdminApproveorDeclineProperty(system, true, user);
 			updateUi(system);
 			});
 		QObject::connect(pushButton_2, &QPushButton::clicked, [=]() {
-			Admin* admin = dynamic_cast<Admin*>(system->GetUsers()[system->currentUserId]);
-			User* user = system->GetUsers()[requestProperty->GetUserId()];
+			Admin* admin = dynamic_cast<Admin*>(system->GetUser(system->currentUserId));
+			User* user = system->GetUser(system->unVerified.front()->GetUserId());
 			admin->AdminApproveorDeclineProperty(system, false, user);
 			updateUi(system);
 			});
@@ -157,7 +157,7 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 	else {
 		label_44 = new QLabel(tab_3);
 		label_44->setObjectName("label_44");
-		label_44->setGeometry(QRect(210, 250, 381, 51));
+		label_44->setGeometry(QRect(210, 250, 401, 51));
 		label_44->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-size:30px;\n"
 			"font-family:sans-serif;\n"

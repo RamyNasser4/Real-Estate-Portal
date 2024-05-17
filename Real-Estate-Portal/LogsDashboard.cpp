@@ -586,13 +586,16 @@ void LogsDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system,
             action->setText("View Action");
             QLabel* Date = new QLabel(userCard);
             Date->setObjectName("Date" + i);
-            Date->setGeometry(QRect(600, 3, 131, 31));
+            Date->setGeometry(QRect(600, 3, 161, 31));
             time_t tDate = (*it)->GetTime();
             char buffer[26]; // Enough space to hold the string representation of time
             size_t bufferSize = sizeof(buffer);
-            ctime_s(buffer, bufferSize, &tDate);
+            const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+            struct tm timeInfo;
+            localtime_s(&timeInfo, &tDate);
+            strftime(buffer, sizeof(buffer), format, &timeInfo);
             string strDate = buffer;
-            Date->setText("12/10/2004");
+            Date->setText(strDate.c_str());
             QLabel* profileIcon = new QLabel(userCard);
             profileIcon->setObjectName("profileIcon" + i);
             profileIcon->setGeometry(QRect(7, 5, 31, 31));
@@ -729,13 +732,16 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
             action->setText("View Action");
             QLabel* Date = new QLabel(propertyCard);
             Date->setObjectName("Date" + i);
-            Date->setGeometry(QRect(600, 3, 131, 31));
+            Date->setGeometry(QRect(600, 3, 161, 31));
             time_t tDate = (*it)->GetTime();
             char buffer[26]; // Enough space to hold the string representation of time
             size_t bufferSize = sizeof(buffer);
-            ctime_s(buffer, bufferSize, &tDate);
+            const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+            struct tm timeInfo;
+            localtime_s(&timeInfo, &tDate);
+            strftime(buffer, sizeof(buffer), format,&timeInfo );
             string strDate = buffer;
-            Date->setText("12/10/2004");
+            Date->setText(strDate.c_str());
             string strOldLocation = "Location : " + (*it)->GetOldLocation();
             string strOldSqFootage = "Space : " + to_string((*it)->GetOldSquareFootage());
             string strOldBedrooms = "Bedrooms : " + to_string((*it)->GetOldNumberOfBedrooms());
@@ -854,7 +860,7 @@ void LogsDashboard::retranslateUi(QWidget* LogsDashboardClass)
     label_159->setText(QCoreApplication::translate("LogsDashboardClass", "Date", nullptr));
     label_160->setText(QCoreApplication::translate("LogsDashboardClass", "User Changes", nullptr));
     pushButton_11->setText(QString());
-    
+    label_151->setText("Date");
     label_161->setText(QString());
     label_162->setText(QCoreApplication::translate("LogsDashboardClass", "Properties Changes", nullptr));
     pushButton_12->setText(QString());

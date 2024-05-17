@@ -50,6 +50,9 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		"        color:#2B2A2A;\n"
 		"        border-style:solid; \n"
 		" }\n"
+		"QComboBox QAbstractItemView {"
+		"    color: white;"  // Dropdown menu background
+		"}"
 		"QSpinBox{\n"
 		"background: white;\n"
 		" color:#2B2A2A;\n"
@@ -64,8 +67,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		"#pushButton{\n"
 		"background: #1B425E;\n"
 		"color:white;\n"
-		"border-st"
-		"yle:solid;\n"
+		"border-style:solid;\n"
 		"border-radius:5px;\n"
 		"}\n"
 		"#pushButton:hover{\n"
@@ -348,7 +350,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 		void UserAddProperty::retranslateUi(QStackedWidget* Form)
 		{
 			Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
-			headLabel->setText(QCoreApplication::translate("Form", "Add Property Request", nullptr));
+			headLabel->setText(QCoreApplication::translate("Form", "Add Property", nullptr));
 			lineEdit_2->setPlaceholderText(QCoreApplication::translate("Form", "  Address Line", nullptr));
 			comboBox->setItemText(0, QCoreApplication::translate("Form", "Cairo", nullptr));
 			comboBox->setItemText(1, QCoreApplication::translate("Form", "Giza", nullptr));

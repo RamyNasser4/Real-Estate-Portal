@@ -123,15 +123,21 @@ void Admin::RemoveUser(string ID, System& system) {
 
 void Admin::AdminApproveorDeclineProperty(System* system, bool approved, User* user) {
 	if (!system->unVerified.empty()) {
-		Property* AcceptedProperty = system->unVerified.front();
+		Property* currentProperty = system->unVerified.front();
 		system->unVerified.pop();
 		if (approved) {
-			system->properties[AcceptedProperty->GetpropertyId()]->SetVerified(true);
+			system->properties[currentProperty->GetpropertyId()]->SetVerified(true);
+			system->propertyFilterBedRooms[currentProperty->GetNumberOfBedrooms()][currentProperty->GetpropertyId()] = currentProperty;
+			system->propertyFilterLocations[currentProperty->GetLocation()][currentProperty->GetpropertyId()] = currentProperty;
+			system->propertyFilterPrice[currentProperty->GetPrice()][currentProperty->GetpropertyId()] = currentProperty;
+			system->propertyFilterSquareFootage[currentProperty->GetSquareFootage()][currentProperty->GetpropertyId()] = currentProperty;
+			system->propertyFilterType[currentProperty->GetPropertyType()][currentProperty->GetpropertyId()] = currentProperty;
 			cout << "Property Approved!";
 			system->propertiesCount++;
 			system->SortUserByPropertyCount(user->GetNationalId());
 		}
 		else {
+			user->RemoveProperty(currentProperty->GetpropertyId(), *system);
 			cout << "Property Declined";
 		}
 		while (system->unVerified.size() != 0 && system->users.find(system->unVerified.front()->GetUserId()) == system->users.end()) {

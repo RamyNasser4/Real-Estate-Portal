@@ -32,6 +32,8 @@ map<int, unordered_map<string, Property*>>System::GetPropertyFilterPrice() {
 void System::SignUp(string fName, string lName, string natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password, mobileNumber);
+		currentUserId = users[natId]->GetNationalId();
+		currentUserName = users[natId]->GetName();
 		cout << "Registered Successfully " << endl;
 	}
 	else {

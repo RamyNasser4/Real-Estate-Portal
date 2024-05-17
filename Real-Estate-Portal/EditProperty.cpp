@@ -269,10 +269,10 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
             onPushButtonClick(Form,system,propertyId);
         }
         catch (const exception& e) {
-            /* QDialog* qdialog = new QDialog();
+             QDialog* qdialog = new QDialog();
              Dialog dialog;
              dialog.setupUi(qdialog, e.what());
-             qdialog->exec();*/
+             qdialog->exec();
         }
 
         });
@@ -320,30 +320,44 @@ void EditProperty::onPushButtonClick(QStackedWidget* Form,System* system,string 
     QString description = textEdit->toPlainText();
     int space = spinBox->value();
     int room = spinBox_2->value();
-
-    if (AddressLine.isEmpty()) {
-        throw exception("Enter Address Line");
+    bool isPrice = true;
+    for (int i = 0; i < price.size(); i++) {
+        if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
+            isPrice = false;
+        }
+    }
+    if (location.isEmpty()) {
+        throw exception("Choose location");
     }
     else if (City.isEmpty()) {
-        throw exception("Enter City");
+        throw exception("City can't be empty");
+    }  
+    else if (propertyType.isEmpty()) {
+         throw exception("Choose proprety type");
     }
-    else if (price.isEmpty()) {
+    else if (AddressLine.isEmpty()) {
+        throw exception("Address line can't be empty");
+    }
+    else if (space < 49) {
+        throw exception("Minimum space is 50");
+    }
+    else if (space > 79 && space < 10000 && room == 1) {
+        throw exception("Enter a matching space and rooms");
+    }
+    else if (isPrice == false) {
+        throw exception("Enter valid price");
+    }
+    else if (price.toInt() == 0) {
         throw exception("Enter Price");
     }
-    else if (location.isEmpty()) {
-        throw exception("Choose Location");
+    else if (price.toInt() < 499999) {
+        throw exception("Minimum price $500,000");
     }
-    else if (propertyType.isEmpty()) {
-        throw exception("Choose Proprety Type");
-    }
-    else if (space == 0) {
-        throw exception("Choose Location");
-    }
-    else if (room == 0) {
-        throw exception("Choose Location");
+    else if ( room == 0 ) {
+        throw exception("Number of rooms can't be 0");
     }
     else if (description.isEmpty()) {
-        throw exception("Enter Property Description");
+        throw exception("Enter property description");
     }
     else {
         system->EditProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData(),propertyId);

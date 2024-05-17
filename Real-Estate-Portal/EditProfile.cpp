@@ -141,8 +141,14 @@ void EditProfile::DoneButtonClick(System* system) {
 			isPhoneNum = false;
 		}
 	}
+	if (firstName.isEmpty()) {
+		throw exception("First name can't be empty");
+	}
+	if (lastName.isEmpty()) {
+		throw exception("last name can't be empty");
+	}
 	if (number.isEmpty()) {
-		throw exception("Enter Your Phone Number");
+		throw exception("Phone number can't be empty");
 	}
 	if (number.length() != 11) {
 		throw exception("Enter Valid Phone Number");
