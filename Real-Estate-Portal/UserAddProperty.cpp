@@ -105,7 +105,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 	frame->setFrameShadow(QFrame::Shadow::Raised);
 	headLabel = new QLabel(frame);
 	headLabel->setObjectName("headLabel");
-	headLabel->setGeometry(QRect(270, 20, 301, 51));
+	headLabel->setGeometry(QRect(350, 30, 301, 51));
 	frame_2 = new QFrame(frame);
 	frame_2->setObjectName("frame_2");
 	frame_2->setGeometry(QRect(-10, 100, 991, 681));
@@ -242,7 +242,7 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 	comboBox_3->setCursor(QCursor(Qt::PointingHandCursor));
 	homeImage = new QPushButton(frame);
 	homeImage->setObjectName("homeImage");
-	homeImage->setGeometry(QRect(210, 20, 51, 51));
+	homeImage->setGeometry(QRect(290, 30, 51, 51));
 	QIcon icon6;
 	icon6.addFile(QString::fromUtf8(":/Assets/propertyHead.png"), QSize(), QIcon::Normal, QIcon::Off);
 	homeImage->setIcon(icon6);
@@ -332,7 +332,14 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 			}
 			else {
 				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
-				QMessageBox::information(this, "Success", "Request submitted successfully");
+				Admin* admin = dynamic_cast<Admin*>(system->GetUser(system->currentUserId));
+				if (admin) {
+
+				QMessageBox::information(this, "Success", "Submitted successfully");
+				}
+				else {
+					QMessageBox::information(this, "Success", "Request submitted successfully");
+				}
 				for (int i = 0; i < Form->count(); ++i) {
 					QWidget* currentWidget = Form->widget(i);
 					if (currentWidget->objectName() == "Listings") {
