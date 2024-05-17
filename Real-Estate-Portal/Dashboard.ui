@@ -1151,7 +1151,7 @@ color:Black;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>Assets/profile.png</pixmap>
+          <pixmap>../../../../.designer/backup/Assets/profile.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -1283,7 +1283,7 @@ color:Black;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>Assets/admin.png</pixmap>
+          <pixmap resource="Resource.qrc">:/Assets/admin.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -2134,7 +2134,7 @@ color:Black;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>Assets/profile.png</pixmap>
+         <pixmap>../../../../.designer/backup/Assets/profile.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -2357,7 +2357,7 @@ color:Black;
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>Assets/profile.png</pixmap>
+            <pixmap>../../../../.designer/backup/Assets/profile.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -3653,6 +3653,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="Resource.qrc"/>
+  <include location="../../../../.designer/backup/Resource.qrc"/>
  </resources>
  <connections/>
 </ui>

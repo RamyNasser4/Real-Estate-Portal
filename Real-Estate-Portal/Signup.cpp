@@ -203,9 +203,15 @@ void Signup::setupUi(QStackedWidget* Signup, System* system, Login* login, Home*
             Signup->hide();
             Signup->setCurrentWidget(home);
 			home->setupUi(Signup,system,login,this);
-			HoverEventFilter* filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
-			HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
-			HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+            HoverEventFilter* filter0;
+            Admin* admin = dynamic_cast<Admin*>(system->users[system->currentUserId]);
+            if (admin) {
+                filter0 = new HoverEventFilter(home->widget_2, home->pushButton_4, home, ":/Assets/menu.png", ":/Assets/dashboard.png");
+            }
+            HoverEventFilter* filter1 = new HoverEventFilter(home->widget_3, home->pushButton_5, home, ":/Assets/homeWhite.png", ":/Assets/home.png");
+            HoverEventFilter* filter2 = new HoverEventFilter(home->widget_4, home->pushButton_8, home, ":/Assets/left-and-right-arrowsWhite.png", ":/Assets/left-and-right-arrows.png");
+            HoverEventFilter* filter3 = new HoverEventFilter(home->widget_6, home->pushButton_6, home, ":/Assets/logoutW32.png", ":/Assets/logoutGrey32.png");
+            HoverEventFilter* filter4 = new HoverEventFilter(home->widget_7, home->pushButton_11, home, ":/Assets/profilew32.png", ":/Assets/profileg32.png");
             Signup->show();
 		}
 		catch (const exception& e) {

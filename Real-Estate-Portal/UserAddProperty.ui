@@ -595,6 +595,11 @@ font-size:10px;
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox::drop-down{
+color:white;
+}</string>
+     </property>
      <property name="placeholderText">
       <string>  Choose City</string>
      </property>
