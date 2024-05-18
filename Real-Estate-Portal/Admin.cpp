@@ -90,6 +90,11 @@ void Admin::EditProperty(string Location, string PropertyType, string City, stri
 
 void Admin::RemoveProperty(string propertyId, System& system) {
 	Property* property = system.properties[propertyId];
+	auto it = std::find(system.propertyComparison.begin(), system.propertyComparison.end(),property);
+	if (it != system.propertyComparison.end()) {
+		system.propertyComparison.erase(it);
+	}
+	
 	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
 	system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 	system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
@@ -98,7 +103,8 @@ void Admin::RemoveProperty(string propertyId, System& system) {
 	properties.erase(propertyId);
 	delete property;
 	system.propertiesCount--;
-	UserCountProperty--;
+	
+
 }
 
 

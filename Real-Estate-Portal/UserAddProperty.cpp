@@ -297,67 +297,67 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 				spinBox->setValue(0);
 				spinBox_2->setValue(0);
 
+				}
+				catch (const exception& e) {
+					QDialog* qdialog = new QDialog();
+					Dialog dialog;
+					dialog.setupUi(qdialog, e.what());
+					qdialog->exec();
+				}
 			}
-			catch (const exception& e) {
-				QDialog* qdialog = new QDialog();
-				Dialog dialog;
-				dialog.setupUi(qdialog, e.what());
-				qdialog->exec();
+			});
+		QMetaObject::connectSlotsByName(Form);
+		}
+		void UserAddProperty::onPushButtonClick(System* system, QStackedWidget* Form) {
+			QString AddressLine = lineEdit_2->text();
+			QString City = comboBox_3->currentText();
+			QString price = lineEdit_3->text();
+			QString location = comboBox->currentText();
+			QString propertyType = comboBox_2->currentText();
+			QString description = textEdit->toPlainText();
+			int space = spinBox->value();
+			int room = spinBox_2->value();
+			bool isCity = true;
+			bool isAddressLine = true;
+			bool isPrice = true;
+			/*for (int i = 0; i < City.size(); i++) {
+				if (City[i].isSymbol() || City[i].isSpace() || City[i].isLetter() || City[i].isMark()) {
+					isCity = false;
+				}
+			}*/
+			/*for (int i = 0; i < AddressLine.size(); i++) {
+				if (AddressLine[i].isSymbol() || AddressLine[i].isSpace() || AddressLine[i].isLetter() || AddressLine[i].isMark()) {
+					isAddressLine = false;
+				}
+			}*/
+			for (int i = 0; i < price.size(); i++) {
+				if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
+					isPrice = false;
+				}
 			}
-		}
-		});
-	QMetaObject::connectSlotsByName(Form);
-}
-void UserAddProperty::onPushButtonClick(System* system, QStackedWidget* Form) {
-	QString AddressLine = lineEdit_2->text();
-	QString City = comboBox_3->currentText();
-	QString price = lineEdit_3->text();
-	QString location = comboBox->currentText();
-	QString propertyType = comboBox_2->currentText();
-	QString description = textEdit->toPlainText();
-	int space = spinBox->value();
-	int room = spinBox_2->value();
-	bool isCity = true;
-	bool isAddressLine = true;
-	bool isPrice = true;
-	/*for (int i = 0; i < City.size(); i++) {
-		if (City[i].isSymbol() || City[i].isSpace() || City[i].isLetter() || City[i].isMark()) {
-			isCity = false;
-		}
-	}*/
-	/*for (int i = 0; i < AddressLine.size(); i++) {
-		if (AddressLine[i].isSymbol() || AddressLine[i].isSpace() || AddressLine[i].isLetter() || AddressLine[i].isMark()) {
-			isAddressLine = false;
-		}
-	}*/
-	for (int i = 0; i < price.size(); i++) {
-		if (price[i].isSymbol() || price[i].isSpace() || price[i].isLetter() || price[i].isMark()) {
-			isPrice = false;
-		}
-	}
-	if (AddressLine.isEmpty() || City.isEmpty() || price.isEmpty() || location.isEmpty() ||
-		propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
-		throw exception("Fill all fields!");
-	}
-	else if (isCity == false) {
-		throw exception("Enter Valid City");
-	}
-	else if (isAddressLine == false) {
-		throw exception("Enter Valid Address Line");
-	}
-	else if (space < 49) {
-		throw exception("Minimum Space is 50");
-	}
-	else if (price.toInt() < 499999) {
-		throw exception("Minimum price $500,000");
-	}
-	else if (isPrice == false) {
-		throw exception("Enter Valid Price");
-	}
-	else {
-		system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
-		Admin* admin = dynamic_cast<Admin*>(system->GetUser(system->currentUserId));
-		if (admin) {
+			if (AddressLine.isEmpty() || City.isEmpty() || price.isEmpty() || location.isEmpty() ||
+				propertyType.isEmpty() || space == 0 || room == 0 || description.isEmpty()) {
+				throw exception("Fill all fields!");
+			}
+			else if (isCity == false) {
+				throw exception("Enter Valid City");
+			}
+			else if (isAddressLine == false) {
+				throw exception("Enter Valid Address Line");
+			}
+			else if (space < 49) {
+				throw exception("Minimum Space is 50");
+			}
+			else if (isPrice == false) {
+				throw exception("Enter Valid Price");
+			}
+			else if (price.toInt() < 499999) {
+				throw exception("Minimum price $500,000");
+			}
+			else {
+				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
+				Admin* admin = dynamic_cast<Admin*>(system->GetUser(system->currentUserId));
+				if (admin) {
 
 			QMessageBox::information(this, "Success", "Submitted successfully");
 		}
