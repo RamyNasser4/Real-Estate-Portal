@@ -3,6 +3,29 @@
 #include<string.h>
 #include<ctime>
 using namespace std;
+EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldCity, string OldAddressLine, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OldpropertyDescription, string NewLocation, string NewPropertyType, string NewCity, string NewAddressLine, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription, string PropertyID, string userID, string time) {
+	this->Oldlocation = OldLocation;
+	this->OldpropertyType = OldPropertyType;
+	this->Oldcity = OldCity;
+	this->OldaddressLine = OldAddressLine;
+	this->OldsquareFootage = OldSquareFootage;
+	this->OldnumberOfBedrooms = OldNumberOfBedrooms;
+	this->Oldprice = Oldprice;
+	this->OldpropertyDescription = OldpropertyDescription;
+
+	this->Newlocation = NewLocation;
+	this->NewpropertyType = NewPropertyType;
+	this->Newcity = NewCity;
+	this->NewaddressLine = NewAddressLine;
+	this->NewsquareFootage = NewSquareFootage;
+	this->NewnumberOfBedrooms = NewNumberOfBedrooms;
+	this->Newprice = Newprice;
+	this->NewpropertyDescription = NewpropertyDescription;
+
+	this->CurrentTime = time;
+	this->PropertyID = PropertyID;
+	this->userID = userID;
+}
 EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyType, string OldCity, string OldAddressLine, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OldpropertyDescription, string NewLocation, string NewPropertyType, string NewCity, string NewAddressLine, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription,string PropertyID,string userID)
 {
 	this->Oldlocation = OldLocation;
@@ -23,7 +46,14 @@ EditPropertyRequest::EditPropertyRequest(string OldLocation, string OldPropertyT
 	this->Newprice = Newprice;
 	this->NewpropertyDescription = NewpropertyDescription;
 
-	this->CurrentTime = time(&CurrentTime);
+	time_t currentTime = time(&currentTime);
+	char buffer[26]; // Enough space to hold the string representation of time
+	size_t bufferSize = sizeof(buffer);
+	const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+	struct tm timeInfo;
+	localtime_s(&timeInfo, &currentTime);
+	strftime(buffer, sizeof(buffer), format, &timeInfo);
+	this->CurrentTime = buffer;
 	this->PropertyID = PropertyID;
 	this->userID = userID;
 }
@@ -42,9 +72,6 @@ void EditPropertyRequest::SetOldCity(string OldCity) {
 	this->Oldcity = OldCity;
 }
 
-void EditPropertyRequest::SetOldUserName(string OldUserName) {
-	this->OlduserName = OldUserName;
-}
 
 void EditPropertyRequest::SetOldPropertyDescription(string OldPropertyDescription) {
 	this->OldpropertyDescription = OldPropertyDescription;
@@ -78,9 +105,6 @@ void EditPropertyRequest::SetNewCity(string NewCity) {
 	this->Newcity = NewCity;
 }
 
-void EditPropertyRequest::SetNewUserName(string NewUserName) {
-	this->NewuserName = NewUserName;
-}
 
 void EditPropertyRequest::SetNewPropertyDescription(string NewPropertyDescription) {
 	this->NewpropertyDescription = NewPropertyDescription;
@@ -174,6 +198,6 @@ int EditPropertyRequest::GetNewNumberOfBedrooms() {
 int EditPropertyRequest::GetNewPrice() {
 	return Newprice;
 }
-time_t EditPropertyRequest::GetTime() {
+string EditPropertyRequest::GetTime() {
 	return CurrentTime;
 }

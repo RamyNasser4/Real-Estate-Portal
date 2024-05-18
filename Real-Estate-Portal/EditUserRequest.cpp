@@ -3,6 +3,17 @@
 #include <iostream>
 #include"User.h"
 using namespace std;
+EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password, string NationalID,string time) {
+    this->oldFirstName = oldFirstName;
+    this->newFirstName = newFirstName;
+    this->oldLastName = oldLastName;
+    this->newLastName = newLastName;
+    this->oldMobileNumber = oldMobileNumber;
+    this->newMobileNumber = newMobileNumber;
+    this->password = password;
+    this->timeStamp = time;
+    this->NationalID = NationalID;
+}
 EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password,string NationalID) {
 	this->oldFirstName = oldFirstName;
 	this->newFirstName = newFirstName;
@@ -11,7 +22,14 @@ EditUserRequest::EditUserRequest(string oldFirstName, string newFirstName, strin
 	this->oldMobileNumber = oldMobileNumber;
 	this->newMobileNumber = newMobileNumber;
 	this->password = password;
-    this->timeStamp = time(&timeStamp);
+    time_t currentTime = time(&currentTime);
+    char buffer[26]; // Enough space to hold the string representation of time
+    size_t bufferSize = sizeof(buffer);
+    const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+    struct tm timeInfo;
+    localtime_s(&timeInfo, &currentTime);
+    strftime(buffer, sizeof(buffer), format, &timeInfo);
+    this->timeStamp = buffer;
     this->NationalID = NationalID;
 }
 
@@ -74,7 +92,7 @@ string EditUserRequest::GetNationalId() {
 bool EditUserRequest::GetPasswordChanged() {
     return password;
 }
-time_t EditUserRequest::GetTime() {
+string EditUserRequest::GetTime() {
     return timeStamp;
 }
 
