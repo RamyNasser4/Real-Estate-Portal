@@ -361,14 +361,9 @@ void AnalyticsDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* sy
 	}
 	else {
 		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 780, 791));
-		/*QLabel* placeholder = new QLabel(scrollAreaWidgetContents);
-		placeholder->setObjectName("placeholder");
-		placeholder->setGeometry(QRect(130, -30, 400, 331));
-		placeholder->setPixmap(QPixmap(QString::fromUtf8(":/Assets/9318694-removebg-preview.png")));
-		placeholder->setScaledContents(true);*/
 		QLabel* label1 = new QLabel(scrollAreaWidgetContents);
 		label1->setObjectName("label_38");
-		label1->setGeometry(QRect(240, 120, 321, 31));
+		label1->setGeometry(QRect(240, 120, 421, 31));
 		label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-size:30px;\n"
 			"font-family:sans-serif;\n"
