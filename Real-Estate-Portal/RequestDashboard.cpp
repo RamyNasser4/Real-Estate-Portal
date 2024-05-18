@@ -1,6 +1,6 @@
 #include "RequestDashboard.h"
 
-RequestDashboard::RequestDashboard(QWidget *parent)
+RequestDashboard::RequestDashboard(QWidget* parent)
 	: QWidget(parent)
 {
 	//ui.setupUi(this);
@@ -8,22 +8,40 @@ RequestDashboard::RequestDashboard(QWidget *parent)
 
 void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 
+	label_21 = new QLabel(tab_3);
+	label_21->setObjectName("label_21");
+	label_21->setGeometry(QRect(40, 10, 221, 61));
+	label_21->setStyleSheet(QString::fromUtf8("QLabel\n"
+		"{\n"
+		"font-size:34px;\n"
+		"font-weight:bold;\n"
+		"color:#2B2A2A;\n"
+		"}"));
+	label_2 = new QLabel(frame);
+	label_2->setObjectName("label_2");
+	label_2->setGeometry(QRect(20, 20, 151, 161));
+	label_2->setStyleSheet(QString::fromUtf8("#label_2{color:black;}"));
+	label_2->setPixmap(QPixmap(QString::fromUtf8(":/Assets/home128.png")));
+	label_2->setScaledContents(true);
+	label_21->setText(QCoreApplication::translate("Dashboard", "Requests", nullptr));
+	label_11 = new QLabel(tab_3);
+	label_11->setObjectName("label_11");
+	label_11->setGeometry(QRect(658, 112, 131, 20));
+	label_11->setStyleSheet(QString::fromUtf8("#label_11{\n"
+		"color:black;\n"
+		"  border-radius: 25px;\n"
+		"\n"
+		"\n"
+		"font-size:15px;\n"
+		"}"));
+	string strRequest = "Requests : " + to_string(system->unVerified.size());
+	label_11->setText(QCoreApplication::translate("Dashboard", strRequest.c_str(), nullptr));
+	line_5 = new QFrame(tab_3);
+	line_5->setObjectName("line_5");
+	line_5->setGeometry(QRect(30, 90, 731, 16));
+	line_5->setFrameShape(QFrame::Shape::HLine);
+	line_5->setFrameShadow(QFrame::Shadow::Sunken);
 	if (system->unVerified.size() != 0) {
-		label_21 = new QLabel(tab_3);
-		label_21->setObjectName("label_21");
-		label_21->setGeometry(QRect(40, 10, 221, 61));
-		label_21->setStyleSheet(QString::fromUtf8("QLabel\n"
-			"{\n"
-			"font-size:34px;\n"
-			"font-weight:bold;\n"
-			"color:#2B2A2A;\n"
-			"}"));
-		label_21->setText(QCoreApplication::translate("Dashboard", "Requests", nullptr));
-		line_5 = new QFrame(tab_3);
-		line_5->setObjectName("line_5");
-		line_5->setGeometry(QRect(30, 90, 731, 16));
-		line_5->setFrameShape(QFrame::Shape::HLine);
-		line_5->setFrameShadow(QFrame::Shadow::Sunken);
 		frame = new QFrame(tab_3);
 		frame->setObjectName("frame");
 		frame->setGeometry(QRect(30, 150, 741, 211));
@@ -58,12 +76,6 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 			"}"));
 		frame->setFrameShape(QFrame::Shape::StyledPanel);
 		frame->setFrameShadow(QFrame::Shadow::Raised);
-		label_2 = new QLabel(frame);
-		label_2->setObjectName("label_2");
-		label_2->setGeometry(QRect(20, 20, 151, 161));
-		label_2->setStyleSheet(QString::fromUtf8("#label_2{color:black;}"));
-		label_2->setPixmap(QPixmap(QString::fromUtf8(":/Assets/home128.png")));
-		label_2->setScaledContents(true);
 		Property* requestProperty = system->unVerified.front();
 		label_47 = new QLabel(frame);
 		label_47->setObjectName("label_47");
@@ -116,18 +128,6 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 		pushButton_2 = new QPushButton(frame);
 		pushButton_2->setObjectName("pushButton_2");
 		pushButton_2->setGeometry(QRect(670, 90, 61, 31));
-		label_11 = new QLabel(tab_3);
-		label_11->setObjectName("label_11");
-		label_11->setGeometry(QRect(658, 112, 131, 20));
-		label_11->setStyleSheet(QString::fromUtf8("#label_11{\n"
-			"color:black;\n"
-			"  border-radius: 25px;\n"
-			"\n"
-			"\n"
-			"font-size:15px;\n"
-			"}"));
-		string strRequest = "Requests : " + to_string(system->unVerified.size());
-		label_11->setText(QCoreApplication::translate("Dashboard", strRequest.c_str(), nullptr));
 		pushButton->setText(QCoreApplication::translate("Dashboard", "Accept", nullptr));
 		pushButton_2->setText(QCoreApplication::translate("Dashboard", "Deny", nullptr));
 		label_44 = new QLabel(tab_3);
@@ -191,7 +191,9 @@ void RequestDashboard::updateUi(System* system) {
 		label_11->setText(QCoreApplication::translate("Dashboard", strRequest.c_str(), nullptr));
 	}
 	else {
-		frame->setVisible(false);
+		if (frame != nullptr) {
+			frame->setVisible(false);
+		}
 		label_44->setVisible(true);
 		string strRequest = "Requests : " + to_string(system->unVerified.size());
 		label_11->setText(QCoreApplication::translate("Dashboard", strRequest.c_str(), nullptr));

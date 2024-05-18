@@ -1,45 +1,45 @@
 #include "AnalyticsDashboard.h"
 
-AnalyticsDashboard::AnalyticsDashboard(QWidget *parent)
+AnalyticsDashboard::AnalyticsDashboard(QWidget* parent)
 	: QWidget(parent)
 {
 	//ui.setupUi(this);
 }
-void AnalyticsDashboard::setupUi(QWidget* AnalyticsDashboardClass,System* system,QStackedWidget* ListComponents)
+void AnalyticsDashboard::setupUi(QWidget* AnalyticsDashboardClass, System* system, QStackedWidget* ListComponents)
 {
-    if (AnalyticsDashboardClass->objectName().isEmpty())
-        AnalyticsDashboardClass->setObjectName("AnalyticsDashboardClass");
-    AnalyticsDashboardClass->resize(801, 741);
-    widget_4 = new QWidget(AnalyticsDashboardClass);
-    widget_4->setObjectName("widget_4");
-    widget_4->setGeometry(QRect(0, 0, 801, 741));
-    widget_4->setStyleSheet(QString::fromUtf8("QWidget\n"
-        "{\n"
-        "background-color:#CCD0CD;\n"
-        "\n"
-        "}\n"
-        "QLabel{\n"
-        "font-size:20px;\n"
-        "}"));
-    label_118 = new QLabel(widget_4);
-    label_118->setObjectName("label_118");
-    label_118->setGeometry(QRect(280, 20, 61, 61));
-    label_118->setStyleSheet(QString::fromUtf8("QLabel\n"
-        "{\n"
-        "font-size:34px;\n"
-        "font-weight:bold;\n"
-        "color:#2B2A2A;\n"
-        "}"));
-    label_118->setPixmap(QPixmap(QString::fromUtf8(":/Assets/analysis.png")));
-    label_118->setScaledContents(true);
-    line_11 = new QFrame(widget_4);
-    line_11->setObjectName("line_11");
-    line_11->setGeometry(QRect(30, 90, 731, 16));
-    line_11->setFrameShape(QFrame::Shape::HLine);
-    line_11->setFrameShadow(QFrame::Shadow::Sunken);
-    scrollArea_6 = new QScrollArea(widget_4);
-    scrollArea_6->setObjectName("scrollArea_6");
-    scrollArea_6->setGeometry(QRect(0, 369, 791, 351));
+	if (AnalyticsDashboardClass->objectName().isEmpty())
+		AnalyticsDashboardClass->setObjectName("AnalyticsDashboardClass");
+	AnalyticsDashboardClass->resize(801, 741);
+	widget_4 = new QWidget(AnalyticsDashboardClass);
+	widget_4->setObjectName("widget_4");
+	widget_4->setGeometry(QRect(0, 0, 801, 741));
+	widget_4->setStyleSheet(QString::fromUtf8("QWidget\n"
+		"{\n"
+		"background-color:#CCD0CD;\n"
+		"\n"
+		"}\n"
+		"QLabel{\n"
+		"font-size:20px;\n"
+		"}"));
+	label_118 = new QLabel(widget_4);
+	label_118->setObjectName("label_118");
+	label_118->setGeometry(QRect(280, 20, 61, 61));
+	label_118->setStyleSheet(QString::fromUtf8("QLabel\n"
+		"{\n"
+		"font-size:34px;\n"
+		"font-weight:bold;\n"
+		"color:#2B2A2A;\n"
+		"}"));
+	label_118->setPixmap(QPixmap(QString::fromUtf8(":/Assets/analysis.png")));
+	label_118->setScaledContents(true);
+	line_11 = new QFrame(widget_4);
+	line_11->setObjectName("line_11");
+	line_11->setGeometry(QRect(30, 90, 731, 16));
+	line_11->setFrameShape(QFrame::Shape::HLine);
+	line_11->setFrameShadow(QFrame::Shadow::Sunken);
+	scrollArea_6 = new QScrollArea(widget_4);
+	scrollArea_6->setObjectName("scrollArea_6");
+	scrollArea_6->setGeometry(QRect(0, 369, 791, 351));
 	scrollArea_6->setStyleSheet(
 		"QScrollBar:vertical {"
 		"border: 1px solid #999999;"
@@ -59,95 +59,95 @@ void AnalyticsDashboard::setupUi(QWidget* AnalyticsDashboardClass,System* system
 		"background: none;"
 		"}"
 	);
-    AnalyticsDashboardHeader = new QLabel(widget_4);
-    AnalyticsDashboardHeader->setObjectName("AnalyticsDashboardHeader");
-    AnalyticsDashboardHeader->setGeometry(QRect(350, 20, 221, 61));
-    AnalyticsDashboardHeader->setStyleSheet(QString::fromUtf8("QLabel\n"
-        "{\n"
-        "font-size:34px;\n"
-        "font-weight:bold;\n"
-        "color:#2B2A2A;\n"
-        "}"));
-    label_131 = new QLabel(widget_4);
-    label_131->setObjectName("label_131");
-    label_131->setGeometry(QRect(90, 140, 211, 21));
-    label_132 = new QLabel(widget_4);
-    label_132->setObjectName("label_132");
-    label_132->setGeometry(QRect(30, 130, 51, 41));
-    label_132->setPixmap(QPixmap(QString::fromUtf8(":/Assets/group.png")));
-    label_132->setScaledContents(true);
-    label_133 = new QLabel(widget_4);
-    label_133->setObjectName("label_133");
-    label_133->setGeometry(QRect(90, 230, 211, 21));
-    label_134 = new QLabel(widget_4);
-    label_134->setObjectName("label_134");
-    label_134->setGeometry(QRect(30, 220, 51, 41));
-    label_134->setPixmap(QPixmap(QString::fromUtf8(":/Assets/properties.png")));
-    label_134->setScaledContents(true);
-    label_135 = new QLabel(widget_4);
-    label_135->setObjectName("label_135");
-    label_135->setGeometry(QRect(90, 320, 291, 21));
-    label_136 = new QLabel(widget_4);
-    label_136->setObjectName("label_136");
-    label_136->setGeometry(QRect(30, 310, 51, 41));
-    label_136->setPixmap(QPixmap(QString::fromUtf8(":/Assets/top_compare.png")));
-    label_136->setScaledContents(true);
-    line_2 = new QFrame(widget_4);
-    line_2->setObjectName("line_2");
-    line_2->setGeometry(QRect(393, 120, 20, 171));
-    line_2->setFrameShape(QFrame::Shape::VLine);
-    line_2->setFrameShadow(QFrame::Shadow::Sunken);
-    frame_17 = new QFrame(widget_4);
-    frame_17->setObjectName("frame_17");
-    frame_17->setGeometry(QRect(420, 180, 361, 41));
-    frame_17->setStyleSheet(QString::fromUtf8("QFrame{\n"
-        "  border-radius: 15px;\n"
-        "  border: 2px solid white ;\n"
-        "background-color:white;\n"
-        "\n"
-        "}\n"
-        "QLabel\n"
-        "{\n"
-        "font-size:15px;\n"
-        "font-weight:bold;\n"
-        "color:#2B2A2A;\n"
-        "}\n"
-        "QPushButton{\n"
-        "  border-radius: 10px;\n"
-        "  background: #FF7F7F;\n"
-        "color:white;\n"
-        "\n"
-        "\n"
-        "\n"
-        "}\n"
-        "\n"
-        "QPushButton:hover{\n"
-        "background: #CCD0CD;\n"
-        "color:Black;\n"
-        "}\n"
-        "\n"
-        ""));
-    frame_17->setFrameShape(QFrame::Shape::StyledPanel);
-    frame_17->setFrameShadow(QFrame::Shadow::Raised);
-    label_137 = new QLabel(frame_17);
-    label_137->setObjectName("label_137");
-    label_137->setGeometry(QRect(50, 3, 141, 31));
-    label_138 = new QLabel(frame_17);
-    label_138->setObjectName("label_138");
-    label_138->setGeometry(QRect(210, 3, 141, 31));
-    label_139 = new QLabel(frame_17);
-    label_139->setObjectName("label_139");
-    label_139->setGeometry(QRect(7, 5, 31, 31));
-    label_139->setPixmap(QPixmap(QString::fromUtf8("Assets/profile.png")));
-    label_139->setScaledContents(true);
-    label_140 = new QLabel(widget_4);
-    label_140->setObjectName("label_140");
-    label_140->setGeometry(QRect(430, 130, 211, 31));
+	AnalyticsDashboardHeader = new QLabel(widget_4);
+	AnalyticsDashboardHeader->setObjectName("AnalyticsDashboardHeader");
+	AnalyticsDashboardHeader->setGeometry(QRect(350, 20, 221, 61));
+	AnalyticsDashboardHeader->setStyleSheet(QString::fromUtf8("QLabel\n"
+		"{\n"
+		"font-size:34px;\n"
+		"font-weight:bold;\n"
+		"color:#2B2A2A;\n"
+		"}"));
+	label_131 = new QLabel(widget_4);
+	label_131->setObjectName("label_131");
+	label_131->setGeometry(QRect(90, 140, 211, 21));
+	label_132 = new QLabel(widget_4);
+	label_132->setObjectName("label_132");
+	label_132->setGeometry(QRect(30, 130, 51, 41));
+	label_132->setPixmap(QPixmap(QString::fromUtf8(":/Assets/group.png")));
+	label_132->setScaledContents(true);
+	label_133 = new QLabel(widget_4);
+	label_133->setObjectName("label_133");
+	label_133->setGeometry(QRect(90, 230, 211, 21));
+	label_134 = new QLabel(widget_4);
+	label_134->setObjectName("label_134");
+	label_134->setGeometry(QRect(30, 220, 51, 41));
+	label_134->setPixmap(QPixmap(QString::fromUtf8(":/Assets/properties.png")));
+	label_134->setScaledContents(true);
+	label_135 = new QLabel(widget_4);
+	label_135->setObjectName("label_135");
+	label_135->setGeometry(QRect(90, 320, 291, 21));
+	label_136 = new QLabel(widget_4);
+	label_136->setObjectName("label_136");
+	label_136->setGeometry(QRect(30, 310, 51, 41));
+	label_136->setPixmap(QPixmap(QString::fromUtf8(":/Assets/top_compare.png")));
+	label_136->setScaledContents(true);
+	line_2 = new QFrame(widget_4);
+	line_2->setObjectName("line_2");
+	line_2->setGeometry(QRect(393, 120, 20, 171));
+	line_2->setFrameShape(QFrame::Shape::VLine);
+	line_2->setFrameShadow(QFrame::Shadow::Sunken);
+	frame_17 = new QFrame(widget_4);
+	frame_17->setObjectName("frame_17");
+	frame_17->setGeometry(QRect(420, 180, 361, 41));
+	frame_17->setStyleSheet(QString::fromUtf8("QFrame{\n"
+		"  border-radius: 15px;\n"
+		"  border: 2px solid white ;\n"
+		"background-color:white;\n"
+		"\n"
+		"}\n"
+		"QLabel\n"
+		"{\n"
+		"font-size:15px;\n"
+		"font-weight:bold;\n"
+		"color:#2B2A2A;\n"
+		"}\n"
+		"QPushButton{\n"
+		"  border-radius: 10px;\n"
+		"  background: #FF7F7F;\n"
+		"color:white;\n"
+		"\n"
+		"\n"
+		"\n"
+		"}\n"
+		"\n"
+		"QPushButton:hover{\n"
+		"background: #CCD0CD;\n"
+		"color:Black;\n"
+		"}\n"
+		"\n"
+		""));
+	frame_17->setFrameShape(QFrame::Shape::StyledPanel);
+	frame_17->setFrameShadow(QFrame::Shadow::Raised);
+	label_137 = new QLabel(frame_17);
+	label_137->setObjectName("label_137");
+	label_137->setGeometry(QRect(50, 3, 141, 31));
+	label_138 = new QLabel(frame_17);
+	label_138->setObjectName("label_138");
+	label_138->setGeometry(QRect(210, 3, 141, 31));
+	label_139 = new QLabel(frame_17);
+	label_139->setObjectName("label_139");
+	label_139->setGeometry(QRect(7, 5, 31, 31));
+	label_139->setPixmap(QPixmap(QString::fromUtf8("Assets/profile.png")));
+	label_139->setScaledContents(true);
+	label_140 = new QLabel(widget_4);
+	label_140->setObjectName("label_140");
+	label_140->setGeometry(QRect(430, 130, 211, 31));
 	updateUi(system, ListComponents);
 
-    retranslateUi(AnalyticsDashboardClass,system);
+	retranslateUi(AnalyticsDashboardClass, system);
 
-    QMetaObject::connectSlotsByName(AnalyticsDashboardClass);
+	QMetaObject::connectSlotsByName(AnalyticsDashboardClass);
 } // setupUi
 void AnalyticsDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QScrollArea* scrollArea, QStackedWidget* ListComponents) {
 	scrollAreaWidgetContents = new QWidget();
@@ -390,31 +390,33 @@ void AnalyticsDashboard::drawBoxes(QWidget* scrollAreaWidgetContents, System* sy
 		scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	}
 }
-void AnalyticsDashboard::retranslateUi(QWidget* AnalyticsDashboardClass,System* system)
+void AnalyticsDashboard::retranslateUi(QWidget* AnalyticsDashboardClass, System* system)
 {
-    AnalyticsDashboardClass->setWindowTitle(QCoreApplication::translate("AnalyticsDashboardClass", "AnalyticsDashboard", nullptr));
-    label_118->setText(QString());
-    AnalyticsDashboardHeader->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Analytics", nullptr));
-	string totalusers = "Total Users : " + to_string(system->UserCounter());
-    label_131->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalusers.c_str(), nullptr));
-    label_132->setText(QString());
-	string totalproperties = "Total Properties : " + to_string(system->PropertiesCounter());
-    label_133->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalproperties.c_str(), nullptr));
-    label_134->setText(QString());
-    label_135->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Top Compared Properties ", nullptr));
-    label_136->setText(QString());
-    label_139->setText(QString());
-    label_140->setText(QCoreApplication::translate("AnalyticsDashboardClass", "User with most listings ", nullptr));
-} // retranslateUi
-void AnalyticsDashboard::updateUi(System* system,QStackedWidget* ListComponents) {
-	User* user = system->UserWithMostProperties();
-	string userId = "#" + user->GetNationalId();
+	AnalyticsDashboardClass->setWindowTitle(QCoreApplication::translate("AnalyticsDashboardClass", "AnalyticsDashboard", nullptr));
+	label_118->setText(QString());
+	AnalyticsDashboardHeader->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Analytics", nullptr));
 	string totalusers = "Total Users : " + to_string(system->UserCounter());
 	label_131->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalusers.c_str(), nullptr));
-	label_137->setText(QCoreApplication::translate("AnalyticsDashboardClass", userId.c_str(), nullptr));
-	string username = user->GetName();
-	label_138->setText(QCoreApplication::translate("AnalyticsDashboardClass", username.c_str(), nullptr));
-	drawBoxes(scrollAreaWidgetContents_6, system, scrollArea_6, ListComponents);
+	label_132->setText(QString());
+	string totalproperties = "Total Properties : " + to_string(system->PropertiesCounter());
+	label_133->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalproperties.c_str(), nullptr));
+	label_134->setText(QString());
+	label_135->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Top Compared Properties ", nullptr));
+	label_136->setText(QString());
+	label_139->setText(QString());
+	label_140->setText(QCoreApplication::translate("AnalyticsDashboardClass", "User with most listings ", nullptr));
+} // retranslateUi
+void AnalyticsDashboard::updateUi(System* system, QStackedWidget* ListComponents) {
+	User* user = system->UserWithMostProperties();
+	if (user != nullptr) {
+		string userId = "#" + user->GetNationalId();
+		string totalusers = "Total Users : " + to_string(system->UserCounter());
+		label_131->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalusers.c_str(), nullptr));
+		label_137->setText(QCoreApplication::translate("AnalyticsDashboardClass", userId.c_str(), nullptr));
+		string username = user->GetName();
+		label_138->setText(QCoreApplication::translate("AnalyticsDashboardClass", username.c_str(), nullptr));
+		drawBoxes(scrollAreaWidgetContents_6, system, scrollArea_6, ListComponents);
+	}
 }
 AnalyticsDashboard::~AnalyticsDashboard()
 {}

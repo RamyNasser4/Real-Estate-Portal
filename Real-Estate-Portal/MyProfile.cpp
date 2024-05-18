@@ -251,7 +251,7 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 			sqFootage->setText(QCoreApplication::translate("ListingsClass", strFootage.c_str(), nullptr));
 			QWidget* horizontalWidget = new QWidget(scrollAreaWidgetContents);
 			horizontalWidget->setObjectName("horizontalWidget" + i);
-			horizontalWidget->setGeometry(QRect(218, currentHorizontalWidgetY, 331, 41));
+			horizontalWidget->setGeometry(QRect(218, currentHorizontalWidgetY, 431, 41));
 			horizontalWidget->setStyleSheet(QString::fromUtf8("background:white;"));
 			horizontalWidget->show();
 			QHBoxLayout* horizontalLayout = new QHBoxLayout(horizontalWidget);

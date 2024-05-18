@@ -33,7 +33,6 @@ void readFile(System* system) {
 			getline(ss, stringId, '*');
 			getline(ss, password, '*');
 			getline(ss, mobileNumber, '*');
-			int ID = stoi(stringId);
 			if (type == "admin") {
 				system->AddAdmin(firstName, lastName, stringId, password, mobileNumber);
 			}
