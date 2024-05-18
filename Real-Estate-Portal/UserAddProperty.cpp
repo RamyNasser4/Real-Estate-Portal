@@ -324,11 +324,11 @@ void UserAddProperty::setupUi(QStackedWidget* Form, System* system)
 			else if (space < 49) {
 				throw exception("Minimum Space is 50");
 			}
-			else if (price.toInt() < 499999) {
-				throw exception("Minimum price $500,000");
-			}
 			else if (isPrice == false) {
 				throw exception("Enter Valid Price");
+			}
+			else if (price.toInt() < 499999) {
+				throw exception("Minimum price $500,000");
 			}
 			else {
 				system->AddProperty(location.toLocal8Bit().constData(), propertyType.toLocal8Bit().constData(), City.toLocal8Bit().constData(), AddressLine.toLocal8Bit().constData(), space, room, price.toInt(), system->currentUserName, system->currentUserId, description.toLocal8Bit().constData());
