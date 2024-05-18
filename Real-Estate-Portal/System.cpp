@@ -138,7 +138,7 @@ void System::AddToCompare(string propertyId) {
 		}
 	}
 	else {
-		throw exception("Cannot compare more than 4 properties");
+		throw exception("Maximum 4 properties");
 	}
 }
 void System::RemoveFromCompare(string propertyId) {

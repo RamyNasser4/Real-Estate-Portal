@@ -132,12 +132,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;D:\Qt\6.8.0\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;D:\Qt\6.8.0\msvc2019_64\lib;%(AdditionalIncludeDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Widgets.lib;Qt6Core.lib;Qt6Gui.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -150,14 +150,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.8.0\msvc2019_64\include;C:\Qt\6.8.0\msvc2019_64\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.8.0\msvc2019_64\lib;C:\Qt\6.8.0\msvc2019_64\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Widgets.lib;Qt6Core.lib;Qt6Gui.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
