@@ -480,7 +480,7 @@ void MyProfile::drawBoxes(QWidget* scrollAreaWidgetContents, System* system, QSc
 		placeholder->setScaledContents(true);
 		QLabel* label1 = new QLabel(scrollAreaWidgetContents);
 		label1->setObjectName("label_7");
-		label1->setGeometry(QRect(240, 330, 291, 31));
+		label1->setGeometry(QRect(240, 330, 391, 31));
 		label1->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-size:30px;\n"
 			"font-family:sans-serif;\n"

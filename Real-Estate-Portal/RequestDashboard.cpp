@@ -17,12 +17,6 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 		"font-weight:bold;\n"
 		"color:#2B2A2A;\n"
 		"}"));
-	label_2 = new QLabel(frame);
-	label_2->setObjectName("label_2");
-	label_2->setGeometry(QRect(20, 20, 151, 161));
-	label_2->setStyleSheet(QString::fromUtf8("#label_2{color:black;}"));
-	label_2->setPixmap(QPixmap(QString::fromUtf8(":/Assets/home128.png")));
-	label_2->setScaledContents(true);
 	label_21->setText(QCoreApplication::translate("Dashboard", "Requests", nullptr));
 	label_11 = new QLabel(tab_3);
 	label_11->setObjectName("label_11");
@@ -75,6 +69,12 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 			"font-size:15px;\n"
 			"}"));
 		frame->setFrameShape(QFrame::Shape::StyledPanel);
+		label_2 = new QLabel(frame);
+		label_2->setObjectName("label_2");
+		label_2->setGeometry(QRect(20, 20, 151, 161));
+		label_2->setStyleSheet(QString::fromUtf8("#label_2{color:black;}"));
+		label_2->setPixmap(QPixmap(QString::fromUtf8(":/Assets/home128.png")));
+		label_2->setScaledContents(true);
 		frame->setFrameShadow(QFrame::Shadow::Raised);
 		Property* requestProperty = system->unVerified.front();
 		label_47 = new QLabel(frame);
