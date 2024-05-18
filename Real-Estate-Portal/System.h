@@ -30,6 +30,7 @@ public:
 	unordered_map<string, Property*> properties;
 	unordered_map<string, User*> GetUsers();
 	unordered_map<string, Property*> GetProperties();
+	queue<Property*> GetRequestedProperties();
 	vector<Property*> GetPropertyComparison();
 	map<int, unordered_map<string, Property*>> GetPropertyFilterSquareFootage();
 	unordered_map<int, unordered_map<string, Property*>> GetpropertyFilterBedRooms();
@@ -61,6 +62,8 @@ public:
 	void AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
 	void EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, string currentUserId);
+	void ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
+	void ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription, int compareCounter);
 	void EditMobileNumber(string currentUserId, string mobileNumber);
 	void AddAdmin(string firstName, string lastName, string nationalId, string password,string mobileNumber);
 	int UserCounter();
