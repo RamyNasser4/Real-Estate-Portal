@@ -59,10 +59,10 @@ void AnalyticsDashboard::setupUi(QWidget* AnalyticsDashboardClass,System* system
 		"background: none;"
 		"}"
 	);
-    label_130 = new QLabel(widget_4);
-    label_130->setObjectName("label_130");
-    label_130->setGeometry(QRect(350, 20, 221, 61));
-    label_130->setStyleSheet(QString::fromUtf8("QLabel\n"
+    AnalyticsDashboardHeader = new QLabel(widget_4);
+    AnalyticsDashboardHeader->setObjectName("AnalyticsDashboardHeader");
+    AnalyticsDashboardHeader->setGeometry(QRect(350, 20, 221, 61));
+    AnalyticsDashboardHeader->setStyleSheet(QString::fromUtf8("QLabel\n"
         "{\n"
         "font-size:34px;\n"
         "font-weight:bold;\n"
@@ -394,7 +394,7 @@ void AnalyticsDashboard::retranslateUi(QWidget* AnalyticsDashboardClass,System* 
 {
     AnalyticsDashboardClass->setWindowTitle(QCoreApplication::translate("AnalyticsDashboardClass", "AnalyticsDashboard", nullptr));
     label_118->setText(QString());
-    label_130->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Analytics", nullptr));
+    AnalyticsDashboardHeader->setText(QCoreApplication::translate("AnalyticsDashboardClass", "Analytics", nullptr));
 	string totalusers = "Total Users : " + to_string(system->UserCounter());
     label_131->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalusers.c_str(), nullptr));
     label_132->setText(QString());
