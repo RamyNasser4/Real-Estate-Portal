@@ -37,7 +37,8 @@ public:
 	unordered_map<string, unordered_map<string, Property*>> GetPropertyFilterType();
 	unordered_map<string, unordered_map<string, Property*>> GetPropertyFilterLocations();
 	map<int, unordered_map<string, Property*>>GetPropertyFilterPrice();
-
+	vector<EditUserRequest*> GetUserLogs();
+	vector<EditPropertyRequest*> GetPropertyLogs();
 
 	//Filter functions 
 	map<int, unordered_map<string, Property*>> FilterBySquareFootage(int minSquareFootage,int maxSquareFootage);
@@ -62,6 +63,8 @@ public:
 	void AddProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
 	void EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId);
 	void RemoveProperty(string propertyId, string currentUserId);
+	void AddUserLog(EditUserRequest* editUserRequest);
+	void AddPropertyLog(EditPropertyRequest* editPropertyRequest);
 	void ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription);
 	void ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription, int compareCounter);
 	void EditMobileNumber(string currentUserId, string mobileNumber);

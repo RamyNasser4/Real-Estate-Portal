@@ -36,7 +36,7 @@ public:
     QLabel* label_127;
     QLabel* label_128;
     QLabel* label_129;
-    QLabel* label_130;
+    QLabel* AnalyticsDashboardHeader;
     QLabel* label_131;
     QLabel* label_132;
     QLabel* label_133;

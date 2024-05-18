@@ -1921,7 +1921,7 @@ font-size:15px;
         </widget>
        </widget>
       </widget>
-      <widget class="QLabel" name="label_130">
+      <widget class="QLabel" name="AnalyticsDashboardHeader">
        <property name="geometry">
         <rect>
          <x>350</x>

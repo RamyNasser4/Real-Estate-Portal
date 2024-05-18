@@ -8,7 +8,6 @@ class EditPropertyRequest
 	string Oldlocation;
 	string OldpropertyType;
 	string Oldcity;
-	string OlduserName;
 	string OldpropertyDescription;
 	string    OldaddressLine;
 	int    OldsquareFootage;
@@ -18,18 +17,17 @@ class EditPropertyRequest
 	string Newlocation;
 	string NewpropertyType;
 	string Newcity;
-	string NewuserName;
 	string NewpropertyDescription;
 	string    NewaddressLine;
 	int    NewsquareFootage;
 	int    NewnumberOfBedrooms;
 	int    Newprice;
 
-	time_t CurrentTime;
+	string CurrentTime;
 	string PropertyID;
 	string userID;
 public:
-
+	EditPropertyRequest(string OldLocation, string OldPropertyType, string Oldcity, string OldaddressLine, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OLdpropertyDescription, string NewLocation, string NewPropertyType, string Newcity, string NewaddressLine, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription, string PropertyID, string UserID, string time);
 	EditPropertyRequest(string OldLocation, string OldPropertyType, string Oldcity, string OldaddressLine, int OldSquareFootage, int OldNumberOfBedrooms, int Oldprice, string OLdpropertyDescription, string NewLocation, string NewPropertyType, string Newcity, string NewaddressLine, int NewSquareFootage, int NewNumberOfBedrooms, int Newprice, string NewpropertyDescription, string PropertyID, string UserID);
 
 
@@ -37,7 +35,6 @@ public:
 	void setOldLocation(string OldLocation);
 	void SetOldPropertyType(string propertyType);
 	void SetOldCity(string city);
-	void SetOldUserName(string userName);
 	void SetOldPropertyDescription(string propertyDescription);
 	void SetOldAddressLine(string addressLine);
 	void SetOldSquareFootage(int squareFootage);
@@ -48,7 +45,6 @@ public:
 	void SetNewLocation(string location);
 	void SetNewPropertyType(string propertyType);
 	void SetNewCity(string city);
-	void SetNewUserName(string NewUserName);
 	void SetNewPropertyDescription(string propertyDescription);
 	void SetNewAddressLine(string addressLine);
 	void SetNewSquareFootage(int squareFootage);
@@ -78,6 +74,6 @@ public:
 	int GetNewSquareFootage();
 	int GetNewNumberOfBedrooms();
 	int GetNewPrice();
-	time_t GetTime();
+	string GetTime();
 };
 
