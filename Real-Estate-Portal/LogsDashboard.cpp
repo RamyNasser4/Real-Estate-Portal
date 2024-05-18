@@ -587,14 +587,14 @@ void LogsDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system,
             QLabel* Date = new QLabel(userCard);
             Date->setObjectName("Date" + i);
             Date->setGeometry(QRect(600, 3, 161, 31));
-            time_t tDate = (*it)->GetTime();
-            char buffer[26]; // Enough space to hold the string representation of time
-            size_t bufferSize = sizeof(buffer);
-            const char* format = "%Y-%m-%d %H:%M:%S" /**/;
-            struct tm timeInfo;
-            localtime_s(&timeInfo, &tDate);
-            strftime(buffer, sizeof(buffer), format, &timeInfo);
-            string strDate = buffer;
+            //time_t tDate = (*it)->GetTime();
+            //char buffer[26]; // Enough space to hold the string representation of time
+            //size_t bufferSize = sizeof(buffer);
+            //const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+            //struct tm timeInfo;
+            //localtime_s(&timeInfo, &tDate);
+            //strftime(buffer, sizeof(buffer), format, &timeInfo);
+            string strDate = (*it)->GetTime();
             Date->setText(strDate.c_str());
             QLabel* profileIcon = new QLabel(userCard);
             profileIcon->setObjectName("profileIcon" + i);
@@ -733,14 +733,14 @@ void LogsDashboard::drawProperties(QWidget* scrollAreaWidgetContents, System* sy
             QLabel* Date = new QLabel(propertyCard);
             Date->setObjectName("Date" + i);
             Date->setGeometry(QRect(600, 3, 161, 31));
-            time_t tDate = (*it)->GetTime();
-            char buffer[26]; // Enough space to hold the string representation of time
-            size_t bufferSize = sizeof(buffer);
-            const char* format = "%Y-%m-%d %H:%M:%S" /**/;
-            struct tm timeInfo;
-            localtime_s(&timeInfo, &tDate);
-            strftime(buffer, sizeof(buffer), format,&timeInfo );
-            string strDate = buffer;
+            //time_t tDate = (*it)->GetTime();
+            //char buffer[26]; // Enough space to hold the string representation of time
+            //size_t bufferSize = sizeof(buffer);
+            //const char* format = "%Y-%m-%d %H:%M:%S" /**/;
+            //struct tm timeInfo;
+            //localtime_s(&timeInfo, &tDate);
+            //strftime(buffer, sizeof(buffer), format,&timeInfo );
+            string strDate = (*it)->GetTime();
             Date->setText(strDate.c_str());
             string strOldLocation = "Location : " + (*it)->GetOldLocation();
             string strOldSqFootage = "Space : " + to_string((*it)->GetOldSquareFootage());

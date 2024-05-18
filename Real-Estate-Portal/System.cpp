@@ -32,6 +32,12 @@ unordered_map<string, unordered_map<string, Property*>> System::GetPropertyFilte
 map<int, unordered_map<string, Property*>>System::GetPropertyFilterPrice() {
 	return propertyFilterPrice;
 }
+vector<EditUserRequest*> System::GetUserLogs() {
+	return EditUserLogs;
+}
+vector<EditPropertyRequest*> System::GetPropertyLogs() {
+	return EditPropertyLogs;
+}
 void System::SignUp(string fName, string lName, string natId, string password, string mobileNumber) {
 	if (users.find(natId) == users.end()) {
 		users[natId] = new User(fName, lName, natId, password, mobileNumber);
@@ -119,7 +125,7 @@ void System::EditProfile(string fName, string lName, string mobNum, string currP
 	EditMobileNumber(currentUserId, mobNum);
 	user->SetFirstName(fName);
 	user->SetLastName(lName);
-	EditUserLogs.push_back(CurrentUserEdit);
+	AddUserLog(CurrentUserEdit);
 }
 void System::AddToCompare(string propertyId) {
 	if (propertyComparison.size() <= 3) {
@@ -202,6 +208,12 @@ void System::RemoveProperty(string propertyId, string currentUserId) {
 	}
 
 
+}
+void System::AddUserLog(EditUserRequest* editUserRequest) {
+	EditUserLogs.push_back(editUserRequest);
+}
+void System::AddPropertyLog(EditPropertyRequest* editPropertyRequest) {
+	EditPropertyLogs.push_back(editPropertyRequest);
 }
 void System::ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription, int compareCounter) {
 	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, highlighted, propertyDescription, compareCounter);

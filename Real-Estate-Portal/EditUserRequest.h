@@ -12,9 +12,10 @@ class EditUserRequest
 	string newLastName;
 	string newMobileNumber;
 	bool password;
-	time_t timeStamp;
+	string timeStamp;
     string NationalID;
 public:
+    EditUserRequest(string oldFirstName, string newFirstName, string oldLastName, string newLastName, string oldMobileNumber, string newMobileNumber, bool password, string NationalID, string time);
 	EditUserRequest(string oldFirstName,string newFirstName,string oldLastName,string newLastName,string oldMobileNumber,string newMobileNumber,bool password,string NationalID);
 
     //setters
@@ -37,6 +38,6 @@ public:
     string GetNewMobileNumber();
     string GetNationalId();
     bool GetPasswordChanged();
-    time_t GetTime();
+    string GetTime();
 };
 
