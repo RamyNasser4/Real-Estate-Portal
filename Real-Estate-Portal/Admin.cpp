@@ -94,17 +94,14 @@ void Admin::RemoveProperty(string propertyId, System& system) {
 	if (it != system.propertyComparison.end()) {
 		system.propertyComparison.erase(it);
 	}
-	
 	system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
 	system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 	system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
 	system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
-	system.properties.erase(propertyId);
-	properties.erase(propertyId);
-	delete property;
+	User* user = system.GetUser(property->GetUserId());
+	user->RemoveProperty(propertyId,system);
 	system.propertiesCount--;
-	
-
+	user->UserCountProperty--;
 }
 
 

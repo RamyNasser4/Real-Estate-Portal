@@ -315,7 +315,7 @@ void UsersDashboard::drawUsers(QWidget* scrollAreaWidgetContents, System* system
 			userCard->setFrameShadow(QFrame::Shadow::Raised);
 			QLabel* nationalID = new QLabel(userCard);
 			nationalID->setObjectName("nationalID" + i);
-			nationalID->setGeometry(QRect(50, 3, 141, 31));
+			nationalID->setGeometry(QRect(50, 3, 241, 31));
 			string strNationalID = "#" + it->second->GetNationalId();
 			nationalID->setText(strNationalID.c_str());
 			QLabel* fName = new QLabel(userCard);
