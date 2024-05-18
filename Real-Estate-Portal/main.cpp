@@ -24,15 +24,53 @@ void readFile(System* system) {
 		while (getline(readFile, data)) {
 			stringstream ss(data);
 			// Declare variables for fields
-			string firstName, lastName, stringId, password,mobileNumber;
+			string type, firstName, lastName, stringId, password, mobileNumber;
 			// Split the line using '*' as the delimiter
+			getline(ss, type, '*');
 			getline(ss, firstName, '*');
 			getline(ss, lastName, '*');
 			getline(ss, stringId, '*');
 			getline(ss, password, '*');
 			getline(ss, mobileNumber, '*');
 			int ID = stoi(stringId);
-			system->SignUp(firstName, lastName, stringId, password,mobileNumber);
+			if (type == "admin") {
+				system->AddAdmin(firstName, lastName, stringId, password, mobileNumber);
+			}
+			else {
+				system->SignUp(firstName, lastName, stringId, password, mobileNumber);
+			}
+		}
+	}
+	else {
+		cout << "error" << endl;
+	}
+	readFile.close();
+	readFile.open("../requests.txt", ios::out | ios::in);
+	if (readFile.is_open()) {
+		string data;
+		while (getline(readFile, data)) {
+			stringstream ss(data);
+			// Declare variables for fields
+			// Declare variables for fields
+			string propertyId, location, propertyType, city, userName, UserId;
+			string AddressLine, stringSquareFootage, stringNumberOfBedrooms, stringPrice;
+			string stringHighlighted, propertyDescription;
+			// Split the line using '*' as the delimiter
+			getline(ss, propertyId, '*');
+			getline(ss, location, '*');
+			getline(ss, propertyType, '*');
+			getline(ss, city, '*');
+			getline(ss, userName, '*');
+			getline(ss, UserId, '*');
+			getline(ss, AddressLine, '*');
+			getline(ss, stringSquareFootage, '*');
+			getline(ss, stringNumberOfBedrooms, '*');
+			getline(ss, stringPrice, '*');
+			getline(ss, propertyDescription, '*');
+			int squareFootage = stoi(stringSquareFootage);
+			int numberOfBedrooms = stoi(stringNumberOfBedrooms);
+			int price = stoi(stringPrice);
+			system->ReadProperty(propertyId, location, propertyType, city, AddressLine, squareFootage, numberOfBedrooms, price, userName, UserId, propertyDescription);
 		}
 	}
 	else {
@@ -45,39 +83,39 @@ void readFile(System* system) {
 		while (getline(readFile, data)) {
 			stringstream ss(data);
 			// Declare variables for fields
-			string propertyId,location,propertyType,buildingNumber,userName,stringUserId;
-			string stringApartmentNumber,stringSquareFootage,stringNumberOfBedrooms,stringPrice,stringVerified;
-			string stringHighlighted,propertyDescription,propertyUser;
-			string propertyUserId;
+			string propertyId, location, propertyType, city, userName, UserId;
+			string AddressLine, stringSquareFootage, stringNumberOfBedrooms, stringPrice, stringVerified;
+			string stringHighlighted, propertyDescription;
+			string stringCompareCounter;
 			// Split the line using '*' as the delimiter
 			getline(ss, propertyId, '*');
 			getline(ss, location, '*');
 			getline(ss, propertyType, '*');
-			getline(ss, buildingNumber, '*');
+			getline(ss, city, '*');
 			getline(ss, userName, '*');
-			getline(ss, stringUserId, '*');
-			getline(ss, stringApartmentNumber, '*');
+			getline(ss, UserId, '*');
+			getline(ss, AddressLine, '*');
 			getline(ss, stringSquareFootage, '*');
 			getline(ss, stringNumberOfBedrooms, '*');
 			getline(ss, stringPrice, '*');
 			getline(ss, stringVerified, '*');
 			getline(ss, stringHighlighted, '*');
 			getline(ss, propertyDescription, '*');
-			int userId = stoi(stringUserId);
-			int apartmentNumber = stoi(stringApartmentNumber);
+			getline(ss, stringCompareCounter, '*');
 			int squareFootage = stoi(stringSquareFootage);
 			int numberOfBedrooms = stoi(stringNumberOfBedrooms);
 			int price = stoi(stringPrice);
 			bool verified = stoi(stringVerified);
 			bool highlighted = stoi(stringHighlighted);
-			//system->AddProperty(location, propertyType, buildingNumber, apartmentNumber, squareFootage, numberOfBedrooms, verified, price,userName,userId, highlighted, propertyDescription);
+			int compareCounter = stoi(stringCompareCounter);
+			system->ReadProperty(propertyId, location, propertyType, city, AddressLine, squareFootage, numberOfBedrooms, price, userName, UserId, highlighted, propertyDescription, compareCounter);
 		}
 	}
 	readFile.close();
 }
 
 void writeFile(System* system) {
-	fstream writefile("../users.txt", ios::out );
+	fstream writefile("../users.txt", ios::out);
 	if (!writefile.is_open()) {
 		cout << "Failed to open file" << endl;
 		return;
@@ -85,9 +123,27 @@ void writeFile(System* system) {
 	const auto& users = system->GetUsers();  // Store reference to the map
 	auto begin = users.begin();              // Use the same map instance for both iterators
 	auto end = users.end();
-	for (; begin != end; ++begin) {
-		
-		writefile <<begin->second->GetFirstName() << "*" << begin->second->GetLastName() << "*" << begin->second->GetNationalId() << "*" << begin->second->GetPassword() << endl;
+	for (begin; begin != end; ++begin) {
+		string type;
+		Admin* admin = dynamic_cast<Admin*>(begin->second);
+		if (admin) {
+			type = "admin";
+		}
+		else {
+			type = "user";
+		}
+		writefile << type << "*" << begin->second->GetFirstName() << "*" << begin->second->GetLastName() << "*" << begin->second->GetNationalId() << "*" << begin->second->GetPassword() << "*" << begin->second->GetMobileNumber() << endl;
+	}
+	writefile.close();
+	writefile.open("../requests.txt", ios::out);
+	if (!writefile.is_open()) {
+		cout << "Failed to open file" << endl;
+		return;
+	}
+	queue<Property*> requested = system->GetRequestedProperties();
+	while (!requested.empty()) {
+		writefile << requested.front()->GetpropertyId() << "*" << requested.front()->GetLocation() << "*" << requested.front()->GetPropertyType() << "*" << requested.front()->GetCity() << "*" << requested.front()->GetUserName() << requested.front()->GetUserId() << "*" << requested.front()->GetAddressLine() << "*" << requested.front()->GetSquareFootage() << "*" << requested.front()->GetNumberOfBedrooms() << "*" << requested.front()->GetPrice() << "*" << requested.front()->GetPropertyDescription() << endl;
+		requested.pop();
 	}
 	writefile.close();
 	writefile.open("../properties.txt", ios::out);
@@ -98,8 +154,11 @@ void writeFile(System* system) {
 	const auto& properties = system->GetProperties();
 	auto beginp = properties.begin();
 	auto endp = properties.end();
-	for (; beginp != endp; beginp++) {
-		writefile << beginp->second->GetpropertyId() << "*" << beginp->second->GetLocation() << "*" << beginp->second->GetPropertyType() << "*" << beginp->second->GetCity() << "*" << beginp->second->GetUserName() << "*" << beginp->second->GetUserId() << "*" << beginp->second->GetAddressLine() << "*" << beginp->second->GetSquareFootage() << "*" << beginp->second->GetNumberOfBedrooms() << "*" << beginp->second->GetPrice() << "*" << beginp->second->GetVerfied() << "*"<<beginp->second->GetHighlighted()<< "*" << beginp->second->GetPropertyDescription() << endl;
+	for (beginp; beginp != endp; beginp++) {
+		if (!beginp->second->GetVerfied()) {
+			continue;
+		}
+		writefile << beginp->second->GetpropertyId() << "*" << beginp->second->GetLocation() << "*" << beginp->second->GetPropertyType() << "*" << beginp->second->GetCity() << "*" << beginp->second->GetUserName() << "*" << beginp->second->GetUserId() << "*" << beginp->second->GetAddressLine() << "*" << beginp->second->GetSquareFootage() << "*" << beginp->second->GetNumberOfBedrooms() << "*" << beginp->second->GetPrice() << "*" << beginp->second->GetVerfied() << "*" << beginp->second->GetHighlighted() << "*" << beginp->second->GetPropertyDescription() << "*" << beginp->second->GetCompareCounter() << endl;
 	}
 	writefile.close();
 }
@@ -134,8 +193,7 @@ int main(int argc, char* argv[]) {
 	//cout << user->GetNationalId() << endl;
 	//cout << user->GetPassword() << endl;
 	//cout << "---------------------------------------------------------" << endl;
-	
-	User* admin = new Admin("Ramy", "Ramy", "1", "123","01002323145");
+	User* admin = new Admin("Ramy", "Ramy", "1", "123", "01002323145");
 	system->users["1"] = admin;
 	system->userCount++;
 	system->AddProperty("egypt", "villa", "14", "4", 7, 4, 7000, "Ramy Khalifa", "23", "this is property");
@@ -170,7 +228,7 @@ int main(int argc, char* argv[]) {
 	//writeFile(system);
 	QApplication a(argc, argv);
 	QStackedWidget* widget = new QStackedWidget();
-    Login* login = new Login();
+	Login* login = new Login();
 	login->setObjectName("Login");
 	Home* home = new Home();
 	Signup* signup = new Signup();
@@ -180,11 +238,11 @@ int main(int argc, char* argv[]) {
 	widget->addWidget(home);
 	widget->addWidget(signup);
 	widget->setCurrentWidget(login);
-    login->setupUi(widget,system,home,signup);
+	login->setupUi(widget, system, home, signup);
 	//widget->setCurrentWidget(req);
 	//req->setupUi(widget, system);
 
- 
+
 	widget->show();
 	return a.exec();
 }

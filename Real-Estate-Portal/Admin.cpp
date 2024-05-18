@@ -44,6 +44,7 @@ void Admin::AddProperty(string Location, string PropertyType, string City, strin
 	system.propertiesCount++;
 	system.SortUserByPropertyCount(currentUserId);
 }
+
 void Admin::EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
 {
 

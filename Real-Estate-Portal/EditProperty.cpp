@@ -106,7 +106,7 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     frame->setFrameShadow(QFrame::Shadow::Raised);
     headLabel = new QLabel(frame);
     headLabel->setObjectName("headLabel");
-    headLabel->setGeometry(QRect(330, 20, 191, 51));
+    headLabel->setGeometry(QRect(350, 30, 191, 51));
     frame_2 = new QFrame(frame);
     frame_2->setObjectName("frame_2");
     frame_2->setGeometry(QRect(-10, 100, 991, 681));
@@ -246,7 +246,7 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     comboBox_3->setCursor(QCursor(Qt::PointingHandCursor));
     homeImage = new QPushButton(frame);
     homeImage->setObjectName("homeImage");
-    homeImage->setGeometry(QRect(260, 20, 51, 51));
+    homeImage->setGeometry(QRect(290, 30, 51, 51));
     QIcon icon6;
     icon6.addFile(QString::fromUtf8(":/Assets/propertyHead.png"), QSize(), QIcon::Normal, QIcon::Off);
     homeImage->setIcon(icon6);

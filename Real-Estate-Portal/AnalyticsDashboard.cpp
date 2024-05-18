@@ -409,6 +409,8 @@ void AnalyticsDashboard::retranslateUi(QWidget* AnalyticsDashboardClass,System* 
 void AnalyticsDashboard::updateUi(System* system,QStackedWidget* ListComponents) {
 	User* user = system->UserWithMostProperties();
 	string userId = "#" + user->GetNationalId();
+	string totalusers = "Total Users : " + to_string(system->UserCounter());
+	label_131->setText(QCoreApplication::translate("AnalyticsDashboardClass", totalusers.c_str(), nullptr));
 	label_137->setText(QCoreApplication::translate("AnalyticsDashboardClass", userId.c_str(), nullptr));
 	string username = user->GetName();
 	label_138->setText(QCoreApplication::translate("AnalyticsDashboardClass", username.c_str(), nullptr));

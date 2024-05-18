@@ -10,6 +10,9 @@ unordered_map<string, User*> System::GetUsers() {
 unordered_map <string, Property*> System::GetProperties() {
 	return properties;
 }
+queue<Property*> System::GetRequestedProperties() {
+	return unVerified;
+}
 vector<Property*>  System::GetPropertyComparison() {
 	return propertyComparison;
 }
@@ -179,6 +182,7 @@ void System::AddProperty(string Location, string PropertyType, string City, stri
 		users[currentUserId]->AddProperty(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, price, users[currentUserId]->GetName(), currentUserId, propertyDescription, *this);
 	}
 }
+
 void System::EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, string propertyId) {
 	Admin* admin = dynamic_cast<Admin*>(users[currentUserId]);
 	if (admin) {
@@ -198,6 +202,28 @@ void System::RemoveProperty(string propertyId, string currentUserId) {
 	}
 
 
+}
+void System::ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, bool highlighted, string propertyDescription, int compareCounter) {
+	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, true, price, currentUserName, currentUserId, highlighted, propertyDescription, compareCounter);
+	NewProperty->SetPropertyId(propertyId);
+	User* user = GetUser(currentUserId);
+	user->UserAddedProperty(propertyId, NewProperty);
+	properties[propertyId] = NewProperty;
+	propertyFilterBedRooms[NumberOfBedrooms][propertyId] = NewProperty;
+	propertyFilterSquareFootage[SquareFootage][propertyId] = NewProperty;
+	propertyFilterType[PropertyType][propertyId] = NewProperty;
+	propertyFilterLocations[Location][propertyId] = NewProperty;
+	propertyFilterPrice[price][propertyId] = NewProperty;
+	propertiesCount++;
+	SortUserByPropertyCount(currentUserId);
+}
+void System::ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
+	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription, 0);
+	NewProperty->SetPropertyId(propertyId);
+	User* user = GetUser(currentUserId);
+	user->UserAddedProperty(propertyId, NewProperty);
+	properties[propertyId] = NewProperty;
+	Request(NewProperty);
 }
 map<int, unordered_map<string, Property*>> System::FilterBySquareFootage(int minSquareFootage, int maxSquareFootage) {
 	if (minSquareFootage > maxSquareFootage)
