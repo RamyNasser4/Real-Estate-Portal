@@ -234,6 +234,7 @@
     <QtUic Include="Compare_4.ui" />
     <QtUic Include="Dashboard.ui" />
     <QtUic Include="DialogButtonBottom.ui" />
+    <QtUic Include="DialogButtonBottom1.ui" />
     <QtUic Include="EditProfile.ui" />
     <QtUic Include="EditProperty.ui" />
     <QtUic Include="EditUser.ui" />
