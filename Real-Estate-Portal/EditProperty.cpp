@@ -48,6 +48,9 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
         "        color:#2B2A2A;\n"
         "        border-style:solid; \n"
         " }\n"
+        "QComboBox QAbstractItemView {\n"
+        "    color: white;\n"  // Dropdown menu background
+        "}\n"
         "QSpinBox{\n"
         "background: white;\n"
         " color:#2B2A2A;\n"
@@ -117,11 +120,6 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     lineEdit_2->setGeometry(QRect(40, 240, 341, 41));
     lineEdit_2->setInputMethodHints(Qt::InputMethodHint::ImhDigitsOnly);
     comboBox = new QComboBox(frame_2);
-    comboBox->addItem(QString());
-    comboBox->addItem(QString());
-    comboBox->addItem(QString());
-    comboBox->addItem(QString());
-    comboBox->addItem(QString());
     comboBox->setObjectName("comboBox");
     comboBox->setGeometry(QRect(40, 150, 341, 41));
     comboBox->setCursor(QCursor(Qt::PointingHandCursor));
@@ -236,11 +234,6 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     label_7->setObjectName("label_7");
     label_7->setGeometry(QRect(40, 0, 411, 71));
     comboBox_3 = new QComboBox(frame_2);
-    comboBox_3->addItem(QString());
-    comboBox_3->addItem(QString());
-    comboBox_3->addItem(QString());
-    comboBox_3->addItem(QString());
-    comboBox_3->addItem(QString());
     comboBox_3->setObjectName("comboBox_3");
     comboBox_3->setGeometry(QRect(40, 195, 341, 41));
     comboBox_3->setCursor(QCursor(Qt::PointingHandCursor));
@@ -251,6 +244,40 @@ void EditProperty::setupUi(QStackedWidget* Form,System* system,string propertyId
     icon6.addFile(QString::fromUtf8(":/Assets/propertyHead.png"), QSize(), QIcon::Normal, QIcon::Off);
     homeImage->setIcon(icon6);
     homeImage->setIconSize(QSize(50, 50));
+    QObject::connect(comboBox, &QComboBox::currentIndexChanged, [=]() {
+        if (comboBox->currentText() == "Cairo") {
+            comboBox_3->clear();
+            comboBox_3->addItem("Nasr City");
+            comboBox_3->addItem("Downtown");
+            comboBox_3->addItem("Zamalek");
+            comboBox_3->addItem("Heliopolis");
+            comboBox_3->addItem("First Settlement");
+            comboBox_3->addItem("Fifth Settlement");
+            comboBox_3->addItem("New Capital");
+            comboBox_3->addItem("Maadi");
+            comboBox_3->addItem("Obour");
+            comboBox_3->addItem("El Rehab");
+            comboBox_3->addItem("El Shrouk");
+            comboBox_3->addItem("Madinty");
+        }
+        else if (comboBox->currentText() == "Alex") {
+            comboBox_3->clear();
+            comboBox_3->addItem("El Montazah");
+            comboBox_3->addItem("Stanley");
+            comboBox_3->addItem("San Stefano");
+            comboBox_3->addItem("Raml station");
+            comboBox_3->addItem("Sidi Gaber");
+            comboBox_3->addItem("Borg El Arab");
+        }
+        else if (comboBox->currentText() == "Giza") {
+            comboBox_3->clear();
+            comboBox_3->addItem("6th of October");
+            comboBox_3->addItem("Sheikh Zayed");
+            comboBox_3->addItem("Al Haram");
+            comboBox_3->addItem("El Mohandessin");
+            comboBox_3->addItem("Dokki");
+        }
+        });
     QObject::connect(textEdit, &QTextEdit::textChanged, [=]() {
         QString text = textEdit->toPlainText();
         int charCount = text.length();
@@ -382,11 +409,9 @@ void EditProperty::retranslateUi(QStackedWidget* Form)
     Form->setWindowTitle(QCoreApplication::translate("EditProperty", "EditProperty", nullptr));
     headLabel->setText(QCoreApplication::translate("EditProperty", "Edit Property", nullptr));
     lineEdit_2->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Address Line", nullptr));
-    comboBox->setItemText(0, QCoreApplication::translate("EditProperty", "Cairo", nullptr));
-    comboBox->setItemText(1, QCoreApplication::translate("EditProperty", "Giza", nullptr));
-    comboBox->setItemText(2, QCoreApplication::translate("EditProperty", "Alexandria", nullptr));
-    comboBox->setItemText(3, QString());
-    comboBox->setItemText(4, QString());
+    comboBox->addItem("Cairo");
+    comboBox->addItem("Alex");
+    comboBox->addItem("Giza");
 
     comboBox->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Choose Location", nullptr));
     formLabels->setText(QCoreApplication::translate("EditProperty", "Location", nullptr));
@@ -400,15 +425,21 @@ void EditProperty::retranslateUi(QStackedWidget* Form)
     comboBox_2->setItemText(4, QCoreApplication::translate("EditProperty", "Pent House", nullptr));
     comboBox_2->setItemText(5, QCoreApplication::translate("EditProperty", "Villa", nullptr));
     comboBox_2->setItemText(6, QCoreApplication::translate("EditProperty", "Chalet", nullptr));
-    comboBox_2->setItemText(7, QString());
 
     comboBox_2->setPlaceholderText(QCoreApplication::translate("EditProperty", "  Choose Type", nullptr));
     comboBox_3->setPlaceholderText(QCoreApplication::translate("EditPropertyClass", "  Choose City", nullptr));
-    comboBox_3->setItemText(0, QCoreApplication::translate("EditPropertyClass", "Madinet Nasr", nullptr));
-    comboBox_3->setItemText(1, QCoreApplication::translate("EditPropertyClass", "El Rehab", nullptr));
-    comboBox_3->setItemText(2, QCoreApplication::translate("EditPropertyClass", "El Shrouk", nullptr));
-    comboBox_3->setItemText(4, QCoreApplication::translate("EditPropertyClass", "Masr El Gedida", nullptr));
-    comboBox_3->setItemText(3, QCoreApplication::translate("EditPropertyClass", "Manshyet El Bakry", nullptr));
+    comboBox_3->addItem("Nasr City");
+    comboBox_3->addItem("Downtown");
+    comboBox_3->addItem("Zamalek");
+    comboBox_3->addItem("Heliopolis");
+    comboBox_3->addItem("First Settlement");
+    comboBox_3->addItem("Fifth Settlement");
+    comboBox_3->addItem("New Capital");
+    comboBox_3->addItem("Maadi");
+    comboBox_3->addItem("Obour");
+    comboBox_3->addItem("El Rehab");
+    comboBox_3->addItem("El Shrouk");
+    comboBox_3->addItem("Madinty");
 
     label_4->setText(QCoreApplication::translate("EditProperty", "Space", nullptr));
     lineEdit_3->setPlaceholderText(QCoreApplication::translate("EditProperty", "Price", nullptr));
