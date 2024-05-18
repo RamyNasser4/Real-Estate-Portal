@@ -750,9 +750,11 @@ void Listings::drawBoxes(QWidget* scrollAreaWidgetContents, unordered_map<string
 					menu->insertAction(addToCompare, removeFromCompare);
 					menu->removeAction(addToCompare);
 				}
-				catch (const exception& e) {
-					qDebug() << "add to compare failed";
-					qDebug() << e.what();
+				catch (const exception& e) {	
+						QDialog* qdialog = new QDialog();
+						Dialog dialog;
+						dialog.setupUi(qdialog, e.what());
+						qdialog->exec();
 				}
 				});
 			QObject::connect(removeFromCompare, &QAction::triggered, [=]() {
