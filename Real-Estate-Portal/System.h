@@ -46,7 +46,7 @@ public:
 	unordered_map<string, Property*>  FilterByLocation(string locations);
 	map<int, unordered_map<string,Property*>> FilterByPrice(int minPrice, int maxPrice);
 	unordered_map<string, Property*>  FilterByType(string type);
-	void SortUserByPropertyCount(string nationalID);
+	void SortUserByPropertyCount(string nationalID,bool increment);
 
 	void Request(Property *property);
 	void SignUp(string fName, string lName, string natId, string password,string mobileNumber);

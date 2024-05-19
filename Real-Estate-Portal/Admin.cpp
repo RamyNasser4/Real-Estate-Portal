@@ -42,7 +42,7 @@ void Admin::AddProperty(string Location, string PropertyType, string City, strin
 	system.propertyFilterLocations[Location][propertyId] = NewProperty;
 	system.propertyFilterPrice[price][propertyId] = NewProperty;
 	system.propertiesCount++;
-	system.SortUserByPropertyCount(currentUserId);
+	system.SortUserByPropertyCount(currentUserId,true);
 }
 
 void Admin::EditProperty(string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription, System& system, string propertyId)
@@ -128,7 +128,7 @@ void Admin::AdminApproveorDeclineProperty(System* system, bool approved, User* u
 			system->propertyFilterType[currentProperty->GetPropertyType()][currentProperty->GetpropertyId()] = currentProperty;
 			cout << "Property Approved!";
 			system->propertiesCount++;
-			system->SortUserByPropertyCount(user->GetNationalId());
+			system->SortUserByPropertyCount(user->GetNationalId(),true);
 		}
 		else {
 			user->RemoveProperty(currentProperty->GetpropertyId(), *system);
