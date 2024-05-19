@@ -91,18 +91,26 @@ void User::AddProperty(string Location, string PropertyType, string City, string
 void User::RemoveProperty(string propertyId, System& system) {
 	Property* property = system.properties[propertyId];
 	if (properties.find(propertyId) != properties.end()) {
-		if (nationalId == system.currentUserId) {
+		if (!property->GetVerfied()) {
+			system.properties.erase(propertyId);
+			properties.erase(propertyId);
+			delete property;
+		}
+		else {
+			auto it = std::find(system.propertyComparison.begin(), system.propertyComparison.end(), property);
+			if (it != system.propertyComparison.end()) {
+				system.propertyComparison.erase(it);
+			}
 			system.propertyFilterBedRooms[property->GetNumberOfBedrooms()].erase(propertyId);
 			system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 			system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
 			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+			system.properties.erase(propertyId);
+			properties.erase(propertyId);
 			system.propertiesCount--;
 			UserCountProperty--;
+			delete property;
 		}
-		system.properties.erase(propertyId);
-		properties.erase(propertyId);
-		delete property;
-
 	}
 	else {
 		throw exception("Property doesn't belong to User");
