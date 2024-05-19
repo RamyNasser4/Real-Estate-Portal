@@ -132,7 +132,7 @@ void RequestDashboard::setupUi(QWidget* tab_3, System* system) {
 		pushButton_2->setText(QCoreApplication::translate("Dashboard", "Deny", nullptr));
 		label_44 = new QLabel(tab_3);
 		label_44->setObjectName("label_44");
-		label_44->setGeometry(QRect(210, 250, 381, 51));
+		label_44->setGeometry(QRect(210, 250, 501, 51));
 		label_44->setStyleSheet(QString::fromUtf8("QLabel{\n"
 			"font-size:30px;\n"
 			"font-family:sans-serif;\n"
