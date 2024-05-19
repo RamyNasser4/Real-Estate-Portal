@@ -105,10 +105,11 @@ void User::RemoveProperty(string propertyId, System& system) {
 			system.propertyFilterLocations[property->GetLocation()].erase(propertyId);
 			system.propertyFilterType[property->GetPropertyType()].erase(propertyId);
 			system.propertyFilterSquareFootage[property->GetSquareFootage()].erase(propertyId);
+			system.propertyFilterComparison[property->GetCompareCounter()].erase(propertyId);
 			system.properties.erase(propertyId);
-			properties.erase(propertyId);
+			properties.erase(propertyId);			
 			system.propertiesCount--;
-			UserCountProperty--;
+			system.SortUserByPropertyCount(nationalId, false);
 			delete property;
 		}
 	}

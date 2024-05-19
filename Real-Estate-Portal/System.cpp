@@ -227,7 +227,7 @@ void System::ReadProperty(string propertyId, string Location, string PropertyTyp
 	propertyFilterLocations[Location][propertyId] = NewProperty;
 	propertyFilterPrice[price][propertyId] = NewProperty;
 	propertiesCount++;
-	SortUserByPropertyCount(currentUserId);
+	SortUserByPropertyCount(currentUserId,true);
 }
 void System::ReadProperty(string propertyId, string Location, string PropertyType, string City, string AddressLine, int SquareFootage, int NumberOfBedrooms, int price, string currentUserName, string currentUserId, string propertyDescription) {
 	Property* NewProperty = new Property(Location, PropertyType, City, AddressLine, SquareFootage, NumberOfBedrooms, false, price, currentUserName, currentUserId, false, propertyDescription, 0);
@@ -272,19 +272,36 @@ map<int, unordered_map<string, Property*>> System::FilterByPrice(int minPrice, i
 	}
 	return filtered;
 }
-void System::SortUserByPropertyCount(string nationalID) {
+void System::SortUserByPropertyCount(string nationalID, bool increment) {
 	User* user = GetUser(nationalID);
-	// if he is in the map and we want to change his count
-	if (userFilterByPropertyCount.find(user->GetUserCountProperty()) != userFilterByPropertyCount.end() &&
-		userFilterByPropertyCount[user->GetUserCountProperty()]->GetNationalId() == user->GetNationalId()) {
-		userFilterByPropertyCount.erase(user->GetUserCountProperty());
-		++user->UserCountProperty;
-		userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+	if (increment) {
+		// if he is in the map and we want to change his count
+		if (userFilterByPropertyCount.find(user->GetUserCountProperty()) != userFilterByPropertyCount.end() &&
+			userFilterByPropertyCount[user->GetUserCountProperty()]->GetNationalId() == user->GetNationalId()) {
+			userFilterByPropertyCount.erase(user->GetUserCountProperty());
+			++user->UserCountProperty;
+			userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+		}
+		// if he is not in the map
+		else {
+			++user->UserCountProperty;
+			userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+		}
+
 	}
-	// if he is not in the map
 	else {
-		++user->UserCountProperty;
-		userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+		// if he is in the map and we want to change his count
+		if (userFilterByPropertyCount.find(user->GetUserCountProperty()) != userFilterByPropertyCount.end() &&
+			userFilterByPropertyCount[user->GetUserCountProperty()]->GetNationalId() == user->GetNationalId()) {
+			userFilterByPropertyCount.erase(user->GetUserCountProperty());
+			--user->UserCountProperty;
+			userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+		}
+		// if he is not in the map
+		else {
+			--user->UserCountProperty;
+			userFilterByPropertyCount.insert(make_pair(user->GetUserCountProperty(), user));
+		}
 	}
 }
 int System::UserCounter()
@@ -308,7 +325,7 @@ void System::EditMobileNumber(string currentUserId, string newmobileNumber)
 void System::AddAdmin(string firstName, string lastName, string nationalId, string password, string mobileNumber)
 {
 	if (users.find(nationalId) == users.end()) {
-		users[nationalId] = new Admin(firstName, lastName, nationalId, password,mobileNumber);
+		users[nationalId] = new Admin(firstName, lastName, nationalId, password, mobileNumber);
 		++userCount;
 		cout << "Registered Successfully " << endl;
 	}
